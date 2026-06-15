@@ -16,20 +16,24 @@ export const Route = createFileRoute("/")({
           "Research-driven UX and aesthetic interfaces for SaaS, startups, and enterprises.",
       },
     ],
-    links: [
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap",
-      },
-    ],
+    links: [],
   }),
   component: Index,
 });
 
-const pixelHeading = { fontFamily: "'Press Start 2P', 'VT323', monospace" } as const;
-const pixelBody = { fontFamily: "'VT323', monospace" } as const;
+const pixelHeading = {
+  fontFamily: "'Ac437 IBM CGA', 'Press Start 2P', monospace",
+} as const;
+const pixelBody = {
+  fontFamily: "'Ac437 ATI 8x16', 'AcPlus ToshibaSat 8x16', 'VT323', monospace",
+} as const;
+const pixelTerminal = {
+  fontFamily: "'AcPlus ToshibaSat 8x16', 'Ac437 ATI 8x16', 'VT323', monospace",
+} as const;
+
+// Scanline overlay used inside green CRT panels
+const scanlines =
+  "repeating-linear-gradient(0deg, rgba(0,0,0,0.25) 0px, rgba(0,0,0,0.25) 1px, transparent 1px, transparent 3px)";
 
 type Linkout = { label: string; href: string };
 
@@ -176,43 +180,78 @@ function Index() {
 
         {/* Terminal ticker */}
         <section
-          className="rounded-xl p-6"
+          className="rounded-xl p-4 sm:p-5 relative overflow-hidden"
           style={{
             border: "2px solid #008000",
-            background:
-              "url('https://api.builder.io/api/v1/image/assets/TEMP/9ecd4228311db66fa80a45c458dbbbbff2f5ef70?width=2344') 0 0 / 29.4px 29.4px repeat, linear-gradient(180deg, #004802 0%, #001F01 100%)",
-            boxShadow: "0 0 4px 0 rgba(0,0,0,0.4) inset, 2px 2px 0 0 #8F0045",
+            background: `${scanlines}, linear-gradient(180deg, #004802 0%, #001F01 100%)`,
+            boxShadow:
+              "0 0 24px 0 rgba(0,255,80,0.08) inset, 0 0 4px 0 rgba(0,0,0,0.6) inset, 2px 2px 0 0 #8F0045",
           }}
         >
-          <div className="rounded-lg px-4 py-2" style={{ background: "#032201" }}>
+          <div
+            className="rounded-md px-3 py-2 flex items-center gap-2"
+            style={{ background: "#032201", border: "1px solid #0a3a08" }}
+          >
+            <span
+              aria-hidden
+              style={{ ...pixelTerminal, color: "#3BFD00", fontSize: 14 }}
+            >
+              C:\&gt;
+            </span>
             <p
               style={{
-                ...pixelBody,
+                ...pixelTerminal,
                 color: "#21801E",
-                fontSize: 16,
-                lineHeight: 1.4,
-                textAlign: "center",
+                fontSize: 14,
+                lineHeight: 1.3,
+                margin: 0,
               }}
             >
-              Currently: Werkstudent @ Publicis Media · Masters thesis on algorithmic
-              transparency · Open to full-time roles from July 2026 · Based in Germany
+              status --now
             </p>
           </div>
+
           <p
             style={{
-              ...pixelBody,
+              ...pixelTerminal,
               color: "#3BFD00",
-              textShadow: "2px 2px 0 rgba(0,0,0,0.25)",
-              fontSize: 24,
-              lineHeight: 1.3,
-              marginTop: 16,
+              textShadow: "0 0 6px rgba(59,253,0,0.35)",
+              fontSize: "clamp(15px, 2.2vw, 20px)",
+              lineHeight: 1.5,
+              marginTop: 14,
             }}
           >
-            I design software people actually want to use. Research-driven UX and aesthetic
-            interfaces that celebrate inclusivity, accessibility for SaaS, startups,
-            enterprises that solve real problems.
+            Werkstudent @ Publicis Media · Master&apos;s thesis on algorithmic
+            transparency · Open to full-time roles from July 2026 · Based in Germany.
+          </p>
+
+          <p
+            style={{
+              ...pixelTerminal,
+              color: "#BFFFB0",
+              textShadow: "0 0 6px rgba(59,253,0,0.25)",
+              fontSize: "clamp(16px, 2.4vw, 22px)",
+              lineHeight: 1.5,
+              marginTop: 14,
+            }}
+          >
+            I design software people actually want to use. Research-driven UX and
+            aesthetic interfaces that celebrate inclusivity and accessibility — for
+            SaaS, startups, and enterprises that solve real problems.
+            <span
+              aria-hidden
+              className="inline-block ml-1 align-baseline"
+              style={{
+                width: "0.55em",
+                height: "1em",
+                background: "#3BFD00",
+                animation: "crt-blink 1s steps(1) infinite",
+                verticalAlign: "-0.12em",
+              }}
+            />
           </p>
         </section>
+
 
         {/* Content */}
         <section className="flex flex-col lg:flex-row gap-5 pt-2">
@@ -334,47 +373,62 @@ function Index() {
 
         {/* Recommendations */}
         <section
-          className="rounded-xl p-4"
+          className="rounded-xl p-4 sm:p-5 relative overflow-hidden"
           style={{
             border: "2px solid #008000",
-            background:
-              "url('https://api.builder.io/api/v1/image/assets/TEMP/9bbb47a675199d50144097675d55c53916eff659?width=1624') 50%/cover no-repeat, linear-gradient(180deg, #004802 0%, #001F01 100%)",
-            backgroundBlendMode: "multiply, normal",
-            boxShadow: "0 0 4px 0 rgba(0,0,0,0.4) inset, 2px 2px 0 0 #8F0045",
+            background: `${scanlines}, linear-gradient(180deg, #004802 0%, #001F01 100%)`,
+            boxShadow:
+              "0 0 24px 0 rgba(0,255,80,0.08) inset, 0 0 4px 0 rgba(0,0,0,0.6) inset, 2px 2px 0 0 #8F0045",
           }}
         >
-          <div className="rounded-lg px-4 py-2" style={{ background: "#032201" }}>
-            <p style={{ ...pixelHeading, color: "#21801E", fontSize: 12 }}>Recommendations:</p>
+          <div
+            className="rounded-md px-3 py-2 flex items-center gap-2"
+            style={{ background: "#032201", border: "1px solid #0a3a08" }}
+          >
+            <span aria-hidden style={{ ...pixelTerminal, color: "#3BFD00", fontSize: 14 }}>
+              C:\&gt;
+            </span>
+            <p style={{ ...pixelTerminal, color: "#21801E", fontSize: 14, margin: 0 }}>
+              list recommendations.txt
+            </p>
           </div>
-          <ul className="flex flex-col gap-8 mt-6">
+
+          <ul className="flex flex-col gap-7 mt-5">
             {RECOMMENDATIONS.map((r) => (
-              <li key={r.author} className="flex flex-col gap-4">
+              <li key={r.author} className="flex flex-col gap-2">
                 <blockquote
                   style={{
-                    ...pixelBody,
+                    ...pixelTerminal,
                     color: "#3BFD00",
-                    textShadow: "2px 2px 0 rgba(0,0,0,0.25)",
-                    fontSize: 24,
-                    lineHeight: 1.3,
+                    textShadow: "0 0 6px rgba(59,253,0,0.3)",
+                    fontSize: "clamp(15px, 2.2vw, 20px)",
+                    lineHeight: 1.5,
+                    margin: 0,
+                    paddingLeft: "1.1em",
+                    textIndent: "-1.1em",
                   }}
                 >
+                  <span aria-hidden style={{ color: "#21801E", marginRight: "0.4em" }}>
+                    &gt;
+                  </span>
                   {r.quote}
                 </blockquote>
                 <cite
                   style={{
-                    ...pixelHeading,
+                    ...pixelTerminal,
                     fontStyle: "normal",
-                    color: "#21801E",
-                    textShadow: "2px 2px 0 rgba(0,0,0,0.25)",
-                    fontSize: 12,
+                    color: "#9BE08C",
+                    fontSize: "clamp(13px, 1.8vw, 16px)",
+                    paddingLeft: "1.1em",
                   }}
                 >
-                  {r.author}
+                  — {r.author}
                 </cite>
               </li>
             ))}
           </ul>
         </section>
+
 
         {/* Footer */}
         <footer
