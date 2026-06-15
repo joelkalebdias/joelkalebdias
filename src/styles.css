@@ -2,6 +2,23 @@
 @source "../src";
 @import "tw-animate-css";
 
+/* Local pixel fonts (served via Lovable CDN) */
+@font-face {
+  font-family: "Ac437 IBM CGA";
+  src: url("/__l5e/assets-v1/22d6e711-ff9f-4ea3-85b7-0187565fea89/Ac437_IBM_CGA.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Ac437 ATI 8x16";
+  src: url("/__l5e/assets-v1/0e510f42-b645-42b6-9c12-de58db32a89d/Ac437_ATI_8x16.ttf") format("truetype");
+  font-display: swap;
+}
+@font-face {
+  font-family: "AcPlus ToshibaSat 8x16";
+  src: url("/__l5e/assets-v1/db02f3b9-93fc-41e8-b149-7a5c3fd2bef1/AcPlus_ToshibaSat_8x16.ttf") format("truetype");
+  font-display: swap;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 /*
