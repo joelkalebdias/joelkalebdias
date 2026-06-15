@@ -16,20 +16,24 @@ export const Route = createFileRoute("/")({
           "Research-driven UX and aesthetic interfaces for SaaS, startups, and enterprises.",
       },
     ],
-    links: [
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap",
-      },
-    ],
+    links: [],
   }),
   component: Index,
 });
 
-const pixelHeading = { fontFamily: "'Press Start 2P', 'VT323', monospace" } as const;
-const pixelBody = { fontFamily: "'VT323', monospace" } as const;
+const pixelHeading = {
+  fontFamily: "'Ac437 IBM CGA', 'Press Start 2P', monospace",
+} as const;
+const pixelBody = {
+  fontFamily: "'Ac437 ATI 8x16', 'AcPlus ToshibaSat 8x16', 'VT323', monospace",
+} as const;
+const pixelTerminal = {
+  fontFamily: "'AcPlus ToshibaSat 8x16', 'Ac437 ATI 8x16', 'VT323', monospace",
+} as const;
+
+// Scanline overlay used inside green CRT panels
+const scanlines =
+  "repeating-linear-gradient(0deg, rgba(0,0,0,0.25) 0px, rgba(0,0,0,0.25) 1px, transparent 1px, transparent 3px)";
 
 type Linkout = { label: string; href: string };
 
