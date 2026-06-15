@@ -373,47 +373,62 @@ function Index() {
 
         {/* Recommendations */}
         <section
-          className="rounded-xl p-4"
+          className="rounded-xl p-4 sm:p-5 relative overflow-hidden"
           style={{
             border: "2px solid #008000",
-            background:
-              "url('https://api.builder.io/api/v1/image/assets/TEMP/9bbb47a675199d50144097675d55c53916eff659?width=1624') 50%/cover no-repeat, linear-gradient(180deg, #004802 0%, #001F01 100%)",
-            backgroundBlendMode: "multiply, normal",
-            boxShadow: "0 0 4px 0 rgba(0,0,0,0.4) inset, 2px 2px 0 0 #8F0045",
+            background: `${scanlines}, linear-gradient(180deg, #004802 0%, #001F01 100%)`,
+            boxShadow:
+              "0 0 24px 0 rgba(0,255,80,0.08) inset, 0 0 4px 0 rgba(0,0,0,0.6) inset, 2px 2px 0 0 #8F0045",
           }}
         >
-          <div className="rounded-lg px-4 py-2" style={{ background: "#032201" }}>
-            <p style={{ ...pixelHeading, color: "#21801E", fontSize: 12 }}>Recommendations:</p>
+          <div
+            className="rounded-md px-3 py-2 flex items-center gap-2"
+            style={{ background: "#032201", border: "1px solid #0a3a08" }}
+          >
+            <span aria-hidden style={{ ...pixelTerminal, color: "#3BFD00", fontSize: 14 }}>
+              C:\&gt;
+            </span>
+            <p style={{ ...pixelTerminal, color: "#21801E", fontSize: 14, margin: 0 }}>
+              list recommendations.txt
+            </p>
           </div>
-          <ul className="flex flex-col gap-8 mt-6">
+
+          <ul className="flex flex-col gap-7 mt-5">
             {RECOMMENDATIONS.map((r) => (
-              <li key={r.author} className="flex flex-col gap-4">
+              <li key={r.author} className="flex flex-col gap-2">
                 <blockquote
                   style={{
-                    ...pixelBody,
+                    ...pixelTerminal,
                     color: "#3BFD00",
-                    textShadow: "2px 2px 0 rgba(0,0,0,0.25)",
-                    fontSize: 24,
-                    lineHeight: 1.3,
+                    textShadow: "0 0 6px rgba(59,253,0,0.3)",
+                    fontSize: "clamp(15px, 2.2vw, 20px)",
+                    lineHeight: 1.5,
+                    margin: 0,
+                    paddingLeft: "1.1em",
+                    textIndent: "-1.1em",
                   }}
                 >
+                  <span aria-hidden style={{ color: "#21801E", marginRight: "0.4em" }}>
+                    &gt;
+                  </span>
                   {r.quote}
                 </blockquote>
                 <cite
                   style={{
-                    ...pixelHeading,
+                    ...pixelTerminal,
                     fontStyle: "normal",
-                    color: "#21801E",
-                    textShadow: "2px 2px 0 rgba(0,0,0,0.25)",
-                    fontSize: 12,
+                    color: "#9BE08C",
+                    fontSize: "clamp(13px, 1.8vw, 16px)",
+                    paddingLeft: "1.1em",
                   }}
                 >
-                  {r.author}
+                  — {r.author}
                 </cite>
               </li>
             ))}
           </ul>
         </section>
+
 
         {/* Footer */}
         <footer
