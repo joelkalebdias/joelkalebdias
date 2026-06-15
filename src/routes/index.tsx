@@ -180,43 +180,78 @@ function Index() {
 
         {/* Terminal ticker */}
         <section
-          className="rounded-xl p-6"
+          className="rounded-xl p-4 sm:p-5 relative overflow-hidden"
           style={{
             border: "2px solid #008000",
-            background:
-              "url('https://api.builder.io/api/v1/image/assets/TEMP/9ecd4228311db66fa80a45c458dbbbbff2f5ef70?width=2344') 0 0 / 29.4px 29.4px repeat, linear-gradient(180deg, #004802 0%, #001F01 100%)",
-            boxShadow: "0 0 4px 0 rgba(0,0,0,0.4) inset, 2px 2px 0 0 #8F0045",
+            background: `${scanlines}, linear-gradient(180deg, #004802 0%, #001F01 100%)`,
+            boxShadow:
+              "0 0 24px 0 rgba(0,255,80,0.08) inset, 0 0 4px 0 rgba(0,0,0,0.6) inset, 2px 2px 0 0 #8F0045",
           }}
         >
-          <div className="rounded-lg px-4 py-2" style={{ background: "#032201" }}>
+          <div
+            className="rounded-md px-3 py-2 flex items-center gap-2"
+            style={{ background: "#032201", border: "1px solid #0a3a08" }}
+          >
+            <span
+              aria-hidden
+              style={{ ...pixelTerminal, color: "#3BFD00", fontSize: 14 }}
+            >
+              C:\&gt;
+            </span>
             <p
               style={{
-                ...pixelBody,
+                ...pixelTerminal,
                 color: "#21801E",
-                fontSize: 16,
-                lineHeight: 1.4,
-                textAlign: "center",
+                fontSize: 14,
+                lineHeight: 1.3,
+                margin: 0,
               }}
             >
-              Currently: Werkstudent @ Publicis Media · Masters thesis on algorithmic
-              transparency · Open to full-time roles from July 2026 · Based in Germany
+              status --now
             </p>
           </div>
+
           <p
             style={{
-              ...pixelBody,
+              ...pixelTerminal,
               color: "#3BFD00",
-              textShadow: "2px 2px 0 rgba(0,0,0,0.25)",
-              fontSize: 24,
-              lineHeight: 1.3,
-              marginTop: 16,
+              textShadow: "0 0 6px rgba(59,253,0,0.35)",
+              fontSize: "clamp(15px, 2.2vw, 20px)",
+              lineHeight: 1.5,
+              marginTop: 14,
             }}
           >
-            I design software people actually want to use. Research-driven UX and aesthetic
-            interfaces that celebrate inclusivity, accessibility for SaaS, startups,
-            enterprises that solve real problems.
+            Werkstudent @ Publicis Media · Master&apos;s thesis on algorithmic
+            transparency · Open to full-time roles from July 2026 · Based in Germany.
+          </p>
+
+          <p
+            style={{
+              ...pixelTerminal,
+              color: "#BFFFB0",
+              textShadow: "0 0 6px rgba(59,253,0,0.25)",
+              fontSize: "clamp(16px, 2.4vw, 22px)",
+              lineHeight: 1.5,
+              marginTop: 14,
+            }}
+          >
+            I design software people actually want to use. Research-driven UX and
+            aesthetic interfaces that celebrate inclusivity and accessibility — for
+            SaaS, startups, and enterprises that solve real problems.
+            <span
+              aria-hidden
+              className="inline-block ml-1 align-baseline"
+              style={{
+                width: "0.55em",
+                height: "1em",
+                background: "#3BFD00",
+                animation: "crt-blink 1s steps(1) infinite",
+                verticalAlign: "-0.12em",
+              }}
+            />
           </p>
         </section>
+
 
         {/* Content */}
         <section className="flex flex-col lg:flex-row gap-5 pt-2">
