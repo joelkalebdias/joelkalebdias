@@ -115,6 +115,48 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
         },
       ],
     },
+    worksWell: [
+      { tool: "Mobalytics", body: "Their GPI system is the most sophisticated performance framework available. It deconstructs a player's skills into 8 dimensions and provides a visual radar chart that functions almost like a performance fingerprint. Their post-game summaries surface timestamps for best and worst moments — the closest existing feature to what LoL.ai does." },
+      { tool: "Porofessor", body: "Excels at pre-game preparation. The in-game overlay shows real-time gold per minute, vision, and level comparisons against a benchmark player (e.g., \"platinum average\"), with colour-coded feedback that lights up green when you're on track and red when you're behind. This live, comparative feedback is highly effective within a single match." },
+      { tool: "OP.GG", body: "The gold standard for speed and simplicity. Its clean interface makes stat lookup frictionless, which is why it remains the most widely used tool among casual and competitive players alike." },
+    ],
+    shortfall: [
+      { heading: "Post-match replay analysis is superficial or absent", body: "Mobalytics comes closest with Smart Highlights, but these still require manual timestamp navigation and interpretation. None of the four tools offer a fully curated, AI-explained replay experience where the system walks the player through the 3–5 moments that determined the outcome." },
+      { heading: "Data is presented, not explained", body: "OP.GG and U.GG excel at surfacing large volumes of stats — win rates, builds, tier lists — but stop short of translating data into actionable behaviour. A player might see their Vision score is \"Developing\" on Mobalytics, but the tool doesn't walk them through the specific game where a vision gap cost them the objective." },
+      { heading: "No tool connects pre-game, in-game, and post-game into one coherent loop", body: "Porofessor handles pre-game and in-game well. Mobalytics handles post-game and trend tracking well. But no single tool closes the full loop — understanding a past mistake, preparing before the next match, and tracking whether behaviour actually changed." },
+      { heading: "Information density creates cognitive overload", body: "Porofessor's overlay displays gold per minute, KPC, vision, level comparison, jungle timers, and matchup data simultaneously. This density works mid-game but doesn't translate to post-match learning. Community discussions note that tools \"perform the same tasks\" without explaining why a behaviour should change." },
+    ],
+    implications: [
+      "AI surfaces only the 3–5 most important moments — not every event.",
+      "Each insight includes a \"why\" explanation — addressing the data overload problem coaches report with AI systems.",
+      "Progress is tracked across sessions — because research shows players want validation of growth, not just raw feedback.",
+    ],
+    solutionHero: "https://api.builder.io/api/v1/image/assets/TEMP/e4ec64d0082416f7e15e5a791dfba30dc1df3fd8?width=2464",
+    ia: {
+      navItems: ["Dashboard", "Match History", "Replay Analyser", "Personal Progress", "Settings"],
+      intro: "The navigation wasn't guessed — it follows how League players already think about improvement. Players don't think in abstract categories. They think in a temporal sequence: What just happened? What's in my history? Let me look at one game. Am I getting better?\nThis informed the five-item sidebar: Dashboard, Match History, Replay Analyser, Progress, Settings — which follows the natural post-game workflow from summary to deep-dive to long-term tracking. Three principles guided the structure:",
+      principles: [
+        { title: "Recognition over recall", body: "In a post-match state, players are fatigued. The sidebar stays consistent across every screen so they never need to remember where something lives — they just look left." },
+        { title: "Progressive disclosure", body: "The game generates enormous amounts of data. Rather than presenting it all at once, the IA layers depth across three screens: Dashboard shows a snapshot, Match History shows scan-level data, Replay Analyser shows full depth. Each screen answers one question well." },
+        { title: "Familiarity over novelty", body: "Every major League tool — OP.GG, Mobalytics, Porofessor — uses a left-sidebar structure. Re-inventing this would introduce friction at the one point where the player is already emotionally charged. The innovation is in the content, not the container." },
+      ],
+    },
+    screens: [
+      { title: "Dashboard", body: "The Dashboard is the first screen players see after logging in. It serves two purposes: giving an immediate snapshot of recent performance, and surfacing the most relevant replay to review. Key champion overview, tier list, personalised action plan, and match history are all just a touch away." },
+      { title: "Match History", body: "Match History is designed as a dense, scannable list — similar to League's native match history, but enriched with AI context. This design respects how players already use match history as a reference tool, while adding a single new layer — the AI badge — that signals where the most useful review opportunities are." },
+      { title: "Replay Analysis", body: "When a player selects a match to analyse, they are taken to the Replay Analysis view. This is where the AI does its heaviest lifting. Key actionable insights are the meat of the matter." },
+      { title: "Personal Improvement Summary", body: "Since matchmaking targets a 50% win rate, rank alone is a misleading improvement signal. This screen tracks skill dimensions — Vision, Farming, Objectives — across 10–50 games, giving players tangible evidence of growth even when LP hasn't moved. This directly serves the need for competence: one of three core psychological drivers in Self-Determination Theory which explains sustained motivation in competitive gaming." },
+    ],
+    aiProcess: [
+      { title: "1. Research & Problem Framing — Perplexity", body: "Before opening Figma, I used conversational AI to validate the problem space and surface existing research. I asked targeted questions like: How many LoL players actually review their replays? and What metrics prove coaching tools improve ranked performance? The goal wasn't to accept the AI's answers as fact, but to identify leads — specific statistics, studies, and reports I could then verify through primary sources." },
+      { title: "2. Competition & Benchmarking — AI for Landscape Analysis", body: "I used AI tools to quickly map the existing tool landscape — OP.GG, Mobalytics, U.GG, Porofessor — and identify what they do well and where they fall short. Rather than manually visiting and documenting each tool, AI helped me summarise feature sets, user reviews, and gap analysis patterns. This freed up time to focus on the actual design decisions rather than the research grunt work." },
+      { title: "3. Visual Exploration and rapid prototyping — Figma Make", body: "The early visual direction for the dashboard, match history, and key moment screens was prototyped using Figma Make. I provided structured prompts describing the target aesthetic — dark premium esports, gold accents, minimal hierarchy — and the output gave me a starting point to refine rather than a final design. I then manually restructured every component to match my own design system, typography choices, and interaction logic." },
+    ],
+    lessons: [
+      { title: "Less is more", body: "Showing every data point the AI generates creates overwhelm. Curating the 3–5 most relevant insights is a design decision, not a technical one." },
+      { title: "Transparency builds trust", body: "Players sceptical of AI recommendations engage more when they can see the reasoning behind a suggestion." },
+      { title: "Progress tracking matters more than single insights", body: "A player who sees improvement over time is more likely to keep using the tool than one who receives isolated feedback." },
+    ],
   },
 };
 
