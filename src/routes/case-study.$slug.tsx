@@ -41,9 +41,38 @@ type CaseStudy = {
     principles: { title: string; body: string }[];
   };
   screens: { title: string; body: string }[];
+  aiIntro: string;
   aiProcess: { title: string; body: string }[];
+  learnedIntro: string;
   lessons: { title: string; body: string }[];
 };
+
+const OTHER_PROJECTS = [
+  {
+    title: "GeneLink - An app to connect people with their long lost relatives using state of the art DNA mapping",
+    company: "Lollypop Design",
+    location: "India - 2024",
+    role: "Role: UX/UI Designer (Personal Project)",
+    gradient: "linear-gradient(180deg, #F35DA3 0%, #F35DA3 80%, #9804AF 100%)",
+    img: "https://api.builder.io/api/v1/image/assets/TEMP/b982a6847c860f50d4ba512ddbc3c64beca4590a?width=718",
+  },
+  {
+    title: "Electra - A digital ecosystem for booking ships and for captains to effectively view ship status",
+    company: "Pyxis",
+    location: "Singapore - 2023 - 2025",
+    role: "Role: Design Team Lead",
+    gradient: "linear-gradient(180deg, #F0D642 0%, #F0D642 80%, #F08A42 100%)",
+    img: "https://api.builder.io/api/v1/image/assets/TEMP/77f2c90dac4d95f68256e2b5f2aa4400bb85dd67?width=718",
+  },
+  {
+    title: "UTI Mutual Fund - A mutual fund solution for India's oldest AMC, reimaging legacy solutions",
+    company: "UTI Mutual Fund",
+    location: "India - 2021-2023",
+    role: "Role: UX/UI Designer",
+    gradient: "linear-gradient(180deg, #69DAEE 0%, #69DAEE 80%, #8A69EE 100%)",
+    img: "https://api.builder.io/api/v1/image/assets/TEMP/507f3b9934b6e8a32adc0c0b3941cc887b0f6305?width=718",
+  },
+];
 
 const CASE_STUDIES: Record<string, CaseStudy> = {
   "lol-ai": {
@@ -147,15 +176,17 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
       { title: "Replay Analysis", body: "When a player selects a match to analyse, they are taken to the Replay Analysis view. This is where the AI does its heaviest lifting. Key actionable insights are the meat of the matter." },
       { title: "Personal Improvement Summary", body: "Since matchmaking targets a 50% win rate, rank alone is a misleading improvement signal. This screen tracks skill dimensions — Vision, Farming, Objectives — across 10–50 games, giving players tangible evidence of growth even when LP hasn't moved. This directly serves the need for competence: one of three core psychological drivers in Self-Determination Theory which explains sustained motivation in competitive gaming." },
     ],
+    aiIntro: "This project wasn't just about designing AI into a product. AI was also part of how I designed it. I used it at four stages of the workflow — not to generate the design for me, but to accelerate the thinking behind it.",
     aiProcess: [
-      { title: "1. Research & Problem Framing — Perplexity", body: "Before opening Figma, I used conversational AI to validate the problem space and surface existing research. I asked targeted questions like: How many LoL players actually review their replays? and What metrics prove coaching tools improve ranked performance? The goal wasn't to accept the AI's answers as fact, but to identify leads — specific statistics, studies, and reports I could then verify through primary sources." },
+      { title: "1. Research & Problem Framing — Perplexity", body: "Before opening Figma, I used conversational AI to validate the problem space and surface existing research. I asked targeted questions like: How many LoL players actually review their replays? and What metrics prove coaching tools improve ranked performance?\nThe goal wasn't to accept the AI's answers as fact, but to identify leads — specific statistics, studies, and reports I could then verify through primary sources. AI acted as a research assistant that pointed me toward credible data, which I then cited directly in the case study." },
       { title: "2. Competition & Benchmarking — AI for Landscape Analysis", body: "I used AI tools to quickly map the existing tool landscape — OP.GG, Mobalytics, U.GG, Porofessor — and identify what they do well and where they fall short. Rather than manually visiting and documenting each tool, AI helped me summarise feature sets, user reviews, and gap analysis patterns. This freed up time to focus on the actual design decisions rather than the research grunt work." },
-      { title: "3. Visual Exploration and rapid prototyping — Figma Make", body: "The early visual direction for the dashboard, match history, and key moment screens was prototyped using Figma Make. I provided structured prompts describing the target aesthetic — dark premium esports, gold accents, minimal hierarchy — and the output gave me a starting point to refine rather than a final design. I then manually restructured every component to match my own design system, typography choices, and interaction logic." },
+      { title: "3. Visual Exploration and rapid prototyping — Figma Make", body: "The early visual direction for the dashboard, match history, and key moment screens was prototyped using Figma Make. I provided structured prompts describing the target aesthetic — dark premium esports, gold accents, minimal hierarchy — and the output gave me a starting point to refine rather than a final design. I then manually restructured every component to match my own design system, typography choices, and interaction logic.\nThe difference between the AI-generated starting point and the final screens reflects where human design judgment still matters: spacing, visual weight, information density, and how a player's eye moves through a data-heavy interface." },
     ],
+    learnedIntro: "This project challenged me to design for AI as a design material, not just a feature. The biggest lesson was that the quality of the AI output is only half the story — the other half is how players receive, trust, and act on that output.",
     lessons: [
-      { title: "Less is more", body: "Showing every data point the AI generates creates overwhelm. Curating the 3–5 most relevant insights is a design decision, not a technical one." },
-      { title: "Transparency builds trust", body: "Players sceptical of AI recommendations engage more when they can see the reasoning behind a suggestion." },
-      { title: "Progress tracking matters more than single insights", body: "A player who sees improvement over time is more likely to keep using the tool than one who receives isolated feedback." },
+      { title: "Less is more.", body: "Showing every data point the AI generates creates overwhelm. Curating the 3–5 most relevant insights is a design decision, not a technical one." },
+      { title: "Transparency builds trust.", body: "Players sceptical of AI recommendations engage more when they can see the reasoning behind a suggestion." },
+      { title: "Progress tracking matters more than single insights.", body: "A player who sees improvement over time is more likely to keep using the tool than one who receives isolated feedback." },
     ],
   },
 };
@@ -226,6 +257,108 @@ function PanelShell({ children }: { children: React.ReactNode }) {
     </section>
   );
 }
+
+/* Pixel icon used in solid section headers */
+function PixelIcon({ kind }: { kind: "check" | "x" | "bolt" }) {
+  const bg = kind === "check" ? "#73CB00" : kind === "x" ? "#F35468" : "#FFC700";
+  const stroke = "#1A1F1A";
+  return (
+    <div
+      style={{
+        width: 28,
+        height: 28,
+        background: bg,
+        boxShadow: `inset 0 0 0 2px ${stroke}`,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexShrink: 0,
+        imageRendering: "pixelated",
+      }}
+      aria-hidden
+    >
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        {kind === "check" && (
+          <g fill="#FFFFFF">
+            <rect x="2" y="8" width="2" height="2" />
+            <rect x="4" y="10" width="2" height="2" />
+            <rect x="6" y="12" width="2" height="2" />
+            <rect x="8" y="10" width="2" height="2" />
+            <rect x="10" y="8" width="2" height="2" />
+            <rect x="12" y="6" width="2" height="2" />
+            <rect x="14" y="4" width="2" height="2" />
+          </g>
+        )}
+        {kind === "x" && (
+          <g fill="#FFFFFF">
+            <rect x="3" y="3" width="2" height="2" />
+            <rect x="13" y="3" width="2" height="2" />
+            <rect x="5" y="5" width="2" height="2" />
+            <rect x="11" y="5" width="2" height="2" />
+            <rect x="7" y="7" width="2" height="2" />
+            <rect x="9" y="7" width="2" height="2" />
+            <rect x="8" y="9" width="2" height="2" />
+            <rect x="7" y="11" width="2" height="2" />
+            <rect x="9" y="11" width="2" height="2" />
+            <rect x="5" y="13" width="2" height="2" />
+            <rect x="11" y="13" width="2" height="2" />
+            <rect x="3" y="15" width="2" height="2" />
+            <rect x="13" y="15" width="2" height="2" />
+          </g>
+        )}
+        {kind === "bolt" && (
+          <g fill="#FFFFFF">
+            <rect x="9" y="2" width="3" height="2" />
+            <rect x="7" y="4" width="3" height="2" />
+            <rect x="5" y="6" width="3" height="2" />
+            <rect x="7" y="8" width="6" height="2" />
+            <rect x="9" y="10" width="3" height="2" />
+            <rect x="7" y="12" width="3" height="2" />
+            <rect x="5" y="14" width="3" height="2" />
+          </g>
+        )}
+      </svg>
+    </div>
+  );
+}
+
+/* Solid colored section header with optional pixel icon, left-aligned */
+function SolidHeader({
+  label,
+  background,
+  icon,
+  titleColor = "#320032",
+  textShadow = "1px 1px 0 #F29A9C",
+}: {
+  label: string;
+  background: string;
+  icon?: "check" | "x" | "bolt";
+  titleColor?: string;
+  textShadow?: string;
+}) {
+  return (
+    <div
+      className="w-full flex items-center gap-3 rounded-t-lg"
+      style={{ padding: "12px 16px", background }}
+    >
+      {icon && <PixelIcon kind={icon} />}
+      <h3
+        style={{
+          ...pixelHeading,
+          color: titleColor,
+          textShadow,
+          fontSize: 14,
+          lineHeight: 1.3,
+          letterSpacing: "-0.02em",
+          margin: 0,
+        }}
+      >
+        {label}
+      </h3>
+    </div>
+  );
+}
+
 
 function CaseStudyPage() {
   const { slug } = Route.useParams();
@@ -584,67 +717,104 @@ function CaseStudyPage() {
           </div>
         </PanelShell>
 
-        {/* What works well */}
-        <PanelShell>
-          <PanelHeader
-            label="What works well"
-            gradient="linear-gradient(180deg, #FBFFF6 0%, #9FF2C1 50%, #3BC976 100%)"
-          />
-          <div className="px-4 pt-4 flex flex-col gap-3">
-            {cs.worksWell.map((w) => (
-              <div
-                key={w.tool}
-                className="rounded-lg px-4 py-3"
-                style={{ background: "#9FF2C1" }}
-              >
-                <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>
-                  <strong>{w.tool} — </strong>{w.body}
-                </p>
+        {/* Works well / Fall short / Design implications — 2 column composite */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+          {/* Left column: What works well + Design implications */}
+          <div className="flex flex-col gap-6">
+            {/* What works well */}
+            <section
+              className="rounded-lg overflow-hidden flex flex-col"
+              style={{
+                background: "#3BC976",
+                boxShadow: "2px 2px 0 0 #1F8A4D, -2px -2px 0 0 #9FF2C1",
+                paddingBottom: 16,
+              }}
+            >
+              <SolidHeader
+                label="What works well"
+                background="#3BC976"
+                icon="check"
+                textShadow="1px 1px 0 rgba(0,0,0,0.15)"
+              />
+              <div className="px-4 pt-2 flex flex-col gap-3">
+                {cs.worksWell.map((w) => (
+                  <div
+                    key={w.tool}
+                    className="rounded-lg px-4 py-3"
+                    style={{ background: "#9FF2C1", boxShadow: "inset 0 0 0 2px #1F8A4D" }}
+                  >
+                    <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>
+                      <strong>{w.tool} — </strong>{w.body}
+                    </p>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </PanelShell>
+            </section>
 
-        {/* Design implications */}
-        <PanelShell>
-          <PanelHeader
-            label="Design implications"
-            gradient="linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)"
-          />
-          <div className="px-4 pt-4 flex flex-col gap-2">
-            {cs.implications.map((t, i) => (
-              <div
-                key={i}
-                className="rounded-lg px-4 py-3"
-                style={{ background: "#FFF1A8" }}
-              >
-                <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>{t}</p>
+            {/* Design implications */}
+            <section
+              className="rounded-lg overflow-hidden flex flex-col"
+              style={{
+                background: "#FF8A3D",
+                boxShadow: "2px 2px 0 0 #C25A18, -2px -2px 0 0 #FFC089",
+                paddingBottom: 16,
+              }}
+            >
+              <SolidHeader
+                label="Design implications"
+                background="#FF8A3D"
+                icon="bolt"
+                textShadow="1px 1px 0 rgba(0,0,0,0.15)"
+              />
+              <div className="px-4 pt-2 flex flex-col gap-3">
+                {cs.implications.map((t, i) => (
+                  <div
+                    key={i}
+                    className="rounded-lg px-4 py-3"
+                    style={{ background: "#FFC089", boxShadow: "inset 0 0 0 2px #C25A18" }}
+                  >
+                    <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>
+                      <span style={{ marginRight: 6 }}>{i + 1}.</span>{t}
+                    </p>
+                  </div>
+                ))}
               </div>
-            ))}
+            </section>
           </div>
-        </PanelShell>
 
-        {/* Where they fall short */}
-        <PanelShell>
-          <PanelHeader
-            label="Where they fall short"
-            gradient="linear-gradient(180deg, #FBFFF6 0%, #FFC089 50%, #FF8A3D 100%)"
-          />
-          <div className="px-4 pt-4 flex flex-col gap-3">
-            {cs.shortfall.map((s) => (
-              <div
-                key={s.heading}
-                className="rounded-lg px-4 py-3"
-                style={{ background: "#FFD5B0" }}
-              >
-                <h4 style={{ ...pixelBody, color: "#320032", fontSize: 18, margin: 0, marginBottom: 4, letterSpacing: "-0.02em" }}>
-                  {s.heading}
-                </h4>
-                <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>{s.body}</p>
-              </div>
-            ))}
-          </div>
-        </PanelShell>
+          {/* Right column: Where they fall short */}
+          <section
+            className="rounded-lg overflow-hidden flex flex-col"
+            style={{
+              background: "#FDEBE2",
+              boxShadow: "2px 2px 0 0 #D33869, -2px -2px 0 0 #FF94C2",
+              paddingBottom: 16,
+              height: "100%",
+            }}
+          >
+            <SolidHeader
+              label="Where they fall short"
+              background="#FDEBE2"
+              icon="x"
+              textShadow="1px 1px 0 #F29A9C"
+            />
+            <div className="px-4 pt-2 flex flex-col gap-3">
+              {cs.shortfall.map((s) => (
+                <div
+                  key={s.heading}
+                  className="rounded-lg px-4 py-3"
+                  style={{ background: "#FFD5D5", boxShadow: "inset 0 0 0 2px #D33869" }}
+                >
+                  <h4 style={{ ...pixelBody, color: "#320032", fontSize: 18, margin: 0, marginBottom: 4, letterSpacing: "-0.02em", fontWeight: 700 }}>
+                    {s.heading}
+                  </h4>
+                  <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>{s.body}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+
 
         {/* The Solution — centered title */}
         <div className="pt-6 pb-2 text-center">
@@ -746,41 +916,186 @@ function CaseStudyPage() {
           ))}
         </div>
 
-        {/* AI in design process */}
-        <PanelShell>
-          <PanelHeader
-            label="How I Used AI in My Design Process"
-            gradient="linear-gradient(180deg, #FBFFF6 0%, #E0B5F4 50%, #B569EE 100%)"
-          />
-          <div className="px-4 pt-4 flex flex-col gap-3">
+        {/* How I Used AI — centered title above orange container */}
+        <div className="pt-6 pb-2 text-center">
+          <h2
+            style={{
+              ...pixelHeading,
+              color: cs.titleColor,
+              textShadow: cs.titleShadow,
+              fontSize: "clamp(24px, 3.2vw, 32px)",
+              lineHeight: 1.3,
+              letterSpacing: "-0.08em",
+            }}
+          >
+            How I Used AI in My Design Process
+          </h2>
+        </div>
+
+        <section
+          className="rounded-xl p-4 flex flex-col gap-4"
+          style={{
+            background: "#FA0",
+            boxShadow: "-3px -3px 0 0 #4C042C inset, 3px 3px 0 0 #FFFEF6 inset",
+          }}
+        >
+          <p
+            style={{
+              ...pixelBody,
+              color: "#320032",
+              fontSize: 20,
+              lineHeight: 1.4,
+              margin: 0,
+              padding: "4px 4px",
+            }}
+          >
+            {cs.aiIntro}
+          </p>
+          <div className="flex flex-col gap-3">
             {cs.aiProcess.map((a) => (
-              <div key={a.title} className="rounded-lg px-4 py-3" style={{ background: "#EAD4F8" }}>
-                <h4 style={{ ...pixelBody, color: "#320032", fontSize: 18, margin: 0, marginBottom: 4, letterSpacing: "-0.02em" }}>
+              <div
+                key={a.title}
+                className="rounded-lg px-4 py-3"
+                style={{ background: "#FFD581" }}
+              >
+                <h4
+                  style={{
+                    ...pixelBody,
+                    color: "#320032",
+                    fontSize: 16,
+                    margin: 0,
+                    marginBottom: 4,
+                    letterSpacing: "-0.01em",
+                    fontWeight: 700,
+                  }}
+                >
                   {a.title}
                 </h4>
-                <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>{a.body}</p>
+                <p
+                  style={{
+                    ...pixelBody,
+                    color: "#320032",
+                    fontSize: 16,
+                    lineHeight: 1.45,
+                    margin: 0,
+                    whiteSpace: "pre-line",
+                  }}
+                >
+                  {a.body}
+                </p>
               </div>
             ))}
           </div>
-        </PanelShell>
+        </section>
 
-        {/* What I learned */}
-        <PanelShell>
-          <PanelHeader
-            label="What I Learned"
-            gradient="linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)"
-          />
-          <div className="px-4 pt-4 flex flex-col gap-3">
+        {/* What I Learned — green container, matches AI section structure */}
+        <section
+          className="rounded-xl p-4 flex flex-col gap-4"
+          style={{
+            background: "#3BC976",
+            boxShadow: "-3px -3px 0 0 #1F5C30 inset, 3px 3px 0 0 #C8FBDC inset",
+          }}
+        >
+          <h3
+            style={{
+              ...pixelHeading,
+              color: "#1A4D24",
+              textShadow: "1px 1px 0 rgba(0,0,0,0.15)",
+              fontSize: 16,
+              margin: 0,
+              padding: "4px 4px 0",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            What I Learned
+          </h3>
+          <p
+            style={{
+              ...pixelBody,
+              color: "#102914",
+              fontSize: 18,
+              lineHeight: 1.45,
+              margin: 0,
+              padding: "0 4px",
+            }}
+          >
+            {cs.learnedIntro}
+          </p>
+          <div className="flex flex-col gap-3">
             {cs.lessons.map((l) => (
-              <div key={l.title} className="rounded-lg px-4 py-3" style={{ background: "#FFF1A8" }}>
-                <h4 style={{ ...pixelBody, color: "#320032", fontSize: 18, margin: 0, marginBottom: 2, letterSpacing: "-0.02em" }}>
-                  {l.title}
-                </h4>
-                <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>{l.body}</p>
+              <div
+                key={l.title}
+                className="rounded-lg px-4 py-3"
+                style={{ background: "#9FF2C1" }}
+              >
+                <p
+                  style={{
+                    ...pixelBody,
+                    color: "#102914",
+                    fontSize: 16,
+                    lineHeight: 1.45,
+                    margin: 0,
+                  }}
+                >
+                  <strong>{l.title} </strong>{l.body}
+                </p>
               </div>
             ))}
           </div>
-        </PanelShell>
+        </section>
+
+        {/* More case studies */}
+        <section
+          className="rounded-lg overflow-hidden flex flex-col"
+          style={{
+            background: "#0A0224",
+            paddingBottom: 16,
+          }}
+        >
+          <SolidHeader
+            label="More case studies"
+            background="linear-gradient(180deg, #CFF594 0%, #AEEC48 100%)"
+            textShadow="1px 1px 0 rgba(255,255,255,0.4)"
+          />
+          <div className="px-2 pt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+            {OTHER_PROJECTS.map((p) => (
+              <article
+                key={p.title}
+                className="retro-card rounded-xl p-4 flex flex-col gap-4"
+                style={{
+                  background: p.gradient,
+                  boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
+                }}
+              >
+                <img
+                  src={p.img}
+                  alt=""
+                  className="w-full rounded-lg object-cover"
+                  style={{ aspectRatio: "308/173" }}
+                  loading="lazy"
+                />
+                <p style={{ ...pixelBody, color: "#320032", fontSize: 15, lineHeight: 1.4, margin: 0 }}>
+                  {p.title}
+                </p>
+                <div style={{ ...pixelBody, color: "#320032", fontSize: 15, lineHeight: 1.4 }}>
+                  <div>{p.company}</div>
+                  <div>{p.location}</div>
+                  <div>{p.role}</div>
+                </div>
+                <span className="pix tl" aria-hidden />
+                <span className="pix tr" aria-hidden />
+                <span className="pix bl" aria-hidden />
+                <span className="pix br" aria-hidden />
+                <span className="pix tl2" aria-hidden />
+                <span className="pix tr2" aria-hidden />
+                <span className="pix bl2" aria-hidden />
+                <span className="pix br2" aria-hidden />
+              </article>
+            ))}
+          </div>
+        </section>
+
+
 
 
 
