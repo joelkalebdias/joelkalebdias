@@ -584,6 +584,206 @@ function CaseStudyPage() {
           </div>
         </PanelShell>
 
+        {/* What works well */}
+        <PanelShell>
+          <PanelHeader
+            label="What works well"
+            gradient="linear-gradient(180deg, #FBFFF6 0%, #9FF2C1 50%, #3BC976 100%)"
+          />
+          <div className="px-4 pt-4 flex flex-col gap-3">
+            {cs.worksWell.map((w) => (
+              <div
+                key={w.tool}
+                className="rounded-lg px-4 py-3"
+                style={{ background: "#9FF2C1" }}
+              >
+                <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>
+                  <strong>{w.tool} — </strong>{w.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </PanelShell>
+
+        {/* Design implications */}
+        <PanelShell>
+          <PanelHeader
+            label="Design implications"
+            gradient="linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)"
+          />
+          <div className="px-4 pt-4 flex flex-col gap-2">
+            {cs.implications.map((t, i) => (
+              <div
+                key={i}
+                className="rounded-lg px-4 py-3"
+                style={{ background: "#FFF1A8" }}
+              >
+                <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>{t}</p>
+              </div>
+            ))}
+          </div>
+        </PanelShell>
+
+        {/* Where they fall short */}
+        <PanelShell>
+          <PanelHeader
+            label="Where they fall short"
+            gradient="linear-gradient(180deg, #FBFFF6 0%, #FFC089 50%, #FF8A3D 100%)"
+          />
+          <div className="px-4 pt-4 flex flex-col gap-3">
+            {cs.shortfall.map((s) => (
+              <div
+                key={s.heading}
+                className="rounded-lg px-4 py-3"
+                style={{ background: "#FFD5B0" }}
+              >
+                <h4 style={{ ...pixelBody, color: "#320032", fontSize: 18, margin: 0, marginBottom: 4, letterSpacing: "-0.02em" }}>
+                  {s.heading}
+                </h4>
+                <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>{s.body}</p>
+              </div>
+            ))}
+          </div>
+        </PanelShell>
+
+        {/* The Solution — centered title */}
+        <div className="pt-6 pb-2 text-center">
+          <h2
+            style={{
+              ...pixelHeading,
+              color: cs.titleColor,
+              textShadow: cs.titleShadow,
+              fontSize: "clamp(28px, 4vw, 36px)",
+              lineHeight: 1.3,
+              letterSpacing: "-0.1em",
+            }}
+          >
+            The Solution
+          </h2>
+        </div>
+
+        {/* Solution hero */}
+        <div
+          className="rounded-xl overflow-hidden w-full"
+          style={{ aspectRatio: "308/123", background: "#000" }}
+        >
+          <img src={cs.solutionHero} alt="Solution preview" className="w-full h-full object-cover" />
+        </div>
+
+        {/* Information Architecture & Navigation */}
+        <PanelShell>
+          <PanelHeader
+            label="Information Architecture & Navigation"
+            gradient="linear-gradient(180deg, #FBFFF6 0%, #B5EAF4 50%, #69DAEE 100%)"
+          />
+          <div className="px-4 pt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+            {cs.ia.navItems.map((n) => (
+              <div
+                key={n}
+                className="rounded-xl p-4 flex items-center justify-center text-center"
+                style={{
+                  background: "#FA0",
+                  boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
+                  minHeight: 64,
+                }}
+              >
+                <span style={{ ...pixelHeading, color: "#320032", fontSize: 12, lineHeight: 1.35, letterSpacing: "-0.01em" }}>
+                  {n}
+                </span>
+              </div>
+            ))}
+          </div>
+          <div className="px-4 pt-4">
+            <div
+              className="rounded-xl p-4"
+              style={{ background: "#FA0", boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset" }}
+            >
+              <p style={{ ...pixelBody, color: "#320032", fontSize: 18, lineHeight: 1.45, margin: 0, whiteSpace: "pre-line", marginBottom: 12 }}>
+                {cs.ia.intro}
+              </p>
+              <div className="flex flex-col gap-3">
+                {cs.ia.principles.map((p) => (
+                  <div key={p.title} className="rounded-lg px-4 py-3" style={{ background: "#FFD581" }}>
+                    <h4 style={{ ...pixelBody, color: "#320032", fontSize: 18, margin: 0, marginBottom: 2, letterSpacing: "-0.02em" }}>
+                      {p.title}
+                    </h4>
+                    <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>{p.body}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </PanelShell>
+
+        {/* An in depth look — title */}
+        <div className="pt-4 pb-2 text-center">
+          <h2
+            style={{
+              ...pixelHeading,
+              color: cs.titleColor,
+              textShadow: cs.titleShadow,
+              fontSize: "clamp(22px, 3vw, 30px)",
+              lineHeight: 1.3,
+              letterSpacing: "-0.08em",
+            }}
+          >
+            An in-depth look into my vision
+          </h2>
+        </div>
+
+        {/* Screens */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {cs.screens.map((s) => (
+            <PanelShell key={s.title}>
+              <PanelHeader
+                label={s.title}
+                gradient="linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)"
+              />
+              <div className="px-4 pt-4">
+                <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>{s.body}</p>
+              </div>
+            </PanelShell>
+          ))}
+        </div>
+
+        {/* AI in design process */}
+        <PanelShell>
+          <PanelHeader
+            label="How I Used AI in My Design Process"
+            gradient="linear-gradient(180deg, #FBFFF6 0%, #E0B5F4 50%, #B569EE 100%)"
+          />
+          <div className="px-4 pt-4 flex flex-col gap-3">
+            {cs.aiProcess.map((a) => (
+              <div key={a.title} className="rounded-lg px-4 py-3" style={{ background: "#EAD4F8" }}>
+                <h4 style={{ ...pixelBody, color: "#320032", fontSize: 18, margin: 0, marginBottom: 4, letterSpacing: "-0.02em" }}>
+                  {a.title}
+                </h4>
+                <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>{a.body}</p>
+              </div>
+            ))}
+          </div>
+        </PanelShell>
+
+        {/* What I learned */}
+        <PanelShell>
+          <PanelHeader
+            label="What I Learned"
+            gradient="linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)"
+          />
+          <div className="px-4 pt-4 flex flex-col gap-3">
+            {cs.lessons.map((l) => (
+              <div key={l.title} className="rounded-lg px-4 py-3" style={{ background: "#FFF1A8" }}>
+                <h4 style={{ ...pixelBody, color: "#320032", fontSize: 18, margin: 0, marginBottom: 2, letterSpacing: "-0.02em" }}>
+                  {l.title}
+                </h4>
+                <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>{l.body}</p>
+              </div>
+            ))}
+          </div>
+        </PanelShell>
+
+
+
         {/* Footer back */}
         <div className="flex justify-center pt-2 pb-4">
           <Link
