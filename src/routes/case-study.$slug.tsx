@@ -40,7 +40,7 @@ type CaseStudy = {
     intro: string;
     principles: { title: string; body: string }[];
   };
-  screens: { title: string; body: string }[];
+  screens: { title: string; body: string; headerGradient?: string; images?: string[] }[];
   aiIntro: string;
   aiProcess: { title: string; body: string }[];
   learnedIntro: string;
@@ -171,10 +171,23 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
       ],
     },
     screens: [
-      { title: "Dashboard", body: "The Dashboard is the first screen players see after logging in. It serves two purposes: giving an immediate snapshot of recent performance, and surfacing the most relevant replay to review. Key champion overview, tier list, personalised action plan, and match history are all just a touch away." },
-      { title: "Match History", body: "Match History is designed as a dense, scannable list — similar to League's native match history, but enriched with AI context. This design respects how players already use match history as a reference tool, while adding a single new layer — the AI badge — that signals where the most useful review opportunities are." },
-      { title: "Replay Analysis", body: "When a player selects a match to analyse, they are taken to the Replay Analysis view. This is where the AI does its heaviest lifting. Key actionable insights are the meat of the matter." },
-      { title: "Personal Improvement Summary", body: "Since matchmaking targets a 50% win rate, rank alone is a misleading improvement signal. This screen tracks skill dimensions — Vision, Farming, Objectives — across 10–50 games, giving players tangible evidence of growth even when LP hasn't moved. This directly serves the need for competence: one of three core psychological drivers in Self-Determination Theory which explains sustained motivation in competitive gaming." },
+      { title: "Dashboard", body: "The Dashboard is the first screen players see after logging in. It serves two purposes: giving an immediate snapshot of recent performance, and surfacing the most relevant replay to review.\nKey champion overview, Tier List, Personalized Action Plan, Match history all just a touch away.", headerGradient: "linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)", images: [
+        "https://api.builder.io/api/v1/image/assets/TEMP/6959d3152ac16000e515750b9b911cd2ea67462c?width=1304",
+        "https://api.builder.io/api/v1/image/assets/TEMP/c68fd1df165a1ff0a0a48f80a926a541a10c6da3?width=1352"
+      ] },
+      { title: "Match History", body: "Match History is designed as a dense, scannable list — similar to League's native match history, but enriched with AI context.\nThis design respects how players already use match history as a reference tool, while adding a single new layer — the AI badge — that signals where the most useful review opportunities are.", headerGradient: "linear-gradient(180deg, #FBFFF6 0%, #B5EAF4 50%, #69DAEE 100%)", images: [
+        "https://api.builder.io/api/v1/image/assets/TEMP/1475c75e9728a3a85e27cf839e128295b270b742?width=2750"
+      ] },
+      { title: "Replay Analysis", body: "When a player selects a match to analyse, they are taken to the Replay Analysis view. This is where the AI does its heaviest lifting. Key actionable insights are the meat of the matter.", headerGradient: "linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)", images: [
+        "https://api.builder.io/api/v1/image/assets/TEMP/e8064b9c52589359d0d856c02bf4cf9f9d3d4623?width=1206",
+        "https://api.builder.io/api/v1/image/assets/TEMP/f46defae44bb7076775461f3ff06d2f3b9de5c1a?width=1224",
+        "https://api.builder.io/api/v1/image/assets/TEMP/8f894d0e5e81fbc3f0f8f0ac509c6c2765366a2e?width=612",
+        "https://api.builder.io/api/v1/image/assets/TEMP/720fb25450d3370054ffcf9a8630566d81973cad?width=3000"
+      ] },
+      { title: "Personal Improvement Summary", body: "Since matchmaking targets a 50% win rate, rank alone is a misleading improvement signal. This screen tracks skill dimensions — Vision, Farming, Objectives — across 10–50 games, giving players tangible evidence of growth even when LP hasn't moved. This directly serves the need for competence: one of three core psychological drivers in Self-Determination Theory which explains sustained motivation in competitive gaming.", headerGradient: "linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)", images: [
+        "https://api.builder.io/api/v1/image/assets/TEMP/e824d8282b1d3d7332c4ca3f277fae1b4552bd51?width=2336",
+        "https://api.builder.io/api/v1/image/assets/TEMP/30dffc2d371b6fc99a37fa93fc04690501185dff?width=2336"
+      ] },
     ],
     aiIntro: "This project wasn't just about designing AI into a product. AI was also part of how I designed it. I used it at four stages of the workflow — not to generate the design for me, but to accelerate the thinking behind it.",
     aiProcess: [
@@ -893,40 +906,111 @@ function CaseStudyPage() {
               ...pixelHeading,
               color: cs.titleColor,
               textShadow: cs.titleShadow,
-              fontSize: "clamp(22px, 3vw, 30px)",
+              fontSize: "clamp(20px, 2.5vw, 24px)",
               lineHeight: 1.3,
-              letterSpacing: "-0.08em",
+              letterSpacing: "-2.4px",
             }}
           >
-            An in-depth look into my vision
+            An in depth look into my vision
           </h2>
         </div>
 
         {/* Screens */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {cs.screens.map((s) => (
-            <PanelShell key={s.title}>
-              <PanelHeader
-                label={s.title}
-                gradient="linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)"
-              />
-              <div className="px-4 pt-4">
-                <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>{s.body}</p>
+        <div className="flex flex-col gap-6">
+          {/* Dashboard */}
+          <PanelShell>
+            <PanelHeader
+              label={cs.screens[0].title}
+              gradient={cs.screens[0].headerGradient || "linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)"}
+            />
+            <div className="px-4 pt-4 flex flex-col gap-3">
+              <p style={{ ...pixelBody, color: "#320032", fontSize: "clamp(16px, 2.2vw, 24px)", lineHeight: 1.3, letterSpacing: "-0.02em", margin: 0, whiteSpace: "pre-line" }}>
+                {cs.screens[0].body}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <div className="flex-1 rounded-xl overflow-hidden" style={{ aspectRatio: "652/435" }}>
+                  <img src={cs.screens[0].images?.[0]} alt="" className="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <div className="flex-1 rounded-xl overflow-hidden" style={{ aspectRatio: "169/113" }}>
+                  <img src={cs.screens[0].images?.[1]} alt="" className="w-full h-full object-cover" loading="lazy" />
+                </div>
               </div>
-            </PanelShell>
-          ))}
+            </div>
+          </PanelShell>
+
+          {/* Match History */}
+          <PanelShell>
+            <PanelHeader
+              label={cs.screens[1].title}
+              gradient={cs.screens[1].headerGradient || "linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)"}
+            />
+            <div className="px-4 pt-4 flex flex-col gap-3">
+              <p style={{ ...pixelBody, color: "#320032", fontSize: "clamp(16px, 2.2vw, 24px)", lineHeight: 1.3, letterSpacing: "-0.02em", margin: 0, whiteSpace: "pre-line" }}>
+                {cs.screens[1].body}
+              </p>
+              <div className="rounded-xl overflow-hidden" style={{ aspectRatio: "1375/978" }}>
+                <img src={cs.screens[1].images?.[0]} alt="" className="w-full h-full object-cover" loading="lazy" />
+              </div>
+            </div>
+          </PanelShell>
+
+          {/* Replay Analysis */}
+          <PanelShell>
+            <PanelHeader
+              label={cs.screens[2].title}
+              gradient={cs.screens[2].headerGradient || "linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)"}
+            />
+            <div className="px-4 pt-4 flex flex-col gap-3">
+              <p style={{ ...pixelBody, color: "#320032", fontSize: "clamp(16px, 2.2vw, 24px)", lineHeight: 1.3, letterSpacing: "-0.02em", margin: 0, whiteSpace: "pre-line" }}>
+                {cs.screens[2].body}
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-[2fr_1fr_1fr] gap-3">
+                <div className="rounded-xl overflow-hidden" style={{ aspectRatio: "3/2" }}>
+                  <img src={cs.screens[2].images?.[0]} alt="" className="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <div className="rounded-xl overflow-hidden" style={{ aspectRatio: "1/1" }}>
+                  <img src={cs.screens[2].images?.[1]} alt="" className="w-full h-full object-cover" loading="lazy" />
+                </div>
+                <div className="rounded-xl overflow-hidden" style={{ aspectRatio: "2/3" }}>
+                  <img src={cs.screens[2].images?.[2]} alt="" className="w-full h-full object-cover" loading="lazy" />
+                </div>
+              </div>
+              <div className="rounded-xl overflow-hidden" style={{ aspectRatio: "125/36" }}>
+                <img src={cs.screens[2].images?.[3]} alt="" className="w-full h-full object-cover" loading="lazy" />
+              </div>
+            </div>
+          </PanelShell>
+
+          {/* Personal Improvement Summary */}
+          <PanelShell>
+            <PanelHeader
+              label={cs.screens[3].title}
+              gradient={cs.screens[3].headerGradient || "linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)"}
+            />
+            <div className="px-4 pt-4 flex flex-col gap-3">
+              <p style={{ ...pixelBody, color: "#320032", fontSize: "clamp(16px, 2.2vw, 24px)", lineHeight: 1.3, letterSpacing: "-0.02em", margin: 0, whiteSpace: "pre-line" }}>
+                {cs.screens[3].body}
+              </p>
+              <div className="rounded-xl overflow-hidden p-4" style={{ background: "#030B12" }}>
+                <img src={cs.screens[3].images?.[0]} alt="" className="w-full rounded-xl border border-[#282924] object-cover object-top" style={{ maxHeight: 520, aspectRatio: "245/449" }} loading="lazy" />
+              </div>
+              <div className="rounded-xl overflow-hidden p-4" style={{ background: "#030B12" }}>
+                <img src={cs.screens[3].images?.[1]} alt="" className="w-full rounded-xl border border-[#282924] object-cover" style={{ aspectRatio: "1168/199" }} loading="lazy" />
+              </div>
+            </div>
+          </PanelShell>
         </div>
 
         {/* How I Used AI — centered title above orange container */}
-        <div className="pt-6 pb-2 text-center">
+        <div className="py-5 text-center">
           <h2
             style={{
               ...pixelHeading,
               color: cs.titleColor,
               textShadow: cs.titleShadow,
-              fontSize: "clamp(24px, 3.2vw, 32px)",
+              fontSize: "clamp(20px, 2.5vw, 24px)",
               lineHeight: 1.3,
-              letterSpacing: "-0.08em",
+              letterSpacing: "-2.4px",
             }}
           >
             How I Used AI in My Design Process
