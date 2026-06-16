@@ -157,7 +157,11 @@ type Experience = {
   location: string;
   bullets: string[];
   clients?: string;
+  /** Outer card gradient */
   gradient: string;
+  /** Inner title-header gradient (the strip behind the role name) */
+  headerGradient: string;
+  logo?: { src: string; width: number; height: number; alt: string };
 };
 
 const EXPERIENCES: Experience[] = [
@@ -166,7 +170,14 @@ const EXPERIENCES: Experience[] = [
     company: "Publicis Media GmbH",
     period: "March 2025 – Present",
     location: "Berlin, Germany",
-    gradient: "linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)",
+    gradient: "linear-gradient(180deg, #F35DA3 0%, #F35DA3 80%, #9804AF 100%)",
+    headerGradient: "linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)",
+    logo: {
+      src: "https://api.builder.io/api/v1/image/assets/TEMP/c3298cbc0dce7d31e484888c4bfcd386e7322f44?width=93",
+      width: 93,
+      height: 24,
+      alt: "Publicis Groupe",
+    },
     bullets: [
       "Worked as a part time working student, while pursuing my masters in design.",
       "Supported end-to-end journey mapping for media advertisement offers and planning processes.",
@@ -182,7 +193,14 @@ const EXPERIENCES: Experience[] = [
     company: "Niveus Solutions Private Limited",
     period: "November 2022 - October 2024",
     location: "Udupi, India",
-    gradient: "linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)",
+    gradient: "linear-gradient(180deg, #BAEB76 0%, #BAEB76 80%, #51D830 100%)",
+    headerGradient: "linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)",
+    logo: {
+      src: "https://api.builder.io/api/v1/image/assets/TEMP/d604b5139c31b9f3c8321ab6fff6ea05ad1e23aa?width=242",
+      width: 121,
+      height: 24,
+      alt: "Niveus Solutions",
+    },
     bullets: [
       "Delivered design solutions for SaaS products serving domestic and international clients.",
       "Collaborated with stakeholders to align product outcomes with business goals and user needs.",
@@ -199,7 +217,8 @@ const EXPERIENCES: Experience[] = [
     company: "Robosoft Technologies",
     period: "June 2021 - November 2022",
     location: "Udupi, India",
-    gradient: "linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)",
+    gradient: "linear-gradient(180deg, #F0D642 0%, #F0D642 80%, #F08A42 100%)",
+    headerGradient: "linear-gradient(180deg, #FBFFF6 0%, #B5EAF4 50%, #69DAEE 100%)",
     bullets: [
       "Conducted user interviews and developed information architecture and app maps.",
       "Designed wireframes, prototypes, UI elements, and prepared development handoffs.",
@@ -216,7 +235,8 @@ const EXPERIENCES: Experience[] = [
     company: "Narla",
     period: "January 2021 - June 2021",
     location: "Goa, India",
-    gradient: "linear-gradient(180deg, #FBFFF6 0%, #B5EAF4 50%, #69DAEE 100%)",
+    gradient: "linear-gradient(180deg, #69DAEE 0%, #69DAEE 80%, #8A69EE 100%)",
+    headerGradient: "linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)",
     bullets: [],
   },
   {
@@ -224,7 +244,8 @@ const EXPERIENCES: Experience[] = [
     company: "Jee Lit Weighing Solutions",
     period: "January 2021 - June 2021",
     location: "Udupi, India",
-    gradient: "linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)",
+    gradient: "linear-gradient(180deg, #F35DA3 0%, #F35DA3 80%, #9804AF 100%)",
+    headerGradient: "linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)",
     bullets: [],
   },
 ];
@@ -679,81 +700,120 @@ function Index() {
               </div>
             ) : (
               <div className="flex flex-col gap-6">
-                {EXPERIENCES.map((e) => (
-                  <article
-                    key={e.role + e.company}
-                    className="rounded-xl p-5 flex flex-col gap-3"
-                    style={{
-                      background: e.gradient,
-                      boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
-                    }}
-                  >
-                    <header className="flex flex-col gap-1">
-                      <h3
+                {EXPERIENCES.map((e) => {
+                  const bodyText = [...e.bullets, e.clients].filter(Boolean).join(" ");
+                  return (
+                    <article
+                      key={e.role + e.company}
+                      className="rounded-xl flex flex-wrap items-start gap-4"
+                      style={{
+                        padding: "24px 16px",
+                        background: e.gradient,
+                        boxShadow:
+                          "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
+                      }}
+                    >
+                      {/* Left: title + company panel */}
+                      <div
+                        className="flex flex-col items-center gap-3 rounded-lg overflow-hidden"
                         style={{
-                          ...pixelHeading,
-                          color: "#320032",
-                          textShadow: "1px 1px 0 #FFFEF6",
-                          fontSize: 16,
-                          lineHeight: 1.3,
+                          flex: "1 1 220px",
+                          minWidth: 220,
+                          paddingBottom: 16,
+                          background: "#FDEBE2",
+                          boxShadow:
+                            "2px 2px 0 0 #D33869, -2px -2px 0 0 #FF94C2",
                         }}
                       >
-                        {e.role}
-                      </h3>
-                      <p
-                        style={{
-                          ...pixelBody,
-                          color: "#320032",
-                          fontSize: 18,
-                          lineHeight: 1.3,
-                        }}
-                      >
-                        {e.company}
-                      </p>
-                      <p
-                        style={{
-                          ...pixelBody,
-                          color: "#4C042C",
-                          fontSize: 14,
-                          lineHeight: 1.3,
-                          opacity: 0.85,
-                        }}
-                      >
-                        {e.period} · {e.location}
-                      </p>
-                    </header>
-                    {e.bullets.length > 0 && (
-                      <ul className="flex flex-col gap-1.5">
-                        {e.bullets.map((b, i) => (
-                          <li
-                            key={i}
+                        <div
+                          className="w-full flex items-center justify-center"
+                          style={{
+                            padding: 16,
+                            background: e.headerGradient,
+                          }}
+                        >
+                          <h3
                             style={{
-                              ...pixelBody,
+                              ...pixelHeading,
                               color: "#320032",
-                              fontSize: 15,
-                              lineHeight: 1.4,
+                              textShadow: "1px 1px 0 #F29A9C",
+                              fontSize: 13,
+                              lineHeight: 1.3,
+                              letterSpacing: "-0.065px",
+                              width: "100%",
                             }}
                           >
-                            &gt; {b}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                    {e.clients && (
-                      <p
+                            {e.role}
+                          </h3>
+                        </div>
+                        <div
+                          className="w-full flex flex-col items-start"
+                          style={{ padding: "0 16px", gap: 2 }}
+                        >
+                          {e.logo && (
+                            <div className="py-3">
+                              <img
+                                src={e.logo.src}
+                                alt={e.logo.alt}
+                                width={e.logo.width}
+                                height={e.logo.height}
+                                style={{
+                                  width: e.logo.width,
+                                  height: e.logo.height,
+                                }}
+                                loading="lazy"
+                              />
+                            </div>
+                          )}
+                          {[e.company, e.period, e.location].map((line) => (
+                            <div
+                              key={line}
+                              style={{
+                                ...pixelBody,
+                                color: "#320032",
+                                fontSize: 15,
+                                lineHeight: 1.35,
+                                letterSpacing: "-0.15px",
+                                alignSelf: "stretch",
+                              }}
+                            >
+                              {line}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Right: description panel */}
+                      <div
+                        className="flex items-center"
                         style={{
-                          ...pixelBody,
-                          color: "#4C042C",
-                          fontSize: 14,
-                          lineHeight: 1.4,
-                          marginTop: 4,
+                          flex: "1 1 320px",
+                          minWidth: 260,
+                          padding: 16,
+                          borderRadius: 8,
+                          background: "#FDEBE2",
+                          boxShadow:
+                            "2px 2px 0 0 #D33869, -2px -2px 0 0 #FF94C2",
+                          alignSelf: "stretch",
                         }}
                       >
-                        {e.clients}
-                      </p>
-                    )}
-                  </article>
-                ))}
+                        <p
+                          style={{
+                            ...pixelBody,
+                            color: "#320032",
+                            fontSize: 15,
+                            lineHeight: 1.35,
+                            letterSpacing: "-0.15px",
+                            whiteSpace: "pre-line",
+                            margin: 0,
+                          }}
+                        >
+                          {bodyText || "—"}
+                        </p>
+                      </div>
+                    </article>
+                  );
+                })}
 
                 {/* Education */}
                 <article
