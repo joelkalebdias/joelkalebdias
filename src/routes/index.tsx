@@ -699,12 +699,30 @@ function Index() {
               </div>
             ) : (
               <div className="flex flex-col gap-6">
-                {EXPERIENCES.map((e) => {
-                  const bodyText = [...e.bullets, e.clients].filter(Boolean).join(" ");
-                  return (
+                {EXPERIENCES.filter((e) => e.bullets.length > 0).map((e) => (
+                  <article
+                    key={e.role + e.company}
+                    className="rounded-xl flex flex-wrap items-stretch gap-4"
+                    style={{
+                      padding: "24px 16px",
+                      background: e.gradient,
+                      boxShadow:
+                        "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
+                    }}
+                  >
+                    <TitlePanel exp={e} />
+                    <DescriptionPanel
+                      text={[...e.bullets, e.clients].filter(Boolean).join(" ")}
+                    />
+                  </article>
+                ))}
+
+                {/* Short cards (title-only) — paired 2-up */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {EXPERIENCES.filter((e) => e.bullets.length === 0).map((e) => (
                     <article
                       key={e.role + e.company}
-                      className="rounded-xl flex flex-wrap items-start gap-4"
+                      className="rounded-xl flex"
                       style={{
                         padding: "24px 16px",
                         background: e.gradient,
@@ -712,26 +730,57 @@ function Index() {
                           "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
                       }}
                     >
-                      {/* Left: title + company panel */}
-                      <div
-                        className="flex flex-col items-center gap-3 rounded-lg overflow-hidden"
+                      <TitlePanel exp={e} />
+                    </article>
+                  ))}
+                </div>
+
+                {/* Education — match job-card styling, gradient title header */}
+                <article
+                  className="rounded-xl flex flex-wrap gap-4"
+                  style={{
+                    padding: "24px 16px",
+                    background:
+                      "linear-gradient(180deg, #F35DA3 0%, #F35DA3 80%, #9804AF 100%)",
+                    boxShadow:
+                      "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
+                  }}
+                >
+                  <div
+                    className="w-full rounded-lg overflow-hidden"
+                    style={{
+                      background: "#FDEBE2",
+                      boxShadow:
+                        "2px 2px 0 0 #D33869, -2px -2px 0 0 #FF94C2",
+                    }}
+                  >
+                    <div
+                      style={{
+                        padding: 16,
+                        background:
+                          "linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)",
+                      }}
+                    >
+                      <h3
                         style={{
-                          flex: "1 1 220px",
-                          minWidth: 220,
-                          paddingBottom: 16,
-                          background: "#FDEBE2",
-                          boxShadow:
-                            "2px 2px 0 0 #D33869, -2px -2px 0 0 #FF94C2",
+                          ...pixelHeading,
+                          color: "#320032",
+                          textShadow: "1px 1px 0 #F29A9C",
+                          fontSize: 13,
+                          lineHeight: 1.3,
+                          letterSpacing: "-0.065px",
                         }}
                       >
-                        <div
-                          className="w-full flex items-center justify-center"
-                          style={{
-                            padding: 16,
-                            background: e.headerGradient,
-                          }}
-                        >
-                          <h3
+                        Education
+                      </h3>
+                    </div>
+                    <ul
+                      className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                      style={{ padding: 16 }}
+                    >
+                      {EDUCATION.map((ed) => (
+                        <li key={ed.degree} className="flex flex-col gap-1">
+                          <p
                             style={{
                               ...pixelHeading,
                               color: "#320032",
@@ -739,142 +788,43 @@ function Index() {
                               fontSize: 13,
                               lineHeight: 1.3,
                               letterSpacing: "-0.065px",
-                              width: "100%",
                             }}
                           >
-                            {e.role}
-                          </h3>
-                        </div>
-                        <div
-                          className="w-full flex flex-col items-start"
-                          style={{ padding: "0 16px", gap: 2 }}
-                        >
-                          {e.logo && (
-                            <div className="py-3">
-                              <img
-                                src={e.logo.src}
-                                alt={e.logo.alt}
-                                width={e.logo.width}
-                                height={e.logo.height}
-                                style={{
-                                  width: e.logo.width,
-                                  height: e.logo.height,
-                                }}
-                                loading="lazy"
-                              />
-                            </div>
-                          )}
-                          {[e.company, e.period, e.location].map((line) => (
-                            <div
-                              key={line}
-                              style={{
-                                ...pixelBody,
-                                color: "#320032",
-                                fontSize: 15,
-                                lineHeight: 1.35,
-                                letterSpacing: "-0.15px",
-                                alignSelf: "stretch",
-                              }}
-                            >
-                              {line}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Right: description panel */}
-                      <div
-                        className="flex items-center"
-                        style={{
-                          flex: "1 1 320px",
-                          minWidth: 260,
-                          padding: 16,
-                          borderRadius: 8,
-                          background: "#FDEBE2",
-                          boxShadow:
-                            "2px 2px 0 0 #D33869, -2px -2px 0 0 #FF94C2",
-                          alignSelf: "stretch",
-                        }}
-                      >
-                        <p
-                          style={{
-                            ...pixelBody,
-                            color: "#320032",
-                            fontSize: 15,
-                            lineHeight: 1.35,
-                            letterSpacing: "-0.15px",
-                            whiteSpace: "pre-line",
-                            margin: 0,
-                          }}
-                        >
-                          {bodyText || "—"}
-                        </p>
-                      </div>
-                    </article>
-                  );
-                })}
-
-                {/* Education */}
-                <article
-                  className="rounded-xl p-5 flex flex-col gap-4"
-                  style={{
-                    background: "linear-gradient(180deg, #FBFFF6 0%, #B5EAF4 50%, #69DAEE 100%)",
-                    boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
-                  }}
-                >
-                  <h3
-                    style={{
-                      ...pixelHeading,
-                      color: "#320032",
-                      textShadow: "1px 1px 0 #FFFEF6",
-                      fontSize: 18,
-                    }}
-                  >
-                    Education
-                  </h3>
-                  <ul className="flex flex-col gap-4">
-                    {EDUCATION.map((ed) => (
-                      <li key={ed.degree} className="flex flex-col gap-1">
-                        <p
-                          style={{
-                            ...pixelBody,
-                            color: "#320032",
-                            fontSize: 16,
-                            lineHeight: 1.35,
-                            fontWeight: 600,
-                          }}
-                        >
-                          {ed.degree}
-                        </p>
-                        <p
-                          style={{
-                            ...pixelBody,
-                            color: "#4C042C",
-                            fontSize: 14,
-                            lineHeight: 1.35,
-                          }}
-                        >
-                          {ed.spec}
-                        </p>
-                        <p
-                          style={{
-                            ...pixelBody,
-                            color: "#320032",
-                            fontSize: 14,
-                            lineHeight: 1.35,
-                            opacity: 0.9,
-                          }}
-                        >
-                          {ed.school}
-                        </p>
-                      </li>
-                    ))}
-                  </ul>
+                            {ed.degree}
+                          </p>
+                          <p
+                            style={{
+                              ...pixelBody,
+                              color: "#4C042C",
+                              fontSize: 15,
+                              lineHeight: 1.35,
+                              letterSpacing: "-0.15px",
+                            }}
+                          >
+                            {ed.spec}
+                          </p>
+                          <p
+                            style={{
+                              ...pixelBody,
+                              color: "#320032",
+                              fontSize: 15,
+                              lineHeight: 1.35,
+                              letterSpacing: "-0.15px",
+                              marginTop: 8,
+                            }}
+                          >
+                            {ed.school}
+                          </p>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </article>
               </div>
             )}
           </div>
         </section>
+
 
         {/* Recommendations */}
         <section
