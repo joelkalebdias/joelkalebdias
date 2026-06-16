@@ -339,7 +339,7 @@ a.retro-link:hover::after {
 button[aria-label*="lose" i]::before, button[aria-label*="lose" i]::after,
 button[aria-label*="ismiss" i]::before, button[aria-label*="ismiss" i]::after { display: none; }
 
-/* ===== White pixelated lightning hover — envelops text ===== */
+/* ===== White pixelated lightning hover — bolt grows across text ===== */
 .retro-lightning {
   position: relative;
   transition: transform 160ms ease, text-shadow 160ms ease;
@@ -349,71 +349,27 @@ button[aria-label*="ismiss" i]::before, button[aria-label*="ismiss" i]::after { 
   text-shadow: 0 0 2px #fff, 0 0 6px #ccffff, 0 0 10px #99ffff;
 }
 
-.retro-lightning::before {
-  content: "";
-  position: absolute;
-  left: -8px; right: -8px; top: -8px; bottom: -8px;
-  pointer-events: none;
-  opacity: 0;
-  image-rendering: pixelated;
-  z-index: 5;
-  background:
-    radial-gradient(circle, #fff 60%, transparent 61%) 15% 0%   / 3px 3px no-repeat,
-    radial-gradient(circle, #e6ffff 60%, transparent 61%) 35% 5%  / 3px 3px no-repeat,
-    radial-gradient(circle, #fff 60%, transparent 61%) 55% 2%  / 3px 3px no-repeat,
-    radial-gradient(circle, #ccffff 60%, transparent 61%) 75% 8%  / 3px 3px no-repeat,
-    radial-gradient(circle, #fff 60%, transparent 61%) 90% 0%  / 3px 3px no-repeat,
-    radial-gradient(circle, #ccffff 60%, transparent 61%) 0%  25% / 3px 3px no-repeat,
-    radial-gradient(circle, #fff 60%, transparent 61%) 5%  50% / 3px 3px no-repeat,
-    radial-gradient(circle, #e6ffff 60%, transparent 61%) 0%  75% / 3px 3px no-repeat,
-    radial-gradient(circle, #fff 60%, transparent 61%) 100% 30% / 3px 3px no-repeat,
-    radial-gradient(circle, #ccffff 60%, transparent 61%) 95% 55% / 3px 3px no-repeat,
-    radial-gradient(circle, #fff 60%, transparent 61%) 100% 80% / 3px 3px no-repeat,
-    radial-gradient(circle, #e6ffff 60%, transparent 61%) 25% 100% / 3px 3px no-repeat,
-    radial-gradient(circle, #fff 60%, transparent 61%) 50% 95% / 3px 3px no-repeat,
-    radial-gradient(circle, #ccffff 60%, transparent 61%) 70% 100% / 3px 3px no-repeat;
-}
+/* Pixelated zigzag bolt that extends from left to right across the text */
 .retro-lightning::after {
   content: "";
   position: absolute;
-  left: -8px; right: -8px; top: -8px; bottom: -8px;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 10px;
   pointer-events: none;
-  opacity: 0;
   image-rendering: pixelated;
-  z-index: 5;
-  background:
-    radial-gradient(circle, #fff 60%, transparent 61%) 22% 12% / 3px 3px no-repeat,
-    radial-gradient(circle, #99ffff 60%, transparent 61%) 42% 3%  / 3px 3px no-repeat,
-    radial-gradient(circle, #fff 60%, transparent 61%) 62% 15% / 3px 3px no-repeat,
-    radial-gradient(circle, #e6ffff 60%, transparent 61%) 82% 6%  / 3px 3px no-repeat,
-    radial-gradient(circle, #fff 60%, transparent 61%) 3%  38% / 3px 3px no-repeat,
-    radial-gradient(circle, #ccffff 60%, transparent 61%) 8%  62% / 3px 3px no-repeat,
-    radial-gradient(circle, #fff 60%, transparent 61%) 2%  85% / 3px 3px no-repeat,
-    radial-gradient(circle, #e6ffff 60%, transparent 61%) 98% 40% / 3px 3px no-repeat,
-    radial-gradient(circle, #fff 60%, transparent 61%) 92% 65% / 3px 3px no-repeat,
-    radial-gradient(circle, #99ffff 60%, transparent 61%) 97% 88% / 3px 3px no-repeat,
-    radial-gradient(circle, #fff 60%, transparent 61%) 33% 92% / 3px 3px no-repeat,
-    radial-gradient(circle, #ccffff 60%, transparent 61%) 58% 98% / 3px 3px no-repeat,
-    radial-gradient(circle, #fff 60%, transparent 61%) 78% 94% / 3px 3px no-repeat;
+  z-index: -1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='10' viewBox='0 0 24 10'%3E%3Cpolygon points='0,5 4,0 8,5 12,0 16,5 20,0 24,5 24,7 20,2 16,7 12,2 8,7 4,2 0,7' fill='%23fff'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 24px 10px;
+  background-position: left center;
+  box-shadow: 0 0 6px 2px rgba(255,255,255,0.5), 0 0 14px 4px rgba(200,255,255,0.25);
+  transition: width 280ms steps(10);
 }
 
-.retro-lightning:hover::before {
-  animation: lightning-a 280ms steps(2) infinite;
-}
 .retro-lightning:hover::after {
-  animation: lightning-b 380ms steps(2) infinite;
-  animation-delay: 60ms;
-}
-
-@keyframes lightning-a {
-  0%   { opacity: 1; }
-  50%  { opacity: 0.15; }
-  100% { opacity: 1; }
-}
-@keyframes lightning-b {
-  0%   { opacity: 0.2; }
-  50%  { opacity: 1; }
-  100% { opacity: 0.2; }
+  width: 100%;
 }
 
 @media (prefers-reduced-motion: reduce) {
