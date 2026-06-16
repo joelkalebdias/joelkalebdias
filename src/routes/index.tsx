@@ -167,7 +167,7 @@ type Experience = {
   gradient: string;
   /** Inner title-header gradient (the strip behind the role name) */
   headerGradient: string;
-  logo?: { src: string; width: number; height: number; alt: string };
+  logo?: { src: string; width: number; height: number; alt: string; cropLeft?: number };
 };
 
 const EXPERIENCES: Experience[] = [
@@ -215,7 +215,7 @@ const EXPERIENCES: Experience[] = [
     location: "Udupi, India",
     gradient: "linear-gradient(180deg, #F0D642 0%, #F0D642 80%, #F08A42 100%)",
     headerGradient: "linear-gradient(180deg, #FBFFF6 0%, #B5EAF4 50%, #69DAEE 100%)",
-    logo: { src: robosoftLogo.url, width: 150, height: 24, alt: "Robosoft Technologies" },
+    logo: { src: robosoftLogo.url, width: 150, height: 24, alt: "Robosoft Technologies", cropLeft: 6 },
     bullets: [
       "Conducted user interviews and developed information architecture and app maps.",
       "Designed wireframes, prototypes, UI elements, and prepared development handoffs.",
@@ -451,7 +451,7 @@ function TitlePanel({ exp: e }: { exp: Experience }) {
         style={{ padding: "0 16px", gap: 2 }}
       >
         {e.logo && (
-          <div className="py-3 flex items-center" style={{ minHeight: 40, overflow: "hidden" }}>
+          <div className="flex items-center" style={{ height: 40, overflow: "hidden" }}>
             <img
               src={e.logo.src}
               alt={e.logo.alt}
@@ -461,7 +461,7 @@ function TitlePanel({ exp: e }: { exp: Experience }) {
                 width: e.logo.width,
                 height: e.logo.height,
                 objectFit: "contain",
-                marginLeft: -6,
+                marginLeft: e.logo.cropLeft ? -e.logo.cropLeft : undefined,
               }}
               loading="lazy"
             />
