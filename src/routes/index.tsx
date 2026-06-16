@@ -572,7 +572,6 @@ function Index() {
                 style={{
                   ...pixelBody,
                   color: "#fff",
-                  textShadow: "1px 1px 0 #FF5900",
                   fontSize: 24,
                 }}
               >
