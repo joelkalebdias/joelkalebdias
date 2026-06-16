@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -31,13 +32,43 @@ const pixelTerminal = {
   fontFamily: "'AcPlus ToshibaSat 8x16', 'Ac437 ATI 8x16', 'VT323', monospace",
 } as const;
 
-// Scanline overlay used inside green CRT panels
 const scanlines =
   "repeating-linear-gradient(0deg, rgba(0,0,0,0.25) 0px, rgba(0,0,0,0.25) 1px, transparent 1px, transparent 3px)";
 
+// Clean pixel-art retro arrow (↗ replacement)
+function RetroArrow({ color = "#320032" }: { color?: string }) {
+  // 9x9 pixel arrow pointing up-right; rendered as crisp SVG rects
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 9 9"
+      shapeRendering="crispEdges"
+      style={{ imageRendering: "pixelated", flexShrink: 0 }}
+      aria-hidden
+    >
+      {/* arrow head */}
+      <rect x="4" y="1" width="4" height="1" fill={color} />
+      <rect x="7" y="1" width="1" height="4" fill={color} />
+      {/* diagonal shaft */}
+      <rect x="6" y="2" width="1" height="1" fill={color} />
+      <rect x="5" y="3" width="1" height="1" fill={color} />
+      <rect x="4" y="4" width="1" height="1" fill={color} />
+      <rect x="3" y="5" width="1" height="1" fill={color} />
+      <rect x="2" y="6" width="1" height="1" fill={color} />
+      <rect x="1" y="7" width="1" height="1" fill={color} />
+    </svg>
+  );
+}
+
 type Linkout = { label: string; href: string };
 
-function LinkoutRow({ label, href, bg }: Linkout & { bg: string }) {
+function LinkoutRow({
+  label,
+  href,
+  bg,
+  arrowColor = "#320032",
+}: Linkout & { bg: string; arrowColor?: string }) {
   return (
     <a
       href={href}
@@ -49,7 +80,7 @@ function LinkoutRow({ label, href, bg }: Linkout & { bg: string }) {
       >
         {label}
       </span>
-      <span style={{ color: "#fff", fontWeight: 600 }}>↗</span>
+      <RetroArrow color={arrowColor} />
     </a>
   );
 }
@@ -119,14 +150,135 @@ const RECOMMENDATIONS = [
   },
 ];
 
+type Experience = {
+  role: string;
+  company: string;
+  period: string;
+  location: string;
+  bullets: string[];
+  clients?: string;
+  gradient: string;
+};
+
+const EXPERIENCES: Experience[] = [
+  {
+    role: "Werkstudent (Product Design)",
+    company: "Publicis Media GmbH",
+    period: "March 2025 – Present",
+    location: "Berlin, Germany",
+    gradient: "linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)",
+    bullets: [
+      "Worked as a part time working student, while pursuing my masters in design.",
+      "Supported end-to-end journey mapping for media advertisement offers and planning processes.",
+      "Conducted user interviews to improve user journey frameworks.",
+      "Helped develop a cohesive design system for the DACH region.",
+      "Created digitized solutions for legacy systems including Andvari, Tableau, Cognos, and Excel.",
+      "Designed branding materials for internal initiatives during a master's program in design.",
+      "Contributed to a design solution expected to benefit more than 271 users, with potential savings at scale of millions.",
+    ],
+  },
+  {
+    role: "UI/UX Designer",
+    company: "Niveus Solutions Private Limited",
+    period: "November 2022 - October 2024",
+    location: "Udupi, India",
+    gradient: "linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)",
+    bullets: [
+      "Delivered design solutions for SaaS products serving domestic and international clients.",
+      "Collaborated with stakeholders to align product outcomes with business goals and user needs.",
+      "Managed a team of three designers and supported junior team members through mentoring.",
+      "Implemented strategies that improved ROI from design efforts and streamlined workflows.",
+      "Worked across multiple domains and international accounts to strengthen digital presence.",
+      "Revised internal procedures to optimize design processes and improve outcomes.",
+    ],
+    clients:
+      "Clients include: Mahindra & Mahindra (India), Mahindra Finance (India), Tune Protect (Singapore), Pyxis (Singapore), Axis My India (India), DTDC (India), Watania (UAE).",
+  },
+  {
+    role: "Associate UI Designer",
+    company: "Robosoft Technologies",
+    period: "June 2021 - November 2022",
+    location: "Udupi, India",
+    gradient: "linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)",
+    bullets: [
+      "Conducted user interviews and developed information architecture and app maps.",
+      "Designed wireframes, prototypes, UI elements, and prepared development handoffs.",
+      "Delivered screen designs and UX presentations informed by user research insights.",
+      "Collaborated with clients and stakeholders across aviation and finance projects.",
+      "Led client meetings to finalize design approvals and maintain project timelines.",
+      "Worked with developers after the design phase to preserve design integrity in implementation.",
+    ],
+    clients:
+      "Clients include: Godrej Properties (India), UTI Mutual Fund (India), Akasa Air (India).",
+  },
+  {
+    role: "Designer (Freelance)",
+    company: "Narla",
+    period: "January 2021 - June 2021",
+    location: "Goa, India",
+    gradient: "linear-gradient(180deg, #FBFFF6 0%, #B5EAF4 50%, #69DAEE 100%)",
+    bullets: [],
+  },
+  {
+    role: "UI/UX Design Intern",
+    company: "Jee Lit Weighing Solutions",
+    period: "January 2021 - June 2021",
+    location: "Udupi, India",
+    gradient: "linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)",
+    bullets: [],
+  },
+];
+
+const EDUCATION = [
+  {
+    degree: "Masters of Arts - Integrated Design",
+    spec: "(Spcl. - Sustainable social media platforms (UX))",
+    school: "Hochschule Anhalt University of Applied Sciences, Dessau, Germany",
+  },
+  {
+    degree: "Bachelor of Science - Animation",
+    spec: "(Spcl. - Graphic Design)",
+    school: "Manipal Institute of Communication, Manipal, India",
+  },
+];
+
+const SKILL_GROUPS = [
+  {
+    title: "UX/UI",
+    items: [
+      "AI prototyping and vibe coding",
+      "Interface and Interaction design",
+      "User research, interviews, testing, journey mapping",
+      "Design systems",
+    ],
+  },
+  {
+    title: "Communication",
+    items: [
+      "Cross-Functional Team enabler",
+      "Client Relationship Management",
+      "Stakeholder Communication",
+      "Agile workflow",
+      "Design workshops",
+    ],
+  },
+  {
+    title: "Visual Design",
+    items: [
+      "Logo design & branding",
+      "Illustrations",
+      "Social media designs",
+      "Installation design",
+      "3D design",
+    ],
+  },
+];
+
 function RetroStarfield() {
-  // Each star is a 1-2px rect; planets are tiny dithered circles. SVG <pattern>
-  // tiles the field so density stays consistent at any viewport size.
   return (
     <div className="retro-starfield" aria-hidden>
       <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
         <defs>
-          {/* Base tile of static + slow-twinkle stars */}
           <pattern id="stars-base" width="160" height="160" patternUnits="userSpaceOnUse">
             <rect x="12" y="20" width="1" height="1" fill="#ffffff" opacity="0.7" />
             <rect x="48" y="6" width="1" height="1" fill="#cdd6ff" opacity="0.6" />
@@ -139,7 +291,6 @@ function RetroStarfield() {
             <rect x="40" y="146" width="1" height="1" fill="#ffffff" opacity="0.45" />
             <rect x="100" y="64" width="1" height="1" fill="#ffffff" opacity="0.5" />
           </pattern>
-          {/* Twinkle layer A */}
           <pattern id="stars-tw-a" width="240" height="240" patternUnits="userSpaceOnUse">
             <rect x="30" y="40" width="2" height="1" fill="#ffffff" />
             <rect x="31" y="39" width="1" height="3" fill="#ffffff" />
@@ -147,7 +298,6 @@ function RetroStarfield() {
             <rect x="90" y="170" width="1" height="1" fill="#fff2a8" />
             <rect x="210" y="200" width="2" height="1" fill="#ffffff" />
           </pattern>
-          {/* Twinkle layer B */}
           <pattern id="stars-tw-b" width="200" height="200" patternUnits="userSpaceOnUse">
             <rect x="60" y="20" width="1" height="1" fill="#ffd0e8" />
             <rect x="140" y="120" width="1" height="1" fill="#ffffff" />
@@ -155,13 +305,11 @@ function RetroStarfield() {
             <rect x="21" y="159" width="1" height="3" fill="#bfeaff" />
             <rect x="170" y="60" width="1" height="1" fill="#fff2a8" />
           </pattern>
-          {/* Twinkle layer C — sparser, faster */}
           <pattern id="stars-tw-c" width="320" height="320" patternUnits="userSpaceOnUse">
             <rect x="80" y="50" width="1" height="1" fill="#ffffff" />
             <rect x="260" y="240" width="1" height="1" fill="#ffffff" />
             <rect x="200" y="100" width="1" height="1" fill="#ffd0e8" />
           </pattern>
-          {/* Planets — tiny pixel circles */}
           <symbol id="planet-saturn" viewBox="0 0 16 16">
             <rect x="6" y="4" width="4" height="1" fill="#f7b267" />
             <rect x="5" y="5" width="6" height="1" fill="#f4a261" />
@@ -189,7 +337,6 @@ function RetroStarfield() {
         <rect className="tw-c" width="100%" height="100%" fill="url(#stars-tw-b)" />
         <rect className="tw-d" width="100%" height="100%" fill="url(#stars-tw-c)" />
 
-        {/* Scattered planets — fixed positions in vw/vh-ish coords */}
         <use href="#planet-saturn" x="6%" y="14%" width="22" height="22" opacity="0.85" />
         <use href="#planet-blue" x="82%" y="38%" width="14" height="14" opacity="0.8" />
         <use href="#planet-red" x="14%" y="72%" width="10" height="10" opacity="0.8" />
@@ -200,7 +347,58 @@ function RetroStarfield() {
   );
 }
 
+type TabKey = "case" | "exp";
+
+function SkillGroupCard({
+  title,
+  items,
+}: {
+  title: string;
+  items: string[];
+}) {
+  return (
+    <div
+      className="rounded-lg p-3 flex flex-col gap-2"
+      style={{
+        background: "#9FF2C1",
+        boxShadow: "-2px -2px 0 0 #1F6A3E inset, 2px 2px 0 0 #FFFEF6 inset",
+      }}
+    >
+      <div className="flex items-center justify-between">
+        <h3
+          style={{
+            ...pixelHeading,
+            color: "#320032",
+            textShadow: "1px 1px 0 #6FCB94",
+            fontSize: 13,
+          }}
+        >
+          {title}
+        </h3>
+        <RetroArrow color="#320032" />
+      </div>
+      <ul className="flex flex-col gap-1">
+        {items.map((it) => (
+          <li
+            key={it}
+            style={{
+              ...pixelBody,
+              color: "#173B23",
+              fontSize: 14,
+              lineHeight: 1.35,
+            }}
+          >
+            &gt; {it}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 function Index() {
+  const [tab, setTab] = useState<TabKey>("case");
+
   return (
     <main
       className="min-h-screen w-full px-4 sm:px-6 lg:px-8 py-8 flex justify-center relative isolate"
@@ -274,10 +472,7 @@ function Index() {
             className="rounded-md px-3 py-2 flex items-center gap-2"
             style={{ background: "#032201", border: "1px solid #0a3a08" }}
           >
-            <span
-              aria-hidden
-              style={{ ...pixelTerminal, color: "#3BFD00", fontSize: 14 }}
-            >
+            <span aria-hidden style={{ ...pixelTerminal, color: "#3BFD00", fontSize: 14 }}>
               C:\&gt;
             </span>
             <p
@@ -334,11 +529,11 @@ function Index() {
           </p>
         </section>
 
-
         {/* Content */}
         <section className="flex flex-col lg:flex-row gap-5 pt-2">
           {/* Sidebar */}
           <aside className="flex flex-col gap-5 w-full lg:max-w-[368px]">
+            {/* Contact (yellow) — always visible */}
             <div
               className="rounded-xl p-4"
               style={{
@@ -361,38 +556,63 @@ function Index() {
               </div>
             </div>
 
-            <div
-              className="rounded-xl p-4"
-              style={{
-                background: "#3BC976",
-                boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
-              }}
-            >
-              <p
-                style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4 }}
-                className="pb-5"
+            {/* Green box — swaps based on tab */}
+            {tab === "case" ? (
+              <div
+                className="rounded-xl p-4"
+                style={{
+                  background: "#3BC976",
+                  boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
+                }}
               >
-                Hey those are just my case studies, There are lots of more works that I have
-                not built comprehensive studies for, You can find them here!
-              </p>
-              <LinkoutRow label="All my other works" href="#" bg="#9FF2C1" />
-            </div>
+                <p
+                  style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4 }}
+                  className="pb-5"
+                >
+                  Hey those are just my case studies, There are lots of more works that I
+                  have not built comprehensive studies for, You can find them here!
+                </p>
+                <LinkoutRow label="All my other works" href="#" bg="#9FF2C1" />
+              </div>
+            ) : (
+              <div
+                className="rounded-xl p-4 flex flex-col gap-3"
+                style={{
+                  background: "#3BC976",
+                  boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
+                }}
+              >
+                <p
+                  style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4 }}
+                  className="pb-2"
+                >
+                  What I can confidently say I am decent at:
+                </p>
+                {SKILL_GROUPS.map((g) => (
+                  <SkillGroupCard key={g.title} title={g.title} items={g.items} />
+                ))}
+              </div>
+            )}
           </aside>
 
-          {/* CV / Case studies */}
+          {/* Main right column */}
           <div className="flex-1 flex flex-col gap-6">
             {/* Tabs */}
             <div className="flex gap-2">
               <button
                 type="button"
-                className="px-4 py-2 rounded-lg"
+                onClick={() => setTab("case")}
+                className="px-4 py-2 rounded-lg cursor-pointer"
                 style={{
                   border: "1px solid #4F1D5E",
-                  background: "linear-gradient(180deg, #FFE324 0%, #FF06B3 100%)",
+                  background:
+                    tab === "case"
+                      ? "linear-gradient(180deg, #FFE324 0%, #FF06B3 100%)"
+                      : "#000",
                   boxShadow: "0 4px 0 0 #4F1D5E",
                   ...pixelHeading,
-                  color: "#000",
-                  textShadow: "1px 1px 0 #BC007E",
+                  color: tab === "case" ? "#000" : "#fff",
+                  textShadow: tab === "case" ? "1px 1px 0 #BC007E" : "none",
                   fontSize: 12,
                 }}
               >
@@ -400,13 +620,18 @@ function Index() {
               </button>
               <button
                 type="button"
-                className="px-4 py-2 rounded-lg"
+                onClick={() => setTab("exp")}
+                className="px-4 py-2 rounded-lg cursor-pointer"
                 style={{
                   border: "1px solid #4F1D5E",
-                  background: "#000",
+                  background:
+                    tab === "exp"
+                      ? "linear-gradient(180deg, #FFE324 0%, #FF06B3 100%)"
+                      : "#000",
                   boxShadow: "0 4px 0 0 #4F1D5E",
                   ...pixelHeading,
-                  color: "#fff",
+                  color: tab === "exp" ? "#000" : "#fff",
+                  textShadow: tab === "exp" ? "1px 1px 0 #BC007E" : "none",
                   fontSize: 12,
                 }}
               >
@@ -414,42 +639,181 @@ function Index() {
               </button>
             </div>
 
-            {/* Project grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {PROJECTS.map((p) => (
+            {tab === "case" ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {PROJECTS.map((p) => (
+                  <article
+                    key={p.title}
+                    className="rounded-xl p-4 flex flex-col gap-4"
+                    style={{
+                      background: p.gradient,
+                      boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
+                    }}
+                  >
+                    <img
+                      src={p.img}
+                      alt=""
+                      className="w-full rounded-lg object-cover"
+                      style={{ aspectRatio: "308/173" }}
+                      loading="lazy"
+                    />
+                    <p
+                      style={{
+                        ...pixelBody,
+                        color: "#320032",
+                        fontSize: 16,
+                        lineHeight: 1.4,
+                      }}
+                    >
+                      {p.title}
+                    </p>
+                    <div
+                      style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4 }}
+                    >
+                      <div>{p.company}</div>
+                      <div>{p.location}</div>
+                      <div>{p.role}</div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            ) : (
+              <div className="flex flex-col gap-6">
+                {EXPERIENCES.map((e) => (
+                  <article
+                    key={e.role + e.company}
+                    className="rounded-xl p-5 flex flex-col gap-3"
+                    style={{
+                      background: e.gradient,
+                      boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
+                    }}
+                  >
+                    <header className="flex flex-col gap-1">
+                      <h3
+                        style={{
+                          ...pixelHeading,
+                          color: "#320032",
+                          textShadow: "1px 1px 0 #FFFEF6",
+                          fontSize: 16,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {e.role}
+                      </h3>
+                      <p
+                        style={{
+                          ...pixelBody,
+                          color: "#320032",
+                          fontSize: 18,
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {e.company}
+                      </p>
+                      <p
+                        style={{
+                          ...pixelBody,
+                          color: "#4C042C",
+                          fontSize: 14,
+                          lineHeight: 1.3,
+                          opacity: 0.85,
+                        }}
+                      >
+                        {e.period} · {e.location}
+                      </p>
+                    </header>
+                    {e.bullets.length > 0 && (
+                      <ul className="flex flex-col gap-1.5">
+                        {e.bullets.map((b, i) => (
+                          <li
+                            key={i}
+                            style={{
+                              ...pixelBody,
+                              color: "#320032",
+                              fontSize: 15,
+                              lineHeight: 1.4,
+                            }}
+                          >
+                            &gt; {b}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    {e.clients && (
+                      <p
+                        style={{
+                          ...pixelBody,
+                          color: "#4C042C",
+                          fontSize: 14,
+                          lineHeight: 1.4,
+                          marginTop: 4,
+                        }}
+                      >
+                        {e.clients}
+                      </p>
+                    )}
+                  </article>
+                ))}
+
+                {/* Education */}
                 <article
-                  key={p.title}
-                  className="rounded-xl p-4 flex flex-col gap-4"
+                  className="rounded-xl p-5 flex flex-col gap-4"
                   style={{
-                    background: p.gradient,
+                    background: "linear-gradient(180deg, #FBFFF6 0%, #B5EAF4 50%, #69DAEE 100%)",
                     boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
                   }}
                 >
-                  <img
-                    src={p.img}
-                    alt=""
-                    className="w-full rounded-lg object-cover"
-                    style={{ aspectRatio: "308/173" }}
-                    loading="lazy"
-                  />
-                  <p
+                  <h3
                     style={{
-                      ...pixelBody,
+                      ...pixelHeading,
                       color: "#320032",
-                      fontSize: 16,
-                      lineHeight: 1.4,
+                      textShadow: "1px 1px 0 #FFFEF6",
+                      fontSize: 18,
                     }}
                   >
-                    {p.title}
-                  </p>
-                  <div style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4 }}>
-                    <div>{p.company}</div>
-                    <div>{p.location}</div>
-                    <div>{p.role}</div>
-                  </div>
+                    Education
+                  </h3>
+                  <ul className="flex flex-col gap-4">
+                    {EDUCATION.map((ed) => (
+                      <li key={ed.degree} className="flex flex-col gap-1">
+                        <p
+                          style={{
+                            ...pixelBody,
+                            color: "#320032",
+                            fontSize: 16,
+                            lineHeight: 1.35,
+                            fontWeight: 600,
+                          }}
+                        >
+                          {ed.degree}
+                        </p>
+                        <p
+                          style={{
+                            ...pixelBody,
+                            color: "#4C042C",
+                            fontSize: 14,
+                            lineHeight: 1.35,
+                          }}
+                        >
+                          {ed.spec}
+                        </p>
+                        <p
+                          style={{
+                            ...pixelBody,
+                            color: "#320032",
+                            fontSize: 14,
+                            lineHeight: 1.35,
+                            opacity: 0.9,
+                          }}
+                        >
+                          {ed.school}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
                 </article>
-              ))}
-            </div>
+              </div>
+            )}
           </div>
         </section>
 
@@ -510,7 +874,6 @@ function Index() {
             ))}
           </ul>
         </section>
-
 
         {/* Footer */}
         <footer
