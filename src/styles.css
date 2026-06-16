@@ -339,6 +339,83 @@ a.retro-link:hover::after {
 button[aria-label*="lose" i]::before, button[aria-label*="lose" i]::after,
 button[aria-label*="ismiss" i]::before, button[aria-label*="ismiss" i]::after { display: none; }
 
+/* ===== White pixelated lightning hover — envelops text ===== */
+.retro-lightning {
+  position: relative;
+  transition: transform 160ms ease, text-shadow 160ms ease;
+}
+.retro-lightning:hover {
+  transform: translateY(-1px);
+  text-shadow: 0 0 2px #fff, 0 0 6px #ccffff, 0 0 10px #99ffff;
+}
+
+.retro-lightning::before {
+  content: "";
+  position: absolute;
+  left: -8px; right: -8px; top: -8px; bottom: -8px;
+  pointer-events: none;
+  opacity: 0;
+  image-rendering: pixelated;
+  z-index: 5;
+  background:
+    radial-gradient(circle, #fff 60%, transparent 61%) 15% 0%   / 3px 3px no-repeat,
+    radial-gradient(circle, #e6ffff 60%, transparent 61%) 35% 5%  / 3px 3px no-repeat,
+    radial-gradient(circle, #fff 60%, transparent 61%) 55% 2%  / 3px 3px no-repeat,
+    radial-gradient(circle, #ccffff 60%, transparent 61%) 75% 8%  / 3px 3px no-repeat,
+    radial-gradient(circle, #fff 60%, transparent 61%) 90% 0%  / 3px 3px no-repeat,
+    radial-gradient(circle, #ccffff 60%, transparent 61%) 0%  25% / 3px 3px no-repeat,
+    radial-gradient(circle, #fff 60%, transparent 61%) 5%  50% / 3px 3px no-repeat,
+    radial-gradient(circle, #e6ffff 60%, transparent 61%) 0%  75% / 3px 3px no-repeat,
+    radial-gradient(circle, #fff 60%, transparent 61%) 100% 30% / 3px 3px no-repeat,
+    radial-gradient(circle, #ccffff 60%, transparent 61%) 95% 55% / 3px 3px no-repeat,
+    radial-gradient(circle, #fff 60%, transparent 61%) 100% 80% / 3px 3px no-repeat,
+    radial-gradient(circle, #e6ffff 60%, transparent 61%) 25% 100% / 3px 3px no-repeat,
+    radial-gradient(circle, #fff 60%, transparent 61%) 50% 95% / 3px 3px no-repeat,
+    radial-gradient(circle, #ccffff 60%, transparent 61%) 70% 100% / 3px 3px no-repeat;
+}
+.retro-lightning::after {
+  content: "";
+  position: absolute;
+  left: -8px; right: -8px; top: -8px; bottom: -8px;
+  pointer-events: none;
+  opacity: 0;
+  image-rendering: pixelated;
+  z-index: 5;
+  background:
+    radial-gradient(circle, #fff 60%, transparent 61%) 22% 12% / 3px 3px no-repeat,
+    radial-gradient(circle, #99ffff 60%, transparent 61%) 42% 3%  / 3px 3px no-repeat,
+    radial-gradient(circle, #fff 60%, transparent 61%) 62% 15% / 3px 3px no-repeat,
+    radial-gradient(circle, #e6ffff 60%, transparent 61%) 82% 6%  / 3px 3px no-repeat,
+    radial-gradient(circle, #fff 60%, transparent 61%) 3%  38% / 3px 3px no-repeat,
+    radial-gradient(circle, #ccffff 60%, transparent 61%) 8%  62% / 3px 3px no-repeat,
+    radial-gradient(circle, #fff 60%, transparent 61%) 2%  85% / 3px 3px no-repeat,
+    radial-gradient(circle, #e6ffff 60%, transparent 61%) 98% 40% / 3px 3px no-repeat,
+    radial-gradient(circle, #fff 60%, transparent 61%) 92% 65% / 3px 3px no-repeat,
+    radial-gradient(circle, #99ffff 60%, transparent 61%) 97% 88% / 3px 3px no-repeat,
+    radial-gradient(circle, #fff 60%, transparent 61%) 33% 92% / 3px 3px no-repeat,
+    radial-gradient(circle, #ccffff 60%, transparent 61%) 58% 98% / 3px 3px no-repeat,
+    radial-gradient(circle, #fff 60%, transparent 61%) 78% 94% / 3px 3px no-repeat;
+}
+
+.retro-lightning:hover::before {
+  animation: lightning-a 280ms steps(2) infinite;
+}
+.retro-lightning:hover::after {
+  animation: lightning-b 380ms steps(2) infinite;
+  animation-delay: 60ms;
+}
+
+@keyframes lightning-a {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.15; }
+  100% { opacity: 1; }
+}
+@keyframes lightning-b {
+  0%   { opacity: 0.2; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.2; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .retro-card { animation: none; }
   .retro-card:hover { transform: none; }
@@ -347,6 +424,8 @@ button[aria-label*="ismiss" i]::before, button[aria-label*="ismiss" i]::after { 
   button::before, button::after,
   [role="tab"]::before, [role="tab"]::after,
   [role="menuitem"]::before, [role="menuitem"]::after,
-  a.retro-link::before, a.retro-link::after { display: none; }
+  a.retro-link::before, a.retro-link::after,
+  .retro-lightning::before, .retro-lightning::after { display: none; }
+  .retro-lightning:hover { transform: none; text-shadow: none; }
 }
 
