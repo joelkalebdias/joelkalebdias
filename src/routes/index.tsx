@@ -167,7 +167,7 @@ type Experience = {
   gradient: string;
   /** Inner title-header gradient (the strip behind the role name) */
   headerGradient: string;
-  logo?: { src: string; width: number; height: number; alt: string };
+  logo?: { src: string; width: number; height: number; alt: string; cropLeft?: number };
 };
 
 const EXPERIENCES: Experience[] = [
