@@ -119,6 +119,7 @@ const PROJECTS: Project[] = [
     role: "Role: UX/UI Designer (Personal Project)",
     gradient: "linear-gradient(180deg, #BAEB76 0%, #BAEB76 80%, #51D830 100%)",
     img: "https://api.builder.io/api/v1/image/assets/TEMP/d17070ff09152bc08826d04dfc8215337fa84651?width=718",
+    slug: "lol-ai",
   },
   {
     title:
