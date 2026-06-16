@@ -451,7 +451,7 @@ function TitlePanel({ exp: e }: { exp: Experience }) {
         style={{ padding: "0 16px", gap: 2 }}
       >
         {e.logo && (
-          <div className="flex items-center" style={{ height: 40, overflow: "hidden" }}>
+          <div className="flex items-center" style={{ height: 52, overflow: "hidden" }}>
             <img
               src={e.logo.src}
               alt={e.logo.alt}
