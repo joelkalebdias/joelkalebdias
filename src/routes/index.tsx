@@ -568,6 +568,7 @@ function Index() {
               <a
                 key={label}
                 href={`#${label.toLowerCase()}`}
+                className="retro-lightning"
                 style={{
                   ...pixelBody,
                   color: "#fff",

@@ -395,6 +395,7 @@ function CaseStudyPage() {
             </h1>
             <Link
               to="/"
+              className="retro-lightning"
               style={{
                 ...pixelBody,
                 color: "#fff",
