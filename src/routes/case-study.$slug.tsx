@@ -964,14 +964,14 @@ function CaseStudyPage() {
               <p style={{ ...pixelBody, color: "#320032", fontSize: "clamp(16px, 2.2vw, 24px)", lineHeight: 1.3, letterSpacing: "-0.02em", margin: 0, whiteSpace: "pre-line" }}>
                 {cs.screens[2].body}
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-[2fr_1fr_1fr] gap-3">
-                <div className="rounded-xl overflow-hidden" style={{ aspectRatio: "3/2" }}>
+              <div className="grid grid-cols-1 sm:grid-cols-[2fr_1fr_1fr] gap-3" style={{ gridAutoRows: "minmax(180px, 27vw)" }}>
+                <div className="rounded-xl overflow-hidden">
                   <img src={cs.screens[2].images?.[0]} alt="" className="w-full h-full object-cover" loading="lazy" />
                 </div>
-                <div className="rounded-xl overflow-hidden" style={{ aspectRatio: "1/1" }}>
+                <div className="rounded-xl overflow-hidden">
                   <img src={cs.screens[2].images?.[1]} alt="" className="w-full h-full object-cover" loading="lazy" />
                 </div>
-                <div className="rounded-xl overflow-hidden" style={{ aspectRatio: "2/3" }}>
+                <div className="rounded-xl overflow-hidden">
                   <img src={cs.screens[2].images?.[2]} alt="" className="w-full h-full object-cover" loading="lazy" />
                 </div>
               </div>
