@@ -258,6 +258,108 @@ function PanelShell({ children }: { children: React.ReactNode }) {
   );
 }
 
+/* Pixel icon used in solid section headers */
+function PixelIcon({ kind }: { kind: "check" | "x" | "bolt" }) {
+  const bg = kind === "check" ? "#73CB00" : kind === "x" ? "#F35468" : "#FFC700";
+  const stroke = "#1A1F1A";
+  return (
+    <div
+      style={{
+        width: 28,
+        height: 28,
+        background: bg,
+        boxShadow: `inset 0 0 0 2px ${stroke}`,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexShrink: 0,
+        imageRendering: "pixelated",
+      }}
+      aria-hidden
+    >
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+        {kind === "check" && (
+          <g fill="#FFFFFF">
+            <rect x="2" y="8" width="2" height="2" />
+            <rect x="4" y="10" width="2" height="2" />
+            <rect x="6" y="12" width="2" height="2" />
+            <rect x="8" y="10" width="2" height="2" />
+            <rect x="10" y="8" width="2" height="2" />
+            <rect x="12" y="6" width="2" height="2" />
+            <rect x="14" y="4" width="2" height="2" />
+          </g>
+        )}
+        {kind === "x" && (
+          <g fill="#FFFFFF">
+            <rect x="3" y="3" width="2" height="2" />
+            <rect x="13" y="3" width="2" height="2" />
+            <rect x="5" y="5" width="2" height="2" />
+            <rect x="11" y="5" width="2" height="2" />
+            <rect x="7" y="7" width="2" height="2" />
+            <rect x="9" y="7" width="2" height="2" />
+            <rect x="8" y="9" width="2" height="2" />
+            <rect x="7" y="11" width="2" height="2" />
+            <rect x="9" y="11" width="2" height="2" />
+            <rect x="5" y="13" width="2" height="2" />
+            <rect x="11" y="13" width="2" height="2" />
+            <rect x="3" y="15" width="2" height="2" />
+            <rect x="13" y="15" width="2" height="2" />
+          </g>
+        )}
+        {kind === "bolt" && (
+          <g fill="#FFFFFF">
+            <rect x="9" y="2" width="3" height="2" />
+            <rect x="7" y="4" width="3" height="2" />
+            <rect x="5" y="6" width="3" height="2" />
+            <rect x="7" y="8" width="6" height="2" />
+            <rect x="9" y="10" width="3" height="2" />
+            <rect x="7" y="12" width="3" height="2" />
+            <rect x="5" y="14" width="3" height="2" />
+          </g>
+        )}
+      </svg>
+    </div>
+  );
+}
+
+/* Solid colored section header with optional pixel icon, left-aligned */
+function SolidHeader({
+  label,
+  background,
+  icon,
+  titleColor = "#320032",
+  textShadow = "1px 1px 0 #F29A9C",
+}: {
+  label: string;
+  background: string;
+  icon?: "check" | "x" | "bolt";
+  titleColor?: string;
+  textShadow?: string;
+}) {
+  return (
+    <div
+      className="w-full flex items-center gap-3 rounded-t-lg"
+      style={{ padding: "12px 16px", background }}
+    >
+      {icon && <PixelIcon kind={icon} />}
+      <h3
+        style={{
+          ...pixelHeading,
+          color: titleColor,
+          textShadow,
+          fontSize: 14,
+          lineHeight: 1.3,
+          letterSpacing: "-0.02em",
+          margin: 0,
+        }}
+      >
+        {label}
+      </h3>
+    </div>
+  );
+}
+
+
 function CaseStudyPage() {
   const { slug } = Route.useParams();
   const cs = CASE_STUDIES[slug];
