@@ -226,11 +226,11 @@
   pointer-events: none;
   image-rendering: pixelated;
 }
-/* Constant CRT palette — one fixed colour per card, cycles across siblings */
-.retro-card:nth-of-type(4n+1) { --pix-color: #00FF66; } /* CRT green */
-.retro-card:nth-of-type(4n+2) { --pix-color: #FFB000; } /* CRT amber */
-.retro-card:nth-of-type(4n+3) { --pix-color: #33CCFF; } /* CRT cyan  */
-.retro-card:nth-of-type(4n)   { --pix-color: #FF66CC; } /* CRT magenta */
+/* Per-corner CRT colours so each spark burst is multi-coloured (green/amber/cyan/magenta) */
+.retro-card .pix.tl, .retro-card .pix.tl2 { background: #00FF66; box-shadow: 0 0 0 1px #003311, 0 0 6px #00FF66; }
+.retro-card .pix.tr, .retro-card .pix.tr2 { background: #FFB000; box-shadow: 0 0 0 1px #3a2400, 0 0 6px #FFB000; }
+.retro-card .pix.bl, .retro-card .pix.bl2 { background: #33CCFF; box-shadow: 0 0 0 1px #002a3a, 0 0 6px #33CCFF; }
+.retro-card .pix.br, .retro-card .pix.br2 { background: #FF66CC; box-shadow: 0 0 0 1px #3a0024, 0 0 6px #FF66CC; }
 
 .retro-card:hover .pix { animation: pix-shoot 800ms steps(6) infinite; }
 
@@ -239,7 +239,6 @@
 .retro-card .pix.bl { bottom: -2px; left: -2px; --dx: -14px; --dy:  14px; }
 .retro-card .pix.br { bottom: -2px; right: -2px; --dx:  14px; --dy:  14px; }
 
-/* second sparks fly slightly different angles */
 .retro-card .pix.tl2 { top: -2px; left: -2px; --dx: -18px; --dy: -6px;  animation-delay: 80ms !important; }
 .retro-card .pix.tr2 { top: -2px; right: -2px; --dx:  18px; --dy: -6px;  animation-delay: 80ms !important; }
 .retro-card .pix.bl2 { bottom: -2px; left: -2px; --dx: -6px;  --dy:  18px; animation-delay: 80ms !important; }
@@ -251,9 +250,103 @@
   100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.6); }
 }
 
+/* ===== Universal retro hover: multi-colour CRT pixel flames on buttons/tabs/links =====
+   Two pseudo-element layers each carry 4-5 coloured pixel "stamps" that rise out the
+   top edge like flames while hovering. Pixels are crisp via image-rendering: pixelated. */
+.retro-hover,
+button:not(:disabled):not([data-no-retro]),
+[role="tab"],
+[role="menuitem"],
+a.retro-link {
+  position: relative;
+  transition: transform 180ms ease, filter 180ms ease;
+}
+.retro-hover:hover,
+button:not(:disabled):not([data-no-retro]):hover,
+[role="tab"]:hover,
+[role="menuitem"]:hover,
+a.retro-link:hover {
+  transform: translateY(-1px);
+  filter: saturate(1.15) brightness(1.04);
+}
+
+.retro-hover::before,
+button:not(:disabled):not([data-no-retro])::before,
+[role="tab"]::before,
+[role="menuitem"]::before,
+a.retro-link::before {
+  content: "";
+  position: absolute;
+  left: -6px; right: -6px; top: -14px; bottom: -2px;
+  pointer-events: none;
+  opacity: 0;
+  image-rendering: pixelated;
+  z-index: 5;
+  background:
+    radial-gradient(circle, #00FF66 60%, transparent 61%) 10% 100% / 3px 3px no-repeat,
+    radial-gradient(circle, #FFB000 60%, transparent 61%) 30% 100% / 3px 3px no-repeat,
+    radial-gradient(circle, #33CCFF 60%, transparent 61%) 50% 100% / 3px 3px no-repeat,
+    radial-gradient(circle, #FF66CC 60%, transparent 61%) 70% 100% / 3px 3px no-repeat,
+    radial-gradient(circle, #FFEF33 60%, transparent 61%) 90% 100% / 3px 3px no-repeat;
+}
+.retro-hover::after,
+button:not(:disabled):not([data-no-retro])::after,
+[role="tab"]::after,
+[role="menuitem"]::after,
+a.retro-link::after {
+  content: "";
+  position: absolute;
+  left: -6px; right: -6px; top: -14px; bottom: -2px;
+  pointer-events: none;
+  opacity: 0;
+  image-rendering: pixelated;
+  z-index: 5;
+  background:
+    radial-gradient(circle, #FF3355 60%, transparent 61%) 18% 100% / 3px 3px no-repeat,
+    radial-gradient(circle, #66FF99 60%, transparent 61%) 38% 100% / 3px 3px no-repeat,
+    radial-gradient(circle, #FFCC00 60%, transparent 61%) 58% 100% / 3px 3px no-repeat,
+    radial-gradient(circle, #99CCFF 60%, transparent 61%) 78% 100% / 3px 3px no-repeat;
+}
+
+.retro-hover:hover::before,
+button:not(:disabled):not([data-no-retro]):hover::before,
+[role="tab"]:hover::before,
+[role="menuitem"]:hover::before,
+a.retro-link:hover::before {
+  animation: crt-flames-a 900ms steps(7) infinite;
+}
+.retro-hover:hover::after,
+button:not(:disabled):not([data-no-retro]):hover::after,
+[role="tab"]:hover::after,
+[role="menuitem"]:hover::after,
+a.retro-link:hover::after {
+  animation: crt-flames-b 1100ms steps(7) infinite;
+  animation-delay: 120ms;
+}
+
+@keyframes crt-flames-a {
+  0%   { opacity: 1; background-position: 10% 100%, 30% 100%, 50% 100%, 70% 100%, 90% 100%; }
+  85%  { opacity: 1; }
+  100% { opacity: 0; background-position: 6% 0%, 26% -10%, 54% 5%, 74% -15%, 94% -5%; }
+}
+@keyframes crt-flames-b {
+  0%   { opacity: 1; background-position: 18% 100%, 38% 100%, 58% 100%, 78% 100%; }
+  85%  { opacity: 1; }
+  100% { opacity: 0; background-position: 22% -10%, 42% 5%, 62% -15%, 82% 0%; }
+}
+
+/* Don't double-emit for tiny icon-only chrome (radix close, dialog dismiss, etc.) */
+button[aria-label*="lose" i]::before, button[aria-label*="lose" i]::after,
+button[aria-label*="ismiss" i]::before, button[aria-label*="ismiss" i]::after { display: none; }
+
 @media (prefers-reduced-motion: reduce) {
   .retro-card { animation: none; }
   .retro-card:hover { transform: none; }
   .retro-card .pix { display: none; }
+  .retro-hover::before, .retro-hover::after,
+  button::before, button::after,
+  [role="tab"]::before, [role="tab"]::after,
+  [role="menuitem"]::before, [role="menuitem"]::after,
+  a.retro-link::before, a.retro-link::after { display: none; }
 }
 
