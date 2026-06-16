@@ -1020,8 +1020,8 @@ function Index() {
             boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
           }}
         >
-          <p style={{ ...pixelHeading, color: "#320032", fontSize: 13 }}>
-            {"> Made with love in Figma < 2026 — Joel Kaleb Dias"}
+          <p style={{ ...pixelHeading, color: "#320032", fontSize: 13, whiteSpace: "pre-line" }}>
+            {"> Made with love in Figma + Loveable <\n2026 — Joel Kaleb Dias"}
           </p>
         </footer>
       </div>
