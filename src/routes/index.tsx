@@ -215,7 +215,7 @@ const EXPERIENCES: Experience[] = [
     location: "Udupi, India",
     gradient: "linear-gradient(180deg, #F0D642 0%, #F0D642 80%, #F08A42 100%)",
     headerGradient: "linear-gradient(180deg, #FBFFF6 0%, #B5EAF4 50%, #69DAEE 100%)",
-    logo: { src: robosoftLogo.url, width: 150, height: 24, alt: "Robosoft Technologies" },
+    logo: { src: robosoftLogo.url, width: 150, height: 24, alt: "Robosoft Technologies", cropLeft: 6 },
     bullets: [
       "Conducted user interviews and developed information architecture and app maps.",
       "Designed wireframes, prototypes, UI elements, and prepared development handoffs.",
