@@ -916,41 +916,186 @@ function CaseStudyPage() {
           ))}
         </div>
 
-        {/* AI in design process */}
-        <PanelShell>
-          <PanelHeader
-            label="How I Used AI in My Design Process"
-            gradient="linear-gradient(180deg, #FBFFF6 0%, #E0B5F4 50%, #B569EE 100%)"
-          />
-          <div className="px-4 pt-4 flex flex-col gap-3">
+        {/* How I Used AI — centered title above orange container */}
+        <div className="pt-6 pb-2 text-center">
+          <h2
+            style={{
+              ...pixelHeading,
+              color: cs.titleColor,
+              textShadow: cs.titleShadow,
+              fontSize: "clamp(24px, 3.2vw, 32px)",
+              lineHeight: 1.3,
+              letterSpacing: "-0.08em",
+            }}
+          >
+            How I Used AI in My Design Process
+          </h2>
+        </div>
+
+        <section
+          className="rounded-xl p-4 flex flex-col gap-4"
+          style={{
+            background: "#FA0",
+            boxShadow: "-3px -3px 0 0 #4C042C inset, 3px 3px 0 0 #FFFEF6 inset",
+          }}
+        >
+          <p
+            style={{
+              ...pixelBody,
+              color: "#320032",
+              fontSize: 20,
+              lineHeight: 1.4,
+              margin: 0,
+              padding: "4px 4px",
+            }}
+          >
+            {cs.aiIntro}
+          </p>
+          <div className="flex flex-col gap-3">
             {cs.aiProcess.map((a) => (
-              <div key={a.title} className="rounded-lg px-4 py-3" style={{ background: "#EAD4F8" }}>
-                <h4 style={{ ...pixelBody, color: "#320032", fontSize: 18, margin: 0, marginBottom: 4, letterSpacing: "-0.02em" }}>
+              <div
+                key={a.title}
+                className="rounded-lg px-4 py-3"
+                style={{ background: "#FFD581" }}
+              >
+                <h4
+                  style={{
+                    ...pixelBody,
+                    color: "#320032",
+                    fontSize: 16,
+                    margin: 0,
+                    marginBottom: 4,
+                    letterSpacing: "-0.01em",
+                    fontWeight: 700,
+                  }}
+                >
                   {a.title}
                 </h4>
-                <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>{a.body}</p>
+                <p
+                  style={{
+                    ...pixelBody,
+                    color: "#320032",
+                    fontSize: 16,
+                    lineHeight: 1.45,
+                    margin: 0,
+                    whiteSpace: "pre-line",
+                  }}
+                >
+                  {a.body}
+                </p>
               </div>
             ))}
           </div>
-        </PanelShell>
+        </section>
 
-        {/* What I learned */}
-        <PanelShell>
-          <PanelHeader
-            label="What I Learned"
-            gradient="linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)"
-          />
-          <div className="px-4 pt-4 flex flex-col gap-3">
+        {/* What I Learned — green container, matches AI section structure */}
+        <section
+          className="rounded-xl p-4 flex flex-col gap-4"
+          style={{
+            background: "#3BC976",
+            boxShadow: "-3px -3px 0 0 #1F5C30 inset, 3px 3px 0 0 #C8FBDC inset",
+          }}
+        >
+          <h3
+            style={{
+              ...pixelHeading,
+              color: "#1A4D24",
+              textShadow: "1px 1px 0 rgba(0,0,0,0.15)",
+              fontSize: 16,
+              margin: 0,
+              padding: "4px 4px 0",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            What I Learned
+          </h3>
+          <p
+            style={{
+              ...pixelBody,
+              color: "#102914",
+              fontSize: 18,
+              lineHeight: 1.45,
+              margin: 0,
+              padding: "0 4px",
+            }}
+          >
+            {cs.learnedIntro}
+          </p>
+          <div className="flex flex-col gap-3">
             {cs.lessons.map((l) => (
-              <div key={l.title} className="rounded-lg px-4 py-3" style={{ background: "#FFF1A8" }}>
-                <h4 style={{ ...pixelBody, color: "#320032", fontSize: 18, margin: 0, marginBottom: 2, letterSpacing: "-0.02em" }}>
-                  {l.title}
-                </h4>
-                <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>{l.body}</p>
+              <div
+                key={l.title}
+                className="rounded-lg px-4 py-3"
+                style={{ background: "#9FF2C1" }}
+              >
+                <p
+                  style={{
+                    ...pixelBody,
+                    color: "#102914",
+                    fontSize: 16,
+                    lineHeight: 1.45,
+                    margin: 0,
+                  }}
+                >
+                  <strong>{l.title} </strong>{l.body}
+                </p>
               </div>
             ))}
           </div>
-        </PanelShell>
+        </section>
+
+        {/* More case studies */}
+        <section
+          className="rounded-lg overflow-hidden flex flex-col"
+          style={{
+            background: "#0A0224",
+            paddingBottom: 16,
+          }}
+        >
+          <SolidHeader
+            label="More case studies"
+            background="linear-gradient(180deg, #CFF594 0%, #AEEC48 100%)"
+            textShadow="1px 1px 0 rgba(255,255,255,0.4)"
+          />
+          <div className="px-2 pt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+            {OTHER_PROJECTS.map((p) => (
+              <article
+                key={p.title}
+                className="retro-card rounded-xl p-4 flex flex-col gap-4"
+                style={{
+                  background: p.gradient,
+                  boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
+                }}
+              >
+                <img
+                  src={p.img}
+                  alt=""
+                  className="w-full rounded-lg object-cover"
+                  style={{ aspectRatio: "308/173" }}
+                  loading="lazy"
+                />
+                <p style={{ ...pixelBody, color: "#320032", fontSize: 15, lineHeight: 1.4, margin: 0 }}>
+                  {p.title}
+                </p>
+                <div style={{ ...pixelBody, color: "#320032", fontSize: 15, lineHeight: 1.4 }}>
+                  <div>{p.company}</div>
+                  <div>{p.location}</div>
+                  <div>{p.role}</div>
+                </div>
+                <span className="pix tl" aria-hidden />
+                <span className="pix tr" aria-hidden />
+                <span className="pix bl" aria-hidden />
+                <span className="pix br" aria-hidden />
+                <span className="pix tl2" aria-hidden />
+                <span className="pix tr2" aria-hidden />
+                <span className="pix bl2" aria-hidden />
+                <span className="pix br2" aria-hidden />
+              </article>
+            ))}
+          </div>
+        </section>
+
+
 
 
 
