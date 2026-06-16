@@ -220,13 +220,19 @@
   position: absolute;
   width: 4px;
   height: 4px;
-  background: #FFEF33;
+  background: var(--pix-color, #FFEF33);
   box-shadow: 0 0 0 1px #320032;
   opacity: 0;
   pointer-events: none;
   image-rendering: pixelated;
 }
-.retro-card:hover .pix { animation: pix-shoot 700ms steps(6) forwards; }
+/* Constant CRT palette — one fixed colour per card, cycles across siblings */
+.retro-card:nth-of-type(4n+1) { --pix-color: #00FF66; } /* CRT green */
+.retro-card:nth-of-type(4n+2) { --pix-color: #FFB000; } /* CRT amber */
+.retro-card:nth-of-type(4n+3) { --pix-color: #33CCFF; } /* CRT cyan  */
+.retro-card:nth-of-type(4n)   { --pix-color: #FF66CC; } /* CRT magenta */
+
+.retro-card:hover .pix { animation: pix-shoot 800ms steps(6) infinite; }
 
 .retro-card .pix.tl { top: -2px; left: -2px; --dx: -14px; --dy: -14px; }
 .retro-card .pix.tr { top: -2px; right: -2px; --dx:  14px; --dy: -14px; }
