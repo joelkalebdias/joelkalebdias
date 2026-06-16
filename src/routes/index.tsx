@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import publicisLogo from "@/assets/logos/publicis.svg.asset.json";
 import niveusLogo from "@/assets/logos/niveus.png.asset.json";
