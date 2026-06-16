@@ -717,67 +717,104 @@ function CaseStudyPage() {
           </div>
         </PanelShell>
 
-        {/* What works well */}
-        <PanelShell>
-          <PanelHeader
-            label="What works well"
-            gradient="linear-gradient(180deg, #FBFFF6 0%, #9FF2C1 50%, #3BC976 100%)"
-          />
-          <div className="px-4 pt-4 flex flex-col gap-3">
-            {cs.worksWell.map((w) => (
-              <div
-                key={w.tool}
-                className="rounded-lg px-4 py-3"
-                style={{ background: "#9FF2C1" }}
-              >
-                <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>
-                  <strong>{w.tool} — </strong>{w.body}
-                </p>
+        {/* Works well / Fall short / Design implications — 2 column composite */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+          {/* Left column: What works well + Design implications */}
+          <div className="flex flex-col gap-6">
+            {/* What works well */}
+            <section
+              className="rounded-lg overflow-hidden flex flex-col"
+              style={{
+                background: "#3BC976",
+                boxShadow: "2px 2px 0 0 #1F8A4D, -2px -2px 0 0 #9FF2C1",
+                paddingBottom: 16,
+              }}
+            >
+              <SolidHeader
+                label="What works well"
+                background="#3BC976"
+                icon="check"
+                textShadow="1px 1px 0 rgba(0,0,0,0.15)"
+              />
+              <div className="px-4 pt-2 flex flex-col gap-3">
+                {cs.worksWell.map((w) => (
+                  <div
+                    key={w.tool}
+                    className="rounded-lg px-4 py-3"
+                    style={{ background: "#9FF2C1", boxShadow: "inset 0 0 0 2px #1F8A4D" }}
+                  >
+                    <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>
+                      <strong>{w.tool} — </strong>{w.body}
+                    </p>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </PanelShell>
+            </section>
 
-        {/* Design implications */}
-        <PanelShell>
-          <PanelHeader
-            label="Design implications"
-            gradient="linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)"
-          />
-          <div className="px-4 pt-4 flex flex-col gap-2">
-            {cs.implications.map((t, i) => (
-              <div
-                key={i}
-                className="rounded-lg px-4 py-3"
-                style={{ background: "#FFF1A8" }}
-              >
-                <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>{t}</p>
+            {/* Design implications */}
+            <section
+              className="rounded-lg overflow-hidden flex flex-col"
+              style={{
+                background: "#FF8A3D",
+                boxShadow: "2px 2px 0 0 #C25A18, -2px -2px 0 0 #FFC089",
+                paddingBottom: 16,
+              }}
+            >
+              <SolidHeader
+                label="Design implications"
+                background="#FF8A3D"
+                icon="bolt"
+                textShadow="1px 1px 0 rgba(0,0,0,0.15)"
+              />
+              <div className="px-4 pt-2 flex flex-col gap-3">
+                {cs.implications.map((t, i) => (
+                  <div
+                    key={i}
+                    className="rounded-lg px-4 py-3"
+                    style={{ background: "#FFC089", boxShadow: "inset 0 0 0 2px #C25A18" }}
+                  >
+                    <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>
+                      <span style={{ marginRight: 6 }}>{i + 1}.</span>{t}
+                    </p>
+                  </div>
+                ))}
               </div>
-            ))}
+            </section>
           </div>
-        </PanelShell>
 
-        {/* Where they fall short */}
-        <PanelShell>
-          <PanelHeader
-            label="Where they fall short"
-            gradient="linear-gradient(180deg, #FBFFF6 0%, #FFC089 50%, #FF8A3D 100%)"
-          />
-          <div className="px-4 pt-4 flex flex-col gap-3">
-            {cs.shortfall.map((s) => (
-              <div
-                key={s.heading}
-                className="rounded-lg px-4 py-3"
-                style={{ background: "#FFD5B0" }}
-              >
-                <h4 style={{ ...pixelBody, color: "#320032", fontSize: 18, margin: 0, marginBottom: 4, letterSpacing: "-0.02em" }}>
-                  {s.heading}
-                </h4>
-                <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>{s.body}</p>
-              </div>
-            ))}
-          </div>
-        </PanelShell>
+          {/* Right column: Where they fall short */}
+          <section
+            className="rounded-lg overflow-hidden flex flex-col"
+            style={{
+              background: "#FDEBE2",
+              boxShadow: "2px 2px 0 0 #D33869, -2px -2px 0 0 #FF94C2",
+              paddingBottom: 16,
+              height: "100%",
+            }}
+          >
+            <SolidHeader
+              label="Where they fall short"
+              background="#FDEBE2"
+              icon="x"
+              textShadow="1px 1px 0 #F29A9C"
+            />
+            <div className="px-4 pt-2 flex flex-col gap-3">
+              {cs.shortfall.map((s) => (
+                <div
+                  key={s.heading}
+                  className="rounded-lg px-4 py-3"
+                  style={{ background: "#FFD5D5", boxShadow: "inset 0 0 0 2px #D33869" }}
+                >
+                  <h4 style={{ ...pixelBody, color: "#320032", fontSize: 18, margin: 0, marginBottom: 4, letterSpacing: "-0.02em", fontWeight: 700 }}>
+                    {s.heading}
+                  </h4>
+                  <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>{s.body}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+
 
         {/* The Solution — centered title */}
         <div className="pt-6 pb-2 text-center">
