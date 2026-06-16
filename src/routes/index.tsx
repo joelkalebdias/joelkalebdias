@@ -98,6 +98,7 @@ type Project = {
   role: string;
   gradient: string;
   img: string;
+  slug?: string;
 };
 
 const PROJECTS: Project[] = [
