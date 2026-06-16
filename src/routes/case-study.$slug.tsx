@@ -1048,16 +1048,17 @@ function CaseStudyPage() {
         <section
           className="rounded-lg overflow-hidden flex flex-col"
           style={{
-            background: "#0A0224",
+            background: "#FCE8F0",
+            boxShadow: "3px 3px 0 0 #D33869, -3px -3px 0 0 #FF94C2",
             paddingBottom: 16,
           }}
         >
           <SolidHeader
             label="More case studies"
-            background="linear-gradient(180deg, #CFF594 0%, #AEEC48 100%)"
+            background="linear-gradient(180deg, #FF94C2 0%, #D33869 100%)"
             textShadow="1px 1px 0 rgba(255,255,255,0.4)"
           />
-          <div className="px-2 pt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="px-4 pt-4 pb-2 grid grid-cols-1 md:grid-cols-3 gap-4">
             {OTHER_PROJECTS.map((p) => (
               <article
                 key={p.title}
