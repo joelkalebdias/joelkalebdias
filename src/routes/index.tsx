@@ -451,7 +451,7 @@ function TitlePanel({ exp: e }: { exp: Experience }) {
         style={{ padding: "0 16px", gap: 2 }}
       >
         {e.logo && (
-          <div className="py-3 flex items-center" style={{ minHeight: 40, overflow: "hidden" }}>
+          <div className="flex items-center" style={{ height: 40, overflow: "hidden" }}>
             <img
               src={e.logo.src}
               alt={e.logo.alt}
@@ -461,7 +461,7 @@ function TitlePanel({ exp: e }: { exp: Experience }) {
                 width: e.logo.width,
                 height: e.logo.height,
                 objectFit: "contain",
-                marginLeft: -6,
+                marginLeft: e.logo.cropLeft ? -e.logo.cropLeft : undefined,
               }}
               loading="lazy"
             />
