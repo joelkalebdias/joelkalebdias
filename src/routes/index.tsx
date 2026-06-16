@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import publicisLogo from "@/assets/logos/publicis.svg.asset.json";
 import niveusLogo from "@/assets/logos/niveus.png.asset.json";
@@ -98,6 +98,7 @@ type Project = {
   role: string;
   gradient: string;
   img: string;
+  slug?: string;
 };
 
 const PROJECTS: Project[] = [
@@ -118,6 +119,7 @@ const PROJECTS: Project[] = [
     role: "Role: UX/UI Designer (Personal Project)",
     gradient: "linear-gradient(180deg, #BAEB76 0%, #BAEB76 80%, #51D830 100%)",
     img: "https://api.builder.io/api/v1/image/assets/TEMP/d17070ff09152bc08826d04dfc8215337fa84651?width=718",
+    slug: "lol-ai",
   },
   {
     title:
@@ -762,41 +764,66 @@ function Index() {
 
             {tab === "case" ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {PROJECTS.map((p) => (
-                  <article
-                    key={p.title}
-                    className="rounded-xl p-4 flex flex-col gap-4"
-                    style={{
-                      background: p.gradient,
-                      boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
-                    }}
-                  >
-                    <img
-                      src={p.img}
-                      alt=""
-                      className="w-full rounded-lg object-cover"
-                      style={{ aspectRatio: "308/173" }}
-                      loading="lazy"
-                    />
-                    <p
-                      style={{
-                        ...pixelBody,
-                        color: "#320032",
-                        fontSize: 16,
-                        lineHeight: 1.4,
-                      }}
+                {PROJECTS.map((p) => {
+                  const inner = (
+                    <>
+                      <img
+                        src={p.img}
+                        alt=""
+                        className="w-full rounded-lg object-cover"
+                        style={{ aspectRatio: "308/173" }}
+                        loading="lazy"
+                      />
+                      <p
+                        style={{
+                          ...pixelBody,
+                          color: "#320032",
+                          fontSize: 16,
+                          lineHeight: 1.4,
+                        }}
+                      >
+                        {p.title}
+                      </p>
+                      <div
+                        style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4 }}
+                      >
+                        <div>{p.company}</div>
+                        <div>{p.location}</div>
+                        <div>{p.role}</div>
+                      </div>
+                      {/* pixel sparks */}
+                      <span className="pix tl" aria-hidden />
+                      <span className="pix tr" aria-hidden />
+                      <span className="pix bl" aria-hidden />
+                      <span className="pix br" aria-hidden />
+                      <span className="pix tl2" aria-hidden />
+                      <span className="pix tr2" aria-hidden />
+                      <span className="pix bl2" aria-hidden />
+                      <span className="pix br2" aria-hidden />
+                    </>
+                  );
+                  const sharedStyle = {
+                    background: p.gradient,
+                    boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
+                  } as const;
+                  const className =
+                    "retro-card rounded-xl p-4 flex flex-col gap-4 no-underline";
+                  return p.slug ? (
+                    <Link
+                      key={p.title}
+                      to="/case-study/$slug"
+                      params={{ slug: p.slug }}
+                      className={className}
+                      style={sharedStyle}
                     >
-                      {p.title}
-                    </p>
-                    <div
-                      style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4 }}
-                    >
-                      <div>{p.company}</div>
-                      <div>{p.location}</div>
-                      <div>{p.role}</div>
-                    </div>
-                  </article>
-                ))}
+                      {inner}
+                    </Link>
+                  ) : (
+                    <article key={p.title} className={className} style={sharedStyle}>
+                      {inner}
+                    </article>
+                  );
+                })}
               </div>
             ) : (
               <div className="flex flex-col gap-6">

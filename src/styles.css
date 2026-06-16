@@ -198,3 +198,56 @@
 .retro-starfield .tw-b { animation: star-twinkle-b 3.1s steps(2) infinite; }
 .retro-starfield .tw-c { animation: star-twinkle-c 1.7s steps(2) infinite; }
 .retro-starfield .tw-d { animation: star-twinkle-a 4.2s steps(2) infinite; }
+
+/* ===== Retro card: subtle color shift + corner pixel shooters on hover ===== */
+@keyframes retro-color-shift {
+  0%, 100% { filter: hue-rotate(0deg) saturate(1); }
+  50%      { filter: hue-rotate(8deg) saturate(1.08); }
+}
+.retro-card {
+  position: relative;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+  animation: retro-color-shift 6s ease-in-out infinite;
+  will-change: transform, filter;
+}
+.retro-card:hover {
+  transform: translateY(-3px) scale(1.025);
+  z-index: 2;
+}
+
+/* Pixel shooters at each corner — invisible until hover */
+.retro-card .pix {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #FFEF33;
+  box-shadow: 0 0 0 1px #320032;
+  opacity: 0;
+  pointer-events: none;
+  image-rendering: pixelated;
+}
+.retro-card:hover .pix { animation: pix-shoot 700ms steps(6) forwards; }
+
+.retro-card .pix.tl { top: -2px; left: -2px; --dx: -14px; --dy: -14px; }
+.retro-card .pix.tr { top: -2px; right: -2px; --dx:  14px; --dy: -14px; }
+.retro-card .pix.bl { bottom: -2px; left: -2px; --dx: -14px; --dy:  14px; }
+.retro-card .pix.br { bottom: -2px; right: -2px; --dx:  14px; --dy:  14px; }
+
+/* second sparks fly slightly different angles */
+.retro-card .pix.tl2 { top: -2px; left: -2px; --dx: -18px; --dy: -6px;  animation-delay: 80ms !important; }
+.retro-card .pix.tr2 { top: -2px; right: -2px; --dx:  18px; --dy: -6px;  animation-delay: 80ms !important; }
+.retro-card .pix.bl2 { bottom: -2px; left: -2px; --dx: -6px;  --dy:  18px; animation-delay: 80ms !important; }
+.retro-card .pix.br2 { bottom: -2px; right: -2px; --dx:  6px;  --dy:  18px; animation-delay: 80ms !important; }
+
+@keyframes pix-shoot {
+  0%   { opacity: 1; transform: translate(0,0) scale(1); }
+  60%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.6); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .retro-card { animation: none; }
+  .retro-card:hover { transform: none; }
+  .retro-card .pix { display: none; }
+}
+
