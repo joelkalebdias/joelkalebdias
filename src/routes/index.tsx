@@ -1,5 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import publicisLogo from "@/assets/logos/publicis.svg.asset.json";
+import niveusLogo from "@/assets/logos/niveus.png.asset.json";
+import robosoftLogo from "@/assets/logos/robosoft.png.asset.json";
+import narlaLogo from "@/assets/logos/narla.png.asset.json";
+import jeelitLogo from "@/assets/logos/jeelit.png.asset.json";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
