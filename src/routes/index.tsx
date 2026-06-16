@@ -416,6 +416,106 @@ function SkillGroupCard({
   );
 }
 
+function TitlePanel({ exp: e }: { exp: Experience }) {
+  return (
+    <div
+      className="flex flex-col items-stretch rounded-lg overflow-hidden"
+      style={{
+        flex: "1 1 220px",
+        minWidth: 220,
+        paddingBottom: 16,
+        background: "#FDEBE2",
+        boxShadow: "2px 2px 0 0 #D33869, -2px -2px 0 0 #FF94C2",
+      }}
+    >
+      <div
+        className="w-full flex items-center justify-center"
+        style={{ padding: 16, background: e.headerGradient }}
+      >
+        <h3
+          style={{
+            ...pixelHeading,
+            color: "#320032",
+            textShadow: "1px 1px 0 #F29A9C",
+            fontSize: 13,
+            lineHeight: 1.3,
+            letterSpacing: "-0.065px",
+            width: "100%",
+          }}
+        >
+          {e.role}
+        </h3>
+      </div>
+      <div
+        className="w-full flex flex-col items-start"
+        style={{ padding: "0 16px", gap: 2 }}
+      >
+        {e.logo && (
+          <div className="py-3 flex items-center" style={{ minHeight: 40 }}>
+            <img
+              src={e.logo.src}
+              alt={e.logo.alt}
+              width={e.logo.width}
+              height={e.logo.height}
+              style={{
+                width: e.logo.width,
+                height: e.logo.height,
+                objectFit: "contain",
+              }}
+              loading="lazy"
+            />
+          </div>
+        )}
+        {[e.company, e.period, e.location].map((line) => (
+          <div
+            key={line}
+            style={{
+              ...pixelBody,
+              color: "#320032",
+              fontSize: 15,
+              lineHeight: 1.35,
+              letterSpacing: "-0.15px",
+              alignSelf: "stretch",
+            }}
+          >
+            {line}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function DescriptionPanel({ text }: { text: string }) {
+  return (
+    <div
+      className="flex items-center"
+      style={{
+        flex: "1 1 320px",
+        minWidth: 260,
+        padding: 16,
+        borderRadius: 8,
+        background: "#FDEBE2",
+        boxShadow: "2px 2px 0 0 #D33869, -2px -2px 0 0 #FF94C2",
+      }}
+    >
+      <p
+        style={{
+          ...pixelBody,
+          color: "#320032",
+          fontSize: 15,
+          lineHeight: 1.35,
+          letterSpacing: "-0.15px",
+          whiteSpace: "pre-line",
+          margin: 0,
+        }}
+      >
+        {text || "—"}
+      </p>
+    </div>
+  );
+}
+
 function Index() {
   const [tab, setTab] = useState<TabKey>("case");
 
