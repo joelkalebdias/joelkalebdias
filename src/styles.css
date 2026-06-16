@@ -164,3 +164,37 @@
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
 }
+
+/* Retro twinkling starfield */
+@keyframes star-twinkle-a {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 1; }
+}
+@keyframes star-twinkle-b {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+@keyframes star-twinkle-c {
+  0%, 40%, 100% { opacity: 0.4; }
+  20%, 60% { opacity: 1; }
+}
+
+.retro-starfield {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.retro-starfield > svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  image-rendering: pixelated;
+}
+.retro-starfield .tw-a { animation: star-twinkle-a 2.4s steps(2) infinite; }
+.retro-starfield .tw-b { animation: star-twinkle-b 3.1s steps(2) infinite; }
+.retro-starfield .tw-c { animation: star-twinkle-c 1.7s steps(2) infinite; }
+.retro-starfield .tw-d { animation: star-twinkle-a 4.2s steps(2) infinite; }
