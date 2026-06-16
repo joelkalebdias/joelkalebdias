@@ -31,6 +31,18 @@ type CaseStudy = {
     images: string[];
     table: { tool: string; strength: string; offering: string }[];
   };
+  worksWell: { tool: string; body: string }[];
+  shortfall: { heading: string; body: string }[];
+  implications: string[];
+  solutionHero: string;
+  ia: {
+    navItems: string[];
+    intro: string;
+    principles: { title: string; body: string }[];
+  };
+  screens: { title: string; body: string }[];
+  aiProcess: { title: string; body: string }[];
+  lessons: { title: string; body: string }[];
 };
 
 const CASE_STUDIES: Record<string, CaseStudy> = {
