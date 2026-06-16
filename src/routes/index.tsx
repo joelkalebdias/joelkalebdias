@@ -178,12 +178,7 @@ const EXPERIENCES: Experience[] = [
     location: "Berlin, Germany",
     gradient: "linear-gradient(180deg, #F35DA3 0%, #F35DA3 80%, #9804AF 100%)",
     headerGradient: "linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)",
-    logo: {
-      src: "https://api.builder.io/api/v1/image/assets/TEMP/c3298cbc0dce7d31e484888c4bfcd386e7322f44?width=93",
-      width: 93,
-      height: 24,
-      alt: "Publicis Groupe",
-    },
+    logo: { src: publicisLogo.url, width: 28, height: 34, alt: "Publicis Groupe" },
     bullets: [
       "Worked as a part time working student, while pursuing my masters in design.",
       "Supported end-to-end journey mapping for media advertisement offers and planning processes.",
@@ -201,12 +196,7 @@ const EXPERIENCES: Experience[] = [
     location: "Udupi, India",
     gradient: "linear-gradient(180deg, #BAEB76 0%, #BAEB76 80%, #51D830 100%)",
     headerGradient: "linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)",
-    logo: {
-      src: "https://api.builder.io/api/v1/image/assets/TEMP/d604b5139c31b9f3c8321ab6fff6ea05ad1e23aa?width=242",
-      width: 121,
-      height: 24,
-      alt: "Niveus Solutions",
-    },
+    logo: { src: niveusLogo.url, width: 121, height: 24, alt: "Niveus Solutions" },
     bullets: [
       "Delivered design solutions for SaaS products serving domestic and international clients.",
       "Collaborated with stakeholders to align product outcomes with business goals and user needs.",
@@ -225,6 +215,7 @@ const EXPERIENCES: Experience[] = [
     location: "Udupi, India",
     gradient: "linear-gradient(180deg, #F0D642 0%, #F0D642 80%, #F08A42 100%)",
     headerGradient: "linear-gradient(180deg, #FBFFF6 0%, #B5EAF4 50%, #69DAEE 100%)",
+    logo: { src: robosoftLogo.url, width: 150, height: 24, alt: "Robosoft Technologies" },
     bullets: [
       "Conducted user interviews and developed information architecture and app maps.",
       "Designed wireframes, prototypes, UI elements, and prepared development handoffs.",
@@ -243,6 +234,7 @@ const EXPERIENCES: Experience[] = [
     location: "Goa, India",
     gradient: "linear-gradient(180deg, #69DAEE 0%, #69DAEE 80%, #8A69EE 100%)",
     headerGradient: "linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)",
+    logo: { src: narlaLogo.url, width: 80, height: 32, alt: "Narla" },
     bullets: [],
   },
   {
@@ -252,6 +244,7 @@ const EXPERIENCES: Experience[] = [
     location: "Udupi, India",
     gradient: "linear-gradient(180deg, #F35DA3 0%, #F35DA3 80%, #9804AF 100%)",
     headerGradient: "linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)",
+    logo: { src: jeelitLogo.url, width: 32, height: 32, alt: "Jee Lit Weighing Solutions" },
     bullets: [],
   },
 ];
