@@ -559,7 +559,8 @@ function CaseStudyPage() {
                 >
                   {r.heading}
                 </h3>
-                <p
+                <TypewriterText
+                  text={r.body}
                   style={{
                     ...pixelBody,
                     color: "#320032",
@@ -567,9 +568,7 @@ function CaseStudyPage() {
                     lineHeight: 1.45,
                     margin: 0,
                   }}
-                >
-                  {r.body}
-                </p>
+                />
               </div>
             ))}
           </div>
