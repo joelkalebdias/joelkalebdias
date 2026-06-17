@@ -1830,7 +1830,7 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
 
         <PanelShell>
           <PanelHeader label="Research" gradient="linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)" />
-          <div className="px-4 pt-4 flex flex-col gap-3">
+          <div className="px-4 pt-4 pb-4 flex flex-col gap-4">
             <h3
               style={{
                 ...pixelBody,
@@ -1843,14 +1843,30 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
             >
               {G.researchHeading}
             </h3>
-            {G.researchParagraphs.map((p, i) => (
-              <p
-                key={i}
-                style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4, margin: 0, letterSpacing: "-0.01em" }}
-              >
-                {p}
-              </p>
-            ))}
+            <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4, margin: 0, letterSpacing: "-0.01em" }}>
+              {G.researchIntro}
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {G.researchCards.map((c, i) => (
+                <div
+                  key={i}
+                  className="rounded-lg p-4 flex flex-col gap-3"
+                  style={{ background: "#FFF8E0", boxShadow: "inset 0 0 0 1px #ECD948" }}
+                >
+                  <p style={{ ...pixelBody, color: "#320032", fontSize: 14, lineHeight: 1.45, margin: 0, letterSpacing: "-0.01em", flex: 1 }}>
+                    {c.body}
+                  </p>
+                  <div style={{ height: c.logoHeight, display: "flex", alignItems: "center" }}>
+                    <img
+                      src={c.logo}
+                      alt={c.logoAlt}
+                      style={{ height: "100%", width: "auto", objectFit: "contain" }}
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </PanelShell>
 
