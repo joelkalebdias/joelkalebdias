@@ -1895,48 +1895,52 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
         {/* Competition & Benchmarking */}
         <PanelShell>
           <PanelHeader label="Competition & Benchmarking" gradient="linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)" />
-          <div className="px-4 pt-4 flex flex-col gap-4">
-            {/* SWOT table — Traits | Apps with text names (desktop) */}
+          <div className="px-4 pt-4 pb-4 flex flex-col gap-4">
+            <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4, margin: 0, letterSpacing: "-0.01em" }}>
+              {G.competition.intro}
+            </p>
+
+            {/* Competitor logo row */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center py-3">
+              {G.competition.apps.map((a) => (
+                <div key={a.name} className="flex items-center justify-center" style={{ height: 56 }}>
+                  <img
+                    src={a.logo}
+                    alt={a.name}
+                    style={{ maxHeight: "100%", maxWidth: "80%", objectFit: "contain" }}
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* SWOT table (desktop) */}
             <div className="hidden md:block rounded-xl overflow-hidden" style={{ border: "1px solid #F365A7" }}>
               <div className="grid" style={{ gridTemplateColumns: `minmax(140px,0.8fr) repeat(${G.competition.apps.length}, minmax(0,1fr))` }}>
-                {/* Header row 1: Traits | Apps (spanning competitor columns) */}
+                {/* Header row: Traits | Apps */}
                 <div
-                  className="px-4 py-3 flex items-center"
-                  style={{ background: "#F35DA3", borderBottom: "1px solid #F365A7", borderRight: "1px solid #F365A7" }}
+                  className="px-4 py-3 flex items-center gap-2"
+                  style={{ background: "#FDEBE2", borderBottom: "1px solid #F365A7", borderRight: "1px solid #F365A7" }}
                 >
-                  <span style={{ ...pixelBody, color: "#320032", fontSize: 16, fontWeight: 700 }}>Traits</span>
+                  <span style={{ ...pixelBody, color: "#320032", fontSize: 14, fontWeight: 700 }}>Traits</span>
+                  <span style={{ ...pixelBody, color: "#320032", fontSize: 14, fontWeight: 700, marginLeft: "auto" }}>Apps</span>
                 </div>
-                <div
-                  className="px-4 py-3 flex items-center justify-center"
-                  style={{
-                    background: "#F35DA3",
-                    borderBottom: "1px solid #F365A7",
-                    gridColumn: `span ${G.competition.apps.length} / span ${G.competition.apps.length}`,
-                  }}
-                >
-                  <span style={{ ...pixelBody, color: "#320032", fontSize: 16, fontWeight: 700 }}>Apps</span>
-                </div>
-
-                {/* Header row 2: empty | app names */}
-                <div
-                  className="px-4 py-3"
-                  style={{ background: "#FFB3D6", borderBottom: "1px solid #F365A7", borderRight: "1px solid #F365A7" }}
-                />
                 {G.competition.apps.map((a, i) => (
                   <div
                     key={a.name}
                     className="px-3 py-3 flex items-center justify-center text-center"
                     style={{
-                      background: "#FFB3D6",
+                      background: "#FDEBE2",
                       borderBottom: "1px solid #F365A7",
                       borderRight: i < G.competition.apps.length - 1 ? "1px solid #F365A7" : undefined,
                     }}
                   >
-                    <span style={{ ...pixelBody, color: "#320032", fontSize: 15, fontWeight: 700, letterSpacing: "-0.01em" }}>
+                    <span style={{ ...pixelBody, color: "#320032", fontSize: 14, fontWeight: 700, letterSpacing: "-0.01em" }}>
                       {a.name}
                     </span>
                   </div>
                 ))}
+
 
                 {/* SWOT rows */}
                 {G.competition.swot.map((row, ri) => {
