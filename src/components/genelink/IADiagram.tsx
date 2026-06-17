@@ -183,6 +183,7 @@ export function IADiagram() {
 
       {/* ============ MESSAGES BRANCH (x=680) ============ */}
       <Box x={680} y={600} w={120} h={40} fill={BLUE} lines={["Messages"]} />
+      <Arrow d="M 740 640 L 740 648" />
       <Box x={680} y={650} w={120} h={140} fill={BLUE} lines={["Message...", "Chats", "Search", "Filters"]} fontSize={12} />
       <Arrow d="M 800 695 L 828 695" />
       <Box x={830} y={670} w={120} h={50} fill={GREEN} lines={["Details", "popover"]} fontSize={11} />
@@ -205,10 +206,14 @@ export function IADiagram() {
       <Box x={1140} y={790} w={140} h={60} fill={BLUE} lines={["Switch", "views"]} />
       <Box x={1140} y={865} w={140} h={50} fill={BLUE} lines={["Search"]} />
 
-      {/* FT vertical connector to children */}
-      <line x1={1210} y1={640} x2={1210} y2={655} stroke={ARROW_GRAY} strokeWidth={1.2} />
-      <line x1={1210} y1={655} x2={1135} y2={655} stroke={ARROW_GRAY} strokeWidth={1.2} />
-      <Arrow d="M 1140 685 L 1138 685" />
+      {/* FT vertical connector: down from FT bottom along the left edge, then arrows into each child */}
+      <line x1={1120} y1={640} x2={1120} y2={890} stroke={ARROW_GRAY} strokeWidth={1.2} />
+      <line x1={1210} y1={640} x2={1120} y2={640} stroke={ARROW_GRAY} strokeWidth={1.2} />
+      <Arrow d="M 1120 685 L 1138 685" />
+      <Arrow d="M 1120 750 L 1138 750" />
+      <Arrow d="M 1120 820 L 1138 820" />
+      <Arrow d="M 1120 890 L 1138 890" />
+
 
       {/* Add Parent → Add father popover */}
       <Arrow d="M 1280 750 L 1308 750" />
