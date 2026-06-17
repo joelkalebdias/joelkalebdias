@@ -1895,52 +1895,99 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
         {/* Competition & Benchmarking */}
         <PanelShell>
           <PanelHeader label="Competition & Benchmarking" gradient="linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)" />
-          <div className="px-4 pt-4 pb-4 flex flex-col gap-4">
-            <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4, margin: 0, letterSpacing: "-0.01em" }}>
-              {G.competition.intro}
-            </p>
-
-            {/* Competitor logo row */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center py-3">
-              {G.competition.apps.map((a) => (
-                <div key={a.name} className="flex items-center justify-center" style={{ height: 56 }}>
-                  <img
-                    src={a.logo}
-                    alt={a.name}
-                    style={{ maxHeight: "100%", maxWidth: "80%", objectFit: "contain" }}
-                    loading="lazy"
-                  />
-                </div>
-              ))}
-            </div>
-
-            {/* SWOT table (desktop) */}
-            <div className="hidden md:block rounded-xl overflow-hidden" style={{ border: "1px solid #F365A7" }}>
-              <div className="grid" style={{ gridTemplateColumns: `minmax(140px,0.8fr) repeat(${G.competition.apps.length}, minmax(0,1fr))` }}>
-                {/* Header row: Traits | Apps */}
+          <div className="px-0 pt-0 pb-0 flex flex-col">
+            {/* Desktop: unified table — logo row, app names row, SWOT rows */}
+            <div className="hidden md:block" style={{ borderTop: "1px solid #F365A7" }}>
+              <div className="grid" style={{ gridTemplateColumns: `minmax(160px,0.9fr) repeat(${G.competition.apps.length}, minmax(0,1fr))` }}>
+                {/* Logo row — empty trait cell + logo cells (cream bg) */}
                 <div
-                  className="px-4 py-3 flex items-center gap-2"
-                  style={{ background: "#FDEBE2", borderBottom: "1px solid #F365A7", borderRight: "1px solid #F365A7" }}
-                >
-                  <span style={{ ...pixelBody, color: "#320032", fontSize: 14, fontWeight: 700 }}>Traits</span>
-                  <span style={{ ...pixelBody, color: "#320032", fontSize: 14, fontWeight: 700, marginLeft: "auto" }}>Apps</span>
-                </div>
+                  style={{
+                    background: "#FDEBE2",
+                    borderBottom: "1px solid #F365A7",
+                    borderRight: "1px solid #F365A7",
+                  }}
+                />
                 {G.competition.apps.map((a, i) => (
                   <div
-                    key={a.name}
-                    className="px-3 py-3 flex items-center justify-center text-center"
+                    key={`logo-${a.name}`}
+                    className="flex items-center justify-center px-4 py-6"
                     style={{
                       background: "#FDEBE2",
                       borderBottom: "1px solid #F365A7",
                       borderRight: i < G.competition.apps.length - 1 ? "1px solid #F365A7" : undefined,
+                      height: 96,
                     }}
                   >
-                    <span style={{ ...pixelBody, color: "#320032", fontSize: 14, fontWeight: 700, letterSpacing: "-0.01em" }}>
+                    <img
+                      src={a.logo}
+                      alt={a.name}
+                      style={{ maxHeight: 44, maxWidth: "80%", objectFit: "contain" }}
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+
+                {/* App names row — Traits/Apps diagonal cell + app name cells (pink bg) */}
+                <div
+                  className="relative px-4 py-4"
+                  style={{
+                    background: "#FFB3D6",
+                    borderBottom: "1px solid #F365A7",
+                    borderRight: "1px solid #F365A7",
+                    minHeight: 64,
+                  }}
+                >
+                  {/* Diagonal line from top-left to bottom-right */}
+                  <svg
+                    aria-hidden
+                    style={{ position: "absolute", inset: 0, width: "100%", height: "100%", pointerEvents: "none" }}
+                    preserveAspectRatio="none"
+                    viewBox="0 0 100 100"
+                  >
+                    <line x1="0" y1="0" x2="100" y2="100" stroke="#F35DA3" strokeWidth="0.5" vectorEffect="non-scaling-stroke" />
+                  </svg>
+                  <span
+                    style={{
+                      ...pixelBody,
+                      color: "#320032",
+                      fontSize: 15,
+                      fontWeight: 700,
+                      position: "absolute",
+                      left: 16,
+                      bottom: 10,
+                    }}
+                  >
+                    Traits
+                  </span>
+                  <span
+                    style={{
+                      ...pixelBody,
+                      color: "#320032",
+                      fontSize: 15,
+                      fontWeight: 700,
+                      position: "absolute",
+                      right: 16,
+                      top: 10,
+                    }}
+                  >
+                    Apps
+                  </span>
+                </div>
+                {G.competition.apps.map((a, i) => (
+                  <div
+                    key={`name-${a.name}`}
+                    className="px-3 py-4 flex items-center justify-center text-center"
+                    style={{
+                      background: "#FFB3D6",
+                      borderBottom: "1px solid #F365A7",
+                      borderRight: i < G.competition.apps.length - 1 ? "1px solid #F365A7" : undefined,
+                    }}
+                  >
+                    <span style={{ ...pixelHeading, color: "#320032", fontSize: 16, letterSpacing: "-0.02em" }}>
                       {a.name}
                     </span>
                   </div>
                 ))}
-
 
                 {/* SWOT rows */}
                 {G.competition.swot.map((row, ri) => {
@@ -1948,26 +1995,28 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
                   return (
                     <div key={row.trait} className="contents">
                       <div
-                        className="px-4 py-3"
+                        className="px-4 py-4 flex items-center"
                         style={{
-                          background: "#FDEBE2",
+                          background: "#FFB3D6",
                           borderBottom: isLast ? undefined : "1px solid #F365A7",
                           borderRight: "1px solid #F365A7",
                         }}
                       >
-                        <span style={{ ...pixelBody, color: "#320032", fontSize: 15, fontWeight: 700 }}>{row.trait}</span>
+                        <span style={{ ...pixelHeading, color: "#320032", fontSize: 15, letterSpacing: "-0.02em" }}>
+                          {row.trait}
+                        </span>
                       </div>
                       {row.cells.map((c, ci) => (
                         <div
                           key={ci}
-                          className="px-3 py-3"
+                          className="px-4 py-4"
                           style={{
                             background: "#FFFFFF",
                             borderBottom: isLast ? undefined : "1px solid #F365A7",
                             borderRight: ci < row.cells.length - 1 ? "1px solid #F365A7" : undefined,
                           }}
                         >
-                          <p style={{ ...pixelBody, color: "#320032", fontSize: 13, lineHeight: 1.45, margin: 0 }}>{c}</p>
+                          <p style={{ ...pixelBody, color: "#320032", fontSize: 13, lineHeight: 1.5, margin: 0 }}>{c}</p>
                         </div>
                       ))}
                     </div>
@@ -1976,8 +2025,9 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
               </div>
             </div>
 
+
             {/* Mobile fallback: per-app cards */}
-            <div className="md:hidden grid grid-cols-1 gap-3">
+            <div className="md:hidden grid grid-cols-1 gap-3 px-4 pt-4 pb-4">
               {G.competition.apps.map((a, i) => (
                 <div key={a.name} className="rounded-lg p-3" style={{ background: "#FDEBE2", boxShadow: "inset 0 0 0 2px #F365A7" }}>
                   <div className="flex items-center justify-center mb-3 p-2 rounded" style={{ background: "#FFB3D6" }}>
