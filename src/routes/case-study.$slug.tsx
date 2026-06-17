@@ -45,6 +45,7 @@ type CaseStudy = {
   screens: { title: string; body: string; headerGradient?: string; images?: string[] }[];
   aiIntro: string;
   aiProcess: { title: string; body: string }[];
+  aiSectionTitle?: string;
   learnedIntro: string;
   lessons: { title: string; body: string }[];
 };
