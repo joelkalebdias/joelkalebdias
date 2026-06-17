@@ -367,7 +367,7 @@ function AboutPage() {
               whiteSpace: "pre-line",
             }}
           >
-            {"> Made with love in Figma <\n2026 - Joel Kaleb Dias"}
+            {"> Made with love in Figma + Loveable <\n2026 - Joel Kaleb Dias"}
           </div>
         </div>
       </div>
