@@ -487,18 +487,16 @@ function CaseStudyPage() {
             gradient="linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)"
           />
           <div className="px-4 pt-4">
-            <p
+            <TypewriterText
+              text={cs.overview}
               style={{
                 ...pixelBody,
                 color: "#320032",
                 fontSize: 16,
                 lineHeight: 1.45,
-                whiteSpace: "pre-line",
                 margin: 0,
               }}
-            >
-              {cs.overview}
-            </p>
+            />
           </div>
         </PanelShell>
 
