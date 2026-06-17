@@ -931,9 +931,10 @@ function CaseStudyPage() {
               gradient={cs.screens[0].headerGradient || "linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)"}
             />
             <div className="px-4 pt-4 flex flex-col gap-3">
-              <p style={{ ...pixelBody, color: "#320032", fontSize: "clamp(16px, 2.2vw, 24px)", lineHeight: 1.3, letterSpacing: "-0.02em", margin: 0, whiteSpace: "pre-line" }}>
-                {cs.screens[0].body}
-              </p>
+              <TypewriterText
+                text={cs.screens[0].body}
+                style={{ ...pixelBody, color: "#320032", fontSize: "clamp(16px, 2.2vw, 24px)", lineHeight: 1.3, letterSpacing: "-0.02em", margin: 0 }}
+              />
               <div className="flex flex-col sm:flex-row gap-3">
                 <div className="flex-1 rounded-xl overflow-hidden" style={{ aspectRatio: "652/435" }}>
                   <img src={cs.screens[0].images?.[0]} alt="" className="w-full h-full object-cover" loading="lazy" />
@@ -952,9 +953,10 @@ function CaseStudyPage() {
               gradient={cs.screens[1].headerGradient || "linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)"}
             />
             <div className="px-4 pt-4 flex flex-col gap-3">
-              <p style={{ ...pixelBody, color: "#320032", fontSize: "clamp(16px, 2.2vw, 24px)", lineHeight: 1.3, letterSpacing: "-0.02em", margin: 0, whiteSpace: "pre-line" }}>
-                {cs.screens[1].body}
-              </p>
+              <TypewriterText
+                text={cs.screens[1].body}
+                style={{ ...pixelBody, color: "#320032", fontSize: "clamp(16px, 2.2vw, 24px)", lineHeight: 1.3, letterSpacing: "-0.02em", margin: 0 }}
+              />
               <div className="rounded-xl overflow-hidden" style={{ aspectRatio: "1375/978" }}>
                 <img src={cs.screens[1].images?.[0]} alt="" className="w-full h-full object-cover" loading="lazy" />
               </div>
@@ -968,9 +970,10 @@ function CaseStudyPage() {
               gradient={cs.screens[2].headerGradient || "linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)"}
             />
             <div className="px-4 pt-4 flex flex-col gap-3">
-              <p style={{ ...pixelBody, color: "#320032", fontSize: "clamp(16px, 2.2vw, 24px)", lineHeight: 1.3, letterSpacing: "-0.02em", margin: 0, whiteSpace: "pre-line" }}>
-                {cs.screens[2].body}
-              </p>
+              <TypewriterText
+                text={cs.screens[2].body}
+                style={{ ...pixelBody, color: "#320032", fontSize: "clamp(16px, 2.2vw, 24px)", lineHeight: 1.3, letterSpacing: "-0.02em", margin: 0 }}
+              />
               <div className="grid grid-cols-1 sm:grid-cols-[2fr_1fr_1fr] gap-3" style={{ gridAutoRows: "minmax(180px, 27vw)" }}>
                 <div className="rounded-xl overflow-hidden">
                   <img src={cs.screens[2].images?.[0]} alt="" className="w-full h-full object-cover" loading="lazy" />
@@ -995,9 +998,10 @@ function CaseStudyPage() {
               gradient={cs.screens[3].headerGradient || "linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)"}
             />
             <div className="px-4 pt-4 flex flex-col gap-3">
-              <p style={{ ...pixelBody, color: "#320032", fontSize: "clamp(16px, 2.2vw, 24px)", lineHeight: 1.3, letterSpacing: "-0.02em", margin: 0, whiteSpace: "pre-line" }}>
-                {cs.screens[3].body}
-              </p>
+              <TypewriterText
+                text={cs.screens[3].body}
+                style={{ ...pixelBody, color: "#320032", fontSize: "clamp(16px, 2.2vw, 24px)", lineHeight: 1.3, letterSpacing: "-0.02em", margin: 0 }}
+              />
               <div className="rounded-xl overflow-hidden p-4" style={{ background: "#030B12" }}>
                 <img src={cs.screens[3].images?.[0]} alt="" className="w-full rounded-xl border border-[#282924] object-cover object-top" style={{ maxHeight: 520, aspectRatio: "245/449" }} loading="lazy" />
               </div>
