@@ -1499,34 +1499,34 @@ const GENELINK = {
       age: "34",
       role: "Marketing Manager",
       accent: "green" as const,
-      avatar: "https://api.builder.io/api/v1/image/assets/TEMP/2234d9605d41f3aefe83060b6aac0356cbf03118?width=422",
+      avatar: sarahAvatar.url,
       about:
         "Sarah is a tech-savvy professional with a passion for uncovering her family history. She lives in a suburban area in the USA and enjoys exploring new technologies that simplify complex tasks. Sarah has a bachelor's degree in marketing and works for a mid-sized company, where she applies her creativity and analytical skills.",
       goals:
         "Sarah is eager to discover her ancestral roots and connect with long-lost relatives using modern technology. She values efficiency and wants a user-friendly app that seamlessly integrates DNA analysis with intuitive UI/UX design. Sarah is willing to invest in reliable tools that provide accurate results and meaningful connections.",
       challenges:
-        "Sarah finds the process of navigating through extensive genetic data and complex family connections daunting. She seeks an app that simplifies this process while offering robust features for communication and data visualization. Privacy and data security are also significant concerns.",
+        "Sarah finds the process of navigating through extensive genetic data and complex family connections daunting. She seeks an app that simplifies this process while offering robust features for communication and data visualization. Privacy and data security are also significant concerns for Sarah when using genetic testing and family history services.",
       tech:
-        "Sarah is proficient in using smartphones and computers for both work and personal tasks. She prefers apps with clean, modern interfaces that are easy to navigate and provide clear instructions. She appreciates apps that offer customization options to tailor the experience to her preferences.",
+        "Sarah is proficient in using smartphones and computers for both work and personal tasks. She prefers apps with clean, modern interfaces that are easy to navigate and provide clear instructions. Sarah appreciates apps that offer customization options to tailor the user experience to her preferences.",
       quote:
-        "I want an app that not only helps me uncover my family history but also makes the journey enjoyable and easy to understand. Privacy and accuracy are non-negotiable for me — I need to trust the app with my genetic data.",
+        "I want an app that not only helps me uncover my family history but also makes the journey enjoyable and easy to understand. Privacy and accuracy are non-negotiable for me—I need to trust the app with my genetic data.",
     },
     {
       name: "Michael Nguyen",
       age: "42",
       role: "Software Engineer",
-      accent: "blue" as const,
-      avatar: "https://api.builder.io/api/v1/image/assets/TEMP/2506938cce78290b2b85fd700a8e7204e980d162?width=396",
+      accent: "orange" as const,
+      avatar: michaelAvatar.url,
       about:
         "Michael is a driven software engineer who resides in a bustling urban area. He holds a master's degree in computer science and works for a tech startup, where he applies his expertise in coding and problem-solving. Michael enjoys exploring new technologies and is interested in using them to uncover his family history.",
       goals:
-        "Michael is curious about his ancestral origins and wants to discover connections with distant relatives through DNA analysis. He values efficiency and accuracy, preferring apps that offer seamless integration of genetic data with intuitive UI/UX design.",
+        "Michael is curious about his ancestral origins and wants to discover connections with distant relatives through DNA analysis. He values efficiency and accuracy in tools he uses, preferring apps that offer seamless integration of genetic data with intuitive UI/UX design. Michael seeks meaningful insights into his heritage and desires a user-friendly app that simplifies the complexities of genealogy.",
       challenges:
-        "Navigating through extensive genetic data and interpreting complex family relationships poses challenges for Michael. He seeks an app that not only provides comprehensive genetic analysis but also simplifies the presentation of family connections. He is cautious about data privacy.",
+        "Navigating through extensive genetic data and interpreting complex family relationships poses challenges for Michael. He seeks an app that not only provides comprehensive genetic analysis but also simplifies the presentation of family connections. Michael is cautious about data privacy and wants assurances that his genetic information will be handled securely.",
       tech:
         "Michael is highly proficient in using technology, particularly smartphones and computers, both professionally and personally. He appreciates apps with sleek, modern interfaces that are easy to navigate and offer customizable features.",
       quote:
-        "I'm fascinated by the potential of technology to uncover my family history. I want an app that gives me accurate genetic insights and makes it easy to explore my ancestry. Security and privacy are paramount.",
+        "I'm fascinated by the potential of technology to uncover my family history. I want an app that not only gives me accurate genetic insights but also makes it easy for me to explore and understand my ancestry. Security and privacy are paramount—it's crucial that my genetic data is protected.",
     },
   ],
   hmwIntro:
