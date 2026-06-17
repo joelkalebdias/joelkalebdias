@@ -413,7 +413,7 @@ function PanelHeader({ label, gradient }: { label: string; gradient: string }) {
   );
 }
 
-function PanelShell({ children }: { children: React.ReactNode }) {
+function PanelShell({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
   return (
     <RevealPanel
       as="section"
@@ -423,6 +423,7 @@ function PanelShell({ children }: { children: React.ReactNode }) {
         background: "#FDEBE2",
         boxShadow: "2px 2px 0 0 #D33869, -2px -2px 0 0 #FF94C2",
         paddingBottom: 16,
+        ...style,
       }}
     >
       {children}
@@ -1893,7 +1894,7 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
         </StaggerGroup>
 
         {/* Competition & Benchmarking */}
-        <PanelShell>
+        <PanelShell style={{ paddingBottom: 0 }}>
           <PanelHeader label="Competition & Benchmarking" gradient="linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)" />
           <div className="px-0 pt-0 pb-0 flex flex-col">
             {/* Desktop: unified table — logo row, app names row, SWOT rows */}
