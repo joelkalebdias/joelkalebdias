@@ -1396,12 +1396,22 @@ const GENELINK = {
       bullets: ["Information architecture", "Branding", "Visual design"],
     },
   ],
+  heroPhones: {
+    left: "https://api.builder.io/api/v1/image/assets/TEMP/8bd13acc675ba8a17c37002124504d3c624a3f2e?width=447",
+    center: "https://api.builder.io/api/v1/image/assets/TEMP/a777d58a294dde49990c89cbffadccc161f82f84?width=524",
+    right: "https://api.builder.io/api/v1/image/assets/TEMP/3331caf3062bfc77c5f20f62aded11884b521fa6?width=438",
+  },
   researchHeading: "Let's Connect People!",
-  researchBody:
-    "Since I did not have access to users for research due to the limited timeline, I used third party sources for quantitative research data and tried to infer from it.\nAt 2019, more than 26 million consumers had added their DNA to four leading commercial ancestry and health databases. If the pace continues, the gene troves could hold data on the genetic makeup of more than 100 million people within 24 months.\nAncestry testing also can yield unanticipated results such as lack of expected ancestry or the presence of unexpected ancestry. Discordance between pairs of siblings or between father and child can reveal nonpaternity, which is estimated to occur in approximately 1% to 2% of births in Western populations — results that could have significant psychosocial impact.\nMost participants understood that the tests could provide insights about ancestry and kinship, although some raised questions about the accuracy and stability of results, and a few were surprised to learn that accuracy depends on the pool of people who had previously been tested.",
+  researchParagraphs: [
+    "Since I did not have access to users for research due to the limited timeline, I used third party sources for quantitative research data and tried to infer from it.",
+    "At 2019, more than 26 million consumers had added their DNA to four leading commercial ancestry and health databases. If the pace continues, the gene troves could hold data on the genetic makeup of more than 100 million people within 24 months.",
+    "Ancestry testing also can yield unanticipated results such as lack of expected ancestry or the presence of unexpected ancestry. Discordance between pairs of siblings or between father and child can reveal nonpaternity, which is estimated to occur in approximately 1% to 2% of births in Western populations. These results could have significant psychosocial impacts.",
+    "If you have taken these tests, you may see the percentages in your ancestry report fluctuate over time, or if you've taken multiple DNA tests with different companies you may see slight differences in the report numbers. This could be due to differences in each company's methods, the continued growth and improvement of the reference datasets, and other factors.",
+    "Most participants understood that test could provide insights about ancestry and kinship, although some individuals in every group raised questions about the accuracy and stability of results, with some expressing worries about scientific errors. A few participants were surprised to learn that the accuracy of a user's results depend on the pool of people who had previously been tested.",
+  ],
   stats: [
     { value: "26M+", label: "Added their DNA to four leading commercial ancestry and health databases" },
-    { value: "1-2%", label: "Discordance between sibling pairs in Western populations" },
+    { value: "1-2%", label: "Discordance between sibling pairs" },
   ],
   competition: {
     intro:
@@ -1574,26 +1584,20 @@ function PhaseDivider({ label }: { label: string }) {
 function PhaseCard({ number, title, bullets }: { number: string; title: string; bullets: string[] }) {
   return (
     <div
-      className="rounded-xl p-4 flex flex-col gap-2"
+      className="rounded-xl p-4 flex items-center justify-center text-center"
       style={{
         background: "#FA0",
         boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
-        minHeight: 120,
+        minHeight: 110,
       }}
     >
-      <div style={{ ...pixelHeading, color: "#320032", fontSize: 18, letterSpacing: "-0.02em" }}>
-        {number}. {title}
+      <div style={{ ...pixelHeading, color: "#320032", fontSize: 12, lineHeight: 1.3, letterSpacing: "-0.01em", whiteSpace: "pre-line" }}>
+        {`${number}.${title}\n${bullets.join("\n")}`}
       </div>
-      <ul className="list-none p-0 m-0 flex flex-col gap-1">
-        {bullets.map((b) => (
-          <li key={b} style={{ ...pixelBody, color: "#320032", fontSize: 15, lineHeight: 1.4 }}>
-            • {b}
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
+
 
 function PersonaCard({ p }: { p: (typeof GENELINK)["personas"][number] }) {
   const isGreen = p.accent === "green";
@@ -1743,32 +1747,75 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
           </div>
         </header>
 
-        {/* Hero image */}
-        <RevealPanel effect="crt-boot" className="rounded-xl overflow-hidden w-full" style={{ aspectRatio: "16/7", background: "#000" }}>
-          <img src={cs.hero} alt={cs.title} className="w-full h-full object-cover" />
+        {/* Hero — 3-phone scene */}
+        <RevealPanel
+          effect="crt-boot"
+          className="rounded-xl overflow-hidden w-full relative"
+          style={{
+            background: "#181818",
+            boxShadow: "-4px -4px 0 0 #084170 inset, 4px 4px 0 0 #0E1B37 inset",
+            aspectRatio: "1232/552",
+            minHeight: 280,
+          }}
+        >
+          {/* radial light wash */}
+          <div
+            aria-hidden
+            className="absolute inset-0"
+            style={{
+              background: "radial-gradient(ellipse at 50% 90%, #FFFFFF 0%, rgba(255,255,255,0) 60%)",
+              opacity: 0.85,
+            }}
+          />
+          <div className="absolute inset-0 flex items-end justify-center gap-[3%] pb-[2%] px-[4%]">
+            <img
+              src={G.heroPhones.left}
+              alt=""
+              className="relative h-[85%] w-auto object-contain"
+              style={{ filter: "drop-shadow(0 2px 30px rgba(0,0,0,0.45))", transform: "translateY(-4%)" }}
+              loading="lazy"
+            />
+            <img
+              src={G.heroPhones.center}
+              alt={cs.title}
+              className="relative h-[98%] w-auto object-contain"
+              style={{ filter: "drop-shadow(0 4px 40px rgba(0,0,0,0.55))" }}
+            />
+            <img
+              src={G.heroPhones.right}
+              alt=""
+              className="relative h-[85%] w-auto object-contain"
+              style={{ filter: "drop-shadow(0 2px 30px rgba(0,0,0,0.45))", transform: "translateY(-4%)" }}
+              loading="lazy"
+            />
+          </div>
         </RevealPanel>
 
-        {/* The Challenge */}
-        <PanelShell>
-          <PanelHeader label="The Challenge" gradient="linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)" />
-          <div className="px-4 pt-4">
-            <TypewriterText text={G.challenge} style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }} />
-          </div>
-        </PanelShell>
-
-        {/* Target Audience */}
-        <PanelShell>
-          <PanelHeader label="Target Audience" gradient="linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)" />
-          <div className="px-4 pt-4">
-            <TypewriterText text={G.targetAudience} style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }} />
-          </div>
-        </PanelShell>
+        {/* The Challenge + Target Audience (side-by-side) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <PanelShell>
+            <PanelHeader label="The Challenge:" gradient="linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)" />
+            <div className="px-4 pt-4">
+              <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4, margin: 0, letterSpacing: "-0.01em" }}>
+                {G.challenge}
+              </p>
+            </div>
+          </PanelShell>
+          <PanelShell>
+            <PanelHeader label="Target Audience" gradient="linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)" />
+            <div className="px-4 pt-4">
+              <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4, margin: 0, letterSpacing: "-0.01em" }}>
+                {G.targetAudience}
+              </p>
+            </div>
+          </PanelShell>
+        </div>
 
         {/* Design Process */}
         <PanelShell>
           <PanelHeader label="Design Process" gradient="linear-gradient(180deg, #FBFFF6 0%, #B5EAF4 50%, #69DAEE 100%)" />
           <div className="px-4 pt-4 flex flex-col gap-4">
-            <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>
+            <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4, margin: 0, textAlign: "center", letterSpacing: "-0.01em" }}>
               {G.designProcessIntro}
             </p>
             <StaggerGroup className="grid grid-cols-1 sm:grid-cols-3 gap-3" staggerMs={90}>
@@ -1783,9 +1830,28 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
         <PhaseDivider label="Discovery" />
 
         <PanelShell>
-          <PanelHeader label={G.researchHeading} gradient="linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)" />
-          <div className="px-4 pt-4">
-            <TypewriterText text={G.researchBody} style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.5, margin: 0 }} />
+          <PanelHeader label="Research" gradient="linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)" />
+          <div className="px-4 pt-4 flex flex-col gap-3">
+            <h3
+              style={{
+                ...pixelBody,
+                color: "#320032",
+                fontSize: 24,
+                lineHeight: 1.3,
+                letterSpacing: "-0.01em",
+                margin: 0,
+              }}
+            >
+              {G.researchHeading}
+            </h3>
+            {G.researchParagraphs.map((p, i) => (
+              <p
+                key={i}
+                style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4, margin: 0, letterSpacing: "-0.01em" }}
+              >
+                {p}
+              </p>
+            ))}
           </div>
         </PanelShell>
 
@@ -1815,30 +1881,45 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
         <PanelShell>
           <PanelHeader label="Competition & Benchmarking" gradient="linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)" />
           <div className="px-4 pt-4 flex flex-col gap-4">
-            <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>{G.competition.intro}</p>
-
-            {/* Logo header row + SWOT table (desktop) */}
-            <div
-              className="hidden md:block rounded-xl overflow-hidden"
-              style={{ border: "1px solid #F365A7" }}
-            >
-              <div className="grid" style={{ gridTemplateColumns: `minmax(120px,0.7fr) repeat(${G.competition.apps.length}, minmax(0,1fr))` }}>
-                {/* Header row */}
-                <div className="px-4 py-3 flex items-center" style={{ background: "#FFB3D6", borderBottom: "1px solid #F365A7", borderRight: "1px solid #F365A7" }}>
-                  <span style={{ ...pixelBody, color: "#320032", fontSize: 14, fontWeight: 700 }}>Traits / Apps</span>
+            {/* SWOT table — Traits | Apps with text names (desktop) */}
+            <div className="hidden md:block rounded-xl overflow-hidden" style={{ border: "1px solid #F365A7" }}>
+              <div className="grid" style={{ gridTemplateColumns: `minmax(140px,0.8fr) repeat(${G.competition.apps.length}, minmax(0,1fr))` }}>
+                {/* Header row 1: Traits | Apps (spanning competitor columns) */}
+                <div
+                  className="px-4 py-3 flex items-center"
+                  style={{ background: "#F35DA3", borderBottom: "1px solid #F365A7", borderRight: "1px solid #F365A7" }}
+                >
+                  <span style={{ ...pixelBody, color: "#320032", fontSize: 16, fontWeight: 700 }}>Traits</span>
                 </div>
+                <div
+                  className="px-4 py-3 flex items-center justify-center"
+                  style={{
+                    background: "#F35DA3",
+                    borderBottom: "1px solid #F365A7",
+                    gridColumn: `span ${G.competition.apps.length} / span ${G.competition.apps.length}`,
+                  }}
+                >
+                  <span style={{ ...pixelBody, color: "#320032", fontSize: 16, fontWeight: 700 }}>Apps</span>
+                </div>
+
+                {/* Header row 2: empty | app names */}
+                <div
+                  className="px-4 py-3"
+                  style={{ background: "#FFB3D6", borderBottom: "1px solid #F365A7", borderRight: "1px solid #F365A7" }}
+                />
                 {G.competition.apps.map((a, i) => (
                   <div
                     key={a.name}
-                    className="px-3 py-3 flex items-center justify-center"
+                    className="px-3 py-3 flex items-center justify-center text-center"
                     style={{
                       background: "#FFB3D6",
                       borderBottom: "1px solid #F365A7",
                       borderRight: i < G.competition.apps.length - 1 ? "1px solid #F365A7" : undefined,
-                      minHeight: 64,
                     }}
                   >
-                    <img src={a.logo} alt={a.name} className="max-h-10 w-auto object-contain" loading="lazy" />
+                    <span style={{ ...pixelBody, color: "#320032", fontSize: 15, fontWeight: 700, letterSpacing: "-0.01em" }}>
+                      {a.name}
+                    </span>
                   </div>
                 ))}
 
@@ -1862,6 +1943,7 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
                           key={ci}
                           className="px-3 py-3"
                           style={{
+                            background: "#FFFFFF",
                             borderBottom: isLast ? undefined : "1px solid #F365A7",
                             borderRight: ci < row.cells.length - 1 ? "1px solid #F365A7" : undefined,
                           }}
@@ -1880,7 +1962,7 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
               {G.competition.apps.map((a, i) => (
                 <div key={a.name} className="rounded-lg p-3" style={{ background: "#FDEBE2", boxShadow: "inset 0 0 0 2px #F365A7" }}>
                   <div className="flex items-center justify-center mb-3 p-2 rounded" style={{ background: "#FFB3D6" }}>
-                    <img src={a.logo} alt={a.name} className="max-h-10 w-auto object-contain" loading="lazy" />
+                    <span style={{ ...pixelBody, color: "#320032", fontSize: 15, fontWeight: 700 }}>{a.name}</span>
                   </div>
                   {G.competition.swot.map((row) => (
                     <div key={row.trait} className="mb-2">
@@ -1893,6 +1975,7 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
             </div>
           </div>
         </PanelShell>
+
 
         {/* ===== IDEATION ===== */}
         <PhaseDivider label="Ideation" />
