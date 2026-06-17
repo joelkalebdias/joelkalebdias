@@ -30,6 +30,9 @@ const pixelTerminal = {
   fontFamily: "'AcPlus ToshibaSat 8x16', 'Ac437 ATI 8x16', 'VT323', monospace",
 } as const;
 
+const scanlines =
+  "repeating-linear-gradient(0deg, rgba(0,0,0,0.25) 0px, rgba(0,0,0,0.25) 1px, transparent 1px, transparent 3px)";
+
 const PORTRAIT =
   "https://api.builder.io/api/v1/image/assets/TEMP/47d806ada3fd4776216138c38e5bfc596d6d8c91?width=510";
 
@@ -49,7 +52,7 @@ const LOGOS: LogoSpec[] = [
   { src: "https://api.builder.io/api/v1/image/assets/TEMP/09c49c9f0c83aaa3e084549361bc69aff257863a?width=256", alt: "Godrej Properties", w: 128, h: 28 },
   { src: "https://api.builder.io/api/v1/image/assets/TEMP/5c076b7b0b7801e28e2af6852d9cadb057aa5971?width=200", alt: "Pyxis", w: 100, h: 17 },
   { src: "https://api.builder.io/api/v1/image/assets/TEMP/a8b26ba1dcc34f4796d4c5e65b14481f1eed8c52?width=86", alt: "Narla", w: 43, h: 45 },
-  { src: "https://api.builder.io/api/v1/image/assets/TEMP/c226e91cabad56c21eb2642488570683dfd0b742?width=340", alt: "Mahindra Finance", w: 170, h: 12 },
+  { src: "https://api.builder.io/api/v1/image/assets/TEMP/c226e91cabad56c21eb2642488570683dfd0b742?width=340", alt: "Mahindra Finance", w: 140, h: 24 },
   { src: "https://api.builder.io/api/v1/image/assets/TEMP/3e30b8c93ad1038aa4ee3dfcbbffa8cfed645d57?width=69", alt: "Tune Protect", w: 34, h: 34 },
   { src: "https://api.builder.io/api/v1/image/assets/TEMP/f1cb6a4a309086f9a73454297fa211864e0bfac2?width=140", alt: "Signpost India", w: 70, h: 28 },
   { src: "https://api.builder.io/api/v1/image/assets/TEMP/9585e0ae8b2f28f0adb1614cc992f77cbc0348cd?width=284", alt: "Akasa Air", w: 142, h: 24 },
@@ -129,10 +132,9 @@ function StatCard({ value, label }: { value: string; label: string }) {
         minWidth: 200,
         borderRadius: 12,
         border: "2px solid #008000",
-        background:
-          "url('https://api.builder.io/api/v1/image/assets/TEMP/20d001c5f0b35c620477284cccdf97edd589e718?width=555') 0 0 / 29.4px 29.4px repeat, linear-gradient(180deg, #004802 0%, #001F01 100%)",
+        background: `${scanlines}, linear-gradient(180deg, #004802 0%, #001F01 100%)`,
         boxShadow:
-          "0 0 4px 0 rgba(0,0,0,0.40) inset, 2px 2px 0 0 #8F0045",
+          "0 0 24px 0 rgba(0,255,80,0.08) inset, 0 0 4px 0 rgba(0,0,0,0.6) inset, 2px 2px 0 0 #8F0045",
       }}
     >
       <div
