@@ -565,20 +565,29 @@ function Index() {
             </p>
           </div>
           <nav className="flex items-center gap-4">
-            {["Work", "About"].map((label) => (
-              <a
-                key={label}
-                href={`#${label.toLowerCase()}`}
-                className="retro-lightning"
-                style={{
-                  ...pixelBody,
-                  color: "#fff",
-                  fontSize: 24,
-                }}
-              >
-                {label}
-              </a>
-            ))}
+            <a
+              href="#work"
+              className="retro-lightning"
+              style={{
+                ...pixelBody,
+                color: "#fff",
+                fontSize: 24,
+              }}
+            >
+              Work
+            </a>
+            <Link
+              to="/about"
+              className="retro-lightning"
+              style={{
+                ...pixelBody,
+                color: "#fff",
+                fontSize: 24,
+                textDecoration: "none",
+              }}
+            >
+              About
+            </Link>
           </nav>
         </header>
 
