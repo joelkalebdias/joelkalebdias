@@ -1028,14 +1028,17 @@ function CaseStudyPage() {
           </h2>
         </div>
 
-        <section
+        <RevealPanel
+          as="section"
+          effect="pixel-fade"
           className="rounded-xl p-4 flex flex-col gap-4"
           style={{
             background: "#FA0",
             boxShadow: "-3px -3px 0 0 #4C042C inset, 3px 3px 0 0 #FFFEF6 inset",
           }}
         >
-          <p
+          <TypewriterText
+            text={cs.aiIntro}
             style={{
               ...pixelBody,
               color: "#320032",
@@ -1044,9 +1047,7 @@ function CaseStudyPage() {
               margin: 0,
               padding: "4px 4px",
             }}
-          >
-            {cs.aiIntro}
-          </p>
+          />
           <div className="flex flex-col gap-3">
             {cs.aiProcess.map((a) => (
               <div
