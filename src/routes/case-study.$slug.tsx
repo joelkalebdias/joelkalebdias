@@ -1396,12 +1396,22 @@ const GENELINK = {
       bullets: ["Information architecture", "Branding", "Visual design"],
     },
   ],
+  heroPhones: {
+    left: "https://api.builder.io/api/v1/image/assets/TEMP/8bd13acc675ba8a17c37002124504d3c624a3f2e?width=447",
+    center: "https://api.builder.io/api/v1/image/assets/TEMP/a777d58a294dde49990c89cbffadccc161f82f84?width=524",
+    right: "https://api.builder.io/api/v1/image/assets/TEMP/3331caf3062bfc77c5f20f62aded11884b521fa6?width=438",
+  },
   researchHeading: "Let's Connect People!",
-  researchBody:
-    "Since I did not have access to users for research due to the limited timeline, I used third party sources for quantitative research data and tried to infer from it.\nAt 2019, more than 26 million consumers had added their DNA to four leading commercial ancestry and health databases. If the pace continues, the gene troves could hold data on the genetic makeup of more than 100 million people within 24 months.\nAncestry testing also can yield unanticipated results such as lack of expected ancestry or the presence of unexpected ancestry. Discordance between pairs of siblings or between father and child can reveal nonpaternity, which is estimated to occur in approximately 1% to 2% of births in Western populations — results that could have significant psychosocial impact.\nMost participants understood that the tests could provide insights about ancestry and kinship, although some raised questions about the accuracy and stability of results, and a few were surprised to learn that accuracy depends on the pool of people who had previously been tested.",
+  researchParagraphs: [
+    "Since I did not have access to users for research due to the limited timeline, I used third party sources for quantitative research data and tried to infer from it.",
+    "At 2019, more than 26 million consumers had added their DNA to four leading commercial ancestry and health databases. If the pace continues, the gene troves could hold data on the genetic makeup of more than 100 million people within 24 months.",
+    "Ancestry testing also can yield unanticipated results such as lack of expected ancestry or the presence of unexpected ancestry. Discordance between pairs of siblings or between father and child can reveal nonpaternity, which is estimated to occur in approximately 1% to 2% of births in Western populations. These results could have significant psychosocial impacts.",
+    "If you have taken these tests, you may see the percentages in your ancestry report fluctuate over time, or if you've taken multiple DNA tests with different companies you may see slight differences in the report numbers. This could be due to differences in each company's methods, the continued growth and improvement of the reference datasets, and other factors.",
+    "Most participants understood that test could provide insights about ancestry and kinship, although some individuals in every group raised questions about the accuracy and stability of results, with some expressing worries about scientific errors. A few participants were surprised to learn that the accuracy of a user's results depend on the pool of people who had previously been tested.",
+  ],
   stats: [
     { value: "26M+", label: "Added their DNA to four leading commercial ancestry and health databases" },
-    { value: "1-2%", label: "Discordance between sibling pairs in Western populations" },
+    { value: "1-2%", label: "Discordance between sibling pairs" },
   ],
   competition: {
     intro:
