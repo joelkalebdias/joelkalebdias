@@ -260,7 +260,9 @@ function PanelHeader({ label, gradient }: { label: string; gradient: string }) {
 
 function PanelShell({ children }: { children: React.ReactNode }) {
   return (
-    <section
+    <RevealPanel
+      as="section"
+      effect="pixel-fade"
       className="rounded-lg overflow-hidden flex flex-col"
       style={{
         background: "#FDEBE2",
@@ -269,7 +271,7 @@ function PanelShell({ children }: { children: React.ReactNode }) {
       }}
     >
       {children}
-    </section>
+    </RevealPanel>
   );
 }
 
