@@ -1025,7 +1025,7 @@ function CaseStudyPage() {
               letterSpacing: "-2.4px",
             }}
           >
-            How I Used AI in My Design Process
+            {cs.aiSectionTitle ?? "How I Used AI in My Design Process"}
           </h2>
         </div>
 
