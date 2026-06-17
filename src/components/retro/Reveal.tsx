@@ -1,4 +1,4 @@
-import React, { useEffect, useState, type CSSProperties, type ElementType, type ReactNode } from "react";
+import React, { useEffect, useRef, useState, type CSSProperties, type ElementType, type ReactNode } from "react";
 import { useReveal } from "@/hooks/use-reveal";
 
 type RevealEffect = "crt-boot" | "pixel-fade" | "rgb-glitch";
@@ -82,6 +82,13 @@ type TypewriterProps = {
   caret?: boolean;
 };
 
+/**
+ * Performance-tuned typewriter:
+ * - Writes directly to a span via ref (no React re-render per tick).
+ * - Drives ticks with rAF + accumulated dt, so it stays smooth under load
+ *   and gracefully drops frames instead of queueing setTimeouts.
+ * - Reserves min-height to avoid layout shift / scroll jank.
+ */
 export function TypewriterText({
   text,
   style,
@@ -90,46 +97,67 @@ export function TypewriterText({
   mode = "auto",
   caret = true,
 }: TypewriterProps) {
-  const { ref, revealed } = useReveal<HTMLParagraphElement>();
+  const { ref: hostRef, revealed } = useReveal<HTMLParagraphElement>();
+  const textRef = useRef<HTMLSpanElement | null>(null);
+  const caretRef = useRef<HTMLSpanElement | null>(null);
+  const [done, setDone] = useState(false);
+
   const isMultiline = text.includes("\n");
   const resolvedMode =
     mode === "auto" ? (isMultiline || text.length > 180 ? "line" : "char") : mode;
-  const tickSpeed = speed ?? (resolvedMode === "line" ? 90 : 14);
-
-  const units = resolvedMode === "line" ? text.split("\n") : Array.from(text);
-  const [count, setCount] = useState(0);
+  const tickSpeed = speed ?? (resolvedMode === "line" ? 70 : 12);
 
   useEffect(() => {
     if (!revealed) return;
-    if (count >= units.length) return;
-    const id = window.setTimeout(() => setCount((c) => c + 1), tickSpeed);
-    return () => window.clearTimeout(id);
-  }, [revealed, count, units.length, tickSpeed]);
+    const units = resolvedMode === "line" ? text.split("\n") : Array.from(text);
+    let count = 0;
+    let raf = 0;
+    let last = performance.now();
+    let acc = 0;
 
-  const done = count >= units.length;
-  let shown: string;
-  if (!revealed) {
-    shown = "";
-  } else if (resolvedMode === "line") {
-    shown = units.slice(0, count).join("\n");
-  } else {
-    shown = units.slice(0, count).join("");
-  }
+    const node = textRef.current;
+    if (!node) return;
+
+    const tick = (now: number) => {
+      const dt = now - last;
+      last = now;
+      acc += dt;
+      let advanced = false;
+      // Allow multiple advances per frame if the tab was throttled.
+      while (acc >= tickSpeed && count < units.length) {
+        acc -= tickSpeed;
+        count += 1;
+        advanced = true;
+      }
+      if (advanced) {
+        node.textContent =
+          resolvedMode === "line" ? units.slice(0, count).join("\n") : units.slice(0, count).join("");
+      }
+      if (count < units.length) {
+        raf = requestAnimationFrame(tick);
+      } else {
+        setDone(true);
+        if (caretRef.current) caretRef.current.style.display = "none";
+      }
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [revealed, text, resolvedMode, tickSpeed]);
 
   return (
     <p
-      ref={ref}
+      ref={hostRef}
       className={className}
       style={{
         ...style,
         whiteSpace: isMultiline ? "pre-line" : style?.whiteSpace,
-        // Reserve space to prevent layout shift
         minHeight: "1.45em",
+        contain: "paint",
       }}
     >
-      {revealed ? shown : "\u00A0"}
-      {revealed && caret && !done && (
-        <span className="retro-caret" aria-hidden>
+      <span ref={textRef}>{revealed ? "" : "\u00A0"}</span>
+      {caret && !done && (
+        <span ref={caretRef} className="retro-caret" aria-hidden>
           ▍
         </span>
       )}
