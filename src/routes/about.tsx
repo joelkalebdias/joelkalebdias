@@ -132,10 +132,9 @@ function StatCard({ value, label }: { value: string; label: string }) {
         minWidth: 200,
         borderRadius: 12,
         border: "2px solid #008000",
-        background:
-          "url('https://api.builder.io/api/v1/image/assets/TEMP/20d001c5f0b35c620477284cccdf97edd589e718?width=555') 0 0 / 29.4px 29.4px repeat, linear-gradient(180deg, #004802 0%, #001F01 100%)",
+        background: `${scanlines}, linear-gradient(180deg, #004802 0%, #001F01 100%)`,
         boxShadow:
-          "0 0 4px 0 rgba(0,0,0,0.40) inset, 2px 2px 0 0 #8F0045",
+          "0 0 24px 0 rgba(0,255,80,0.08) inset, 0 0 4px 0 rgba(0,0,0,0.6) inset, 2px 2px 0 0 #8F0045",
       }}
     >
       <div
