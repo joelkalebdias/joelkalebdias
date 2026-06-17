@@ -2027,7 +2027,7 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
 
 
             {/* Mobile fallback: per-app cards */}
-            <div className="md:hidden grid grid-cols-1 gap-3">
+            <div className="md:hidden grid grid-cols-1 gap-3 px-4 pt-4 pb-4">
               {G.competition.apps.map((a, i) => (
                 <div key={a.name} className="rounded-lg p-3" style={{ background: "#FDEBE2", boxShadow: "inset 0 0 0 2px #F365A7" }}>
                   <div className="flex items-center justify-center mb-3 p-2 rounded" style={{ background: "#FFB3D6" }}>
