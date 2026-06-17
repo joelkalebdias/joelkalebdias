@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { RevealPanel, StaggerGroup, TypewriterText } from "@/components/retro/Reveal";
 import { RetroScrollProgress } from "@/components/retro/RetroScrollProgress";
+import genelinkHeroAsset from "@/assets/genelink-hero.png.asset.json";
 
 const pixelHeading = {
   fontFamily: "'Ac437 IBM CGA', 'Press Start 2P', monospace",
@@ -1747,48 +1748,18 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
           </div>
         </header>
 
-        {/* Hero — 3-phone scene */}
+        {/* Hero image */}
         <RevealPanel
           effect="crt-boot"
-          className="rounded-xl overflow-hidden w-full relative"
-          style={{
-            background: "#181818",
-            boxShadow: "-4px -4px 0 0 #084170 inset, 4px 4px 0 0 #0E1B37 inset",
-            aspectRatio: "1232/552",
-            minHeight: 280,
-          }}
+          className="rounded-xl overflow-hidden w-full"
+          style={{ aspectRatio: "16/7", background: "#000" }}
         >
-          {/* radial light wash */}
-          <div
-            aria-hidden
-            className="absolute inset-0"
-            style={{
-              background: "radial-gradient(ellipse at 50% 90%, #FFFFFF 0%, rgba(255,255,255,0) 60%)",
-              opacity: 0.85,
-            }}
+          <img
+            src={genelinkHeroAsset.url}
+            alt={cs.title}
+            className="w-full h-full object-cover"
+            loading="lazy"
           />
-          <div className="absolute inset-0 flex items-end justify-center gap-[3%] pb-[2%] px-[4%]">
-            <img
-              src={G.heroPhones.left}
-              alt=""
-              className="relative h-[85%] w-auto object-contain"
-              style={{ filter: "drop-shadow(0 2px 30px rgba(0,0,0,0.45))", transform: "translateY(-4%)" }}
-              loading="lazy"
-            />
-            <img
-              src={G.heroPhones.center}
-              alt={cs.title}
-              className="relative h-[98%] w-auto object-contain"
-              style={{ filter: "drop-shadow(0 4px 40px rgba(0,0,0,0.55))" }}
-            />
-            <img
-              src={G.heroPhones.right}
-              alt=""
-              className="relative h-[85%] w-auto object-contain"
-              style={{ filter: "drop-shadow(0 2px 30px rgba(0,0,0,0.45))", transform: "translateY(-4%)" }}
-              loading="lazy"
-            />
-          </div>
         </RevealPanel>
 
         {/* The Challenge + Target Audience (side-by-side) */}
