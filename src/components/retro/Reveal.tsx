@@ -54,20 +54,18 @@ export function StaggerGroup({
   const { ref, revealed } = useReveal<HTMLDivElement>();
   const items = React.Children.toArray(children);
   return (
-    <As
-      ref={ref as React.Ref<HTMLDivElement>}
-      className={className}
-      style={style}
-    >
-      {items.map((child, i) => (
-        <div
-          key={i}
-          className={`reveal-${effect} ${revealed ? "is-visible" : ""}`}
-          style={{ animationDelay: `${i * staggerMs}ms`, display: "contents" }}
-        >
-          {child}
-        </div>
-      ))}
+    <As ref={ref as React.Ref<HTMLDivElement>} className={className} style={style}>
+      {items.map((child, i) => {
+        if (!React.isValidElement(child)) return child;
+        const el = child as React.ReactElement<{ className?: string; style?: CSSProperties }>;
+        const childClass = el.props.className ?? "";
+        const childStyle = el.props.style ?? {};
+        return React.cloneElement(el, {
+          key: el.key ?? i,
+          className: `${childClass} reveal-${effect} ${revealed ? "is-visible" : ""}`.trim(),
+          style: { ...childStyle, animationDelay: `${i * staggerMs}ms` },
+        });
+      })}
     </As>
   );
 }
