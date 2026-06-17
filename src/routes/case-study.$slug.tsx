@@ -1083,7 +1083,7 @@ function CaseStudyPage() {
               </div>
             ))}
           </div>
-        </section>
+        </RevealPanel>
 
         {/* What I Learned — green container, matches AI section structure */}
         <section
