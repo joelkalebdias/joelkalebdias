@@ -1,5 +1,5 @@
 // Information Architecture diagram for the Genelink case study.
-// Hand-built SVG to match the reference Figma.
+// Hand-built SVG matching the reference Figma.
 
 const STROKE = "#2A2440";
 const ARROW_GRAY = "#3A2F4A";
@@ -25,8 +25,9 @@ type BoxProps = {
 };
 
 function Box({ x, y, w, h, fill, lines, bold, bullets, fontSize = 12 }: BoxProps) {
-  const padding = 8;
-  const totalH = lines.length * (fontSize + 3);
+  const padding = 10;
+  const lh = fontSize + 3;
+  const totalH = lines.length * lh;
   const startY = y + h / 2 - totalH / 2 + fontSize;
   return (
     <g>
@@ -35,7 +36,7 @@ function Box({ x, y, w, h, fill, lines, bold, bullets, fontSize = 12 }: BoxProps
         <text
           key={i}
           x={bullets ? x + padding : x + w / 2}
-          y={startY + i * (fontSize + 3)}
+          y={startY + i * lh}
           fill={STROKE}
           fontSize={fontSize}
           fontFamily="Inter, system-ui, sans-serif"
@@ -49,10 +50,22 @@ function Box({ x, y, w, h, fill, lines, bold, bullets, fontSize = 12 }: BoxProps
   );
 }
 
+function Arrow({ d, yellow }: { d: string; yellow?: boolean }) {
+  return (
+    <path
+      d={d}
+      fill="none"
+      stroke={yellow ? ARROW_YELLOW : ARROW_GRAY}
+      strokeWidth={1.3}
+      markerEnd={yellow ? "url(#ia-arrow-yellow)" : "url(#ia-arrow)"}
+    />
+  );
+}
+
 export function IADiagram() {
   return (
     <svg
-      viewBox="0 0 1480 1200"
+      viewBox="0 0 1920 1180"
       xmlns="http://www.w3.org/2000/svg"
       className="w-full h-auto block"
       style={{ background: "#FFF8F0" }}
@@ -66,15 +79,15 @@ export function IADiagram() {
         </marker>
       </defs>
 
-      {/* ============ TOP AUTH CHAIN ============ */}
-      <Box x={640} y={30} w={170} h={70} fill={PURPLE} lines={["Splash Screen"]} fontSize={14} />
-      <line x1={725} y1={100} x2={725} y2={138} stroke={ARROW_GRAY} strokeWidth={1.5} markerEnd="url(#ia-arrow)" />
+      {/* ============ TOP AUTH CHAIN (centered ~x=850) ============ */}
+      <Box x={765} y={30} w={170} h={70} fill={PURPLE} lines={["Splash Screen"]} fontSize={14} />
+      <Arrow d="M 850 100 L 850 138" />
 
-      <Box x={610} y={140} w={230} h={90} fill={PURPLE} lines={["Login /", "Registration Page", "With Option to SSO"]} fontSize={13} />
-      <line x1={725} y1={230} x2={725} y2={258} stroke={ARROW_GRAY} strokeWidth={1.5} markerEnd="url(#ia-arrow)" />
+      <Box x={735} y={140} w={230} h={90} fill={PURPLE} lines={["Login /", "Registration Page", "With Option to SSO"]} fontSize={13} />
+      <Arrow d="M 850 230 L 850 258" />
 
       <Box
-        x={610}
+        x={735}
         y={260}
         w={230}
         h={150}
@@ -83,117 +96,160 @@ export function IADiagram() {
         bold={[false, false, true, true, true]}
         fontSize={13}
       />
+      <Arrow d="M 850 410 L 850 448" />
 
-      {/* SSO branch */}
-      <path d="M 840 185 Q 920 185 920 340 Q 920 475 810 475" fill="none" stroke={ARROW_GRAY} strokeWidth={1.5} markerEnd="url(#ia-arrow)" />
-      <text x={880} y={295} fill={STROKE} fontSize={13} fontFamily="Inter, sans-serif" fontWeight={500}>SSO</text>
+      {/* SSO branch from Login → Dashboard */}
+      <Arrow d="M 965 185 Q 1050 185 1050 340 Q 1050 475 935 475" />
+      <text x={1000} y={295} fill={STROKE} fontSize={13} fontFamily="Inter, sans-serif" fontWeight={500}>SSO</text>
 
-      <line x1={725} y1={410} x2={725} y2={448} stroke={ARROW_GRAY} strokeWidth={1.5} markerEnd="url(#ia-arrow)" />
-
-      {/* Welcome discount yellow loop */}
-      <path d="M 610 320 Q 510 320 510 400 Q 510 475 610 475" fill="none" stroke={ARROW_YELLOW} strokeWidth={1.5} markerEnd="url(#ia-arrow-yellow)" />
-      <text x={300} y={365} fill={STROKE} fontSize={11} fontFamily="Inter, sans-serif">
-        <tspan x={300} dy={0}>Possible to add a</tspan>
-        <tspan x={300} dy={14}>touchpoint for</tspan>
-        <tspan x={300} dy={14}>welcome discount</tspan>
+      {/* Welcome discount yellow loop (left side) */}
+      <Arrow d="M 735 320 Q 630 320 630 400 Q 630 475 735 475" yellow />
+      <text x={420} y={365} fill={STROKE} fontSize={11} fontFamily="Inter, sans-serif">
+        <tspan x={420} dy={0}>Possible to add a</tspan>
+        <tspan x={420} dy={14}>touchpoint for</tspan>
+        <tspan x={420} dy={14}>welcome discount</tspan>
       </text>
 
-      <Box x={640} y={450} w={170} h={50} fill={PURPLE_DARK} lines={["Dashboard Page"]} fontSize={13} bold={[true]} />
+      <Box x={765} y={450} w={170} h={50} fill={PURPLE_DARK} lines={["Dashboard Page"]} fontSize={13} bold={[true]} />
 
-      {/* Dashboard trunk down */}
-      <line x1={725} y1={500} x2={725} y2={560} stroke={ARROW_GRAY} strokeWidth={1.5} />
+      {/* Dashboard down to bus */}
+      <line x1={850} y1={500} x2={850} y2={560} stroke={ARROW_GRAY} strokeWidth={1.5} />
       {/* Horizontal bus */}
-      <line x1={120} y1={560} x2={1280} y2={560} stroke={ARROW_GRAY} strokeWidth={1.5} />
-      {/* Verticals down to each column header */}
-      <line x1={120} y1={560} x2={120} y2={605} stroke={ARROW_GRAY} strokeWidth={1.5} markerEnd="url(#ia-arrow)" />
-      <line x1={550} y1={560} x2={550} y2={605} stroke={ARROW_GRAY} strokeWidth={1.5} markerEnd="url(#ia-arrow)" />
-      <line x1={840} y1={560} x2={840} y2={605} stroke={ARROW_GRAY} strokeWidth={1.5} markerEnd="url(#ia-arrow)" />
-      <line x1={1280} y1={560} x2={1280} y2={605} stroke={ARROW_GRAY} strokeWidth={1.5} markerEnd="url(#ia-arrow)" />
+      <line x1={140} y1={560} x2={1750} y2={560} stroke={ARROW_GRAY} strokeWidth={1.5} />
+      {/* Branch drops */}
+      <Arrow d="M 140 560 L 140 605" />
+      <Arrow d="M 740 560 L 740 595" />
+      <Arrow d="M 1200 560 L 1200 595" />
+      <Arrow d="M 1660 560 L 1660 595" />
 
-      {/* ============ COLUMN 1: Left tiles ============ */}
-      <Box x={60} y={610} w={120} h={50} fill={BLUE} lines={["Stories"]} />
-      <Box x={60} y={680} w={120} h={60} fill={BLUE} lines={["DNA", "Snapshot"]} />
-      <Box x={60} y={760} w={120} h={70} fill={BLUE} lines={["Potential", "Matches", "Cards"]} />
-      <Box x={60} y={850} w={120} h={50} fill={BLUE} lines={["Notifications"]} />
-      <Box x={60} y={920} w={120} h={60} fill={BLUE} lines={["User", "Profile"]} />
-      <Box x={60} y={1000} w={120} h={60} fill={BLUE} lines={["Knowledge", "Section"]} />
+      {/* ============ COL 1: Left blue stack (x=80) ============ */}
+      <Box x={80} y={610} w={120} h={50} fill={BLUE} lines={["Stories"]} />
+      <Box x={80} y={680} w={120} h={60} fill={BLUE} lines={["DNA", "Snapshot"]} />
+      <Box x={80} y={760} w={120} h={70} fill={BLUE} lines={["Potential", "Matches", "Cards"]} />
+      <Box x={80} y={850} w={120} h={50} fill={BLUE} lines={["Notifications"]} />
+      <Box x={80} y={920} w={120} h={60} fill={BLUE} lines={["User", "Profile"]} />
+      <Box x={80} y={1000} w={120} h={60} fill={BLUE} lines={["Knowledge", "Section"]} />
 
-      {/* Col1 → Col2 arrows */}
-      <line x1={180} y1={710} x2={218} y2={645} stroke={ARROW_GRAY} strokeWidth={1.2} markerEnd="url(#ia-arrow)" />
-      <line x1={180} y1={795} x2={218} y2={770} stroke={ARROW_GRAY} strokeWidth={1.2} markerEnd="url(#ia-arrow)" />
-      <line x1={180} y1={875} x2={218} y2={875} stroke={ARROW_GRAY} strokeWidth={1.2} markerEnd="url(#ia-arrow)" />
-      <line x1={180} y1={950} x2={218} y2={950} stroke={ARROW_GRAY} strokeWidth={1.2} markerEnd="url(#ia-arrow)" />
-      <line x1={180} y1={1030} x2={218} y2={1030} stroke={ARROW_GRAY} strokeWidth={1.2} markerEnd="url(#ia-arrow)" />
+      {/* Arrows col1 → col2 */}
+      <Arrow d="M 200 710 L 218 625" />
+      <Arrow d="M 200 795 L 218 770" />
+      <Arrow d="M 200 875 L 218 875" />
+      <Arrow d="M 200 950 L 218 950" />
+      <Arrow d="M 200 1030 L 218 1035" />
 
-      {/* ============ COLUMN 2 ============ */}
-      <Box x={220} y={620} w={120} h={50} fill={GREEN} lines={["My DNA Page"]} fontSize={12} />
-      <Box x={220} y={745} w={120} h={50} fill={GREEN} lines={["Match details", "popover"]} fontSize={11} />
+      {/* ============ COL 2: Greens (x=220) ============ */}
+      <Box x={220} y={600} w={140} h={50} fill={GREEN} lines={["My DNA Page"]} fontSize={12} />
+      <Box x={220} y={745} w={140} h={50} fill={GREEN} lines={["Match details", "popover"]} fontSize={11} />
+      <Box x={220} y={850} w={130} h={50} fill={GREEN} lines={["Clear all"]} />
+      <Box x={220} y={925} w={130} h={50} fill={GREEN} lines={["Profile..."]} />
+      <Box x={220} y={1010} w={150} h={50} fill={GREEN} lines={["Page with", "article lists"]} fontSize={11} />
+
+      {/* Col2 → Col3 popovers/cards */}
+      <Arrow d="M 360 770 L 388 770" />
+      <Arrow d="M 350 950 L 388 945" />
+      <Arrow d="M 370 1035 L 398 1035" />
+
+      {/* ============ COL 3: Salmon popovers / Article ============ */}
       <Box
-        x={360}
+        x={390}
         y={705}
-        w={150}
+        w={170}
         h={130}
         fill={SALMON}
         lines={["View Family", "Tree", "Send", "message", "Request or", "dismiss"]}
         fontSize={11}
         bullets
       />
-      <line x1={340} y1={770} x2={358} y2={770} stroke={ARROW_GRAY} strokeWidth={1.2} markerEnd="url(#ia-arrow)" />
-
-      <Box x={220} y={850} w={120} h={50} fill={GREEN} lines={["Clear all"]} />
-      <Box x={220} y={925} w={120} h={50} fill={GREEN} lines={["Profile..."]} />
       <Box
-        x={360}
+        x={390}
         y={895}
-        w={180}
-        h={110}
+        w={200}
+        h={100}
         fill={SALMON}
         lines={["Delete / Modify", "account, settings for", "notifications and", "other"]}
         fontSize={11}
       />
-      <line x1={340} y1={950} x2={358} y2={945} stroke={ARROW_GRAY} strokeWidth={1.2} markerEnd="url(#ia-arrow)" />
-
-      <Box x={220} y={1015} w={140} h={50} fill={GREEN} lines={["Page with", "article lists"]} fontSize={11} />
-      <Box x={380} y={1015} w={120} h={50} fill={GREEN} lines={["Article Page"]} />
-      <line x1={360} y1={1040} x2={378} y2={1040} stroke={ARROW_GRAY} strokeWidth={1.2} markerEnd="url(#ia-arrow)" />
+      <Box x={400} y={1010} w={140} h={50} fill={GREEN} lines={["Article Page"]} />
+      <Arrow d="M 540 1035 L 568 1045" />
       <Box
-        x={520}
-        y={1015}
-        w={160}
+        x={570}
+        y={1010}
+        w={170}
         h={70}
         fill={SALMON}
         lines={["Save, Share,", "Read aloud, see", "more like this"]}
         fontSize={11}
       />
-      <line x1={500} y1={1040} x2={518} y2={1050} stroke={ARROW_GRAY} strokeWidth={1.2} markerEnd="url(#ia-arrow)" />
 
-      {/* ============ COLUMN 3: Messages ============ */}
-      <Box x={490} y={610} w={120} h={40} fill={BLUE} lines={["Messages"]} />
-      <Box x={490} y={665} w={120} h={130} fill={BLUE} lines={["Message...", "Chats", "Search", "Filters"]} fontSize={12} />
-      <line x1={550} y1={650} x2={550} y2={663} stroke={ARROW_GRAY} strokeWidth={1.2} markerEnd="url(#ia-arrow)" />
-
-      <Box x={640} y={680} w={120} h={50} fill={GREEN} lines={["Details", "popover"]} fontSize={11} />
-      <line x1={610} y1={690} x2={638} y2={700} stroke={ARROW_GRAY} strokeWidth={1.2} markerEnd="url(#ia-arrow)" />
-
+      {/* ============ MESSAGES BRANCH (x=680) ============ */}
+      <Box x={680} y={600} w={120} h={40} fill={BLUE} lines={["Messages"]} />
+      <Box x={680} y={650} w={120} h={140} fill={BLUE} lines={["Message...", "Chats", "Search", "Filters"]} fontSize={12} />
+      <Arrow d="M 800 695 L 828 695" />
+      <Box x={830} y={670} w={120} h={50} fill={GREEN} lines={["Details", "popover"]} fontSize={11} />
+      <Arrow d="M 950 695 L 978 695" />
       <Box
-        x={780}
-        y={660}
-        w={120}
-        h={110}
+        x={980}
+        y={650}
+        w={130}
+        h={100}
         fill={SALMON}
         lines={["View", "Family", "Tree", "Accept or", "reject"]}
         fontSize={11}
         bullets
       />
-      <line x1={760} y1={705} x2={778} y2={705} stroke={ARROW_GRAY} strokeWidth={1.2} markerEnd="url(#ia-arrow)" />
 
-      {/* ============ COLUMN 4: Family Tree ============ */}
-      <Box x={780} y={870} w={120} h={40} fill={GREEN} lines={["Family Tree"]} fontSize={12} />
-      {/* connect bus down to family tree (it's on second tier vertical) — use line from x=840 */}
-      <line x1={840} y1={830} x2={840} y2={868} stroke={ARROW_GRAY} strokeWidth={1.2} markerEnd="url(#ia-arrow)" />
-      {/* Hmm the bus already drops at 840 to y=605. The Family Tree should be near top of column. Let me move it. */}
+      {/* ============ FAMILY TREE BRANCH (x=1140) ============ */}
+      <Box x={1140} y={600} w={140} h={40} fill={GREEN} lines={["Family Tree"]} fontSize={12} />
+      <Box x={1140} y={660} w={140} h={50} fill={BLUE} lines={["You"]} />
+      <Box x={1140} y={725} w={140} h={50} fill={BLUE} lines={["Add Parent"]} />
+      <Box x={1140} y={790} w={140} h={60} fill={BLUE} lines={["Switch", "views"]} />
+      <Box x={1140} y={865} w={140} h={50} fill={BLUE} lines={["Search"]} />
 
-      {/* (Family Tree positioning corrected below) */}
+      {/* FT vertical connector to children */}
+      <line x1={1210} y1={640} x2={1210} y2={655} stroke={ARROW_GRAY} strokeWidth={1.2} />
+      <line x1={1210} y1={655} x2={1135} y2={655} stroke={ARROW_GRAY} strokeWidth={1.2} />
+      <Arrow d="M 1140 685 L 1138 685" />
+
+      {/* Add Parent → Add father popover */}
+      <Arrow d="M 1280 750 L 1308 750" />
+      <Box
+        x={1310}
+        y={720}
+        w={140}
+        h={80}
+        fill={SALMON}
+        lines={["Add father", "Add", "mother"]}
+        fontSize={11}
+        bullets
+      />
+      {/* popover → Details of info */}
+      <Arrow d="M 1450 760 L 1478 760" />
+      <Box x={1480} y={735} w={150} h={50} fill={GREEN} lines={["Details of", "information"]} fontSize={11} />
+
+      {/* "After adding info" loop up to My DNA */}
+      <Arrow d="M 1630 750 Q 1680 750 1680 670 Q 1680 615 1665 615" />
+      <text x={1530} y={695} fill={STROKE} fontSize={11} fontFamily="Inter, sans-serif">
+        After adding info
+      </text>
+
+      {/* ============ MY DNA BRANCH (x=1660) ============ */}
+      <Box x={1600} y={600} w={130} h={40} fill={PURPLE} lines={["My DNA"]} fontSize={13} bold={[true]} />
+
+      {/* Bus drop arrow lands on My DNA header */}
+      {/* (already drawn above at x=1660) */}
+
+      {/* Sub blue tiles (left col of group) at x=1600 */}
+      <Box x={1600} y={665} w={140} h={70} fill={BLUE} lines={["Disclaimer", "for", "reassurance"]} fontSize={11} />
+      <Box x={1600} y={750} w={140} h={80} fill={BLUE} lines={["DNA", "Breakdown", "ethnicity", "wise"]} fontSize={11} />
+      <Box x={1600} y={845} w={140} h={70} fill={BLUE} lines={["Health", "issues"]} fontSize={12} />
+      <Box x={1600} y={930} w={140} h={75} fill={BLUE} lines={["Potential", "Matches", "Cards"]} fontSize={11} />
+
+      {/* Sub expansion col (right) */}
+      <Arrow d="M 1740 790 L 1768 790" />
+      <Box x={1770} y={760} w={130} h={60} fill={GREEN} lines={["More details,", "location"]} fontSize={11} />
+
+      <Arrow d="M 1740 880 L 1768 880" />
+      <Box x={1770} y={845} w={130} h={80} fill={ORANGE} lines={["Option to", "consult", "partner", "doctor"]} fontSize={11} />
     </svg>
   );
 }
