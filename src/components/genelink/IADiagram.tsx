@@ -119,8 +119,8 @@ export function IADiagram() {
       {/* Branch drops */}
       <Arrow d="M 140 560 L 140 605" />
       <Arrow d="M 740 560 L 740 595" />
-      <Arrow d="M 1200 560 L 1200 595" />
-      <Arrow d="M 1660 560 L 1660 595" />
+      <Arrow d="M 1210 560 L 1210 595" />
+      <Arrow d="M 1670 560 L 1670 595" />
 
       {/* ============ COL 1: Left blue stack (x=80) ============ */}
       <Box x={80} y={610} w={120} h={50} fill={BLUE} lines={["Stories"]} />
