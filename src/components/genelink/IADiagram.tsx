@@ -119,8 +119,8 @@ export function IADiagram() {
       {/* Branch drops */}
       <Arrow d="M 140 560 L 140 605" />
       <Arrow d="M 740 560 L 740 595" />
-      <Arrow d="M 1200 560 L 1200 595" />
-      <Arrow d="M 1660 560 L 1660 595" />
+      <Arrow d="M 1210 560 L 1210 595" />
+      <Arrow d="M 1670 560 L 1670 595" />
 
       {/* ============ COL 1: Left blue stack (x=80) ============ */}
       <Box x={80} y={610} w={120} h={50} fill={BLUE} lines={["Stories"]} />
@@ -183,6 +183,7 @@ export function IADiagram() {
 
       {/* ============ MESSAGES BRANCH (x=680) ============ */}
       <Box x={680} y={600} w={120} h={40} fill={BLUE} lines={["Messages"]} />
+      <Arrow d="M 740 640 L 740 648" />
       <Box x={680} y={650} w={120} h={140} fill={BLUE} lines={["Message...", "Chats", "Search", "Filters"]} fontSize={12} />
       <Arrow d="M 800 695 L 828 695" />
       <Box x={830} y={670} w={120} h={50} fill={GREEN} lines={["Details", "popover"]} fontSize={11} />
@@ -205,10 +206,14 @@ export function IADiagram() {
       <Box x={1140} y={790} w={140} h={60} fill={BLUE} lines={["Switch", "views"]} />
       <Box x={1140} y={865} w={140} h={50} fill={BLUE} lines={["Search"]} />
 
-      {/* FT vertical connector to children */}
-      <line x1={1210} y1={640} x2={1210} y2={655} stroke={ARROW_GRAY} strokeWidth={1.2} />
-      <line x1={1210} y1={655} x2={1135} y2={655} stroke={ARROW_GRAY} strokeWidth={1.2} />
-      <Arrow d="M 1140 685 L 1138 685" />
+      {/* FT vertical connector: down from FT bottom along the left edge, then arrows into each child */}
+      <line x1={1120} y1={640} x2={1120} y2={890} stroke={ARROW_GRAY} strokeWidth={1.2} />
+      <line x1={1210} y1={640} x2={1120} y2={640} stroke={ARROW_GRAY} strokeWidth={1.2} />
+      <Arrow d="M 1120 685 L 1138 685" />
+      <Arrow d="M 1120 750 L 1138 750" />
+      <Arrow d="M 1120 820 L 1138 820" />
+      <Arrow d="M 1120 890 L 1138 890" />
+
 
       {/* Add Parent → Add father popover */}
       <Arrow d="M 1280 750 L 1308 750" />
@@ -226,17 +231,16 @@ export function IADiagram() {
       <Arrow d="M 1450 760 L 1478 760" />
       <Box x={1480} y={735} w={150} h={50} fill={GREEN} lines={["Details of", "information"]} fontSize={11} />
 
-      {/* "After adding info" loop up to My DNA */}
-      <Arrow d="M 1630 750 Q 1680 750 1680 670 Q 1680 615 1665 615" />
-      <text x={1530} y={695} fill={STROKE} fontSize={11} fontFamily="Inter, sans-serif">
+      {/* "After adding info" loop around the My DNA column to its right edge */}
+      <Arrow d="M 1630 760 Q 1850 760 1850 620 L 1742 620" />
+      <text x={1660} y={750} fill={STROKE} fontSize={11} fontFamily="Inter, sans-serif">
         After adding info
       </text>
 
-      {/* ============ MY DNA BRANCH (x=1660) ============ */}
-      <Box x={1600} y={600} w={130} h={40} fill={PURPLE} lines={["My DNA"]} fontSize={13} bold={[true]} />
 
-      {/* Bus drop arrow lands on My DNA header */}
-      {/* (already drawn above at x=1660) */}
+      {/* ============ MY DNA BRANCH (x=1670) ============ */}
+      <Box x={1600} y={600} w={140} h={40} fill={PURPLE} lines={["My DNA"]} fontSize={13} bold={[true]} />
+
 
       {/* Sub blue tiles (left col of group) at x=1600 */}
       <Box x={1600} y={665} w={140} h={70} fill={BLUE} lines={["Disclaimer", "for", "reassurance"]} fontSize={11} />
