@@ -1584,26 +1584,20 @@ function PhaseDivider({ label }: { label: string }) {
 function PhaseCard({ number, title, bullets }: { number: string; title: string; bullets: string[] }) {
   return (
     <div
-      className="rounded-xl p-4 flex flex-col gap-2"
+      className="rounded-xl p-4 flex items-center justify-center text-center"
       style={{
         background: "#FA0",
         boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
-        minHeight: 120,
+        minHeight: 110,
       }}
     >
-      <div style={{ ...pixelHeading, color: "#320032", fontSize: 18, letterSpacing: "-0.02em" }}>
-        {number}. {title}
+      <div style={{ ...pixelHeading, color: "#320032", fontSize: 12, lineHeight: 1.3, letterSpacing: "-0.01em", whiteSpace: "pre-line" }}>
+        {`${number}.${title}\n${bullets.join("\n")}`}
       </div>
-      <ul className="list-none p-0 m-0 flex flex-col gap-1">
-        {bullets.map((b) => (
-          <li key={b} style={{ ...pixelBody, color: "#320032", fontSize: 15, lineHeight: 1.4 }}>
-            • {b}
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
+
 
 function PersonaCard({ p }: { p: (typeof GENELINK)["personas"][number] }) {
   const isGreen = p.accent === "green";
