@@ -1633,10 +1633,10 @@ function PhaseCard({ number, title, bullets }: { number: string; title: string; 
 
 function PersonaCard({ p }: { p: (typeof GENELINK)["personas"][number] }) {
   const isGreen = p.accent === "green";
-  const bg = isGreen ? "#3BC976" : "#69DAEE";
-  const chip = isGreen ? "#9FF2C1" : "#B5EAF4";
-  const shadowDark = isGreen ? "#1F8A4D" : "#1F6B7E";
-  const shadowLight = isGreen ? "#C8FBDC" : "#D6F2F9";
+  const bg = isGreen ? "#3BC976" : "#FFA42A";
+  const chip = isGreen ? "#9FF2C1" : "#FFD08A";
+  const shadowDark = isGreen ? "#1F8A4D" : "#A85E00";
+  const shadowLight = isGreen ? "#C8FBDC" : "#FFE5BD";
   return (
     <section
       className="rounded-lg p-4 flex flex-col gap-4"
