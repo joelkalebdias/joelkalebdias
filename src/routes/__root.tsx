@@ -77,14 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Joel's Portfolio" },
+      { name: "description", content: "I design experiences that drive business goals, while keeping the user at the heart of the experience. UX/UI, AI, and Visual Design." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Joel's Portfolio" },
+      { property: "og:description", content: "I design experiences that drive business goals, while keeping the user at the heart of the experience. UX/UI, AI, and Visual Design." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Joel's Portfolio" },
+      { name: "twitter:description", content: "I design experiences that drive business goals, while keeping the user at the heart of the experience. UX/UI, AI, and Visual Design." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/708ed62f-820b-42a3-90c4-ade1ddb651bc/id-preview-85e70e4c--62e5981e-9faf-4486-8fde-4ae4daf2d0fd.lovable.app-1781686611750.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/708ed62f-820b-42a3-90c4-ade1ddb651bc/id-preview-85e70e4c--62e5981e-9faf-4486-8fde-4ae4daf2d0fd.lovable.app-1781686611750.png" },
     ],
     links: [
       {
