@@ -259,7 +259,7 @@ function AboutPage() {
             </div>
             <Link
               to="/"
-              className="hover:underline hover:brightness-110 transition-all"
+              className="retro-lightning"
               style={{
                 ...pixelBody,
                 color: "#FFF",
