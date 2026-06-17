@@ -387,6 +387,7 @@ function CaseStudyPage() {
       className="min-h-screen w-full px-4 sm:px-6 lg:px-8 py-8 flex justify-center"
       style={{ background: "linear-gradient(180deg, #0A0224 0%, #260A20 100%)" }}
     >
+      <RetroScrollProgress />
       <div className="w-full max-w-[1280px] flex flex-col gap-6">
         {/* Header */}
         <header
