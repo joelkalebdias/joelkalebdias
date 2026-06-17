@@ -233,9 +233,10 @@ export function IADiagram() {
 
       {/* "After adding info" loop up to My DNA bottom */}
       <Arrow d="M 1630 750 Q 1750 750 1750 690 Q 1750 640 1670 640" />
-      <text x={1530} y={695} fill={STROKE} fontSize={11} fontFamily="Inter, sans-serif">
+      <text x={1640} y={680} fill={STROKE} fontSize={11} fontFamily="Inter, sans-serif">
         After adding info
       </text>
+
 
       {/* ============ MY DNA BRANCH (x=1670) ============ */}
       <Box x={1600} y={600} w={140} h={40} fill={PURPLE} lines={["My DNA"]} fontSize={13} bold={[true]} />
