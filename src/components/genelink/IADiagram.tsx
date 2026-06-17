@@ -233,7 +233,7 @@ export function IADiagram() {
 
       {/* "After adding info" loop up to My DNA bottom */}
       <Arrow d="M 1630 750 Q 1750 750 1750 690 Q 1750 640 1670 640" />
-      <text x={1640} y={680} fill={STROKE} fontSize={11} fontFamily="Inter, sans-serif">
+      <text x={1500} y={725} fill={STROKE} fontSize={11} fontFamily="Inter, sans-serif">
         After adding info
       </text>
 
