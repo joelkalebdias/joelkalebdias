@@ -1403,12 +1403,33 @@ const GENELINK = {
     right: "https://api.builder.io/api/v1/image/assets/TEMP/3331caf3062bfc77c5f20f62aded11884b521fa6?width=438",
   },
   researchHeading: "Let's Connect People!",
-  researchParagraphs: [
+  researchIntro:
     "Since I did not have access to users for research due to the limited timeline, I used third party sources for quantitative research data and tried to infer from it.",
-    "At 2019, more than 26 million consumers had added their DNA to four leading commercial ancestry and health databases. If the pace continues, the gene troves could hold data on the genetic makeup of more than 100 million people within 24 months.",
-    "Ancestry testing also can yield unanticipated results such as lack of expected ancestry or the presence of unexpected ancestry. Discordance between pairs of siblings or between father and child can reveal nonpaternity, which is estimated to occur in approximately 1% to 2% of births in Western populations. These results could have significant psychosocial impacts.",
-    "If you have taken these tests, you may see the percentages in your ancestry report fluctuate over time, or if you've taken multiple DNA tests with different companies you may see slight differences in the report numbers. This could be due to differences in each company's methods, the continued growth and improvement of the reference datasets, and other factors.",
-    "Most participants understood that test could provide insights about ancestry and kinship, although some individuals in every group raised questions about the accuracy and stability of results, with some expressing worries about scientific errors. A few participants were surprised to learn that the accuracy of a user's results depend on the pool of people who had previously been tested.",
+  researchCards: [
+    {
+      body: "At 2019, more than 26 million consumers had added their DNA to four leading commercial ancestry and health databases. If the pace continues, the gene troves could hold data on the genetic makeup of more than 100 million people within 24 months.",
+      logo: mitLogo.url,
+      logoAlt: "MIT Technology Review",
+      logoHeight: 56,
+    },
+    {
+      body: "Ancestry testing also can yield unanticipated results such as lack of expected ancestry or the presence of unexpected ancestry. Discordance between pairs of siblings or between father and child can reveal nonpaternity, which is estimated to occur in approximately 1% to 2% of births in Western populations. These results could have significant psychosocial impacts.",
+      logo: nihLogo.url,
+      logoAlt: "National Library of Medicine — National Center for Biotechnology Information",
+      logoHeight: 40,
+    },
+    {
+      body: "If you have taken these tests, you may see the percentages in your ancestry report fluctuate over time, or if you've taken multiple DNA tests with different companies you may see slight differences in the report numbers. This could be due to differences in each company's methods, the continued growth and improvement of the reference datasets, and other factors.",
+      logo: nistLogo.url,
+      logoAlt: "NIST",
+      logoHeight: 28,
+    },
+    {
+      body: "Most participants understood that test could provide insights about ancestry and kinship, although some individuals in every group raised questions about the accuracy and stability of results, with some expressing worries about scientific errors. A few participants were surprised to learn that the accuracy of a user's results depend on the pool of people who had previously been tested.",
+      logo: nihLogo.url,
+      logoAlt: "National Library of Medicine — National Center for Biotechnology Information",
+      logoHeight: 40,
+    },
   ],
   stats: [
     { value: "26M+", label: "Added their DNA to four leading commercial ancestry and health databases" },
@@ -1418,10 +1439,10 @@ const GENELINK = {
     intro:
       "Before designing anything, I mapped the existing landscape of ancestry & DNA-testing platforms. The goal wasn't to copy them — it was to see where each one wins, where each one falls short, and where Genelink could carve out a more human, more guided experience.",
     apps: [
-      { name: "23andMe", logo: "https://api.builder.io/api/v1/image/assets/TEMP/c0ba8d11aee59653a56825c88fb5b605f996d7e8?width=600" },
-      { name: "Ancestry.com", logo: "https://api.builder.io/api/v1/image/assets/TEMP/a0aec7389b59c267fe9e6cb147a75e605ac97963?width=480" },
-      { name: "Map my Genome", logo: "https://api.builder.io/api/v1/image/assets/TEMP/e695fcd1866eccfba259938f841a203fd926c8ec?width=254" },
-      { name: "My Heritage", logo: "https://api.builder.io/api/v1/image/assets/TEMP/5a6eca848d4d82049c20771edc259ef0f78e653f?width=340" },
+      { name: "23andMe", logo: logo23andme.url },
+      { name: "Ancestry.com", logo: logoAncestry.url },
+      { name: "Map my Genome", logo: logoMapMyGenome.url },
+      { name: "My Heritage", logo: logoMyHeritage.url },
     ],
     swot: [
       {
