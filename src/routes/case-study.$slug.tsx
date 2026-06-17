@@ -2,6 +2,13 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { RevealPanel, StaggerGroup, TypewriterText } from "@/components/retro/Reveal";
 import { RetroScrollProgress } from "@/components/retro/RetroScrollProgress";
 import genelinkHeroAsset from "@/assets/genelink-hero.png.asset.json";
+import mitLogo from "@/assets/genelink/mit-tech-review.png.asset.json";
+import nihLogo from "@/assets/genelink/nih.png.asset.json";
+import nistLogo from "@/assets/genelink/nist.png.asset.json";
+import logo23andme from "@/assets/genelink/23andme.png.asset.json";
+import logoAncestry from "@/assets/genelink/ancestry.png.asset.json";
+import logoMapMyGenome from "@/assets/genelink/mapmygenome.png.asset.json";
+import logoMyHeritage from "@/assets/genelink/myheritage.png.asset.json";
 
 const pixelHeading = {
   fontFamily: "'Ac437 IBM CGA', 'Press Start 2P', monospace",
