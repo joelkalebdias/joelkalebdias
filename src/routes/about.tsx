@@ -162,7 +162,8 @@ function StatCard({ value, label }: { value: string; label: string }) {
           style={{
             ...pixelTerminal,
             flex: "1 0 0",
-            color: "#21801E",
+            color: "#3BFD00",
+            textShadow: "0 0 6px rgba(59,253,0,0.35)",
             fontSize: 16,
             lineHeight: "140%",
             letterSpacing: "-0.16px",
