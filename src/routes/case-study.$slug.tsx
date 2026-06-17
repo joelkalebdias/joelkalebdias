@@ -1367,3 +1367,840 @@ function CaseStudyPage() {
     </main>
   );
 }
+
+/* ========================================================================== */
+/*  GENELINK CASE STUDY — dedicated renderer matching the Figma 1:1            */
+/* ========================================================================== */
+
+const GENELINK = {
+  challenge:
+    "Connecting families through DNA analysis becomes challenging when users face disjointed tools and interfaces. This fragmentation complicates the search process and hampers effective communication and meaningful connections, especially when dealing with extensive genetic data.",
+  targetAudience:
+    "People want to know where they come from and to whom they are biologically related. People who might be adopted or gave up their children for adoption and wish to reconnect, or people who are mostly mixed race and orphaned. Aged between 25–55, financially comfortable — DNA testing is not cheap.",
+  designProcessIntro:
+    "How I managed to create this experience in a couple of days? I followed a lean UX method which streamlined processes to ensure timely delivery.",
+  phases: [
+    {
+      number: "01",
+      title: "Discovery",
+      bullets: ["Quantitative and 3rd party research", "Competitive Analysis"],
+    },
+    {
+      number: "02",
+      title: "Ideation",
+      bullets: ["Analyzing insights", "Crafting personas", "Defining avenues"],
+    },
+    {
+      number: "03",
+      title: "Creation",
+      bullets: ["Information architecture", "Branding", "Visual design"],
+    },
+  ],
+  researchHeading: "Let's Connect People!",
+  researchBody:
+    "Since I did not have access to users for research due to the limited timeline, I used third party sources for quantitative research data and tried to infer from it.\nAt 2019, more than 26 million consumers had added their DNA to four leading commercial ancestry and health databases. If the pace continues, the gene troves could hold data on the genetic makeup of more than 100 million people within 24 months.\nAncestry testing also can yield unanticipated results such as lack of expected ancestry or the presence of unexpected ancestry. Discordance between pairs of siblings or between father and child can reveal nonpaternity, which is estimated to occur in approximately 1% to 2% of births in Western populations — results that could have significant psychosocial impact.\nMost participants understood that the tests could provide insights about ancestry and kinship, although some raised questions about the accuracy and stability of results, and a few were surprised to learn that accuracy depends on the pool of people who had previously been tested.",
+  stats: [
+    { value: "26M+", label: "Added their DNA to four leading commercial ancestry and health databases" },
+    { value: "1-2%", label: "Discordance between sibling pairs in Western populations" },
+  ],
+  competition: {
+    intro:
+      "Before designing anything, I mapped the existing landscape of ancestry & DNA-testing platforms. The goal wasn't to copy them — it was to see where each one wins, where each one falls short, and where Genelink could carve out a more human, more guided experience.",
+    apps: [
+      { name: "23andMe", logo: "https://api.builder.io/api/v1/image/assets/TEMP/c0ba8d11aee59653a56825c88fb5b605f996d7e8?width=600" },
+      { name: "Ancestry.com", logo: "https://api.builder.io/api/v1/image/assets/TEMP/a0aec7389b59c267fe9e6cb147a75e605ac97963?width=480" },
+      { name: "Map my Genome", logo: "https://api.builder.io/api/v1/image/assets/TEMP/e695fcd1866eccfba259938f841a203fd926c8ec?width=254" },
+      { name: "My Heritage", logo: "https://api.builder.io/api/v1/image/assets/TEMP/5a6eca848d4d82049c20771edc259ef0f78e653f?width=340" },
+    ],
+    swot: [
+      {
+        trait: "Strengths",
+        cells: [
+          "Strong brand reputation, comprehensive genetic testing services, focus on health insights, and extensive genetic database.",
+          "Established brand recognition, large user base, comprehensive genealogical resources, advanced DNA testing technology.",
+          "User-friendly interface design, intuitive navigation for genetic testing services, visually appealing data visualization, and personalized user dashboards.",
+          "Intuitive and visually appealing user interface, interactive family tree builder, multimedia integration for photos and documents, and user-friendly navigation.",
+        ],
+      },
+      {
+        trait: "Weaknesses",
+        cells: [
+          "Potential privacy concerns, and complex health-related data interpretation.",
+          "Complex user interface, high cost for users, privacy concerns, limited international reach.",
+          "Limited customization options for user interface preferences, and potential learning curve for new users.",
+          "Challenges in maintaining UI consistency across different devices.",
+        ],
+      },
+      {
+        trait: "Opportunities",
+        cells: [
+          "Integrating more personalized health recommendations.",
+          "Simplify user interface.",
+          "Leveraging emerging technologies for interactive user engagement.",
+          "Leveraging AI for personalized user interaction.",
+        ],
+      },
+      {
+        trait: "Threats",
+        cells: [
+          "Other platforms with advanced AI capabilities.",
+          "Complexity may lead to longer adoption times.",
+          "Competitive pressures from other UI/UX-focused genetic testing apps.",
+          "Risks of design fatigue with long-term user engagement.",
+        ],
+      },
+    ],
+  },
+  personas: [
+    {
+      name: "Sarah",
+      age: "34",
+      role: "Marketing Manager",
+      accent: "green" as const,
+      avatar: "https://api.builder.io/api/v1/image/assets/TEMP/2234d9605d41f3aefe83060b6aac0356cbf03118?width=422",
+      about:
+        "Sarah is a tech-savvy professional with a passion for uncovering her family history. She lives in a suburban area in the USA and enjoys exploring new technologies that simplify complex tasks. Sarah has a bachelor's degree in marketing and works for a mid-sized company, where she applies her creativity and analytical skills.",
+      goals:
+        "Sarah is eager to discover her ancestral roots and connect with long-lost relatives using modern technology. She values efficiency and wants a user-friendly app that seamlessly integrates DNA analysis with intuitive UI/UX design. Sarah is willing to invest in reliable tools that provide accurate results and meaningful connections.",
+      challenges:
+        "Sarah finds the process of navigating through extensive genetic data and complex family connections daunting. She seeks an app that simplifies this process while offering robust features for communication and data visualization. Privacy and data security are also significant concerns.",
+      tech:
+        "Sarah is proficient in using smartphones and computers for both work and personal tasks. She prefers apps with clean, modern interfaces that are easy to navigate and provide clear instructions. She appreciates apps that offer customization options to tailor the experience to her preferences.",
+      quote:
+        "I want an app that not only helps me uncover my family history but also makes the journey enjoyable and easy to understand. Privacy and accuracy are non-negotiable for me — I need to trust the app with my genetic data.",
+    },
+    {
+      name: "Michael Nguyen",
+      age: "42",
+      role: "Software Engineer",
+      accent: "blue" as const,
+      avatar: "https://api.builder.io/api/v1/image/assets/TEMP/2506938cce78290b2b85fd700a8e7204e980d162?width=396",
+      about:
+        "Michael is a driven software engineer who resides in a bustling urban area. He holds a master's degree in computer science and works for a tech startup, where he applies his expertise in coding and problem-solving. Michael enjoys exploring new technologies and is interested in using them to uncover his family history.",
+      goals:
+        "Michael is curious about his ancestral origins and wants to discover connections with distant relatives through DNA analysis. He values efficiency and accuracy, preferring apps that offer seamless integration of genetic data with intuitive UI/UX design.",
+      challenges:
+        "Navigating through extensive genetic data and interpreting complex family relationships poses challenges for Michael. He seeks an app that not only provides comprehensive genetic analysis but also simplifies the presentation of family connections. He is cautious about data privacy.",
+      tech:
+        "Michael is highly proficient in using technology, particularly smartphones and computers, both professionally and personally. He appreciates apps with sleek, modern interfaces that are easy to navigate and offer customizable features.",
+      quote:
+        "I'm fascinated by the potential of technology to uncover my family history. I want an app that gives me accurate genetic insights and makes it easy to explore my ancestry. Security and privacy are paramount.",
+    },
+  ],
+  hmwIntro:
+    "After understanding the research & personas, I was able to visualize how the solution might look like.",
+  hmwPillars: [
+    { title: "Communication system", body: "Build a system to help users connect and communicate with each other." },
+    { title: "DNA Insights", body: "Visually represent DNA insights and give information in byte-sized format." },
+    { title: "Family Tree", body: "Easy to create, parent-child link based family tree." },
+    { title: "Knowledge center", body: "For making users aware of DNA testing, its possibilities, and addressing concerns." },
+  ],
+  iaImage:
+    "https://api.builder.io/api/v1/image/assets/TEMP/f2a6fe8480201fd8e3b3880f7f92d84907dbfaa2?width=530",
+  sketchImage:
+    "https://api.builder.io/api/v1/image/assets/TEMP/544d737c196b675f2818c21fdf596eb654c74762?width=596",
+  branding: {
+    logoIntro:
+      "Before jumping into UI screens, I needed the logo, colors and typeface that would determine the UI style and art direction. And so I started sketching…",
+    logoSubcaption: "DNA chain with link — to denote connection and people.",
+    logoSketch:
+      "https://api.builder.io/api/v1/image/assets/TEMP/4a56334c1e6497d7bb7f7bd4e868e90ef1fa2074?width=700",
+    ethos: ["Highly Intuitive", "Visually Appealing", "Enjoyable Experience"],
+    colors: [
+      { name: "Pure White", hex: "#FFFFFF", rationale: "Crisp · Pure · Perfection · Honesty · New Beginnings", fg: "#1A1A1A" },
+      { name: "Royal Blue", hex: "#344EAD", rationale: "Eminence · Sophistication · Trustworthiness · Reliability", fg: "#FFFFFF" },
+      { name: "Grey", hex: "#F4F4F4", rationale: "Neutral surface", fg: "#1A1A1A" },
+      { name: "Grey", hex: "#EAEAEA", rationale: "Neutral surface", fg: "#1A1A1A" },
+      { name: "Secondary", hex: "#F2F1DF", rationale: "Warm secondary surface", fg: "#1A1A1A" },
+      { name: "Text", hex: "#3A353D", rationale: "Primary text", fg: "#FFFFFF" },
+      { name: "Semantic", hex: "#4CACA6", rationale: "Success", fg: "#FFFFFF" },
+      { name: "Semantic", hex: "#DA3A3A", rationale: "Error", fg: "#FFFFFF" },
+      { name: "Semantic", hex: "#EAB040", rationale: "Warning", fg: "#1A1A1A" },
+    ],
+    finalLogoTagline: "We share with both — to enable connection and people.",
+  },
+  dashboard: {
+    intro:
+      "An integrated dashboard that combines stories, closest matches, ancestry discoveries, and real-time DNA processing — so users always know what's new in their network and where their analysis stands.",
+    phoneImage:
+      "https://api.builder.io/api/v1/image/assets/TEMP/9c4d35fd421c273cbb01f03daa1cb7e52a27ddf7?width=551",
+    callouts: [
+      { title: "Stories", body: "Engage users with real-time updates and shared life moments from their genetic network." },
+      { title: "Closest Matches", body: "Facilitate immediate connections by highlighting the user's closest genetic relatives and matches." },
+      { title: "A Trail of Discoveries", body: "Inspire users and build community through engaging articles and personal stories of ancestral exploration." },
+      { title: "DNA Processing Status", body: "Keep users informed and manage expectations with a clear, real-time progress tracker for their DNA analysis." },
+      { title: "Dashboard DNA Kit Promotion", body: "Drive engagement and conversions with targeted, limited-time discount offers for family DNA kits." },
+    ],
+  },
+  myDna: {
+    caption:
+      "An integrated DNA profile combining real-time processing status with initial racial demographics and health indicators.",
+    images: [
+      "https://api.builder.io/api/v1/image/assets/TEMP/c354b7c9cc25414091879dc1f8b26ceda0a736a8?width=551",
+      "https://api.builder.io/api/v1/image/assets/TEMP/461051f1939d88c6ed79b53ca502081016ed5979?width=551",
+      "https://api.builder.io/api/v1/image/assets/TEMP/a3faa68ee0f2deb13e9723f082752f97f29b479a?width=551",
+    ],
+  },
+  futureScope: {
+    intro:
+      "Lot more can be done on this application. A few features that can be implemented to make it more versatile and cutting edge.",
+    items: [
+      { title: "AI-powered ancestry predictions", body: "Use artificial intelligence to provide more accurate ancestry predictions and potential family connections based on genetic data patterns and historical records." },
+      { title: "AR Family Tree", body: "Allow users to visualize their family tree using augmented reality, providing an interactive and immersive way to explore their ancestry and family connections." },
+      { title: "Interactive storytelling", body: "Create interactive storytelling features that allow users to add and share stories, photos, and videos about their ancestors, enriching the family history experience." },
+    ],
+  },
+} as const;
+
+function PhaseDivider({ label }: { label: string }) {
+  return (
+    <div className="pt-4 pb-2 text-center">
+      <h2
+        style={{
+          ...pixelHeading,
+          color: "#FFEC7F",
+          textShadow: "2px 2px 0 #FF5900",
+          fontSize: "clamp(28px, 4vw, 36px)",
+          lineHeight: 1.3,
+          letterSpacing: "-0.08em",
+        }}
+      >
+        {label}
+      </h2>
+    </div>
+  );
+}
+
+function PhaseCard({ number, title, bullets }: { number: string; title: string; bullets: string[] }) {
+  return (
+    <div
+      className="rounded-xl p-4 flex flex-col gap-2"
+      style={{
+        background: "#FA0",
+        boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
+        minHeight: 120,
+      }}
+    >
+      <div style={{ ...pixelHeading, color: "#320032", fontSize: 18, letterSpacing: "-0.02em" }}>
+        {number}. {title}
+      </div>
+      <ul className="list-none p-0 m-0 flex flex-col gap-1">
+        {bullets.map((b) => (
+          <li key={b} style={{ ...pixelBody, color: "#320032", fontSize: 15, lineHeight: 1.4 }}>
+            • {b}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function PersonaCard({ p }: { p: (typeof GENELINK)["personas"][number] }) {
+  const isGreen = p.accent === "green";
+  const bg = isGreen ? "#3BC976" : "#69DAEE";
+  const chip = isGreen ? "#9FF2C1" : "#B5EAF4";
+  const shadowDark = isGreen ? "#1F8A4D" : "#1F6B7E";
+  const shadowLight = isGreen ? "#C8FBDC" : "#D6F2F9";
+  return (
+    <section
+      className="rounded-lg p-4 flex flex-col gap-4"
+      style={{
+        background: bg,
+        boxShadow: `-3px -3px 0 0 ${shadowDark} inset, 3px 3px 0 0 ${shadowLight} inset`,
+      }}
+    >
+      <div className="flex items-center gap-4">
+        <div
+          className="rounded-lg overflow-hidden flex-shrink-0"
+          style={{ width: 72, height: 72, background: "#FFF", boxShadow: "inset 0 0 0 2px #320032" }}
+        >
+          <img src={p.avatar} alt={p.name} className="w-full h-full object-cover" loading="lazy" />
+        </div>
+        <div>
+          <div style={{ ...pixelHeading, color: "#102914", fontSize: 18, letterSpacing: "-0.02em" }}>
+            {p.name}, {p.age}
+          </div>
+          <div style={{ ...pixelBody, color: "#102914", fontSize: 14, opacity: 0.85 }}>{p.role}</div>
+        </div>
+      </div>
+      {([
+        ["About", p.about],
+        ["Goals and Motivations", p.goals],
+        ["Challenges", p.challenges],
+        ["Technology Usage", p.tech],
+      ] as const).map(([h, body]) => (
+        <div key={h}>
+          <h4 style={{ ...pixelBody, color: "#102914", fontSize: 15, fontWeight: 700, margin: 0, marginBottom: 2 }}>
+            {h}
+          </h4>
+          <p style={{ ...pixelBody, color: "#102914", fontSize: 14, lineHeight: 1.45, margin: 0 }}>{body}</p>
+        </div>
+      ))}
+      <div className="rounded-lg px-4 py-3" style={{ background: chip, boxShadow: "inset 0 0 0 2px #102914" }}>
+        <p style={{ ...pixelBody, color: "#102914", fontSize: 14, lineHeight: 1.45, margin: 0, fontStyle: "italic" }}>
+          "{p.quote}"
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function PillarTile({ title, body }: { title: string; body: string }) {
+  return (
+    <div
+      className="rounded-xl p-4 flex flex-col gap-2"
+      style={{
+        background: "#FA0",
+        boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
+        minHeight: 110,
+      }}
+    >
+      <div style={{ ...pixelHeading, color: "#320032", fontSize: 14, letterSpacing: "-0.02em", lineHeight: 1.3 }}>
+        {title}
+      </div>
+      <p style={{ ...pixelBody, color: "#320032", fontSize: 14, lineHeight: 1.4, margin: 0 }}>{body}</p>
+    </div>
+  );
+}
+
+function ColorSwatch({ name, hex, rationale, fg }: { name: string; hex: string; rationale: string; fg: string }) {
+  return (
+    <div
+      className="rounded-lg overflow-hidden flex flex-col"
+      style={{ boxShadow: "inset 0 0 0 2px #320032" }}
+    >
+      <div className="p-3 flex flex-col gap-1" style={{ background: hex, minHeight: 90 }}>
+        <span style={{ ...pixelHeading, color: fg, fontSize: 12, letterSpacing: "-0.02em" }}>{name}</span>
+        <span style={{ ...pixelBody, color: fg, fontSize: 12, opacity: 0.9 }}>{hex}</span>
+      </div>
+      <div className="p-2" style={{ background: "#FDEBE2" }}>
+        <p style={{ ...pixelBody, color: "#320032", fontSize: 11, lineHeight: 1.35, margin: 0 }}>{rationale}</p>
+      </div>
+    </div>
+  );
+}
+
+function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
+  const G = GENELINK;
+  return (
+    <main
+      className="min-h-screen w-full px-4 sm:px-6 lg:px-8 py-8 flex justify-center"
+      style={{ background: "linear-gradient(180deg, #0A0224 0%, #260A20 100%)" }}
+    >
+      <RetroScrollProgress />
+      <div className="w-full max-w-[1280px] flex flex-col gap-6">
+        {/* Header */}
+        <header
+          className="rounded-xl p-6 flex flex-col gap-6"
+          style={{
+            background: "linear-gradient(180deg, #F360A3 0%, #FF289E 76.44%, #8A00B1 100%)",
+            boxShadow: "-3px -3px 0 0 #A70 inset, 3px 3px 0 0 #FFEF33 inset",
+          }}
+        >
+          <div className="flex items-start justify-between gap-6 flex-wrap">
+            <h1
+              style={{
+                ...pixelHeading,
+                color: cs.titleColor,
+                textShadow: cs.titleShadow,
+                fontSize: "clamp(28px, 4vw, 36px)",
+                lineHeight: 1.3,
+                letterSpacing: "-0.1em",
+              }}
+            >
+              {cs.title}
+            </h1>
+            <Link to="/" className="retro-lightning" style={{ ...pixelBody, color: "#fff", fontSize: 24, letterSpacing: "-0.02em" }}>
+              ← Back
+            </Link>
+          </div>
+          <div
+            className="rounded-xl px-4 sm:px-6 pt-4 pb-4 relative overflow-hidden"
+            style={{
+              border: "2px solid #008000",
+              background: `${scanlines}, linear-gradient(180deg, #004802 0%, #001F01 100%)`,
+              boxShadow: "0 0 4px 0 rgba(0,0,0,0.4) inset, 2px 2px 0 0 #8F0045",
+            }}
+          >
+            <div className="rounded-md px-4 py-2" style={{ background: "#032201" }}>
+              <p style={{ ...pixelTerminal, color: "#21801E", fontSize: 16, letterSpacing: "-0.01em", margin: 0 }}>
+                {cs.meta}
+              </p>
+            </div>
+            <p
+              style={{
+                ...pixelBody,
+                color: "#3BFD00",
+                textShadow: "2px 2px 0 rgba(0,0,0,0.25)",
+                fontSize: 22,
+                lineHeight: 1.3,
+                margin: 0,
+                marginTop: 16,
+              }}
+            >
+              {cs.tagline}
+            </p>
+          </div>
+        </header>
+
+        {/* Hero image */}
+        <RevealPanel effect="crt-boot" className="rounded-xl overflow-hidden w-full" style={{ aspectRatio: "16/7", background: "#000" }}>
+          <img src={cs.hero} alt={cs.title} className="w-full h-full object-cover" />
+        </RevealPanel>
+
+        {/* The Challenge */}
+        <PanelShell>
+          <PanelHeader label="The Challenge" gradient="linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)" />
+          <div className="px-4 pt-4">
+            <TypewriterText text={G.challenge} style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }} />
+          </div>
+        </PanelShell>
+
+        {/* Target Audience */}
+        <PanelShell>
+          <PanelHeader label="Target Audience" gradient="linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)" />
+          <div className="px-4 pt-4">
+            <TypewriterText text={G.targetAudience} style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }} />
+          </div>
+        </PanelShell>
+
+        {/* Design Process */}
+        <PanelShell>
+          <PanelHeader label="Design Process" gradient="linear-gradient(180deg, #FBFFF6 0%, #B5EAF4 50%, #69DAEE 100%)" />
+          <div className="px-4 pt-4 flex flex-col gap-4">
+            <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>
+              {G.designProcessIntro}
+            </p>
+            <StaggerGroup className="grid grid-cols-1 sm:grid-cols-3 gap-3" staggerMs={90}>
+              {G.phases.map((p) => (
+                <PhaseCard key={p.title} number={p.number} title={p.title} bullets={[...p.bullets]} />
+              ))}
+            </StaggerGroup>
+          </div>
+        </PanelShell>
+
+        {/* ===== DISCOVERY ===== */}
+        <PhaseDivider label="Discovery" />
+
+        <PanelShell>
+          <PanelHeader label={G.researchHeading} gradient="linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)" />
+          <div className="px-4 pt-4">
+            <TypewriterText text={G.researchBody} style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.5, margin: 0 }} />
+          </div>
+        </PanelShell>
+
+        {/* Stats */}
+        <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 gap-4" staggerMs={120} effect="crt-boot">
+          {G.stats.map((s) => (
+            <div
+              key={s.label}
+              className="rounded-xl p-4 flex flex-col gap-3"
+              style={{
+                border: "2px solid #008000",
+                background: `${scanlines}, linear-gradient(180deg, #004802 0%, #001F01 100%)`,
+                boxShadow: "0 0 4px 0 rgba(0,0,0,0.4) inset, 2px 2px 0 0 #8F0045",
+              }}
+            >
+              <div style={{ ...pixelHeading, color: "#09FF00", fontSize: 48, lineHeight: 1.1, letterSpacing: "-0.02em" }}>
+                {s.value}
+              </div>
+              <div className="rounded-md px-3 py-2" style={{ background: "#032201" }}>
+                <p style={{ ...pixelTerminal, color: "#21801E", fontSize: 14, margin: 0, lineHeight: 1.35 }}>{s.label}</p>
+              </div>
+            </div>
+          ))}
+        </StaggerGroup>
+
+        {/* Competition & Benchmarking */}
+        <PanelShell>
+          <PanelHeader label="Competition & Benchmarking" gradient="linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)" />
+          <div className="px-4 pt-4 flex flex-col gap-4">
+            <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>{G.competition.intro}</p>
+
+            {/* Logo header row + SWOT table (desktop) */}
+            <div
+              className="hidden md:block rounded-xl overflow-hidden"
+              style={{ border: "1px solid #F365A7" }}
+            >
+              <div className="grid" style={{ gridTemplateColumns: `minmax(120px,0.7fr) repeat(${G.competition.apps.length}, minmax(0,1fr))` }}>
+                {/* Header row */}
+                <div className="px-4 py-3 flex items-center" style={{ background: "#FFB3D6", borderBottom: "1px solid #F365A7", borderRight: "1px solid #F365A7" }}>
+                  <span style={{ ...pixelBody, color: "#320032", fontSize: 14, fontWeight: 700 }}>Traits / Apps</span>
+                </div>
+                {G.competition.apps.map((a, i) => (
+                  <div
+                    key={a.name}
+                    className="px-3 py-3 flex items-center justify-center"
+                    style={{
+                      background: "#FFB3D6",
+                      borderBottom: "1px solid #F365A7",
+                      borderRight: i < G.competition.apps.length - 1 ? "1px solid #F365A7" : undefined,
+                      minHeight: 64,
+                    }}
+                  >
+                    <img src={a.logo} alt={a.name} className="max-h-10 w-auto object-contain" loading="lazy" />
+                  </div>
+                ))}
+
+                {/* SWOT rows */}
+                {G.competition.swot.map((row, ri) => {
+                  const isLast = ri === G.competition.swot.length - 1;
+                  return (
+                    <div key={row.trait} className="contents">
+                      <div
+                        className="px-4 py-3"
+                        style={{
+                          background: "#FDEBE2",
+                          borderBottom: isLast ? undefined : "1px solid #F365A7",
+                          borderRight: "1px solid #F365A7",
+                        }}
+                      >
+                        <span style={{ ...pixelBody, color: "#320032", fontSize: 15, fontWeight: 700 }}>{row.trait}</span>
+                      </div>
+                      {row.cells.map((c, ci) => (
+                        <div
+                          key={ci}
+                          className="px-3 py-3"
+                          style={{
+                            borderBottom: isLast ? undefined : "1px solid #F365A7",
+                            borderRight: ci < row.cells.length - 1 ? "1px solid #F365A7" : undefined,
+                          }}
+                        >
+                          <p style={{ ...pixelBody, color: "#320032", fontSize: 13, lineHeight: 1.45, margin: 0 }}>{c}</p>
+                        </div>
+                      ))}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Mobile fallback: per-app cards */}
+            <div className="md:hidden grid grid-cols-1 gap-3">
+              {G.competition.apps.map((a, i) => (
+                <div key={a.name} className="rounded-lg p-3" style={{ background: "#FDEBE2", boxShadow: "inset 0 0 0 2px #F365A7" }}>
+                  <div className="flex items-center justify-center mb-3 p-2 rounded" style={{ background: "#FFB3D6" }}>
+                    <img src={a.logo} alt={a.name} className="max-h-10 w-auto object-contain" loading="lazy" />
+                  </div>
+                  {G.competition.swot.map((row) => (
+                    <div key={row.trait} className="mb-2">
+                      <h5 style={{ ...pixelBody, color: "#320032", fontSize: 13, fontWeight: 700, margin: 0 }}>{row.trait}</h5>
+                      <p style={{ ...pixelBody, color: "#320032", fontSize: 13, lineHeight: 1.45, margin: 0 }}>{row.cells[i]}</p>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+        </PanelShell>
+
+        {/* ===== IDEATION ===== */}
+        <PhaseDivider label="Ideation" />
+        <StaggerGroup className="grid grid-cols-1 lg:grid-cols-2 gap-6" staggerMs={150}>
+          {G.personas.map((p) => (
+            <PersonaCard key={p.name} p={p} />
+          ))}
+        </StaggerGroup>
+
+        {/* ===== CREATION ===== */}
+        <PhaseDivider label="Creation" />
+
+        <PanelShell>
+          <PanelHeader label="How Might We" gradient="linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)" />
+          <div className="px-4 pt-4 flex flex-col gap-4">
+            <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>{G.hmwIntro}</p>
+            <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3" staggerMs={80}>
+              {G.hmwPillars.map((p) => (
+                <PillarTile key={p.title} title={p.title} body={p.body} />
+              ))}
+            </StaggerGroup>
+          </div>
+        </PanelShell>
+
+        {/* Information Architecture */}
+        <PanelShell>
+          <PanelHeader label="Information Architecture" gradient="linear-gradient(180deg, #FBFFF6 0%, #B5EAF4 50%, #69DAEE 100%)" />
+          <div className="px-4 pt-4">
+            <div className="rounded-xl overflow-hidden p-3" style={{ background: "#FFF" }}>
+              <img src={G.iaImage} alt="Information architecture diagram" className="w-full h-auto object-contain" loading="lazy" />
+            </div>
+          </div>
+        </PanelShell>
+
+        {/* Low-fidelity wireframes */}
+        <PanelShell>
+          <PanelHeader label="Low fidelity wireframes" gradient="linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)" />
+          <div className="px-4 pt-4">
+            <div className="rounded-xl overflow-hidden p-3" style={{ background: "#FFF" }}>
+              <img src={G.sketchImage} alt="Low fidelity wireframes" className="w-full h-auto object-contain" loading="lazy" />
+            </div>
+          </div>
+        </PanelShell>
+
+        {/* Branding */}
+        <PanelShell>
+          <PanelHeader label="Branding" gradient="linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)" />
+          <div className="px-4 pt-4 flex flex-col gap-5">
+            {/* The Logo */}
+            <div>
+              <h3 style={{ ...pixelHeading, color: "#320032", fontSize: 18, letterSpacing: "-0.02em", margin: 0, marginBottom: 6 }}>The Logo</h3>
+              <p style={{ ...pixelBody, color: "#320032", fontSize: 15, lineHeight: 1.45, margin: 0, marginBottom: 8 }}>{G.branding.logoIntro}</p>
+              <div className="rounded-xl overflow-hidden p-3 mb-2" style={{ background: "#FFF" }}>
+                <img src={G.branding.logoSketch} alt="Logo sketches" className="w-full h-auto object-contain" loading="lazy" />
+              </div>
+              <p style={{ ...pixelBody, color: "#320032", fontSize: 14, lineHeight: 1.45, margin: 0, fontStyle: "italic" }}>
+                {G.branding.logoSubcaption}
+              </p>
+            </div>
+
+            {/* Design ethos */}
+            <div>
+              <h3 style={{ ...pixelHeading, color: "#320032", fontSize: 18, letterSpacing: "-0.02em", margin: 0, marginBottom: 8 }}>Design ethos</h3>
+              <div className="flex flex-wrap gap-2">
+                {G.branding.ethos.map((e) => (
+                  <span
+                    key={e}
+                    className="rounded-full px-4 py-2"
+                    style={{
+                      ...pixelHeading,
+                      color: "#320032",
+                      fontSize: 12,
+                      background: "#FA0",
+                      boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
+                    }}
+                  >
+                    {e}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Color rationale */}
+            <div>
+              <h3 style={{ ...pixelHeading, color: "#320032", fontSize: 18, letterSpacing: "-0.02em", margin: 0, marginBottom: 8 }}>Color rationale</h3>
+              <StaggerGroup className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3" staggerMs={60}>
+                {G.branding.colors.map((c, i) => (
+                  <ColorSwatch key={`${c.hex}-${i}`} name={c.name} hex={c.hex} rationale={c.rationale} fg={c.fg} />
+                ))}
+              </StaggerGroup>
+            </div>
+
+            {/* Final logo reveal */}
+            <RevealPanel
+              effect="crt-boot"
+              className="rounded-xl overflow-hidden flex flex-col items-center justify-center gap-3 px-4 py-8"
+              style={{ background: "#0A0224", boxShadow: "inset 0 0 0 2px #344EAD" }}
+            >
+              <p style={{ ...pixelBody, color: "#FFF", fontSize: 14, opacity: 0.85, margin: 0 }}>{G.branding.finalLogoTagline}</p>
+              <div className="flex items-center gap-4">
+                {/* DNA mark (pixel SVG) */}
+                <svg width="56" height="56" viewBox="0 0 24 24" fill="none" aria-hidden>
+                  <g stroke="#FFF" strokeWidth="2" strokeLinecap="square">
+                    <path d="M5 3 Q12 12 5 21" />
+                    <path d="M19 3 Q12 12 19 21" />
+                    <line x1="7" y1="6" x2="17" y2="6" />
+                    <line x1="6" y1="10" x2="18" y2="10" />
+                    <line x1="6" y1="14" x2="18" y2="14" />
+                    <line x1="7" y1="18" x2="17" y2="18" />
+                  </g>
+                </svg>
+                <span style={{ ...pixelHeading, color: "#FFF", fontSize: "clamp(36px, 6vw, 56px)", letterSpacing: "-0.05em" }}>
+                  Gene<span style={{ color: "#344EAD" }}>Link</span>
+                </span>
+              </div>
+            </RevealPanel>
+          </div>
+        </PanelShell>
+
+        {/* A sneak peek heading */}
+        <div className="pt-4 pb-2 text-center">
+          <h2
+            style={{
+              ...pixelHeading,
+              color: cs.titleColor,
+              textShadow: cs.titleShadow,
+              fontSize: "clamp(22px, 2.5vw, 28px)",
+              lineHeight: 1.3,
+              letterSpacing: "-0.06em",
+            }}
+          >
+            A sneak peek into my envisioned design
+          </h2>
+        </div>
+
+        {/* Dashboard with callouts */}
+        <PanelShell>
+          <PanelHeader label="Dashboard" gradient="linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)" />
+          <div className="px-4 pt-4 flex flex-col gap-4">
+            <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>{G.dashboard.intro}</p>
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-6 items-center">
+              {/* Left callouts */}
+              <StaggerGroup className="flex flex-col gap-3 order-2 lg:order-1" staggerMs={120}>
+                {G.dashboard.callouts.slice(0, 3).map((c) => (
+                  <div key={c.title} className="rounded-lg px-4 py-3 lg:text-right" style={{ background: "#FDEBE2", boxShadow: "inset 0 0 0 2px #D33869" }}>
+                    <h4 style={{ ...pixelHeading, color: "#320032", fontSize: 13, margin: 0, marginBottom: 4, letterSpacing: "-0.02em" }}>{c.title}</h4>
+                    <p style={{ ...pixelBody, color: "#320032", fontSize: 14, lineHeight: 1.4, margin: 0 }}>{c.body}</p>
+                  </div>
+                ))}
+              </StaggerGroup>
+              {/* Phone */}
+              <RevealPanel
+                effect="crt-boot"
+                className="rounded-2xl overflow-hidden mx-auto order-1 lg:order-2"
+                style={{ width: 240, aspectRatio: "240/500", background: "#000" }}
+              >
+                <img src={G.dashboard.phoneImage} alt="Dashboard mockup" className="w-full h-full object-cover" loading="lazy" />
+              </RevealPanel>
+              {/* Right callouts */}
+              <StaggerGroup className="flex flex-col gap-3 order-3" staggerMs={120}>
+                {G.dashboard.callouts.slice(3).map((c) => (
+                  <div key={c.title} className="rounded-lg px-4 py-3" style={{ background: "#FDEBE2", boxShadow: "inset 0 0 0 2px #D33869" }}>
+                    <h4 style={{ ...pixelHeading, color: "#320032", fontSize: 13, margin: 0, marginBottom: 4, letterSpacing: "-0.02em" }}>{c.title}</h4>
+                    <p style={{ ...pixelBody, color: "#320032", fontSize: 14, lineHeight: 1.4, margin: 0 }}>{c.body}</p>
+                  </div>
+                ))}
+              </StaggerGroup>
+            </div>
+          </div>
+        </PanelShell>
+
+        {/* My DNA */}
+        <PanelShell>
+          <PanelHeader label="My DNA" gradient="linear-gradient(180deg, #FBFFF6 0%, #B5EAF4 50%, #69DAEE 100%)" />
+          <div className="px-4 pt-4 flex flex-col gap-4">
+            <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>{G.myDna.caption}</p>
+            <div className="rounded-xl p-4" style={{ background: "#030B12" }}>
+              <StaggerGroup className="grid grid-cols-1 sm:grid-cols-3 gap-4" staggerMs={120} effect="crt-boot">
+                {G.myDna.images.map((src, i) => (
+                  <div key={src} className="rounded-2xl overflow-hidden mx-auto w-full max-w-[220px]" style={{ aspectRatio: "220/460", background: "#000" }}>
+                    <img src={src} alt={`My DNA screen ${i + 1}`} className="w-full h-full object-cover" loading="lazy" />
+                  </div>
+                ))}
+              </StaggerGroup>
+            </div>
+          </div>
+        </PanelShell>
+
+        {/* Future Scope */}
+        <RevealPanel
+          as="section"
+          effect="pixel-fade"
+          className="rounded-xl p-4 flex flex-col gap-4"
+          style={{
+            background: "#FA0",
+            boxShadow: "-3px -3px 0 0 #4C042C inset, 3px 3px 0 0 #FFFEF6 inset",
+          }}
+        >
+          <h3
+            style={{
+              ...pixelHeading,
+              color: "#320032",
+              textShadow: "1px 1px 0 #F29A9C",
+              fontSize: 16,
+              margin: 0,
+              padding: "4px 4px 0",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Future Scope
+          </h3>
+          <TypewriterText
+            text={G.futureScope.intro}
+            style={{ ...pixelBody, color: "#320032", fontSize: 18, lineHeight: 1.4, margin: 0, padding: "0 4px" }}
+          />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            {G.futureScope.items.map((a) => (
+              <div key={a.title} className="rounded-lg px-4 py-3" style={{ background: "#FFD581" }}>
+                <h4 style={{ ...pixelBody, color: "#320032", fontSize: 15, margin: 0, marginBottom: 4, fontWeight: 700 }}>{a.title}</h4>
+                <p style={{ ...pixelBody, color: "#320032", fontSize: 14, lineHeight: 1.45, margin: 0 }}>{a.body}</p>
+              </div>
+            ))}
+          </div>
+        </RevealPanel>
+
+        {/* What I Learned (reuses data) */}
+        <RevealPanel
+          as="section"
+          effect="pixel-fade"
+          className="rounded-xl p-4 flex flex-col gap-4"
+          style={{
+            background: "#3BC976",
+            boxShadow: "-3px -3px 0 0 #1F5C30 inset, 3px 3px 0 0 #C8FBDC inset",
+          }}
+        >
+          <h3 style={{ ...pixelHeading, color: "#1A4D24", textShadow: "1px 1px 0 rgba(0,0,0,0.15)", fontSize: 16, margin: 0, padding: "4px 4px 0", letterSpacing: "-0.02em" }}>
+            What I Learned
+          </h3>
+          <TypewriterText
+            text={cs.learnedIntro}
+            style={{ ...pixelBody, color: "#102914", fontSize: 18, lineHeight: 1.45, margin: 0, padding: "0 4px" }}
+          />
+          <div className="flex flex-col gap-3">
+            {cs.lessons.map((l) => (
+              <div key={l.title} className="rounded-lg px-4 py-3" style={{ background: "#9FF2C1" }}>
+                <p style={{ ...pixelBody, color: "#102914", fontSize: 15, lineHeight: 1.45, margin: 0 }}>
+                  <strong>{l.title} </strong>{l.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </RevealPanel>
+
+        {/* More case studies */}
+        <section
+          className="rounded-lg overflow-hidden flex flex-col"
+          style={{ background: "#FCE8F0", boxShadow: "3px 3px 0 0 #D33869, -3px -3px 0 0 #FF94C2", paddingBottom: 16 }}
+        >
+          <SolidHeader
+            label="More case studies"
+            background="linear-gradient(180deg, #FF94C2 0%, #D33869 100%)"
+            textShadow="1px 1px 0 rgba(255,255,255,0.4)"
+          />
+          <div className="px-4 pt-4 pb-2 grid grid-cols-1 md:grid-cols-3 gap-4">
+            {OTHER_PROJECTS.map((p) => (
+              <article
+                key={p.title}
+                className="retro-card rounded-xl p-4 flex flex-col gap-4"
+                style={{ background: p.gradient, boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset" }}
+              >
+                <img src={p.img} alt="" className="w-full rounded-lg object-cover" style={{ aspectRatio: "308/173" }} loading="lazy" />
+                <p style={{ ...pixelBody, color: "#320032", fontSize: 15, lineHeight: 1.4, margin: 0 }}>{p.title}</p>
+                <div style={{ ...pixelBody, color: "#320032", fontSize: 15, lineHeight: 1.4 }}>
+                  <div>{p.company}</div>
+                  <div>{p.location}</div>
+                  <div>{p.role}</div>
+                </div>
+                <span className="pix tl" aria-hidden />
+                <span className="pix tr" aria-hidden />
+                <span className="pix bl" aria-hidden />
+                <span className="pix br" aria-hidden />
+                <span className="pix tl2" aria-hidden />
+                <span className="pix tr2" aria-hidden />
+                <span className="pix bl2" aria-hidden />
+                <span className="pix br2" aria-hidden />
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* Footer back */}
+        <div className="flex justify-center pt-2 pb-4">
+          <Link
+            to="/"
+            className="rounded-lg px-6 py-3"
+            style={{
+              background: "#FA0",
+              boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
+              ...pixelHeading,
+              color: "#320032",
+              fontSize: 13,
+            }}
+          >
+            ← Back to portfolio
+          </Link>
+        </div>
+      </div>
+    </main>
+  );
+}
+
