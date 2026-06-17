@@ -2,6 +2,13 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { RevealPanel, StaggerGroup, TypewriterText } from "@/components/retro/Reveal";
 import { RetroScrollProgress } from "@/components/retro/RetroScrollProgress";
 import genelinkHeroAsset from "@/assets/genelink-hero.png.asset.json";
+import mitLogo from "@/assets/genelink/mit-tech-review.png.asset.json";
+import nihLogo from "@/assets/genelink/nih.png.asset.json";
+import nistLogo from "@/assets/genelink/nist.png.asset.json";
+import logo23andme from "@/assets/genelink/23andme.png.asset.json";
+import logoAncestry from "@/assets/genelink/ancestry.png.asset.json";
+import logoMapMyGenome from "@/assets/genelink/mapmygenome.png.asset.json";
+import logoMyHeritage from "@/assets/genelink/myheritage.png.asset.json";
 
 const pixelHeading = {
   fontFamily: "'Ac437 IBM CGA', 'Press Start 2P', monospace",
@@ -1403,12 +1410,33 @@ const GENELINK = {
     right: "https://api.builder.io/api/v1/image/assets/TEMP/3331caf3062bfc77c5f20f62aded11884b521fa6?width=438",
   },
   researchHeading: "Let's Connect People!",
-  researchParagraphs: [
+  researchIntro:
     "Since I did not have access to users for research due to the limited timeline, I used third party sources for quantitative research data and tried to infer from it.",
-    "At 2019, more than 26 million consumers had added their DNA to four leading commercial ancestry and health databases. If the pace continues, the gene troves could hold data on the genetic makeup of more than 100 million people within 24 months.",
-    "Ancestry testing also can yield unanticipated results such as lack of expected ancestry or the presence of unexpected ancestry. Discordance between pairs of siblings or between father and child can reveal nonpaternity, which is estimated to occur in approximately 1% to 2% of births in Western populations. These results could have significant psychosocial impacts.",
-    "If you have taken these tests, you may see the percentages in your ancestry report fluctuate over time, or if you've taken multiple DNA tests with different companies you may see slight differences in the report numbers. This could be due to differences in each company's methods, the continued growth and improvement of the reference datasets, and other factors.",
-    "Most participants understood that test could provide insights about ancestry and kinship, although some individuals in every group raised questions about the accuracy and stability of results, with some expressing worries about scientific errors. A few participants were surprised to learn that the accuracy of a user's results depend on the pool of people who had previously been tested.",
+  researchCards: [
+    {
+      body: "At 2019, more than 26 million consumers had added their DNA to four leading commercial ancestry and health databases. If the pace continues, the gene troves could hold data on the genetic makeup of more than 100 million people within 24 months.",
+      logo: mitLogo.url,
+      logoAlt: "MIT Technology Review",
+      logoHeight: 56,
+    },
+    {
+      body: "Ancestry testing also can yield unanticipated results such as lack of expected ancestry or the presence of unexpected ancestry. Discordance between pairs of siblings or between father and child can reveal nonpaternity, which is estimated to occur in approximately 1% to 2% of births in Western populations. These results could have significant psychosocial impacts.",
+      logo: nihLogo.url,
+      logoAlt: "National Library of Medicine — National Center for Biotechnology Information",
+      logoHeight: 40,
+    },
+    {
+      body: "If you have taken these tests, you may see the percentages in your ancestry report fluctuate over time, or if you've taken multiple DNA tests with different companies you may see slight differences in the report numbers. This could be due to differences in each company's methods, the continued growth and improvement of the reference datasets, and other factors.",
+      logo: nistLogo.url,
+      logoAlt: "NIST",
+      logoHeight: 28,
+    },
+    {
+      body: "Most participants understood that test could provide insights about ancestry and kinship, although some individuals in every group raised questions about the accuracy and stability of results, with some expressing worries about scientific errors. A few participants were surprised to learn that the accuracy of a user's results depend on the pool of people who had previously been tested.",
+      logo: nihLogo.url,
+      logoAlt: "National Library of Medicine — National Center for Biotechnology Information",
+      logoHeight: 40,
+    },
   ],
   stats: [
     { value: "26M+", label: "Added their DNA to four leading commercial ancestry and health databases" },
@@ -1418,10 +1446,10 @@ const GENELINK = {
     intro:
       "Before designing anything, I mapped the existing landscape of ancestry & DNA-testing platforms. The goal wasn't to copy them — it was to see where each one wins, where each one falls short, and where Genelink could carve out a more human, more guided experience.",
     apps: [
-      { name: "23andMe", logo: "https://api.builder.io/api/v1/image/assets/TEMP/c0ba8d11aee59653a56825c88fb5b605f996d7e8?width=600" },
-      { name: "Ancestry.com", logo: "https://api.builder.io/api/v1/image/assets/TEMP/a0aec7389b59c267fe9e6cb147a75e605ac97963?width=480" },
-      { name: "Map my Genome", logo: "https://api.builder.io/api/v1/image/assets/TEMP/e695fcd1866eccfba259938f841a203fd926c8ec?width=254" },
-      { name: "My Heritage", logo: "https://api.builder.io/api/v1/image/assets/TEMP/5a6eca848d4d82049c20771edc259ef0f78e653f?width=340" },
+      { name: "23andMe", logo: logo23andme.url },
+      { name: "Ancestry.com", logo: logoAncestry.url },
+      { name: "Map my Genome", logo: logoMapMyGenome.url },
+      { name: "My Heritage", logo: logoMyHeritage.url },
     ],
     swot: [
       {
@@ -1802,7 +1830,7 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
 
         <PanelShell>
           <PanelHeader label="Research" gradient="linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)" />
-          <div className="px-4 pt-4 flex flex-col gap-3">
+          <div className="px-4 pt-4 pb-4 flex flex-col gap-4">
             <h3
               style={{
                 ...pixelBody,
@@ -1815,14 +1843,30 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
             >
               {G.researchHeading}
             </h3>
-            {G.researchParagraphs.map((p, i) => (
-              <p
-                key={i}
-                style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4, margin: 0, letterSpacing: "-0.01em" }}
-              >
-                {p}
-              </p>
-            ))}
+            <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4, margin: 0, letterSpacing: "-0.01em" }}>
+              {G.researchIntro}
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {G.researchCards.map((c, i) => (
+                <div
+                  key={i}
+                  className="rounded-lg p-4 flex flex-col gap-3"
+                  style={{ background: "#FFF8E0", boxShadow: "inset 0 0 0 1px #ECD948" }}
+                >
+                  <p style={{ ...pixelBody, color: "#320032", fontSize: 14, lineHeight: 1.45, margin: 0, letterSpacing: "-0.01em", flex: 1 }}>
+                    {c.body}
+                  </p>
+                  <div style={{ height: c.logoHeight, display: "flex", alignItems: "center" }}>
+                    <img
+                      src={c.logo}
+                      alt={c.logoAlt}
+                      style={{ height: "100%", width: "auto", objectFit: "contain" }}
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </PanelShell>
 
@@ -1851,48 +1895,52 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
         {/* Competition & Benchmarking */}
         <PanelShell>
           <PanelHeader label="Competition & Benchmarking" gradient="linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)" />
-          <div className="px-4 pt-4 flex flex-col gap-4">
-            {/* SWOT table — Traits | Apps with text names (desktop) */}
+          <div className="px-4 pt-4 pb-4 flex flex-col gap-4">
+            <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4, margin: 0, letterSpacing: "-0.01em" }}>
+              {G.competition.intro}
+            </p>
+
+            {/* Competitor logo row */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 items-center py-3">
+              {G.competition.apps.map((a) => (
+                <div key={a.name} className="flex items-center justify-center" style={{ height: 56 }}>
+                  <img
+                    src={a.logo}
+                    alt={a.name}
+                    style={{ maxHeight: "100%", maxWidth: "80%", objectFit: "contain" }}
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* SWOT table (desktop) */}
             <div className="hidden md:block rounded-xl overflow-hidden" style={{ border: "1px solid #F365A7" }}>
               <div className="grid" style={{ gridTemplateColumns: `minmax(140px,0.8fr) repeat(${G.competition.apps.length}, minmax(0,1fr))` }}>
-                {/* Header row 1: Traits | Apps (spanning competitor columns) */}
+                {/* Header row: Traits | Apps */}
                 <div
-                  className="px-4 py-3 flex items-center"
-                  style={{ background: "#F35DA3", borderBottom: "1px solid #F365A7", borderRight: "1px solid #F365A7" }}
+                  className="px-4 py-3 flex items-center gap-2"
+                  style={{ background: "#FDEBE2", borderBottom: "1px solid #F365A7", borderRight: "1px solid #F365A7" }}
                 >
-                  <span style={{ ...pixelBody, color: "#320032", fontSize: 16, fontWeight: 700 }}>Traits</span>
+                  <span style={{ ...pixelBody, color: "#320032", fontSize: 14, fontWeight: 700 }}>Traits</span>
+                  <span style={{ ...pixelBody, color: "#320032", fontSize: 14, fontWeight: 700, marginLeft: "auto" }}>Apps</span>
                 </div>
-                <div
-                  className="px-4 py-3 flex items-center justify-center"
-                  style={{
-                    background: "#F35DA3",
-                    borderBottom: "1px solid #F365A7",
-                    gridColumn: `span ${G.competition.apps.length} / span ${G.competition.apps.length}`,
-                  }}
-                >
-                  <span style={{ ...pixelBody, color: "#320032", fontSize: 16, fontWeight: 700 }}>Apps</span>
-                </div>
-
-                {/* Header row 2: empty | app names */}
-                <div
-                  className="px-4 py-3"
-                  style={{ background: "#FFB3D6", borderBottom: "1px solid #F365A7", borderRight: "1px solid #F365A7" }}
-                />
                 {G.competition.apps.map((a, i) => (
                   <div
                     key={a.name}
                     className="px-3 py-3 flex items-center justify-center text-center"
                     style={{
-                      background: "#FFB3D6",
+                      background: "#FDEBE2",
                       borderBottom: "1px solid #F365A7",
                       borderRight: i < G.competition.apps.length - 1 ? "1px solid #F365A7" : undefined,
                     }}
                   >
-                    <span style={{ ...pixelBody, color: "#320032", fontSize: 15, fontWeight: 700, letterSpacing: "-0.01em" }}>
+                    <span style={{ ...pixelBody, color: "#320032", fontSize: 14, fontWeight: 700, letterSpacing: "-0.01em" }}>
                       {a.name}
                     </span>
                   </div>
                 ))}
+
 
                 {/* SWOT rows */}
                 {G.competition.swot.map((row, ri) => {
