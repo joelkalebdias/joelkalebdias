@@ -110,6 +110,7 @@ const PROJECTS: Project[] = [
     role: "Role: UX/UI Designer (Personal Project)",
     gradient: "linear-gradient(180deg, #F35DA3 0%, #F35DA3 80%, #9804AF 100%)",
     img: "https://api.builder.io/api/v1/image/assets/TEMP/b982a6847c860f50d4ba512ddbc3c64beca4590a?width=718",
+    slug: "genelink",
   },
   {
     title:
