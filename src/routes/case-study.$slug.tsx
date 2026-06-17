@@ -205,6 +205,152 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
       { title: "Progress tracking matters more than single insights.", body: "A player who sees improvement over time is more likely to keep using the tool than one who receives isolated feedback." },
     ],
   },
+  genelink: {
+    title: "Genelink",
+    titleColor: "#FFEC7F",
+    titleShadow: "2px 2px 0 #FF5900",
+    tagline:
+      "A DNA-powered platform to reconnect with long-lost relatives, offering secure genetic matching, communication tools, and educational resources for a seamless and meaningful experience.",
+    meta: "Role: UX/UI Designer - Research, Prototyping · Duration: 3 Days · Tools: Figma",
+    hero: "https://api.builder.io/api/v1/image/assets/TEMP/9908a3fc336b65092fa87da381b773e58714eaf0?width=2464",
+    overview:
+      "The Challenge: Connecting families through DNA analysis becomes challenging when users face disjointed tools and interfaces. This fragmentation complicates the search process and hampers effective communication and meaningful connections, especially when dealing with extensive genetic data.\nTarget Audience: People who want to know where they come from and to whom they are biologically related — adopted individuals seeking to reconnect, mixed-race or orphaned users, aged 25–55 and financially comfortable, since DNA testing isn't cheap.",
+    process: [
+      "01. Discovery — Research & Competitive Analysis",
+      "02. Ideation — Insights, Personas, Avenues",
+      "03. Creation — IA, Branding & Visual Design",
+    ],
+    stats: [
+      { value: "26M+", label: "Consumers who added DNA to the four leading ancestry & health databases" },
+      { value: "1-2%", label: "Discordance between sibling pairs in Western populations" },
+    ],
+    research: [
+      {
+        heading: "Let's Connect People!",
+        body: "Without access to users due to the limited timeline, I leaned on third-party quantitative research. By 2019, more than 26 million consumers had added their DNA to four leading commercial ancestry and health databases — and at that pace, the gene troves could hold genetic data on over 100 million people within 24 months.",
+      },
+      {
+        heading: "What people actually feel about the results",
+        body: "Ancestry testing can yield unanticipated results — unexpected ancestry, or discordance between siblings revealing nonpaternity (roughly 1–2% of Western births). Participants generally understood that tests reveal ancestry and kinship, but worried about accuracy, scientific errors, and the fact that result quality depends on the reference pool that has already been tested.",
+      },
+    ],
+    competition: {
+      intro:
+        "Before designing anything, I mapped the existing landscape of DNA & ancestry platforms. The goal wasn't to copy what works — it was to spot where current tools fall short, and where Genelink could carve out a more human, more guided experience.",
+      heading: "The existing tools",
+      sub: "I benchmarked four major platforms that together represent the dominant ancestry & genetic-testing ecosystem:",
+      images: [
+        "https://api.builder.io/api/v1/image/assets/TEMP/c0ba8d11aee59653a56825c88fb5b605f996d7e8?width=600",
+        "https://api.builder.io/api/v1/image/assets/TEMP/a0aec7389b59c267fe9e6cb147a75e605ac97963?width=480",
+        "https://api.builder.io/api/v1/image/assets/TEMP/e695fcd1866eccfba259938f841a203fd926c8ec?width=254",
+      ],
+      table: [
+        {
+          tool: "23andMe",
+          strength: "Health + ancestry insights",
+          offering: "Comprehensive genetic testing with a strong brand reputation and extensive genetic database.",
+        },
+        {
+          tool: "Ancestry.com",
+          strength: "Genealogical depth",
+          offering: "Established recognition, a huge user base, comprehensive genealogical resources, and mature DNA testing tech.",
+        },
+        {
+          tool: "Map my Genome",
+          strength: "User-friendly UX",
+          offering: "Intuitive navigation for genetic testing, appealing data visualization, and personalized dashboards.",
+        },
+        {
+          tool: "My Heritage",
+          strength: "Family-tree storytelling",
+          offering: "Interactive family-tree builder, multimedia integration for photos & documents, and friendly navigation.",
+        },
+      ],
+    },
+    worksWell: [
+      { tool: "23andMe", body: "Strong brand reputation, comprehensive genetic testing services, focus on health insights, and an extensive genetic database that compounds in value over time." },
+      { tool: "Ancestry.com", body: "Established brand recognition, large user base, comprehensive genealogical resources, and advanced DNA testing technology." },
+      { tool: "Map my Genome", body: "User-friendly interface design, intuitive navigation for genetic testing services, visually appealing data visualization, and personalized dashboards." },
+      { tool: "My Heritage", body: "Intuitive and visually appealing UI, interactive family-tree builder, multimedia integration for photos and documents, and friendly navigation." },
+    ],
+    shortfall: [
+      { heading: "Privacy is a quiet anxiety", body: "Across every major platform, privacy concerns are consistently raised but rarely surfaced clearly in-product. Users don't always know what is stored, what is shared, or how to revoke it." },
+      { heading: "Complex interfaces, high cost", body: "Ancestry.com and similar tools have dense interfaces and high price points for users, with limited international reach for many regions." },
+      { heading: "Limited customization & learning curve", body: "Tools like Map my Genome offer limited customization for user interface preferences, and there's a meaningful learning curve for first-time users dealing with unfamiliar genetic concepts." },
+      { heading: "UI inconsistency across devices", body: "Platforms struggle to maintain a consistent UI across mobile, tablet and desktop — especially when displaying long-form family trees and dense ancestry data." },
+    ],
+    implications: [
+      "Integrate more personalized health and ancestry recommendations powered by the user's own data.",
+      "Simplify the interface so first-time users can navigate genetic data without prior knowledge.",
+      "Leverage emerging tech (AI, AR) for interactive engagement instead of static reports.",
+    ],
+    solutionHero:
+      "https://api.builder.io/api/v1/image/assets/TEMP/e1a7d02c5037c647363cf4e05b7b94ad72242eee?width=2456",
+    ia: {
+      navItems: ["Dashboard", "My DNA", "Family Tree", "Connections", "Knowledge"],
+      intro:
+        "After understanding the research and personas, four product pillars emerged. Each one answers a real anxiety surfaced in the research — connection, clarity, ancestry, and trust.\nThree principles guided the structure:",
+      principles: [
+        { title: "Highly intuitive", body: "Every screen leans on recognition, not recall. Genetic data is already heavy — the navigation should not add cognitive load on top." },
+        { title: "Visually appealing", body: "DNA and ancestry data feels clinical by default. Soft visuals, warm hierarchy, and human imagery were used to make the experience feel personal rather than lab-grade." },
+        { title: "Enjoyable experience", body: "Discovering family should feel like opening a story, not parsing a report. Micro-moments of celebration, progress and storytelling were threaded through every flow." },
+      ],
+    },
+    screens: [
+      {
+        title: "Dashboard",
+        body: "The Dashboard combines stories, closest matches and a clear DNA-processing tracker — so users instantly understand what's new in their network and where their analysis stands.\nStories, Closest Matches, A Trail of Discoveries and DNA Processing Status are all surfaced one tap away.",
+        headerGradient: "linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)",
+        images: [
+          "https://api.builder.io/api/v1/image/assets/TEMP/9c4d35fd421c273cbb01f03daa1cb7e52a27ddf7?width=551",
+          "https://api.builder.io/api/v1/image/assets/TEMP/c354b7c9cc25414091879dc1f8b26ceda0a736a8?width=551",
+        ],
+      },
+      {
+        title: "My DNA",
+        body: "An integrated DNA profile combining real-time processing status with initial racial demographics and health indicators — turning a long, opaque analysis pipeline into a transparent, glanceable story.",
+        headerGradient: "linear-gradient(180deg, #FBFFF6 0%, #B5EAF4 50%, #69DAEE 100%)",
+        images: [
+          "https://api.builder.io/api/v1/image/assets/TEMP/f2a6fe8480201fd8e3b3880f7f92d84907dbfaa2?width=530",
+        ],
+      },
+      {
+        title: "Closest Matches & Stories",
+        body: "Facilitate immediate connections by highlighting the user's closest genetic relatives, and inspire users with engaging articles and personal stories of ancestral exploration.",
+        headerGradient: "linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)",
+        images: [
+          "https://api.builder.io/api/v1/image/assets/TEMP/809a982ae0a52278677cbdf3003e670ca54f4279?width=177",
+          "https://api.builder.io/api/v1/image/assets/TEMP/2d086e8b6ee9676b02e11adb735a49d2913fe36c?width=177",
+          "https://api.builder.io/api/v1/image/assets/TEMP/6a24d2278d52805c90ddc867c0cf5e59e1d98181?width=177",
+          "https://api.builder.io/api/v1/image/assets/TEMP/4a56334c1e6497d7bb7f7bd4e868e90ef1fa2074?width=700",
+        ],
+      },
+      {
+        title: "DNA Kit Promotion & Drive",
+        body: "Drive engagement and conversions with targeted, limited-time discount offers for family DNA kits — built to feel like an invitation, not an ad.",
+        headerGradient: "linear-gradient(180deg, #FBFFF6 0%, #B5EAF4 50%, #69DAEE 100%)",
+        images: [
+          "https://api.builder.io/api/v1/image/assets/TEMP/95b2df7b048786be3aeb66a687d1b68d49c28de6?width=552",
+          "https://api.builder.io/api/v1/image/assets/TEMP/32b7975556dc20c55a9e804a29511936dbaaaaae?width=552",
+        ],
+      },
+    ],
+    aiSectionTitle: "Future Scope",
+    aiIntro:
+      "A lot more can be done on this application. Below are a few of the features that can be implemented to make Genelink more versatile and genuinely cutting edge.",
+    aiProcess: [
+      { title: "1. AI-powered ancestry predictions", body: "Use AI to provide more accurate ancestry predictions and surface potential family connections by combining genetic data patterns with historical records." },
+      { title: "2. AR family tree", body: "Allow users to visualize their family tree using augmented reality — an interactive, immersive way to explore ancestry and family connections." },
+      { title: "3. Interactive storytelling", body: "Create features that let users add and share stories, photos and videos about their ancestors, enriching the family-history experience for everyone connected." },
+    ],
+    learnedIntro:
+      "Designing Genelink in three days reinforced one thing: when the subject matter is emotional, the interface has to absorb the complexity so the user doesn't have to.",
+    lessons: [
+      { title: "Trust is a UI problem.", body: "Privacy concerns showed up in every research source. Surfacing data handling clearly in-product matters more than a dense privacy page." },
+      { title: "Genetic data needs a story.", body: "Numbers and percentages don't move people — moments, matches and shared history do. The data is the foundation, not the experience." },
+      { title: "Speed forces clarity.", body: "A 3-day timeline meant cutting every screen to its essential job. Constraints sharpened the IA more than any extra week could have." },
+    ],
+  },
 };
 
 export const Route = createFileRoute("/case-study/$slug")({
