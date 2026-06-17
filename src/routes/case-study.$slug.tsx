@@ -468,7 +468,8 @@ function CaseStudyPage() {
         </header>
 
         {/* Hero image */}
-        <div
+        <RevealPanel
+          effect="crt-boot"
           className="rounded-xl overflow-hidden w-full"
           style={{ aspectRatio: "16/7", background: "#000" }}
         >
@@ -477,7 +478,7 @@ function CaseStudyPage() {
             alt={cs.title}
             className="w-full h-full object-cover"
           />
-        </div>
+        </RevealPanel>
 
         {/* Overview */}
         <PanelShell>
