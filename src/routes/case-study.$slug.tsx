@@ -1,4 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { RevealPanel, StaggerGroup, TypewriterText } from "@/components/retro/Reveal";
+import { RetroScrollProgress } from "@/components/retro/RetroScrollProgress";
 
 const pixelHeading = {
   fontFamily: "'Ac437 IBM CGA', 'Press Start 2P', monospace",
@@ -258,7 +260,9 @@ function PanelHeader({ label, gradient }: { label: string; gradient: string }) {
 
 function PanelShell({ children }: { children: React.ReactNode }) {
   return (
-    <section
+    <RevealPanel
+      as="section"
+      effect="pixel-fade"
       className="rounded-lg overflow-hidden flex flex-col"
       style={{
         background: "#FDEBE2",
@@ -267,7 +271,7 @@ function PanelShell({ children }: { children: React.ReactNode }) {
       }}
     >
       {children}
-    </section>
+    </RevealPanel>
   );
 }
 
@@ -383,6 +387,7 @@ function CaseStudyPage() {
       className="min-h-screen w-full px-4 sm:px-6 lg:px-8 py-8 flex justify-center"
       style={{ background: "linear-gradient(180deg, #0A0224 0%, #260A20 100%)" }}
     >
+      <RetroScrollProgress />
       <div className="w-full max-w-[1280px] flex flex-col gap-6">
         {/* Header */}
         <header
@@ -463,7 +468,8 @@ function CaseStudyPage() {
         </header>
 
         {/* Hero image */}
-        <div
+        <RevealPanel
+          effect="crt-boot"
           className="rounded-xl overflow-hidden w-full"
           style={{ aspectRatio: "16/7", background: "#000" }}
         >
@@ -472,7 +478,7 @@ function CaseStudyPage() {
             alt={cs.title}
             className="w-full h-full object-cover"
           />
-        </div>
+        </RevealPanel>
 
         {/* Overview */}
         <PanelShell>
@@ -481,18 +487,16 @@ function CaseStudyPage() {
             gradient="linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)"
           />
           <div className="px-4 pt-4">
-            <p
+            <TypewriterText
+              text={cs.overview}
               style={{
                 ...pixelBody,
                 color: "#320032",
                 fontSize: 16,
                 lineHeight: 1.45,
-                whiteSpace: "pre-line",
                 margin: 0,
               }}
-            >
-              {cs.overview}
-            </p>
+            />
           </div>
         </PanelShell>
 
@@ -502,7 +506,10 @@ function CaseStudyPage() {
             label="My Process"
             gradient="linear-gradient(180deg, #FBFFF6 0%, #B5EAF4 50%, #69DAEE 100%)"
           />
-          <div className="px-4 pt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <StaggerGroup
+            className="px-4 pt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"
+            staggerMs={90}
+          >
             {cs.process.map((p) => (
               <div
                 key={p}
@@ -527,7 +534,7 @@ function CaseStudyPage() {
                 </span>
               </div>
             ))}
-          </div>
+          </StaggerGroup>
         </PanelShell>
 
         {/* Research */}
@@ -552,7 +559,8 @@ function CaseStudyPage() {
                 >
                   {r.heading}
                 </h3>
-                <p
+                <TypewriterText
+                  text={r.body}
                   style={{
                     ...pixelBody,
                     color: "#320032",
@@ -560,16 +568,14 @@ function CaseStudyPage() {
                     lineHeight: 1.45,
                     margin: 0,
                   }}
-                >
-                  {r.body}
-                </p>
+                />
               </div>
             ))}
           </div>
         </PanelShell>
 
         {/* Stats (terminal cards) */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <StaggerGroup className="grid grid-cols-2 lg:grid-cols-4 gap-4" staggerMs={100} effect="crt-boot">
           {cs.stats.map((s) => (
             <div
               key={s.label}
@@ -610,7 +616,7 @@ function CaseStudyPage() {
               </div>
             </div>
           ))}
-        </div>
+        </StaggerGroup>
 
         {/* Competition & Benchmarking */}
         <PanelShell>
@@ -847,12 +853,13 @@ function CaseStudyPage() {
         </div>
 
         {/* Solution hero */}
-        <div
+        <RevealPanel
+          effect="crt-boot"
           className="rounded-xl overflow-hidden w-full"
           style={{ aspectRatio: "308/123" }}
         >
           <img src={cs.solutionHero} alt="Solution preview" className="w-full h-full object-cover" />
-        </div>
+        </RevealPanel>
 
         {/* Information Architecture & Navigation */}
         <PanelShell>
@@ -924,9 +931,10 @@ function CaseStudyPage() {
               gradient={cs.screens[0].headerGradient || "linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)"}
             />
             <div className="px-4 pt-4 flex flex-col gap-3">
-              <p style={{ ...pixelBody, color: "#320032", fontSize: "clamp(16px, 2.2vw, 24px)", lineHeight: 1.3, letterSpacing: "-0.02em", margin: 0, whiteSpace: "pre-line" }}>
-                {cs.screens[0].body}
-              </p>
+              <TypewriterText
+                text={cs.screens[0].body}
+                style={{ ...pixelBody, color: "#320032", fontSize: "clamp(16px, 2.2vw, 24px)", lineHeight: 1.3, letterSpacing: "-0.02em", margin: 0 }}
+              />
               <div className="flex flex-col sm:flex-row gap-3">
                 <div className="flex-1 rounded-xl overflow-hidden" style={{ aspectRatio: "652/435" }}>
                   <img src={cs.screens[0].images?.[0]} alt="" className="w-full h-full object-cover" loading="lazy" />
@@ -945,9 +953,10 @@ function CaseStudyPage() {
               gradient={cs.screens[1].headerGradient || "linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)"}
             />
             <div className="px-4 pt-4 flex flex-col gap-3">
-              <p style={{ ...pixelBody, color: "#320032", fontSize: "clamp(16px, 2.2vw, 24px)", lineHeight: 1.3, letterSpacing: "-0.02em", margin: 0, whiteSpace: "pre-line" }}>
-                {cs.screens[1].body}
-              </p>
+              <TypewriterText
+                text={cs.screens[1].body}
+                style={{ ...pixelBody, color: "#320032", fontSize: "clamp(16px, 2.2vw, 24px)", lineHeight: 1.3, letterSpacing: "-0.02em", margin: 0 }}
+              />
               <div className="rounded-xl overflow-hidden" style={{ aspectRatio: "1375/978" }}>
                 <img src={cs.screens[1].images?.[0]} alt="" className="w-full h-full object-cover" loading="lazy" />
               </div>
@@ -961,9 +970,10 @@ function CaseStudyPage() {
               gradient={cs.screens[2].headerGradient || "linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)"}
             />
             <div className="px-4 pt-4 flex flex-col gap-3">
-              <p style={{ ...pixelBody, color: "#320032", fontSize: "clamp(16px, 2.2vw, 24px)", lineHeight: 1.3, letterSpacing: "-0.02em", margin: 0, whiteSpace: "pre-line" }}>
-                {cs.screens[2].body}
-              </p>
+              <TypewriterText
+                text={cs.screens[2].body}
+                style={{ ...pixelBody, color: "#320032", fontSize: "clamp(16px, 2.2vw, 24px)", lineHeight: 1.3, letterSpacing: "-0.02em", margin: 0 }}
+              />
               <div className="grid grid-cols-1 sm:grid-cols-[2fr_1fr_1fr] gap-3" style={{ gridAutoRows: "minmax(180px, 27vw)" }}>
                 <div className="rounded-xl overflow-hidden">
                   <img src={cs.screens[2].images?.[0]} alt="" className="w-full h-full object-cover" loading="lazy" />
@@ -988,9 +998,10 @@ function CaseStudyPage() {
               gradient={cs.screens[3].headerGradient || "linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)"}
             />
             <div className="px-4 pt-4 flex flex-col gap-3">
-              <p style={{ ...pixelBody, color: "#320032", fontSize: "clamp(16px, 2.2vw, 24px)", lineHeight: 1.3, letterSpacing: "-0.02em", margin: 0, whiteSpace: "pre-line" }}>
-                {cs.screens[3].body}
-              </p>
+              <TypewriterText
+                text={cs.screens[3].body}
+                style={{ ...pixelBody, color: "#320032", fontSize: "clamp(16px, 2.2vw, 24px)", lineHeight: 1.3, letterSpacing: "-0.02em", margin: 0 }}
+              />
               <div className="rounded-xl overflow-hidden p-4" style={{ background: "#030B12" }}>
                 <img src={cs.screens[3].images?.[0]} alt="" className="w-full rounded-xl border border-[#282924] object-cover object-top" style={{ maxHeight: 520, aspectRatio: "245/449" }} loading="lazy" />
               </div>
@@ -1017,14 +1028,17 @@ function CaseStudyPage() {
           </h2>
         </div>
 
-        <section
+        <RevealPanel
+          as="section"
+          effect="pixel-fade"
           className="rounded-xl p-4 flex flex-col gap-4"
           style={{
             background: "#FA0",
             boxShadow: "-3px -3px 0 0 #4C042C inset, 3px 3px 0 0 #FFFEF6 inset",
           }}
         >
-          <p
+          <TypewriterText
+            text={cs.aiIntro}
             style={{
               ...pixelBody,
               color: "#320032",
@@ -1033,9 +1047,7 @@ function CaseStudyPage() {
               margin: 0,
               padding: "4px 4px",
             }}
-          >
-            {cs.aiIntro}
-          </p>
+          />
           <div className="flex flex-col gap-3">
             {cs.aiProcess.map((a) => (
               <div
@@ -1071,10 +1083,12 @@ function CaseStudyPage() {
               </div>
             ))}
           </div>
-        </section>
+        </RevealPanel>
 
         {/* What I Learned — green container, matches AI section structure */}
-        <section
+        <RevealPanel
+          as="section"
+          effect="pixel-fade"
           className="rounded-xl p-4 flex flex-col gap-4"
           style={{
             background: "#3BC976",
@@ -1094,7 +1108,8 @@ function CaseStudyPage() {
           >
             What I Learned
           </h3>
-          <p
+          <TypewriterText
+            text={cs.learnedIntro}
             style={{
               ...pixelBody,
               color: "#102914",
@@ -1103,9 +1118,7 @@ function CaseStudyPage() {
               margin: 0,
               padding: "0 4px",
             }}
-          >
-            {cs.learnedIntro}
-          </p>
+          />
           <div className="flex flex-col gap-3">
             {cs.lessons.map((l) => (
               <div
@@ -1127,7 +1140,7 @@ function CaseStudyPage() {
               </div>
             ))}
           </div>
-        </section>
+        </RevealPanel>
 
         {/* More case studies */}
         <section
