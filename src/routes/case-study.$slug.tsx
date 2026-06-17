@@ -853,12 +853,13 @@ function CaseStudyPage() {
         </div>
 
         {/* Solution hero */}
-        <div
+        <RevealPanel
+          effect="crt-boot"
           className="rounded-xl overflow-hidden w-full"
           style={{ aspectRatio: "308/123" }}
         >
           <img src={cs.solutionHero} alt="Solution preview" className="w-full h-full object-cover" />
-        </div>
+        </RevealPanel>
 
         {/* Information Architecture & Navigation */}
         <PanelShell>
