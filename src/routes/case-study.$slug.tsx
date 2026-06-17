@@ -1086,7 +1086,9 @@ function CaseStudyPage() {
         </RevealPanel>
 
         {/* What I Learned — green container, matches AI section structure */}
-        <section
+        <RevealPanel
+          as="section"
+          effect="pixel-fade"
           className="rounded-xl p-4 flex flex-col gap-4"
           style={{
             background: "#3BC976",
@@ -1106,7 +1108,8 @@ function CaseStudyPage() {
           >
             What I Learned
           </h3>
-          <p
+          <TypewriterText
+            text={cs.learnedIntro}
             style={{
               ...pixelBody,
               color: "#102914",
@@ -1115,9 +1118,7 @@ function CaseStudyPage() {
               margin: 0,
               padding: "0 4px",
             }}
-          >
-            {cs.learnedIntro}
-          </p>
+          />
           <div className="flex flex-col gap-3">
             {cs.lessons.map((l) => (
               <div
@@ -1139,7 +1140,7 @@ function CaseStudyPage() {
               </div>
             ))}
           </div>
-        </section>
+        </RevealPanel>
 
         {/* More case studies */}
         <section
