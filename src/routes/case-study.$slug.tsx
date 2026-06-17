@@ -575,7 +575,7 @@ function CaseStudyPage() {
         </PanelShell>
 
         {/* Stats (terminal cards) */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <StaggerGroup className="grid grid-cols-2 lg:grid-cols-4 gap-4" staggerMs={100} effect="crt-boot">
           {cs.stats.map((s) => (
             <div
               key={s.label}
@@ -616,7 +616,7 @@ function CaseStudyPage() {
               </div>
             </div>
           ))}
-        </div>
+        </StaggerGroup>
 
         {/* Competition & Benchmarking */}
         <PanelShell>
