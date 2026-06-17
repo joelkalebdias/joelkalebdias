@@ -258,6 +258,7 @@ function AboutPage() {
             </div>
             <Link
               to="/"
+              className="hover:underline hover:brightness-110 transition-all"
               style={{
                 ...pixelBody,
                 color: "#FFF",
