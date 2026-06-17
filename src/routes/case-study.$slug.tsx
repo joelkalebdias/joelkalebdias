@@ -528,6 +528,7 @@ function CaseStudyPage() {
   const { slug } = Route.useParams();
   const cs = CASE_STUDIES[slug];
   if (!cs) return null;
+  if (slug === "genelink") return <GenelinkCaseStudy cs={cs} />;
 
   return (
     <main
