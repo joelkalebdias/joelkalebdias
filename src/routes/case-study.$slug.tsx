@@ -9,6 +9,8 @@ import logo23andme from "@/assets/genelink/23andme.png.asset.json";
 import logoAncestry from "@/assets/genelink/ancestry.png.asset.json";
 import logoMapMyGenome from "@/assets/genelink/mapmygenome.png.asset.json";
 import logoMyHeritage from "@/assets/genelink/myheritage.png.asset.json";
+import sarahAvatar from "@/assets/genelink/sarah.png.asset.json";
+import michaelAvatar from "@/assets/genelink/michael.png.asset.json";
 
 const pixelHeading = {
   fontFamily: "'Ac437 IBM CGA', 'Press Start 2P', monospace",
