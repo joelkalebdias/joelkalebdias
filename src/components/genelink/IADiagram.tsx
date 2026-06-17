@@ -231,17 +231,15 @@ export function IADiagram() {
       <Arrow d="M 1450 760 L 1478 760" />
       <Box x={1480} y={735} w={150} h={50} fill={GREEN} lines={["Details of", "information"]} fontSize={11} />
 
-      {/* "After adding info" loop up to My DNA */}
-      <Arrow d="M 1630 750 Q 1680 750 1680 670 Q 1680 615 1665 615" />
+      {/* "After adding info" loop up to My DNA bottom */}
+      <Arrow d="M 1630 750 Q 1750 750 1750 690 Q 1750 640 1670 640" />
       <text x={1530} y={695} fill={STROKE} fontSize={11} fontFamily="Inter, sans-serif">
         After adding info
       </text>
 
-      {/* ============ MY DNA BRANCH (x=1660) ============ */}
-      <Box x={1600} y={600} w={130} h={40} fill={PURPLE} lines={["My DNA"]} fontSize={13} bold={[true]} />
+      {/* ============ MY DNA BRANCH (x=1670) ============ */}
+      <Box x={1600} y={600} w={140} h={40} fill={PURPLE} lines={["My DNA"]} fontSize={13} bold={[true]} />
 
-      {/* Bus drop arrow lands on My DNA header */}
-      {/* (already drawn above at x=1660) */}
 
       {/* Sub blue tiles (left col of group) at x=1600 */}
       <Box x={1600} y={665} w={140} h={70} fill={BLUE} lines={["Disclaimer", "for", "reassurance"]} fontSize={11} />
