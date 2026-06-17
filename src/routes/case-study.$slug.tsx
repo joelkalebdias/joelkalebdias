@@ -1747,32 +1747,75 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
           </div>
         </header>
 
-        {/* Hero image */}
-        <RevealPanel effect="crt-boot" className="rounded-xl overflow-hidden w-full" style={{ aspectRatio: "16/7", background: "#000" }}>
-          <img src={cs.hero} alt={cs.title} className="w-full h-full object-cover" />
+        {/* Hero — 3-phone scene */}
+        <RevealPanel
+          effect="crt-boot"
+          className="rounded-xl overflow-hidden w-full relative"
+          style={{
+            background: "#181818",
+            boxShadow: "-4px -4px 0 0 #084170 inset, 4px 4px 0 0 #0E1B37 inset",
+            aspectRatio: "1232/552",
+            minHeight: 280,
+          }}
+        >
+          {/* radial light wash */}
+          <div
+            aria-hidden
+            className="absolute inset-0"
+            style={{
+              background: "radial-gradient(ellipse at 50% 90%, #FFFFFF 0%, rgba(255,255,255,0) 60%)",
+              opacity: 0.85,
+            }}
+          />
+          <div className="absolute inset-0 flex items-end justify-center gap-[3%] pb-[2%] px-[4%]">
+            <img
+              src={G.heroPhones.left}
+              alt=""
+              className="relative h-[85%] w-auto object-contain"
+              style={{ filter: "drop-shadow(0 2px 30px rgba(0,0,0,0.45))", transform: "translateY(-4%)" }}
+              loading="lazy"
+            />
+            <img
+              src={G.heroPhones.center}
+              alt={cs.title}
+              className="relative h-[98%] w-auto object-contain"
+              style={{ filter: "drop-shadow(0 4px 40px rgba(0,0,0,0.55))" }}
+            />
+            <img
+              src={G.heroPhones.right}
+              alt=""
+              className="relative h-[85%] w-auto object-contain"
+              style={{ filter: "drop-shadow(0 2px 30px rgba(0,0,0,0.45))", transform: "translateY(-4%)" }}
+              loading="lazy"
+            />
+          </div>
         </RevealPanel>
 
-        {/* The Challenge */}
-        <PanelShell>
-          <PanelHeader label="The Challenge" gradient="linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)" />
-          <div className="px-4 pt-4">
-            <TypewriterText text={G.challenge} style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }} />
-          </div>
-        </PanelShell>
-
-        {/* Target Audience */}
-        <PanelShell>
-          <PanelHeader label="Target Audience" gradient="linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)" />
-          <div className="px-4 pt-4">
-            <TypewriterText text={G.targetAudience} style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }} />
-          </div>
-        </PanelShell>
+        {/* The Challenge + Target Audience (side-by-side) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <PanelShell>
+            <PanelHeader label="The Challenge:" gradient="linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)" />
+            <div className="px-4 pt-4">
+              <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4, margin: 0, letterSpacing: "-0.01em" }}>
+                {G.challenge}
+              </p>
+            </div>
+          </PanelShell>
+          <PanelShell>
+            <PanelHeader label="Target Audience" gradient="linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)" />
+            <div className="px-4 pt-4">
+              <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4, margin: 0, letterSpacing: "-0.01em" }}>
+                {G.targetAudience}
+              </p>
+            </div>
+          </PanelShell>
+        </div>
 
         {/* Design Process */}
         <PanelShell>
           <PanelHeader label="Design Process" gradient="linear-gradient(180deg, #FBFFF6 0%, #B5EAF4 50%, #69DAEE 100%)" />
           <div className="px-4 pt-4 flex flex-col gap-4">
-            <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>
+            <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4, margin: 0, textAlign: "center", letterSpacing: "-0.01em" }}>
               {G.designProcessIntro}
             </p>
             <StaggerGroup className="grid grid-cols-1 sm:grid-cols-3 gap-3" staggerMs={90}>
@@ -1787,9 +1830,28 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
         <PhaseDivider label="Discovery" />
 
         <PanelShell>
-          <PanelHeader label={G.researchHeading} gradient="linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)" />
-          <div className="px-4 pt-4">
-            <TypewriterText text={G.researchBody} style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.5, margin: 0 }} />
+          <PanelHeader label="Research" gradient="linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)" />
+          <div className="px-4 pt-4 flex flex-col gap-3">
+            <h3
+              style={{
+                ...pixelBody,
+                color: "#320032",
+                fontSize: 24,
+                lineHeight: 1.3,
+                letterSpacing: "-0.01em",
+                margin: 0,
+              }}
+            >
+              {G.researchHeading}
+            </h3>
+            {G.researchParagraphs.map((p, i) => (
+              <p
+                key={i}
+                style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4, margin: 0, letterSpacing: "-0.01em" }}
+              >
+                {p}
+              </p>
+            ))}
           </div>
         </PanelShell>
 
@@ -1819,30 +1881,45 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
         <PanelShell>
           <PanelHeader label="Competition & Benchmarking" gradient="linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)" />
           <div className="px-4 pt-4 flex flex-col gap-4">
-            <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>{G.competition.intro}</p>
-
-            {/* Logo header row + SWOT table (desktop) */}
-            <div
-              className="hidden md:block rounded-xl overflow-hidden"
-              style={{ border: "1px solid #F365A7" }}
-            >
-              <div className="grid" style={{ gridTemplateColumns: `minmax(120px,0.7fr) repeat(${G.competition.apps.length}, minmax(0,1fr))` }}>
-                {/* Header row */}
-                <div className="px-4 py-3 flex items-center" style={{ background: "#FFB3D6", borderBottom: "1px solid #F365A7", borderRight: "1px solid #F365A7" }}>
-                  <span style={{ ...pixelBody, color: "#320032", fontSize: 14, fontWeight: 700 }}>Traits / Apps</span>
+            {/* SWOT table — Traits | Apps with text names (desktop) */}
+            <div className="hidden md:block rounded-xl overflow-hidden" style={{ border: "1px solid #F365A7" }}>
+              <div className="grid" style={{ gridTemplateColumns: `minmax(140px,0.8fr) repeat(${G.competition.apps.length}, minmax(0,1fr))` }}>
+                {/* Header row 1: Traits | Apps (spanning competitor columns) */}
+                <div
+                  className="px-4 py-3 flex items-center"
+                  style={{ background: "#F35DA3", borderBottom: "1px solid #F365A7", borderRight: "1px solid #F365A7" }}
+                >
+                  <span style={{ ...pixelBody, color: "#320032", fontSize: 16, fontWeight: 700 }}>Traits</span>
                 </div>
+                <div
+                  className="px-4 py-3 flex items-center justify-center"
+                  style={{
+                    background: "#F35DA3",
+                    borderBottom: "1px solid #F365A7",
+                    gridColumn: `span ${G.competition.apps.length} / span ${G.competition.apps.length}`,
+                  }}
+                >
+                  <span style={{ ...pixelBody, color: "#320032", fontSize: 16, fontWeight: 700 }}>Apps</span>
+                </div>
+
+                {/* Header row 2: empty | app names */}
+                <div
+                  className="px-4 py-3"
+                  style={{ background: "#FFB3D6", borderBottom: "1px solid #F365A7", borderRight: "1px solid #F365A7" }}
+                />
                 {G.competition.apps.map((a, i) => (
                   <div
                     key={a.name}
-                    className="px-3 py-3 flex items-center justify-center"
+                    className="px-3 py-3 flex items-center justify-center text-center"
                     style={{
                       background: "#FFB3D6",
                       borderBottom: "1px solid #F365A7",
                       borderRight: i < G.competition.apps.length - 1 ? "1px solid #F365A7" : undefined,
-                      minHeight: 64,
                     }}
                   >
-                    <img src={a.logo} alt={a.name} className="max-h-10 w-auto object-contain" loading="lazy" />
+                    <span style={{ ...pixelBody, color: "#320032", fontSize: 15, fontWeight: 700, letterSpacing: "-0.01em" }}>
+                      {a.name}
+                    </span>
                   </div>
                 ))}
 
@@ -1866,6 +1943,7 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
                           key={ci}
                           className="px-3 py-3"
                           style={{
+                            background: "#FFFFFF",
                             borderBottom: isLast ? undefined : "1px solid #F365A7",
                             borderRight: ci < row.cells.length - 1 ? "1px solid #F365A7" : undefined,
                           }}
@@ -1884,7 +1962,7 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
               {G.competition.apps.map((a, i) => (
                 <div key={a.name} className="rounded-lg p-3" style={{ background: "#FDEBE2", boxShadow: "inset 0 0 0 2px #F365A7" }}>
                   <div className="flex items-center justify-center mb-3 p-2 rounded" style={{ background: "#FFB3D6" }}>
-                    <img src={a.logo} alt={a.name} className="max-h-10 w-auto object-contain" loading="lazy" />
+                    <span style={{ ...pixelBody, color: "#320032", fontSize: 15, fontWeight: 700 }}>{a.name}</span>
                   </div>
                   {G.competition.swot.map((row) => (
                     <div key={row.trait} className="mb-2">
@@ -1897,6 +1975,7 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
             </div>
           </div>
         </PanelShell>
+
 
         {/* ===== IDEATION ===== */}
         <PhaseDivider label="Ideation" />
