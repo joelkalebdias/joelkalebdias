@@ -506,7 +506,10 @@ function CaseStudyPage() {
             label="My Process"
             gradient="linear-gradient(180deg, #FBFFF6 0%, #B5EAF4 50%, #69DAEE 100%)"
           />
-          <div className="px-4 pt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <StaggerGroup
+            className="px-4 pt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3"
+            staggerMs={90}
+          >
             {cs.process.map((p) => (
               <div
                 key={p}
@@ -531,7 +534,7 @@ function CaseStudyPage() {
                 </span>
               </div>
             ))}
-          </div>
+          </StaggerGroup>
         </PanelShell>
 
         {/* Research */}
