@@ -2074,10 +2074,10 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
 
         {/* Information Architecture */}
         <PanelShell>
-          <PanelHeader label="Information Architecture" gradient="linear-gradient(180deg, #FBFFF6 0%, #B5EAF4 50%, #69DAEE 100%)" />
+          <PanelHeader label="Information Architecture" gradient="linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)" />
           <div className="px-4 pt-4">
-            <div className="rounded-xl overflow-hidden p-3" style={{ background: "#FFF" }}>
-              <img src={G.iaImage} alt="Information architecture diagram" className="w-full h-auto object-contain" loading="lazy" />
+            <div className="rounded-xl overflow-hidden" style={{ background: "#FFF8F0" }}>
+              <IADiagram />
             </div>
           </div>
         </PanelShell>
