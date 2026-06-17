@@ -413,7 +413,7 @@ function PanelHeader({ label, gradient }: { label: string; gradient: string }) {
   );
 }
 
-function PanelShell({ children }: { children: React.ReactNode }) {
+function PanelShell({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
   return (
     <RevealPanel
       as="section"
@@ -423,6 +423,7 @@ function PanelShell({ children }: { children: React.ReactNode }) {
         background: "#FDEBE2",
         boxShadow: "2px 2px 0 0 #D33869, -2px -2px 0 0 #FF94C2",
         paddingBottom: 16,
+        ...style,
       }}
     >
       {children}
