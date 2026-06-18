@@ -263,8 +263,7 @@ function AboutPage() {
             >
               Back
             </Link>
-          </div>
-        </div>
+        </header>
 
         {/* About + Portrait */}
         <div style={{ display: "flex", gap: 20, alignItems: "stretch", flexWrap: "wrap", justifyContent: "center" }}>
