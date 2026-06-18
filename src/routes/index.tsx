@@ -545,7 +545,7 @@ function Index() {
                 ...pixelHeading,
                 color: "#FFEC7F",
                 textShadow: "2px 2px 0 #FF5900",
-                fontSize: "clamp(22px, 4vw, 36px)",
+                fontSize: "clamp(28px, 4vw, 36px)",
                 lineHeight: 1.3,
                 letterSpacing: "-0.04em",
               }}
