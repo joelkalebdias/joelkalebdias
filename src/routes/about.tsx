@@ -210,29 +210,21 @@ function AboutPage() {
   ];
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "linear-gradient(180deg, #0A0224 0%, #260A20 100%)",
-        padding: "30px 30px 40px",
-      }}
+    <main
+      className="min-h-screen w-full px-4 sm:px-6 lg:px-8 py-8 flex justify-center"
+      style={{ background: "linear-gradient(180deg, #0A0224 0%, #260A20 100%)" }}
     >
-      <div style={{ maxWidth: 1440, margin: "0 auto", display: "flex", flexDirection: "column", gap: 20 }}>
+      <div className="w-full max-w-[1280px] flex flex-col gap-6">
         {/* Header */}
-        <div
+        <header
+          className="rounded-xl p-6 flex flex-col sm:flex-row gap-6 sm:items-start sm:justify-between"
           style={{
-            display: "flex",
-            padding: 24,
-            flexDirection: "column",
-            gap: 24,
-            borderRadius: 12,
             background:
               "linear-gradient(180deg, #F360A3 0%, #FF289E 76.44%, #8A00B1 100%)",
             boxShadow: "-3px -3px 0 0 #A70 inset, 3px 3px 0 0 #FFEF33 inset",
           }}
         >
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 16 }}>
-            <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
               <div
                 style={{
                   ...pixelHeading,
@@ -271,11 +263,10 @@ function AboutPage() {
             >
               Back
             </Link>
-          </div>
-        </div>
+        </header>
 
         {/* About + Portrait */}
-        <div style={{ display: "flex", gap: 20, alignItems: "stretch", flexWrap: "wrap", justifyContent: "center" }}>
+        <div style={{ display: "flex", gap: 24, alignItems: "stretch", flexWrap: "wrap", justifyContent: "center" }}>
           <div
             style={{
               display: "flex",
@@ -322,20 +313,20 @@ function AboutPage() {
         </div>
 
         {/* Stats */}
-        <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
           {STATS.map((s) => (
             <StatCard key={s.label} value={s.value} label={s.label} />
           ))}
         </div>
 
         {/* Client List */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 20, paddingBottom: 20 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 24, paddingBottom: 20 }}>
           <SolidHeader>Client List</SolidHeader>
           <div
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
-              gap: 20,
+              gap: 24,
             }}
           >
             {LOGOS.map((l) => (
@@ -345,32 +336,18 @@ function AboutPage() {
         </div>
 
         {/* Footer */}
-        <div
+        <footer
+          className="rounded-xl p-4 text-center"
           style={{
-            display: "flex",
-            padding: 16,
-            borderRadius: 12,
             background: "#FA0",
-            boxShadow:
-              "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
+            boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
           }}
         >
-          <div
-            style={{
-              ...pixelHeading,
-              flex: "1 0 0",
-              color: "#320032",
-              textAlign: "center",
-              fontSize: 13,
-              lineHeight: "130%",
-              letterSpacing: "-0.065px",
-              whiteSpace: "pre-line",
-            }}
-          >
-            {"> Made with love in Figma + Loveable <\n2026 - Joel Kaleb Dias"}
-          </div>
-        </div>
+          <p style={{ ...pixelHeading, color: "#320032", fontSize: 13, whiteSpace: "pre-line" }}>
+            {"> Made with love in Figma + Loveable <\n2026 — Joel Kaleb Dias"}
+          </p>
+        </footer>
       </div>
-    </div>
+    </main>
   );
 }
