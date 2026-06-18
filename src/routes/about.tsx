@@ -266,7 +266,7 @@ function AboutPage() {
         </header>
 
         {/* About + Portrait */}
-        <div style={{ display: "flex", gap: 20, alignItems: "stretch", flexWrap: "wrap", justifyContent: "center" }}>
+        <div style={{ display: "flex", gap: 24, alignItems: "stretch", flexWrap: "wrap", justifyContent: "center" }}>
           <div
             style={{
               display: "flex",
@@ -313,20 +313,20 @@ function AboutPage() {
         </div>
 
         {/* Stats */}
-        <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
           {STATS.map((s) => (
             <StatCard key={s.label} value={s.value} label={s.label} />
           ))}
         </div>
 
         {/* Client List */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 20, paddingBottom: 20 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 24, paddingBottom: 20 }}>
           <SolidHeader>Client List</SolidHeader>
           <div
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
-              gap: 20,
+              gap: 24,
             }}
           >
             {LOGOS.map((l) => (
