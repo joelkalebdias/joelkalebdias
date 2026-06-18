@@ -275,7 +275,7 @@ function AboutPage() {
         </div>
 
         {/* About + Portrait */}
-        <div style={{ display: "flex", gap: 20, alignItems: "stretch", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: 20, alignItems: "stretch", flexWrap: "wrap", justifyContent: "center" }}>
           <div
             style={{
               display: "flex",
