@@ -210,29 +210,21 @@ function AboutPage() {
   ];
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        background: "linear-gradient(180deg, #0A0224 0%, #260A20 100%)",
-        padding: "30px 30px 40px",
-      }}
+    <main
+      className="min-h-screen w-full px-4 sm:px-6 lg:px-8 py-8 flex justify-center"
+      style={{ background: "linear-gradient(180deg, #0A0224 0%, #260A20 100%)" }}
     >
-      <div style={{ maxWidth: 1440, margin: "0 auto", display: "flex", flexDirection: "column", gap: 20 }}>
+      <div className="w-full max-w-[1280px] flex flex-col gap-6">
         {/* Header */}
-        <div
+        <header
+          className="rounded-xl p-6 flex flex-col sm:flex-row gap-6 sm:items-start sm:justify-between"
           style={{
-            display: "flex",
-            padding: 24,
-            flexDirection: "column",
-            gap: 24,
-            borderRadius: 12,
             background:
               "linear-gradient(180deg, #F360A3 0%, #FF289E 76.44%, #8A00B1 100%)",
             boxShadow: "-3px -3px 0 0 #A70 inset, 3px 3px 0 0 #FFEF33 inset",
           }}
         >
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 16 }}>
-            <div style={{ display: "flex", flexDirection: "column" }}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
               <div
                 style={{
                   ...pixelHeading,
