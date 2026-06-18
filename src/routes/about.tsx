@@ -244,6 +244,7 @@ function AboutPage() {
                   fontSize: 24,
                   lineHeight: "130%",
                   letterSpacing: "-0.48px",
+                  marginTop: 4,
                 }}
               >
                 Product (UX/UI) Designer
