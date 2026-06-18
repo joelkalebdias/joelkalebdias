@@ -336,32 +336,18 @@ function AboutPage() {
         </div>
 
         {/* Footer */}
-        <div
+        <footer
+          className="rounded-xl p-4 text-center"
           style={{
-            display: "flex",
-            padding: 16,
-            borderRadius: 12,
             background: "#FA0",
-            boxShadow:
-              "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
+            boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
           }}
         >
-          <div
-            style={{
-              ...pixelHeading,
-              flex: "1 0 0",
-              color: "#320032",
-              textAlign: "center",
-              fontSize: 13,
-              lineHeight: "130%",
-              letterSpacing: "-0.065px",
-              whiteSpace: "pre-line",
-            }}
-          >
-            {"> Made with love in Figma + Loveable <\n2026 - Joel Kaleb Dias"}
-          </div>
-        </div>
+          <p style={{ ...pixelHeading, color: "#320032", fontSize: 13, whiteSpace: "pre-line" }}>
+            {"> Made with love in Figma + Loveable <\n2026 — Joel Kaleb Dias"}
+          </p>
+        </footer>
       </div>
-    </div>
+    </main>
   );
 }
