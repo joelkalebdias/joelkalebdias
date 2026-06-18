@@ -238,9 +238,9 @@ function AboutPage() {
                   ...pixelHeading,
                   color: "#FFEC7F",
                   textShadow: "2px 2px 0 #FF5900",
-                  fontSize: 36,
-                  lineHeight: "130%",
-                  letterSpacing: "-3.6px",
+                  fontSize: "clamp(28px, 4vw, 36px)",
+                  lineHeight: 1.3,
+                  letterSpacing: "-0.04em",
                 }}
               >
                 Joel Kaleb Dias
