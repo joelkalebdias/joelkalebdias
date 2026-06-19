@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { RevealPanel, StaggerGroup, TypewriterText } from "@/components/retro/Reveal";
 import { RetroScrollProgress } from "@/components/retro/RetroScrollProgress";
+import RetroStarfield from "@/components/retro/RetroStarfield";
 import genelinkHeroAsset from "@/assets/genelink-hero.png.asset.json";
 import mitLogo from "@/assets/genelink/mit-tech-review.png.asset.json";
 import nihLogo from "@/assets/genelink/nih.png.asset.json";
