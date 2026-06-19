@@ -1723,11 +1723,12 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
   const G = GENELINK;
   return (
     <main
-      className="min-h-screen w-full px-4 sm:px-6 lg:px-8 py-8 flex justify-center"
+      className="min-h-screen w-full px-4 sm:px-6 lg:px-8 py-8 flex justify-center relative isolate"
       style={{ background: "linear-gradient(180deg, #0A0224 0%, #260A20 100%)" }}
     >
+      <RetroStarfield />
       <RetroScrollProgress />
-      <div className="w-full max-w-[1280px] flex flex-col gap-6">
+      <div className="w-full max-w-[1280px] flex flex-col gap-6 relative z-10">
         {/* Header */}
         <header
           className="rounded-xl p-6 flex flex-col gap-6"
