@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
+import RetroStarfield from "@/components/retro/RetroStarfield";
 import publicisLogo from "@/assets/logos/publicis.svg.asset.json";
 import niveusLogo from "@/assets/logos/niveus.png.asset.json";
 import robosoftLogo from "@/assets/logos/robosoft.png.asset.json";
