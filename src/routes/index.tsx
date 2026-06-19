@@ -109,7 +109,7 @@ const PROJECTS: Project[] = [
     company: "Lollypop Design",
     location: "India - 2024",
     role: "Role: UX/UI Designer (Personal Project)",
-    gradient: "linear-gradient(180deg, #F35DA3 0%, #F35DA3 80%, #9804AF 100%)",
+    gradient: "linear-gradient(180deg, #64C8FF 0%, #64C8FF 80%, #2A52BE 100%)",
     img: "https://api.builder.io/api/v1/image/assets/TEMP/b982a6847c860f50d4ba512ddbc3c64beca4590a?width=718",
     slug: "genelink",
   },
@@ -180,7 +180,7 @@ const EXPERIENCES: Experience[] = [
     company: "Publicis Media GmbH",
     period: "March 2025 – Present",
     location: "Berlin, Germany",
-    gradient: "linear-gradient(180deg, #F35DA3 0%, #F35DA3 80%, #9804AF 100%)",
+    gradient: "linear-gradient(180deg, #64C8FF 0%, #64C8FF 80%, #2A52BE 100%)",
     headerGradient: "linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)",
     logo: { src: publicisLogo.url, width: 28, height: 34, alt: "Publicis Groupe" },
     bullets: [
@@ -199,7 +199,7 @@ const EXPERIENCES: Experience[] = [
     period: "November 2022 - October 2024",
     location: "Udupi, India",
     gradient: "linear-gradient(180deg, #BAEB76 0%, #BAEB76 80%, #51D830 100%)",
-    headerGradient: "linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)",
+    headerGradient: "linear-gradient(180deg, #FBFFF6 0%, #94D5FF 50%, #64C8FF 100%)",
     logo: { src: niveusLogo.url, width: 121, height: 24, alt: "Niveus Solutions" },
     bullets: [
       "Delivered design solutions for SaaS products serving domestic and international clients.",
@@ -246,7 +246,7 @@ const EXPERIENCES: Experience[] = [
     company: "Jee Lit Weighing Solutions",
     period: "January 2021 - June 2021",
     location: "Udupi, India",
-    gradient: "linear-gradient(180deg, #F35DA3 0%, #F35DA3 80%, #9804AF 100%)",
+    gradient: "linear-gradient(180deg, #64C8FF 0%, #64C8FF 80%, #2A52BE 100%)",
     headerGradient: "linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)",
     logo: { src: jeelitLogo.url, width: 32, height: 32, alt: "Jee Lit Weighing Solutions" },
     bullets: [],
@@ -808,7 +808,7 @@ function Index() {
                   style={{
                     padding: "24px 16px",
                     background:
-                      "linear-gradient(180deg, #F35DA3 0%, #F35DA3 80%, #9804AF 100%)",
+                      "linear-gradient(180deg, #64C8FF 0%, #64C8FF 80%, #2A52BE 100%)",
                     boxShadow:
                       "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
                   }}
