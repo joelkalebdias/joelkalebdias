@@ -808,7 +808,7 @@ function Index() {
                   style={{
                     padding: "24px 16px",
                     background:
-                      "linear-gradient(180deg, #64C8FF 0%, #64C8FF 80%, #2A52BE 100%)",
+                      "linear-gradient(180deg, #D8B4FE 0%, #D8B4FE 80%, #7E22CE 100%)",
                     boxShadow:
                       "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
                   }}
