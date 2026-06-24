@@ -68,7 +68,7 @@ const OTHER_PROJECTS = [
     company: "Lollypop Design",
     location: "India - 2024",
     role: "Role: UX/UI Designer (Personal Project)",
-    gradient: "linear-gradient(180deg, #64C8FF 0%, #64C8FF 80%, #2A52BE 100%)",
+    gradient: "linear-gradient(180deg, #D8B4FE 0%, #D8B4FE 80%, #7E22CE 100%)",
     img: "https://api.builder.io/api/v1/image/assets/TEMP/b982a6847c860f50d4ba512ddbc3c64beca4590a?width=718",
   },
   {
