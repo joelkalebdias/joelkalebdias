@@ -573,9 +573,10 @@ function Index() {
               marginTop: 14,
             }}
           >
-            I create research-driven experiences and high value interfaces that
-            celebrate inclusivity and accessibility — for SaaS, startups, and
-            enterprises that solve real problems.
+            For more than half a decade I have been creating research-driven
+            experiences and high value interfaces that celebrate inclusivity and
+            accessibility — for SaaS, startups, and enterprises that solve real
+            problems.
             <span
               aria-hidden
               className="inline-block ml-1 align-baseline"
