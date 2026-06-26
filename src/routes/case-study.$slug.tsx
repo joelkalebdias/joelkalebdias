@@ -65,7 +65,7 @@ type CaseStudy = {
 const OTHER_PROJECTS = [
   {
     title: "GeneLink - An app to connect people with their long lost relatives using state of the art DNA mapping",
-    company: "Lollypop Design",
+    company: "Confidential",
     location: "India - 2024",
     role: "Role: UX/UI Designer (Personal Project)",
     gradient: "linear-gradient(180deg, #D8B4FE 0%, #D8B4FE 80%, #7E22CE 100%)",
