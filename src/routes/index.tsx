@@ -560,8 +560,7 @@ function Index() {
               marginTop: 14,
             }}
           >
-            Werkstudent (Product Design) @ Publicis Media · Master&apos;s thesis on algorithmic
-            transparency · Open to full-time roles from July 2026 · Based in Germany.
+            Product (UX/UI) Designer ·&nbsp;Currently: Werkstudent (Product Design) @ Publicis Media · Master&apos;s thesis on algorithmic transparency &gt; Open to full-time roles from July 2026
           </p>
 
           <p
@@ -574,9 +573,9 @@ function Index() {
               marginTop: 14,
             }}
           >
-            I design software people actually want to use. Research-driven UX and
-            aesthetic interfaces that celebrate inclusivity and accessibility — for
-            SaaS, startups, and enterprises that solve real problems.
+            I create research-driven experiences and high value interfaces that
+            celebrate inclusivity and accessibility — for SaaS, startups, and
+            enterprises that solve real problems.
             <span
               aria-hidden
               className="inline-block ml-1 align-baseline"
