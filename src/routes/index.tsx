@@ -560,7 +560,7 @@ function Index() {
               marginTop: 14,
             }}
           >
-            Werkstudent @ Publicis Media · Master&apos;s thesis on algorithmic
+            Werkstudent (Product Design) @ Publicis Media · Master&apos;s thesis on algorithmic
             transparency · Open to full-time roles from July 2026 · Based in Germany.
           </p>
 
