@@ -13,6 +13,7 @@ import logoMyHeritage from "@/assets/genelink/myheritage.png.asset.json";
 import sarahAvatar from "@/assets/genelink/sarah.png.asset.json";
 import michaelAvatar from "@/assets/genelink/michael.png.asset.json";
 import { IADiagram } from "@/components/genelink/IADiagram";
+import { LowFiWireframes } from "@/components/genelink/LowFiWireframes";
 
 const pixelHeading = {
   fontFamily: "'Ac437 IBM CGA', 'Press Start 2P', monospace",
@@ -2088,12 +2089,11 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
 
         {/* Low-fidelity wireframes */}
         <PanelShell>
-          <PanelHeader label="Low fidelity wireframes" gradient="linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)" />
-          <div className="px-4 pt-4">
-            <div className="rounded-xl overflow-hidden p-3" style={{ background: "#FFF" }}>
-              <img src={G.sketchImage} alt="Low fidelity wireframes" className="w-full h-auto object-contain" loading="lazy" />
-            </div>
-          </div>
+          <PanelHeader
+            label="Low fidelity wireframes"
+            gradient="linear-gradient(180deg, #FFF6FA 0%, #FFB5D6 50%, #FF289E 100%)"
+          />
+          <LowFiWireframes />
         </PanelShell>
 
         {/* Branding */}
