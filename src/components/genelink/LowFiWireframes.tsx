@@ -302,50 +302,52 @@ const SKETCHES = [
 export function LowFiWireframes() {
   return (
     <div className="px-4 pt-5 pb-6">
-      {/* Wireframes row */}
+      {/* Wireframes: Dashboard tall on the left, other 4 in a balanced 2x2 grid */}
       <div
         className="flex flex-wrap items-start justify-center"
-        style={{ gap: px(20) }}
+        style={{ gap: px(16) }}
       >
         <Dashboard />
-        <div className="flex flex-col" style={{ gap: px(20) }}>
-          <div className="flex flex-wrap" style={{ gap: px(20) }}>
-            <ImageScreen />
-            <Login />
-            <FamilyTree />
-            <Chats />
-          </div>
+        <div
+          className="grid grid-cols-2"
+          style={{ gap: px(16) }}
+        >
+          <ImageScreen />
+          <Login />
+          <FamilyTree />
+          <Chats />
         </div>
       </div>
 
-      {/* Paper sketches + caption */}
-      <div className="mt-8 flex flex-col lg:flex-row items-center lg:items-end justify-center gap-6">
-        <div className="flex flex-wrap items-end justify-center gap-4">
-          <img
-            src={SKETCHES[0]}
-            alt="Paper sketch — onboarding + home flow"
-            className="h-auto max-h-[360px] w-auto object-contain"
-            loading="lazy"
-          />
-          <img
-            src={SKETCHES[1]}
-            alt="Paper sketch — family tree flow"
-            className="h-auto max-h-[220px] w-auto object-contain"
-            loading="lazy"
-          />
-          <img
-            src={SKETCHES[2]}
-            alt="Paper sketch — dashboard layout"
-            className="h-auto max-h-[280px] w-auto object-contain"
-            loading="lazy"
-          />
-        </div>
+      {/* Paper sketches + handwritten caption */}
+      <div className="mt-10 flex flex-col lg:flex-row items-center lg:items-end justify-center gap-6 lg:gap-8">
+        <img
+          src={SKETCHES[0]}
+          alt="Paper sketch — onboarding + home flow"
+          className="h-auto w-auto object-contain"
+          style={{ maxHeight: 320 }}
+          loading="lazy"
+        />
+        <img
+          src={SKETCHES[1]}
+          alt="Paper sketch — family tree flow"
+          className="h-auto w-auto object-contain"
+          style={{ maxHeight: 200 }}
+          loading="lazy"
+        />
+        <img
+          src={SKETCHES[2]}
+          alt="Paper sketch — dashboard layout"
+          className="h-auto w-auto object-contain"
+          style={{ maxHeight: 240 }}
+          loading="lazy"
+        />
         <p
-          className="max-w-[280px] text-center lg:text-left"
+          className="max-w-[240px] text-center lg:text-left"
           style={{
             color: "#320032",
             fontFamily: "'Ac437 ATI 8x16', ui-monospace, monospace",
-            fontSize: 20,
+            fontSize: 18,
             lineHeight: 1.3,
             letterSpacing: "-0.02em",
             margin: 0,
