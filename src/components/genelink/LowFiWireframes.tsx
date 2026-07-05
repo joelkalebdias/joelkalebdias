@@ -2,7 +2,7 @@
 // Reproduces the Figma frame: 5 phone wireframes (Dashboard, Image, Login,
 // Family tree, Chats) + 3 paper sketch images with a handwritten caption.
 
-const S = 1.4; // scale factor applied to Figma pixel coordinates
+const S = 1.25; // scale factor applied to Figma pixel coordinates
 const px = (n: number) => `${n * S}px`;
 
 const BORDER = "0.459px solid #969696";
