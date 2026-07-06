@@ -1720,6 +1720,65 @@ function ColorSwatch({ name, hex, rationale, fg }: { name: string; hex: string; 
   );
 }
 
+function ColorRow({
+  bg,
+  fg,
+  name,
+  rationale,
+  hex,
+  border,
+}: {
+  bg: string;
+  fg: string;
+  name: string;
+  rationale: string;
+  hex: string;
+  border?: string;
+}) {
+  return (
+    <div
+      className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 rounded-xl px-4 py-3"
+      style={{ background: bg, border, boxShadow: "-2px -2px 0 0 rgba(0,0,0,0.15) inset, 2px 2px 0 0 rgba(255,255,255,0.35) inset" }}
+    >
+      <div className="flex-1 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center">
+        <span style={{ ...pixelHeading, color: fg, fontSize: 12, letterSpacing: "-0.02em" }}>{name}</span>
+        <span style={{ ...pixelBody, color: fg, fontSize: 12, opacity: 0.9 }}>: {rationale}</span>
+      </div>
+      <span style={{ ...pixelBody, color: fg, fontSize: 12, opacity: 0.85 }}>{hex}</span>
+    </div>
+  );
+}
+
+function ColorGroup({
+  label,
+  swatches,
+}: {
+  label: string;
+  swatches: { hex: string; fg: string; border?: string }[];
+}) {
+  return (
+    <div className="flex flex-col gap-2">
+      <span style={{ ...pixelHeading, color: "#320032", fontSize: 12, letterSpacing: "-0.02em" }}>{label}</span>
+      <div className="grid gap-2" style={{ gridTemplateColumns: `repeat(${swatches.length}, minmax(0, 1fr))` }}>
+        {swatches.map((s) => (
+          <div
+            key={s.hex}
+            className="flex items-end justify-end rounded-lg px-2 py-3"
+            style={{
+              background: s.hex,
+              border: s.border,
+              minHeight: 60,
+              boxShadow: "-2px -2px 0 0 rgba(0,0,0,0.12) inset, 2px 2px 0 0 rgba(255,255,255,0.3) inset",
+            }}
+          >
+            <span style={{ ...pixelBody, color: s.fg, fontSize: 11, opacity: 0.9 }}>{s.hex}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
   const G = GENELINK;
   return (
