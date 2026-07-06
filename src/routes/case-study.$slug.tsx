@@ -1720,6 +1720,65 @@ function ColorSwatch({ name, hex, rationale, fg }: { name: string; hex: string; 
   );
 }
 
+function ColorRow({
+  bg,
+  fg,
+  name,
+  rationale,
+  hex,
+  border,
+}: {
+  bg: string;
+  fg: string;
+  name: string;
+  rationale: string;
+  hex: string;
+  border?: string;
+}) {
+  return (
+    <div
+      className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 rounded-xl px-4 py-3"
+      style={{ background: bg, border, boxShadow: "-2px -2px 0 0 rgba(0,0,0,0.15) inset, 2px 2px 0 0 rgba(255,255,255,0.35) inset" }}
+    >
+      <div className="flex-1 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center">
+        <span style={{ ...pixelHeading, color: fg, fontSize: 12, letterSpacing: "-0.02em" }}>{name}</span>
+        <span style={{ ...pixelBody, color: fg, fontSize: 12, opacity: 0.9 }}>: {rationale}</span>
+      </div>
+      <span style={{ ...pixelBody, color: fg, fontSize: 12, opacity: 0.85 }}>{hex}</span>
+    </div>
+  );
+}
+
+function ColorGroup({
+  label,
+  swatches,
+}: {
+  label: string;
+  swatches: { hex: string; fg: string; border?: string }[];
+}) {
+  return (
+    <div className="flex flex-col gap-2">
+      <span style={{ ...pixelHeading, color: "#320032", fontSize: 12, letterSpacing: "-0.02em" }}>{label}</span>
+      <div className="grid gap-2" style={{ gridTemplateColumns: `repeat(${swatches.length}, minmax(0, 1fr))` }}>
+        {swatches.map((s) => (
+          <div
+            key={s.hex}
+            className="flex items-end justify-end rounded-lg px-2 py-3"
+            style={{
+              background: s.hex,
+              border: s.border,
+              minHeight: 60,
+              boxShadow: "-2px -2px 0 0 rgba(0,0,0,0.12) inset, 2px 2px 0 0 rgba(255,255,255,0.3) inset",
+            }}
+          >
+            <span style={{ ...pixelBody, color: s.fg, fontSize: 11, opacity: 0.9 }}>{s.hex}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
   const G = GENELINK;
   return (
@@ -2096,80 +2155,179 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
           <LowFiWireframes />
         </PanelShell>
 
-        {/* Branding */}
+        {/* Branding — section title */}
+        <div className="pt-4 pb-2 text-center">
+          <h2
+            style={{
+              ...pixelHeading,
+              color: cs.titleColor,
+              textShadow: cs.titleShadow,
+              fontSize: "clamp(22px, 2.5vw, 28px)",
+              lineHeight: 1.3,
+              letterSpacing: "-0.06em",
+            }}
+          >
+            Branding
+          </h2>
+        </div>
+
+        {/* The logo */}
         <PanelShell>
-          <PanelHeader label="Branding" gradient="linear-gradient(180deg, #FBFFF6 0%, #E9D5FF 50%, #D8B4FE 100%)" />
-          <div className="px-4 pt-4 flex flex-col gap-5">
-            {/* The Logo */}
-            <div>
-              <h3 style={{ ...pixelHeading, color: "#320032", fontSize: 18, letterSpacing: "-0.02em", margin: 0, marginBottom: 6 }}>The Logo</h3>
-              <p style={{ ...pixelBody, color: "#320032", fontSize: 15, lineHeight: 1.45, margin: 0, marginBottom: 8 }}>{G.branding.logoIntro}</p>
-              <div className="rounded-xl overflow-hidden p-3 mb-2" style={{ background: "#FFF" }}>
-                <img src={G.branding.logoSketch} alt="Logo sketches" className="w-full h-auto object-contain" loading="lazy" />
-              </div>
-              <p style={{ ...pixelBody, color: "#320032", fontSize: 14, lineHeight: 1.45, margin: 0, fontStyle: "italic" }}>
-                {G.branding.logoSubcaption}
-              </p>
-            </div>
-
-            {/* Design ethos */}
-            <div>
-              <h3 style={{ ...pixelHeading, color: "#320032", fontSize: 18, letterSpacing: "-0.02em", margin: 0, marginBottom: 8 }}>Design ethos</h3>
-              <div className="flex flex-wrap gap-2">
-                {G.branding.ethos.map((e) => (
-                  <span
-                    key={e}
-                    className="rounded-full px-4 py-2"
-                    style={{
-                      ...pixelHeading,
-                      color: "#320032",
-                      fontSize: 12,
-                      background: "#FA0",
-                      boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
-                    }}
-                  >
-                    {e}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Color rationale */}
-            <div>
-              <h3 style={{ ...pixelHeading, color: "#320032", fontSize: 18, letterSpacing: "-0.02em", margin: 0, marginBottom: 8 }}>Color rationale</h3>
-              <StaggerGroup className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3" staggerMs={60}>
-                {G.branding.colors.map((c, i) => (
-                  <ColorSwatch key={`${c.hex}-${i}`} name={c.name} hex={c.hex} rationale={c.rationale} fg={c.fg} />
-                ))}
-              </StaggerGroup>
-            </div>
-
-            {/* Final logo reveal */}
-            <RevealPanel
-              effect="crt-boot"
-              className="rounded-xl overflow-hidden flex flex-col items-center justify-center gap-3 px-4 py-8"
-              style={{ background: "#0A0224", boxShadow: "inset 0 0 0 2px #344EAD" }}
-            >
-              <p style={{ ...pixelBody, color: "#FFF", fontSize: 14, opacity: 0.85, margin: 0 }}>{G.branding.finalLogoTagline}</p>
-              <div className="flex items-center gap-4">
-                {/* DNA mark (pixel SVG) */}
-                <svg width="56" height="56" viewBox="0 0 24 24" fill="none" aria-hidden>
-                  <g stroke="#FFF" strokeWidth="2" strokeLinecap="square">
-                    <path d="M5 3 Q12 12 5 21" />
-                    <path d="M19 3 Q12 12 19 21" />
-                    <line x1="7" y1="6" x2="17" y2="6" />
-                    <line x1="6" y1="10" x2="18" y2="10" />
-                    <line x1="6" y1="14" x2="18" y2="14" />
-                    <line x1="7" y1="18" x2="17" y2="18" />
-                  </g>
-                </svg>
-                <span style={{ ...pixelHeading, color: "#FFF", fontSize: "clamp(36px, 6vw, 56px)", letterSpacing: "-0.05em" }}>
-                  Gene<span style={{ color: "#344EAD" }}>Link</span>
-                </span>
-              </div>
-            </RevealPanel>
+          <PanelHeader
+            label="The logo"
+            gradient="linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)"
+          />
+          <div className="px-4 pt-4 flex flex-col gap-4">
+            <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4, margin: 0 }}>
+              {G.branding.logoIntro}
+            </p>
+            <StaggerGroup className="grid grid-cols-2 md:grid-cols-4 gap-4" staggerMs={80}>
+              {[
+                "https://api.builder.io/api/v1/image/assets/TEMP/c1199cb3bf402f943cd4fe0516e4bf8bee9e73e2?width=551",
+                "https://api.builder.io/api/v1/image/assets/TEMP/bca5b14ab1445d92347814079e9696c497dc9246?width=551",
+                "https://api.builder.io/api/v1/image/assets/TEMP/d7b7b7b2158b4298e3aefeceead88602dc1a168a?width=551",
+                "https://api.builder.io/api/v1/image/assets/TEMP/0bc4d0c2750e5c80688b0b4f132957191c111463?width=551",
+              ].map((src, i) => (
+                <img
+                  key={src}
+                  src={src}
+                  alt={`Logo sketch ${i + 1}`}
+                  className="w-full h-auto object-cover"
+                  style={{ borderRadius: 12, border: "4px solid #C1F174", aspectRatio: "551/470" }}
+                  loading="lazy"
+                />
+              ))}
+            </StaggerGroup>
           </div>
         </PanelShell>
+
+        {/* Dark GeneLink reveal strip */}
+        <RevealPanel
+          as="section"
+          effect="crt-boot"
+          className="rounded-lg overflow-hidden flex flex-col items-center justify-center gap-6 px-4 py-8"
+          style={{ background: "#1E1E1E" }}
+        >
+          <p
+            style={{
+              ...pixelHeading,
+              color: "#FFF",
+              textShadow: "1px 1px 0 #F29A9C",
+              fontSize: 13,
+              letterSpacing: "-0.065px",
+              margin: 0,
+              textAlign: "center",
+            }}
+          >
+            DNA chain with link — to denote connection and people
+          </p>
+          <div className="flex items-center gap-4 md:gap-6">
+            {/* DNA mark */}
+            <svg width="80" height="90" viewBox="0 0 24 24" fill="none" aria-hidden style={{ flexShrink: 0 }}>
+              <g stroke="#B9B9B9" strokeWidth="2" strokeLinecap="square">
+                <path d="M5 3 Q12 12 5 21" />
+                <path d="M19 3 Q12 12 19 21" />
+                <line x1="7" y1="6" x2="17" y2="6" />
+                <line x1="6" y1="10" x2="18" y2="10" />
+                <line x1="6" y1="14" x2="18" y2="14" />
+                <line x1="7" y1="18" x2="17" y2="18" />
+              </g>
+            </svg>
+            <span
+              style={{
+                color: "#B9B9B9",
+                fontFamily: "Manrope, system-ui, sans-serif",
+                fontWeight: 300,
+                fontSize: "clamp(48px, 10vw, 128px)",
+                letterSpacing: "-0.03em",
+                lineHeight: 1,
+              }}
+            >
+              GeneLink
+            </span>
+          </div>
+          {/* Proportion guide markers */}
+          <div
+            className="grid w-full max-w-[860px] px-4"
+            style={{ gridTemplateColumns: "1fr 2fr 6fr", color: "#595959", fontFamily: "Manrope, system-ui, sans-serif", fontSize: 18, fontWeight: 600 }}
+          >
+            <span>X</span>
+            <span>1/2*X</span>
+            <span>5*X</span>
+          </div>
+
+        </RevealPanel>
+
+        {/* Design ethos */}
+        <PanelShell>
+          <PanelHeader
+            label="Design ethos"
+            gradient="linear-gradient(180deg, #FBFFF6 0%, #B5EAF4 50%, #69DAEE 100%)"
+          />
+          <div className="px-4 pt-4">
+            <StaggerGroup className="grid grid-cols-1 md:grid-cols-3 gap-3" staggerMs={80}>
+              {G.branding.ethos.map((e) => (
+                <div
+                  key={e}
+                  className="flex items-center justify-center px-4 py-4 rounded-xl text-center"
+                  style={{
+                    ...pixelHeading,
+                    color: "#320032",
+                    fontSize: 12,
+                    background: "#FF94C2",
+                    boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
+                    letterSpacing: "-0.01em",
+                  }}
+                >
+                  {e}
+                </div>
+              ))}
+            </StaggerGroup>
+          </div>
+        </PanelShell>
+
+        {/* Color rationale */}
+        <PanelShell>
+          <PanelHeader
+            label="Color rationale"
+            gradient="linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)"
+          />
+          <div className="px-4 pt-4 flex flex-col gap-3">
+            {/* Full-width color rows */}
+            <ColorRow
+              bg="#FFFFFF"
+              fg="#320032"
+              name="Pure White"
+              rationale="Crisp · Pure · Perfection · Honesty · New Beginnings"
+              hex="#FFFFFF"
+              border="1px solid #EAEAEA"
+            />
+            <ColorRow
+              bg="#344EAD"
+              fg="#FFFFFF"
+              name="Royal blue"
+              rationale="Eminence · Sophistication · Trustworthiness · Reliability"
+              hex="#344EAD"
+            />
+            {/* 3-column group row */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
+              <ColorGroup label="Greys" swatches={[
+                { hex: "#F4F4F4", fg: "#320032", border: "1px solid #EAEAEA" },
+                { hex: "#EAEAEA", fg: "#320032" },
+              ]} />
+              <ColorGroup label="Secondary & text" swatches={[
+                { hex: "#F2F1DF", fg: "#320032" },
+                { hex: "#3A353D", fg: "#FFFFFF" },
+              ]} />
+              <ColorGroup label="Semantic" swatches={[
+                { hex: "#DE3E3A", fg: "#FFFFFF" },
+                { hex: "#EAB040", fg: "#320032" },
+                { hex: "#4CACA6", fg: "#FFFFFF" },
+              ]} />
+            </div>
+          </div>
+        </PanelShell>
+
 
         {/* A sneak peek heading */}
         <div className="pt-4 pb-2 text-center">
