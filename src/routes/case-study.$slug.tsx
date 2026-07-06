@@ -2248,13 +2248,14 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
           </div>
           {/* Proportion guide markers */}
           <div
-            className="flex items-center justify-between w-full max-w-[720px] px-4"
-            style={{ color: "#595959", fontFamily: "Manrope, system-ui, sans-serif", fontSize: 18, fontWeight: 600 }}
+            className="grid w-full max-w-[860px] px-4"
+            style={{ gridTemplateColumns: "1fr 2fr 6fr", color: "#595959", fontFamily: "Manrope, system-ui, sans-serif", fontSize: 18, fontWeight: 600 }}
           >
             <span>X</span>
             <span>1/2*X</span>
-            <span style={{ marginLeft: "auto" }}>5*X</span>
+            <span>5*X</span>
           </div>
+
         </RevealPanel>
 
         {/* Design ethos */}
