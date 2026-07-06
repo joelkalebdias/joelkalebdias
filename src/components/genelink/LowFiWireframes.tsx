@@ -301,22 +301,18 @@ const SKETCHES = [
 
 export function LowFiWireframes() {
   return (
-    <div className="px-4 pt-5 pb-6">
-      {/* Wireframes: Dashboard tall on the left, other 4 in a balanced 2x2 grid */}
+    <div className="px-2 pt-5 pb-6">
+      {/* Wireframes: all 5 phones in a single row like the Figma frame.
+          On narrower screens, wrap so nothing gets clipped. */}
       <div
-        className="flex flex-wrap items-start justify-center"
-        style={{ gap: px(16) }}
+        className="flex flex-wrap items-start justify-center lg:flex-nowrap"
+        style={{ gap: px(20) }}
       >
         <Dashboard />
-        <div
-          className="grid grid-cols-2"
-          style={{ gap: px(16) }}
-        >
-          <ImageScreen />
-          <Login />
-          <FamilyTree />
-          <Chats />
-        </div>
+        <ImageScreen />
+        <Login />
+        <FamilyTree />
+        <Chats />
       </div>
 
       {/* Paper sketches + handwritten caption */}
