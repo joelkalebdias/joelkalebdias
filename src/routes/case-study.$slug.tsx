@@ -2222,31 +2222,13 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
           >
             DNA chain with link — to denote connection and people
           </p>
-          <div className="flex items-center gap-4 md:gap-6">
-            {/* DNA mark */}
-            <svg width="80" height="90" viewBox="0 0 24 24" fill="none" aria-hidden style={{ flexShrink: 0 }}>
-              <g stroke="#B9B9B9" strokeWidth="2" strokeLinecap="square">
-                <path d="M5 3 Q12 12 5 21" />
-                <path d="M19 3 Q12 12 19 21" />
-                <line x1="7" y1="6" x2="17" y2="6" />
-                <line x1="6" y1="10" x2="18" y2="10" />
-                <line x1="6" y1="14" x2="18" y2="14" />
-                <line x1="7" y1="18" x2="17" y2="18" />
-              </g>
-            </svg>
-            <span
-              style={{
-                color: "#B9B9B9",
-                fontFamily: "Manrope, system-ui, sans-serif",
-                fontWeight: 300,
-                fontSize: "clamp(48px, 10vw, 128px)",
-                letterSpacing: "-0.03em",
-                lineHeight: 1,
-              }}
-            >
-              GeneLink
-            </span>
-          </div>
+          <img
+            src={genelinkLogo.url}
+            alt="GeneLink logo — DNA chain with link"
+            className="w-full max-w-[1228px] h-auto"
+            style={{ display: "block" }}
+          />
+
           {/* Proportion guide markers */}
           <div
             className="grid w-full max-w-[860px] px-4"
