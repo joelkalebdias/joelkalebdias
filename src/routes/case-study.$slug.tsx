@@ -14,6 +14,7 @@ import sarahAvatar from "@/assets/genelink/sarah.png.asset.json";
 import michaelAvatar from "@/assets/genelink/michael.png.asset.json";
 import { IADiagram } from "@/components/genelink/IADiagram";
 import { LowFiWireframes } from "@/components/genelink/LowFiWireframes";
+import genelinkLogo from "@/assets/genelink/logo.png.asset.json";
 
 const pixelHeading = {
   fontFamily: "'Ac437 IBM CGA', 'Press Start 2P', monospace",
