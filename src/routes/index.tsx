@@ -109,7 +109,7 @@ const PROJECTS: Project[] = [
     company: "Confidential",
     location: "India - 2024",
     role: "Role: UX/UI Designer (Personal Project)",
-    gradient: "linear-gradient(180deg, #D8B4FE 0%, #D8B4FE 80%, #7E22CE 100%)",
+    gradient: "linear-gradient(180deg, #1E3A8A 0%, #1E3A8A 80%, #0B1E52 100%)",
     img: "https://api.builder.io/api/v1/image/assets/TEMP/b982a6847c860f50d4ba512ddbc3c64beca4590a?width=718",
     slug: "genelink",
   },
