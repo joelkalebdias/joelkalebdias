@@ -2326,69 +2326,29 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
 
 
         {/* Future Scope */}
-        <RevealPanel
-          as="section"
-          effect="pixel-fade"
-          className="rounded-xl p-4 flex flex-col gap-4"
-          style={{
-            background: "#FA0",
-            boxShadow: "-3px -3px 0 0 #4C042C inset, 3px 3px 0 0 #FFFEF6 inset",
-          }}
-        >
-          <h3
-            style={{
-              ...pixelHeading,
-              color: "#320032",
-              textShadow: "1px 1px 0 #F29A9C",
-              fontSize: 16,
-              margin: 0,
-              padding: "4px 4px 0",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Future Scope
-          </h3>
-          <TypewriterText
-            text={G.futureScope.intro}
-            style={{ ...pixelBody, color: "#320032", fontSize: 18, lineHeight: 1.4, margin: 0, padding: "0 4px" }}
+        <PanelShell>
+          <PanelHeader
+            label="Future Scope"
+            gradient="linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)"
           />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-            {G.futureScope.items.map((a) => (
-              <div key={a.title} className="rounded-lg px-4 py-3" style={{ background: "#FFD581" }}>
-                <h4 style={{ ...pixelBody, color: "#320032", fontSize: 15, margin: 0, marginBottom: 4, fontWeight: 700 }}>{a.title}</h4>
-                <p style={{ ...pixelBody, color: "#320032", fontSize: 14, lineHeight: 1.45, margin: 0 }}>{a.body}</p>
-              </div>
-            ))}
+          <div className="px-4 pt-4 flex flex-col gap-3">
+            <p style={{ ...pixelBody, color: "#320032", fontSize: 15, lineHeight: 1.4, margin: 0, letterSpacing: "-0.15px" }}>
+              Lot more can be done on this application,
+            </p>
+            <p style={{ ...pixelBody, color: "#320032", fontSize: 15, lineHeight: 1.4, margin: 0, letterSpacing: "-0.15px" }}>
+              Few of the features which can be implemented to make this application versatile and cutting edge.
+            </p>
+            <ol
+              className="list-decimal pl-6 flex flex-col gap-2"
+              style={{ ...pixelBody, color: "#320032", fontSize: 15, lineHeight: 1.4, letterSpacing: "-0.15px", margin: 0 }}
+            >
+              <li>Use artificial intelligence to provide more accurate ancestry predictions and potential family connections based on genetic data patterns and historical records.</li>
+              <li>Allow users to visualize their family tree using augmented reality, providing an interactive and immersive way to explore their ancestry and family connections.</li>
+              <li>Create interactive storytelling features that allow users to add and share stories, photos, and videos about their ancestors, enriching the family history experience.</li>
+            </ol>
           </div>
-        </RevealPanel>
+        </PanelShell>
 
-        {/* What I Learned (reuses data) */}
-        <RevealPanel
-          as="section"
-          effect="pixel-fade"
-          className="rounded-xl p-4 flex flex-col gap-4"
-          style={{
-            background: "#3BC976",
-            boxShadow: "-3px -3px 0 0 #1F5C30 inset, 3px 3px 0 0 #C8FBDC inset",
-          }}
-        >
-          <h3 style={{ ...pixelHeading, color: "#1A4D24", textShadow: "1px 1px 0 rgba(0,0,0,0.15)", fontSize: 16, margin: 0, padding: "4px 4px 0", letterSpacing: "-0.02em" }}>
-            What I Learned
-          </h3>
-          <TypewriterText
-            text={cs.learnedIntro}
-            style={{ ...pixelBody, color: "#102914", fontSize: 18, lineHeight: 1.45, margin: 0, padding: "0 4px" }}
-          />
-          <div className="flex flex-col gap-3">
-            {cs.lessons.map((l) => (
-              <div key={l.title} className="rounded-lg px-4 py-3" style={{ background: "#9FF2C1" }}>
-                <p style={{ ...pixelBody, color: "#102914", fontSize: 15, lineHeight: 1.45, margin: 0 }}>
-                  <strong>{l.title} </strong>{l.body}
-                </p>
-              </div>
-            ))}
-          </div>
-        </RevealPanel>
 
         {/* More case studies */}
         <section
