@@ -2294,58 +2294,36 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
           </h2>
         </div>
 
-        {/* Dashboard with callouts */}
-        <PanelShell>
-          <PanelHeader label="Dashboard" gradient="linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)" />
-          <div className="px-4 pt-4 flex flex-col gap-4">
-            <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>{G.dashboard.intro}</p>
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-6 items-center">
-              {/* Left callouts */}
-              <StaggerGroup className="flex flex-col gap-3 order-2 lg:order-1" staggerMs={120}>
-                {G.dashboard.callouts.slice(0, 3).map((c) => (
-                  <div key={c.title} className="rounded-lg px-4 py-3 lg:text-right" style={{ background: "#FDEBE2", boxShadow: "inset 0 0 0 2px #D33869" }}>
-                    <h4 style={{ ...pixelHeading, color: "#320032", fontSize: 13, margin: 0, marginBottom: 4, letterSpacing: "-0.02em" }}>{c.title}</h4>
-                    <p style={{ ...pixelBody, color: "#320032", fontSize: 14, lineHeight: 1.4, margin: 0 }}>{c.body}</p>
-                  </div>
-                ))}
-              </StaggerGroup>
-              {/* Phone */}
-              <RevealPanel
-                effect="crt-boot"
-                className="rounded-2xl overflow-hidden mx-auto order-1 lg:order-2"
-                style={{ width: 240, aspectRatio: "240/500", background: "#000" }}
-              >
-                <img src={G.dashboard.phoneImage} alt="Dashboard mockup" className="w-full h-full object-cover" loading="lazy" />
-              </RevealPanel>
-              {/* Right callouts */}
-              <StaggerGroup className="flex flex-col gap-3 order-3" staggerMs={120}>
-                {G.dashboard.callouts.slice(3).map((c) => (
-                  <div key={c.title} className="rounded-lg px-4 py-3" style={{ background: "#FDEBE2", boxShadow: "inset 0 0 0 2px #D33869" }}>
-                    <h4 style={{ ...pixelHeading, color: "#320032", fontSize: 13, margin: 0, marginBottom: 4, letterSpacing: "-0.02em" }}>{c.title}</h4>
-                    <p style={{ ...pixelBody, color: "#320032", fontSize: 14, lineHeight: 1.4, margin: 0 }}>{c.body}</p>
-                  </div>
-                ))}
-              </StaggerGroup>
-            </div>
-          </div>
-        </PanelShell>
+        {/* Dashboard sneak peek image */}
+        <RevealPanel
+          as="section"
+          effect="pixel-fade"
+          className="rounded-lg overflow-hidden"
+          style={{ background: "#1E1E1E" }}
+        >
+          <img
+            src={sneakPeekAsset.url}
+            alt="Dashboard sneak peek"
+            className="w-full h-auto block"
+            loading="lazy"
+          />
+        </RevealPanel>
 
-        {/* My DNA */}
-        <PanelShell>
-          <PanelHeader label="My DNA" gradient="linear-gradient(180deg, #FBFFF6 0%, #B5EAF4 50%, #69DAEE 100%)" />
-          <div className="px-4 pt-4 flex flex-col gap-4">
-            <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.45, margin: 0 }}>{G.myDna.caption}</p>
-            <div className="rounded-xl p-4" style={{ background: "#030B12" }}>
-              <StaggerGroup className="grid grid-cols-1 sm:grid-cols-3 gap-4" staggerMs={120} effect="crt-boot">
-                {G.myDna.images.map((src, i) => (
-                  <div key={src} className="rounded-2xl overflow-hidden mx-auto w-full max-w-[220px]" style={{ aspectRatio: "220/460", background: "#000" }}>
-                    <img src={src} alt={`My DNA screen ${i + 1}`} className="w-full h-full object-cover" loading="lazy" />
-                  </div>
-                ))}
-              </StaggerGroup>
-            </div>
-          </div>
-        </PanelShell>
+        {/* My DNA image */}
+        <RevealPanel
+          as="section"
+          effect="pixel-fade"
+          className="rounded-lg overflow-hidden"
+          style={{ background: "#000" }}
+        >
+          <img
+            src={myDnaAsset.url}
+            alt="My DNA screens"
+            className="w-full h-auto block"
+            loading="lazy"
+          />
+        </RevealPanel>
+
 
         {/* Future Scope */}
         <RevealPanel
