@@ -14,7 +14,7 @@ import sarahAvatar from "@/assets/genelink/sarah.png.asset.json";
 import michaelAvatar from "@/assets/genelink/michael.png.asset.json";
 import { IADiagram } from "@/components/genelink/IADiagram";
 import { LowFiWireframes } from "@/components/genelink/LowFiWireframes";
-import genelinkLogo from "@/assets/genelink/logo.png.asset.json";
+import { GeneLinkLogoStrip } from "@/components/genelink/GeneLinkLogoStrip";
 
 const pixelHeading = {
   fontFamily: "'Ac437 IBM CGA', 'Press Start 2P', monospace",
@@ -2203,43 +2203,7 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
         </PanelShell>
 
         {/* Dark GeneLink reveal strip */}
-        <RevealPanel
-          as="section"
-          effect="crt-boot"
-          className="rounded-lg overflow-hidden flex flex-col items-center justify-center gap-6 px-4 py-8"
-          style={{ background: "#1E1E1E" }}
-        >
-          <p
-            style={{
-              ...pixelHeading,
-              color: "#FFF",
-              textShadow: "1px 1px 0 #F29A9C",
-              fontSize: 13,
-              letterSpacing: "-0.065px",
-              margin: 0,
-              textAlign: "center",
-            }}
-          >
-            DNA chain with link — to denote connection and people
-          </p>
-          <img
-            src={genelinkLogo.url}
-            alt="GeneLink logo — DNA chain with link"
-            className="w-full max-w-[1228px] h-auto"
-            style={{ display: "block" }}
-          />
-
-          {/* Proportion guide markers */}
-          <div
-            className="grid w-full max-w-[860px] px-4"
-            style={{ gridTemplateColumns: "1fr 2fr 6fr", color: "#595959", fontFamily: "Manrope, system-ui, sans-serif", fontSize: 18, fontWeight: 600 }}
-          >
-            <span>X</span>
-            <span>1/2*X</span>
-            <span>5*X</span>
-          </div>
-
-        </RevealPanel>
+        <GeneLinkLogoStrip />
 
         {/* Design ethos */}
         <PanelShell>
