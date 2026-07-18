@@ -9,7 +9,7 @@ export function GeneLinkLogoStrip() {
   return (
     <RevealPanel
       as="section"
-      effect="crt-boot"
+      effect="pixel-fade"
       className="rounded-lg overflow-hidden flex flex-col items-center justify-center gap-6 px-4 py-8"
       style={{ background: "#1E1E1E" }}
     >
