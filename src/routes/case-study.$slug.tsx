@@ -372,18 +372,22 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
 export const Route = createFileRoute("/case-study/$slug")({
   head: ({ params }) => {
     const cs = CASE_STUDIES[params.slug];
-    const title = cs ? `${cs.title} — Case Study` : "Case Study";
+    const lumenTitle = "Lumen — Case Study";
+    const lumenDesc = "A social platform redesigned around transparency and positive friction.";
+    const title = params.slug === "lumen" ? lumenTitle : cs ? `${cs.title} — Case Study` : "Case Study";
+    const desc = params.slug === "lumen" ? lumenDesc : cs?.tagline ?? "Case study";
     return {
       meta: [
         { title },
-        { name: "description", content: cs?.tagline ?? "Case study" },
+        { name: "description", content: desc },
         { property: "og:title", content: title },
-        { property: "og:description", content: cs?.tagline ?? "Case study" },
-        ...(cs?.hero ? [{ property: "og:image", content: cs.hero }] : []),
+        { property: "og:description", content: desc },
+        ...(cs?.hero && params.slug !== "lumen" ? [{ property: "og:image", content: cs.hero }] : []),
       ],
     };
   },
   loader: ({ params }) => {
+    if (params.slug === "lumen") return null;
     if (!CASE_STUDIES[params.slug]) throw notFound();
     return null;
   },
