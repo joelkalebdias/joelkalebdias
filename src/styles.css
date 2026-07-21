@@ -154,14 +154,16 @@
     border-color: var(--color-border);
   }
 
-  html, body {
-    cursor: url("/__l5e/assets-v1/2147d34c-b826-412a-88ba-197d866c807e/cursor-default.png") 2 2, auto;
+  html, body, * {
+    cursor: url("/__l5e/assets-v1/a934311c-bca0-4035-9e19-056d92a8da73/cursor-default.png") 2 2, auto;
   }
 
-  a, button, [role="button"], [role="tab"], [role="menuitem"], label, summary,
-  input[type="button"], input[type="submit"], input[type="reset"], select,
-  .cursor-pointer {
-    cursor: url("/__l5e/assets-v1/9a1ac054-8947-4ae9-86db-7cfed79916e1/cursor-pointer.png") 6 2, pointer;
+  a, a *, button, button *, [role="button"], [role="button"] *,
+  [role="tab"], [role="tab"] *, [role="menuitem"], [role="menuitem"] *,
+  [role="link"], [role="option"], label, summary,
+  input[type="button"], input[type="submit"], input[type="reset"], input[type="checkbox"], input[type="radio"], select,
+  .cursor-pointer, .cursor-pointer * {
+    cursor: url("/__l5e/assets-v1/25ff1715-bfc7-4d27-8ff6-f161c2884a9c/cursor-pointer.png") 4 2, pointer !important;
   }
 
   body {
