@@ -101,6 +101,7 @@ type Project = {
   img: string;
   slug?: string;
   externalSite?: boolean;
+  externalUrl?: string;
 };
 
 const PROJECTS: Project[] = [
@@ -122,6 +123,7 @@ const PROJECTS: Project[] = [
     gradient: "linear-gradient(180deg, #18074D 0%, #AE64EF 80%, #FE47DC 100%)",
     img: "https://api.builder.io/api/v1/image/assets/TEMP/61b151e5aec4832a00ff319a93a592868c3117f7?width=718",
     externalSite: true,
+    externalUrl: "https://manifesto-social.figma.site/",
   },
   {
     title:
@@ -737,22 +739,38 @@ function Index() {
                         />
                         {p.externalSite && (
                           <span
-                            className="absolute"
+                            className="absolute inline-flex items-center gap-1.5"
                             style={{
                               top: 8,
                               right: 8,
-                              padding: "4px 10px",
+                              padding: "5px 10px 5px 8px",
                               borderRadius: 9999,
-                              background: "#FFFEF6",
+                              background:
+                                "linear-gradient(180deg, #FFE324 0%, #FF06B3 100%)",
                               color: "#320032",
                               border: "1px solid #4C042C",
-                              boxShadow: "1px 1px 0 0 #4C042C",
+                              boxShadow:
+                                "2px 2px 0 0 #4C042C, inset -1px -1px 0 0 rgba(76,4,44,0.35), inset 1px 1px 0 0 #FFFEF6",
                               ...pixelHeading,
-                              fontSize: 10,
+                              fontSize: 9,
                               lineHeight: 1,
+                              letterSpacing: "0.02em",
+                              textShadow: "1px 1px 0 #FFFEF6",
+                              textTransform: "uppercase",
                             }}
                           >
+                            <span
+                              aria-hidden
+                              style={{
+                                width: 6,
+                                height: 6,
+                                background: "#3BFD00",
+                                boxShadow: "0 0 4px #3BFD00",
+                                display: "inline-block",
+                              }}
+                            />
                             External site
+                            <RetroArrow color="#320032" />
                           </span>
                         )}
                       </div>
@@ -801,6 +819,17 @@ function Index() {
                     >
                       {inner}
                     </Link>
+                  ) : p.externalUrl ? (
+                    <a
+                      key={p.title}
+                      href={p.externalUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={className}
+                      style={sharedStyle}
+                    >
+                      {inner}
+                    </a>
                   ) : (
                     <article key={p.title} className={className} style={sharedStyle}>
                       {inner}
