@@ -727,13 +727,35 @@ function Index() {
                 {PROJECTS.map((p) => {
                   const inner = (
                     <>
-                      <img
-                        src={p.img}
-                        alt=""
-                        className="w-full rounded-lg object-cover"
-                        style={{ aspectRatio: "308/173" }}
-                        loading="lazy"
-                      />
+                      <div className="relative">
+                        <img
+                          src={p.img}
+                          alt=""
+                          className="w-full rounded-lg object-cover block"
+                          style={{ aspectRatio: "308/173" }}
+                          loading="lazy"
+                        />
+                        {p.externalSite && (
+                          <span
+                            className="absolute"
+                            style={{
+                              top: 8,
+                              right: 8,
+                              padding: "4px 10px",
+                              borderRadius: 9999,
+                              background: "#FFFEF6",
+                              color: "#320032",
+                              border: "1px solid #4C042C",
+                              boxShadow: "1px 1px 0 0 #4C042C",
+                              ...pixelHeading,
+                              fontSize: 10,
+                              lineHeight: 1,
+                            }}
+                          >
+                            External site
+                          </span>
+                        )}
+                      </div>
                       <p
                         style={{
                           ...pixelBody,
