@@ -1,3 +1,4 @@
+import React from "react";
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { RevealPanel, StaggerGroup, TypewriterText } from "@/components/retro/Reveal";
 import { RetroScrollProgress } from "@/components/retro/RetroScrollProgress";
