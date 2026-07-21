@@ -100,9 +100,29 @@ type Project = {
   gradient: string;
   img: string;
   slug?: string;
+  externalSite?: boolean;
 };
 
 const PROJECTS: Project[] = [
+  {
+    title:
+      "Lumen - Social media app to rethink social platforms around transparency and connection",
+    company: "Master Thesis",
+    location: "Germany - 2026",
+    role: "Role: Research, UX/UI Designer",
+    gradient: "linear-gradient(180deg, #FF6B5C 0%, #FD7466 80%, #BC2729 100%)",
+    img: "https://api.builder.io/api/v1/image/assets/TEMP/a8321c5713c1220171c431e099eb48ae8a68b4dc?width=718",
+  },
+  {
+    title:
+      "Manifesto - For more human social platforms, interaction patterns and principles",
+    company: "Master Thesis",
+    location: "Germany - 2026",
+    role: "Role: Research, UX/UI Designer",
+    gradient: "linear-gradient(180deg, #18074D 0%, #AE64EF 80%, #FE47DC 100%)",
+    img: "https://api.builder.io/api/v1/image/assets/TEMP/61b151e5aec4832a00ff319a93a592868c3117f7?width=718",
+    externalSite: true,
+  },
   {
     title:
       "GeneLink - An app to connect people with their long lost relatives using state of the art DNA mapping",
@@ -140,24 +160,6 @@ const PROJECTS: Project[] = [
     role: "Role: UX/UI Designer",
     gradient: "linear-gradient(180deg, #69DAEE 0%, #69DAEE 80%, #8A69EE 100%)",
     img: "https://api.builder.io/api/v1/image/assets/TEMP/507f3b9934b6e8a32adc0c0b3941cc887b0f6305?width=718",
-  },
-  {
-    title:
-      "Lumen - Social media app to rethink social platforms around transparency and connection",
-    company: "Master Thesis",
-    location: "Germany - 2026",
-    role: "Role: Research, UX/UI Designer",
-    gradient: "linear-gradient(180deg, #FF6B5C 0%, #FD7466 80%, #BC2729 100%)",
-    img: "https://api.builder.io/api/v1/image/assets/TEMP/a8321c5713c1220171c431e099eb48ae8a68b4dc?width=718",
-  },
-  {
-    title:
-      "Manifesto - For more human social platforms, interaction patterns and principles",
-    company: "Master Thesis",
-    location: "Germany - 2026",
-    role: "Role: Research, UX/UI Designer",
-    gradient: "linear-gradient(180deg, #18074D 0%, #AE64EF 80%, #FE47DC 100%)",
-    img: "https://api.builder.io/api/v1/image/assets/TEMP/61b151e5aec4832a00ff319a93a592868c3117f7?width=718",
   },
 ];
 
