@@ -819,6 +819,17 @@ function Index() {
                     >
                       {inner}
                     </Link>
+                  ) : p.externalUrl ? (
+                    <a
+                      key={p.title}
+                      href={p.externalUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={className}
+                      style={sharedStyle}
+                    >
+                      {inner}
+                    </a>
                   ) : (
                     <article key={p.title} className={className} style={sharedStyle}>
                       {inner}
