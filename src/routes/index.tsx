@@ -123,6 +123,7 @@ const PROJECTS: Project[] = [
     gradient: "linear-gradient(180deg, #18074D 0%, #AE64EF 80%, #FE47DC 100%)",
     img: "https://api.builder.io/api/v1/image/assets/TEMP/61b151e5aec4832a00ff319a93a592868c3117f7?width=718",
     externalSite: true,
+    externalUrl: "https://manifesto-social.figma.site/",
   },
   {
     title:
