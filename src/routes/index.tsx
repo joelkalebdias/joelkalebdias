@@ -113,6 +113,7 @@ const PROJECTS: Project[] = [
     role: "Role: Research, UX/UI Designer",
     gradient: "linear-gradient(180deg, #FF6B5C 0%, #FD7466 80%, #BC2729 100%)",
     img: "https://api.builder.io/api/v1/image/assets/TEMP/a8321c5713c1220171c431e099eb48ae8a68b4dc?width=718",
+    slug: "lumen",
   },
   {
     title:
