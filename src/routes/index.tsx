@@ -115,7 +115,7 @@ const PROJECTS: Project[] = [
   },
   {
     title:
-      "LoL.ai - An AI first, AI driven analytics and trainer to help players skill up their League of Legends gameplay",
+      "LoL.ai - An AI first, AI driven analytics and trainer to help players skill up their LoL gameplay",
     company: "League of Legends (Unofficial, Fan Made)",
     location: "Germany - 2026",
     role: "Role: UX/UI Designer (Personal Project)",
