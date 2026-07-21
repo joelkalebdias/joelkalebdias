@@ -102,6 +102,7 @@ type Project = {
   slug?: string;
   externalSite?: boolean;
   externalUrl?: string;
+};
 
 const PROJECTS: Project[] = [
   {
