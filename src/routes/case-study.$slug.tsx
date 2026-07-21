@@ -2414,3 +2414,537 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
   );
 }
 
+
+/* ============================================================
+   LUMEN CASE STUDY
+   ============================================================ */
+
+const LUMEN = {
+  title: "Lumen",
+  meta: "Role: UX/UI Designer & Researcher (Master's Thesis)   Duration: 6 months   Tools: Figma, user interviews, thematic analysis",
+  tagline:
+    "A social platform redesigned around transparency and positive friction, so consequences of every action are visible before they happen.",
+  challenge:
+    "Social platforms hide consequences. Friction is treated as failure, not respect. We like, we share — zero visible impact.",
+  stats: [
+    { value: "15", label: "people", sub: "Participated in my research study" },
+    { value: "6", label: "nations", sub: "Between my test group" },
+    { value: "3", label: "platforms", sub: "Tested and evaluated" },
+  ],
+  processIntro:
+    "How I managed to create this experience in a couple of days? I followed a lean UX method which streamlined processes to ensure timely delivery.",
+  phases: [
+    { number: "01", title: "Literature review" },
+    { number: "02", title: "Empirical study" },
+    { number: "03", title: "Prototype evaluation" },
+  ],
+  patterns: [
+    {
+      title: "1. Dark Patterns",
+      body:
+        "Dark patterns such as overloading, stirring, obstructing, and leaving people in the dark benefit the platform by steering behaviour people would not choose under fully informed conditions. Attention-capture features such as infinite scroll, autoplay, and continuous refresh support low-awareness, dissociative use, and reduce people's sense of control. This means the problem is not only hidden information, but also interface conditions that make reflection less likely.",
+    },
+    {
+      title: "2. Algorithmic Transparency & Trust",
+      body:
+        "Research on algorithmic transparency shows that transparency is not only a disclosure issue, but a trust issue. Trust is built by abstract institutional claims and more by direct, legible interaction with a system.",
+    },
+    {
+      title: "3. Slow Technology",
+      body:
+        "Work on domestic computing shows that older computing environments had natural social and spatial moderators that slowed conversation, reflection, and awareness of how can be delegated for rather than treated as usability failures.",
+    },
+    {
+      title: "4. Positive Friction",
+      body:
+        "Against frictionless UX, a growing body of work argues that carefully introduced friction can support better decisions, self-regulation, and reflection. These interventions can improve perceived agency and consume quality more effectively than external self-control tools, because they operate within the interaction itself.",
+    },
+  ],
+  competition: [
+    { app: "Instagram", finding: "Reports vanish, friction dismissible in one tap" },
+    { app: "YouTube", finding: "Dislikes hidden, shares carry no consequence" },
+    { app: "Bluesky", finding: "Transparent architecture, but never reaches a single like" },
+  ],
+  processFlow: ["Literature review", "Findings from study 1", "Prototype analysis"],
+  designQuestion:
+    "What does a social media interface look like when it is designed around transparency, human connection and intentional use and how should consequences visibility and friction be calibrated so they support rather than obstruct people?",
+  commitments: [
+    {
+      title: "Consequences made Visible",
+      body:
+        "Instagram, YouTube, and Bluesky all leave users guessing what a like, share, or report actually does. Lumen closes that gap by normalizing the consequence of the moment of action, not buried in a settings page somewhere.",
+    },
+    {
+      title: "Friction as Respect",
+      body:
+        "Most platforms treat friction as bad UX, something to remove. Lumen's research and evaluations showed the opposite: participants welcomed friction on sharing and reporting as an act of respect, not a barrier. Reflection prompts and confirm-taps aren't obstacles — they're a way of saying \"this matters.\"",
+    },
+    {
+      title: "Public/Private Feed Separation",
+      body:
+        "Commons handles open discovery, Circles handles close relationships. Keeping the two apart lets people show up differently in each — performative in public, honest in private — without one bleeding into the other.",
+    },
+  ],
+  sections: [
+    {
+      title: "Onboarding",
+      lead: "Consent, made visible.",
+      body: "Every permission, explicit. Opted-out by default.",
+    },
+    {
+      title: "Circles",
+      lead: "Connection, without noise.",
+      body: "Friends and mutuals, undiluted.",
+    },
+    {
+      title: "Flow",
+      lead: "Video, on your terms.",
+      body: "Careful consumption. Mindful pauses.",
+    },
+    {
+      title: "Alter Ego",
+      lead: "Perspective, without the bubble.",
+      body: "Toggle to see outside your algorithmic feed.",
+    },
+    {
+      title: "Reports",
+      lead: "Every action, accounted for.",
+      body: "Reporting sends a track to a mediator, no silence, no explanation withheld.",
+    },
+  ],
+  futureScope: [
+    "Deploying Lumen over weeks or months to see whether transparency and friction hold up once the novelty fades.",
+    "Study 1's 15 participants (ages 21-30, 6 countries) point toward a problem, not a global picture. A larger, more demographically varied sample would test whether these patterns hold across ages, cultures, and platform habits.",
+    "Participants welcomed friction on sharing but rejected it on liking. Future work could quantify that threshold more precisely, testing exactly how much pause feels respectful versus obstructive.",
+    "Really deeply understanding the engineering mechanics to make features like verification, AI detection, and alter ego to work.",
+  ],
+} as const;
+
+function LumenImagePlaceholder({ label, aspect = "16/9" }: { label: string; aspect?: string }) {
+  return (
+    <div
+      className="rounded-lg overflow-hidden flex items-center justify-center relative"
+      style={{
+        aspectRatio: aspect,
+        background: "linear-gradient(180deg, #181818 0%, #0B0B0B 100%)",
+        boxShadow: "inset -4px -4px 0px 0px #084170, inset 4px 4px 0px 0px #0e1b37",
+      }}
+    >
+      <div className="absolute inset-0 opacity-10" style={{ backgroundImage: scanlines }} aria-hidden />
+      <p
+        style={{
+          ...pixelHeading,
+          color: "#F58ABC",
+          fontSize: 14,
+          letterSpacing: "-0.02em",
+          textShadow: "1px 1px 0 #4C042C",
+          textAlign: "center",
+          padding: 16,
+        }}
+      >
+        {label}
+      </p>
+    </div>
+  );
+}
+
+function LumenStatCard({ value, label, sub }: { value: string; label: string; sub: string }) {
+  return (
+    <div
+      className="rounded-xl p-4 flex-1 flex flex-col justify-between gap-4"
+      style={{
+        border: "2px solid #09FF00",
+        background: "linear-gradient(180deg, #004802 0%, #001F01 100%)",
+        boxShadow: "2px 2px 0 0 #8F0045",
+        minHeight: 170,
+      }}
+    >
+      <div
+        style={{
+          ...pixelHeading,
+          color: "#09FF00",
+          fontSize: "clamp(28px, 3.5vw, 40px)",
+          lineHeight: 1.15,
+          letterSpacing: "-0.01em",
+          textShadow: "0 0 10px rgba(9,255,0,0.4)",
+        }}
+      >
+        {value}
+        <br />
+        {label}
+      </div>
+      <div
+        className="rounded-lg px-4 py-2"
+        style={{ background: "#032201" }}
+      >
+        <p style={{ ...pixelTerminal, color: "#21801E", fontSize: 14, margin: 0, letterSpacing: "-0.01em" }}>
+          {sub}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function LumenPhaseChip({ number, title }: { number: string; title: string }) {
+  return (
+    <div
+      className="rounded-xl px-6 py-3 flex-1 flex items-center justify-center text-center"
+      style={{
+        background: "#FA0",
+        boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
+      }}
+    >
+      <div style={{ ...pixelHeading, color: "#320032", fontSize: 12, lineHeight: 1.3, letterSpacing: "-0.01em" }}>
+        {number}.{title}
+      </div>
+    </div>
+  );
+}
+
+function LumenCaseStudy() {
+  return (
+    <main
+      className="min-h-screen w-full px-4 sm:px-6 lg:px-8 py-8 flex justify-center relative isolate"
+      style={{ background: "linear-gradient(180deg, #0A0224 0%, #260A20 100%)" }}
+    >
+      <RetroStarfield />
+      <RetroScrollProgress />
+      <div className="w-full max-w-[1280px] flex flex-col gap-6 relative z-10">
+        {/* Header */}
+        <header
+          className="rounded-xl p-6 flex flex-col gap-6"
+          style={{
+            background: "linear-gradient(180deg, #F360A3 0%, #FF289E 76.44%, #8A00B1 100%)",
+            boxShadow: "-3px -3px 0 0 #A70 inset, 3px 3px 0 0 #FFEF33 inset",
+          }}
+        >
+          <div className="flex items-start justify-between gap-6 flex-wrap">
+            <h1
+              style={{
+                ...pixelHeading,
+                color: "#FFEC7F",
+                textShadow: "2px 2px 0 #FF5900",
+                fontSize: "clamp(28px, 4vw, 36px)",
+                lineHeight: 1.3,
+                letterSpacing: "-0.1em",
+              }}
+            >
+              {LUMEN.title}
+            </h1>
+            <Link to="/" className="retro-lightning" style={{ ...pixelBody, color: "#fff", fontSize: 24, letterSpacing: "-0.02em" }}>
+              ← Back
+            </Link>
+          </div>
+          <div
+            className="rounded-xl px-4 sm:px-6 pt-4 pb-4 relative overflow-hidden"
+            style={{
+              border: "2px solid #008000",
+              background: `${scanlines}, linear-gradient(180deg, #004802 0%, #001F01 100%)`,
+              boxShadow: "0 0 4px 0 rgba(0,0,0,0.4) inset, 2px 2px 0 0 #8F0045",
+            }}
+          >
+            <div className="rounded-md px-4 py-2" style={{ background: "#032201" }}>
+              <p style={{ ...pixelTerminal, color: "#21801E", fontSize: 16, letterSpacing: "-0.01em", margin: 0 }}>
+                {LUMEN.meta}
+              </p>
+            </div>
+            <p
+              style={{
+                ...pixelBody,
+                color: "#3BFD00",
+                textShadow: "2px 2px 0 rgba(0,0,0,0.25)",
+                fontSize: 22,
+                lineHeight: 1.3,
+                margin: 0,
+                marginTop: 16,
+              }}
+            >
+              {LUMEN.tagline}
+            </p>
+          </div>
+        </header>
+
+        {/* Hero */}
+        <RevealPanel effect="crt-boot" className="w-full">
+          <LumenImagePlaceholder label="[ Hero — Billboard mockup: Ready to ditch hidden Algorithms? ]" aspect="16/7" />
+        </RevealPanel>
+
+        {/* Challenge */}
+        <PanelShell>
+          <PanelHeader label="The Challenge:" gradient="linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)" />
+          <div className="px-4 pt-4">
+            <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4, margin: 0, letterSpacing: "-0.01em" }}>
+              {LUMEN.challenge}
+            </p>
+          </div>
+        </PanelShell>
+
+        {/* Stats row */}
+        <StaggerGroup className="flex flex-col md:flex-row gap-5" staggerMs={100}>
+          {LUMEN.stats.map((s) => (
+            <LumenStatCard key={s.label} value={s.value} label={s.label} sub={s.sub} />
+          ))}
+        </StaggerGroup>
+
+        {/* Design Process */}
+        <PanelShell>
+          <PanelHeader label="Design Process" gradient="linear-gradient(180deg, #FBFFF6 0%, #B5EAF4 50%, #69DAEE 100%)" />
+          <div className="px-4 pt-4 flex flex-col gap-4">
+            <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4, margin: 0, letterSpacing: "-0.01em" }}>
+              {LUMEN.processIntro}
+            </p>
+            <StaggerGroup className="flex flex-col sm:flex-row gap-3" staggerMs={90}>
+              {LUMEN.phases.map((p) => (
+                <LumenPhaseChip key={p.number} number={p.number} title={p.title} />
+              ))}
+            </StaggerGroup>
+          </div>
+        </PanelShell>
+
+        {/* Research heading */}
+        <div className="pt-4 pb-2 text-center">
+          <h2
+            style={{
+              ...pixelHeading,
+              color: "#FFEC7F",
+              textShadow: "2px 2px 0 #FF5900",
+              fontSize: "clamp(28px, 4vw, 36px)",
+              lineHeight: 1.3,
+              letterSpacing: "-0.08em",
+            }}
+          >
+            Research
+          </h2>
+        </div>
+
+        {/* Relevant patterns */}
+        <PanelShell>
+          <PanelHeader
+            label="Relevant patterns from my literature study"
+            gradient="linear-gradient(180deg, #FBFFF6 0%, #F5ED94 50%, #ECD948 100%)"
+          />
+          <div className="px-4 pt-4 flex flex-col gap-4">
+            {LUMEN.patterns.map((p) => (
+              <div key={p.title}>
+                <p style={{ ...pixelHeading, color: "#320032", fontSize: 14, margin: 0, letterSpacing: "-0.02em" }}>
+                  {p.title}
+                </p>
+                <p style={{ ...pixelBody, color: "#320032", fontSize: 15, lineHeight: 1.5, margin: 0, marginTop: 6, letterSpacing: "-0.01em" }}>
+                  {p.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </PanelShell>
+
+        {/* Competition */}
+        <PanelShell>
+          <PanelHeader
+            label="Competition & Benchmarking"
+            gradient="linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)"
+          />
+          <div className="px-4 pt-4">
+            <div className="rounded-lg overflow-hidden" style={{ border: "2px solid #320032" }}>
+              {LUMEN.competition.map((row, i) => (
+                <div
+                  key={row.app}
+                  className="grid grid-cols-[140px_1fr] sm:grid-cols-[200px_1fr]"
+                  style={{
+                    borderTop: i === 0 ? "none" : "1px solid rgba(50,0,50,0.3)",
+                    background: i % 2 === 0 ? "#FBFFF6" : "#FDEBE2",
+                  }}
+                >
+                  <div className="px-4 py-3" style={{ borderRight: "1px solid rgba(50,0,50,0.3)" }}>
+                    <p style={{ ...pixelHeading, color: "#320032", fontSize: 13, margin: 0, letterSpacing: "-0.02em" }}>
+                      {row.app}
+                    </p>
+                  </div>
+                  <div className="px-4 py-3">
+                    <p style={{ ...pixelBody, color: "#320032", fontSize: 15, margin: 0, letterSpacing: "-0.01em" }}>
+                      {row.finding}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </PanelShell>
+
+        {/* Process (flow arrows) */}
+        <PanelShell>
+          <PanelHeader label="Process" gradient="linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)" />
+          <div className="px-4 pt-4">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              {LUMEN.processFlow.map((step, i) => (
+                <React.Fragment key={step}>
+                  <div
+                    className="rounded-lg px-4 py-3 flex-1 text-center"
+                    style={{
+                      background: "#FA0",
+                      boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
+                    }}
+                  >
+                    <span style={{ ...pixelHeading, color: "#320032", fontSize: 12, letterSpacing: "-0.02em" }}>
+                      {step}
+                    </span>
+                  </div>
+                  {i < LUMEN.processFlow.length - 1 && (
+                    <span
+                      aria-hidden
+                      style={{ ...pixelHeading, color: "#FF289E", fontSize: 18, textAlign: "center" }}
+                    >
+                      →
+                    </span>
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+        </PanelShell>
+
+        {/* Systems image */}
+        <RevealPanel effect="pixel-fade">
+          <LumenImagePlaceholder label="[ Systems where the problem lies — organisational, digital, physical, human ]" aspect="16/8" />
+        </RevealPanel>
+
+        {/* Design Question */}
+        <PanelShell>
+          <PanelHeader label="Design Question" gradient="linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)" />
+          <div className="px-4 pt-4">
+            <p style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.5, margin: 0, letterSpacing: "-0.01em", fontStyle: "italic" }}>
+              {LUMEN.designQuestion}
+            </p>
+          </div>
+        </PanelShell>
+
+        {/* The Solution heading */}
+        <div className="pt-4 pb-2 text-center">
+          <h2
+            style={{
+              ...pixelHeading,
+              color: "#FFEC7F",
+              textShadow: "2px 2px 0 #FF5900",
+              fontSize: "clamp(28px, 4vw, 36px)",
+              lineHeight: 1.3,
+              letterSpacing: "-0.08em",
+            }}
+          >
+            The Solution
+          </h2>
+        </div>
+
+        {/* Solution hero */}
+        <RevealPanel effect="crt-boot">
+          <LumenImagePlaceholder label="[ Solution overview — Lumen app on phone ]" aspect="16/7" />
+        </RevealPanel>
+
+        {/* 3 commitments */}
+        <PanelShell>
+          <PanelHeader
+            label="The app was designed around 3 commitments"
+            gradient="linear-gradient(180deg, #FBFFF6 0%, #E9D5FF 50%, #D8B4FE 100%)"
+          />
+          <div className="px-4 pt-4 flex flex-col gap-5">
+            {LUMEN.commitments.map((c) => (
+              <div key={c.title} className="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-3 md:gap-6">
+                <div>
+                  <p style={{ ...pixelHeading, color: "#320032", fontSize: 13, margin: 0, letterSpacing: "-0.02em", lineHeight: 1.3 }}>
+                    {c.title}
+                  </p>
+                </div>
+                <p style={{ ...pixelBody, color: "#320032", fontSize: 15, lineHeight: 1.5, margin: 0, letterSpacing: "-0.01em" }}>
+                  {c.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </PanelShell>
+
+        {/* Feature sections */}
+        {LUMEN.sections.map((s) => (
+          <PanelShell key={s.title}>
+            <PanelHeader
+              label={s.title}
+              gradient="linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)"
+            />
+            <div className="px-4 pt-4 grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-6 items-center">
+              <div className="flex flex-col gap-2">
+                <p style={{ ...pixelHeading, color: "#320032", fontSize: 14, margin: 0, letterSpacing: "-0.02em", lineHeight: 1.3 }}>
+                  {s.lead}
+                </p>
+                <p style={{ ...pixelBody, color: "#320032", fontSize: 15, lineHeight: 1.5, margin: 0, letterSpacing: "-0.01em" }}>
+                  {s.body}
+                </p>
+              </div>
+              <LumenImagePlaceholder label={`[ ${s.title} — phone mockups ]`} aspect="16/10" />
+            </div>
+          </PanelShell>
+        ))}
+
+        {/* Future Scope */}
+        <PanelShell>
+          <PanelHeader
+            label="Future Scope"
+            gradient="linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)"
+          />
+          <div className="px-4 pt-4 flex flex-col gap-3">
+            {LUMEN.futureScope.map((line, i) => (
+              <p
+                key={i}
+                style={{ ...pixelBody, color: "#320032", fontSize: 15, lineHeight: 1.5, margin: 0, letterSpacing: "-0.01em" }}
+              >
+                {line}
+              </p>
+            ))}
+          </div>
+        </PanelShell>
+
+        {/* More case studies */}
+        <section
+          className="rounded-lg overflow-hidden flex flex-col"
+          style={{ background: "#FCE8F0", boxShadow: "3px 3px 0 0 #D33869, -3px -3px 0 0 #FF94C2", paddingBottom: 16 }}
+        >
+          <SolidHeader
+            label="More case studies"
+            background="linear-gradient(180deg, #FF94C2 0%, #D33869 100%)"
+            textShadow="1px 1px 0 rgba(255,255,255,0.4)"
+          />
+          <div className="px-4 pt-4 pb-2 grid grid-cols-1 md:grid-cols-3 gap-4">
+            {OTHER_PROJECTS.map((p) => (
+              <article
+                key={p.title}
+                className="retro-card rounded-xl p-4 flex flex-col gap-4"
+                style={{ background: p.gradient, boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset" }}
+              >
+                <img src={p.img} alt="" className="w-full rounded-lg object-cover" style={{ aspectRatio: "308/173" }} loading="lazy" />
+                <p style={{ ...pixelBody, color: "#320032", fontSize: 15, lineHeight: 1.4, margin: 0 }}>{p.title}</p>
+                <div style={{ ...pixelBody, color: "#320032", fontSize: 15, lineHeight: 1.4 }}>
+                  <div>{p.company}</div>
+                  <div>{p.location}</div>
+                  <div>{p.role}</div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* Footer back */}
+        <div className="flex justify-center pt-2 pb-4">
+          <Link
+            to="/"
+            className="rounded-lg px-6 py-3"
+            style={{
+              background: "#FA0",
+              boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
+              ...pixelHeading,
+              color: "#320032",
+              fontSize: 13,
+            }}
+          >
+            ← Back to portfolio
+          </Link>
+        </div>
+      </div>
+    </main>
+  );
+}
