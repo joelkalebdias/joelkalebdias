@@ -2812,6 +2812,13 @@ function LumenCaseStudy() {
           <img src={lumenSystemsAsset.url} alt="Systems where the problem lies — organisational, digital, physical, human" className="w-full h-auto block rounded-lg" />
         </RevealPanel>
 
+        {/* Information Architecture */}
+        <RevealPanel effect="pixel-fade">
+          <img src={lumenIaAsset.url} alt="Lumen information architecture" className="w-full h-auto block rounded-lg" />
+        </RevealPanel>
+
+
+
         {/* Design Question */}
         <PanelShell>
           <PanelHeader label="Design Question" gradient="linear-gradient(180deg, #FBFFF6 0%, #CFF594 50%, #AEEC48 100%)" />
