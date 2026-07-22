@@ -22,6 +22,17 @@ import lumenHeroAsset from "@/assets/lumen/hero.png.asset.json";
 import lumenSystemsAsset from "@/assets/lumen/systems.png.asset.json";
 import lumenSolutionAsset from "@/assets/lumen/solution.png.asset.json";
 import lumenIaAsset from "@/assets/lumen/ia.png.asset.json";
+import lumenOnboardingAsset from "@/assets/lumen/onboarding.png.asset.json";
+import lumenCommonsAsset from "@/assets/lumen/commons.png.asset.json";
+import lumenCirclesAsset from "@/assets/lumen/circles.png.asset.json";
+import lumenFlowAsset from "@/assets/lumen/flow.png.asset.json";
+
+const LUMEN_SECTION_IMAGES: Record<string, string> = {
+  Onboarding: lumenOnboardingAsset.url,
+  Commons: lumenCommonsAsset.url,
+  Circles: lumenCirclesAsset.url,
+  Flow: lumenFlowAsset.url,
+};
 
 const pixelHeading = {
   fontFamily: "'Ac437 IBM CGA', 'Press Start 2P', monospace",
@@ -2497,6 +2508,11 @@ const LUMEN = {
       body: "Every permission, explicit. Opted-out by default.",
     },
     {
+      title: "Commons",
+      lead: "Discovery, without distraction.",
+      body: "A mindful explore page with verification and photo-manipulation status visible for transparency.",
+    },
+    {
       title: "Circles",
       lead: "Connection, without noise.",
       body: "Friends and mutuals, undiluted.",
@@ -2873,25 +2889,34 @@ function LumenCaseStudy() {
         </PanelShell>
 
         {/* Feature sections */}
-        {LUMEN.sections.map((s) => (
-          <PanelShell key={s.title}>
-            <PanelHeader
-              label={s.title}
-              gradient="linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)"
-            />
-            <div className="px-4 pt-4 grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-6 items-center">
-              <div className="flex flex-col gap-2">
-                <p style={{ ...pixelHeading, color: "#320032", fontSize: 14, margin: 0, letterSpacing: "-0.02em", lineHeight: 1.3 }}>
-                  {s.lead}
-                </p>
-                <p style={{ ...pixelBody, color: "#320032", fontSize: 15, lineHeight: 1.5, margin: 0, letterSpacing: "-0.01em" }}>
-                  {s.body}
-                </p>
-              </div>
-              <LumenImagePlaceholder label={`[ ${s.title} — phone mockups ]`} aspect="16/10" />
-            </div>
-          </PanelShell>
-        ))}
+        {LUMEN.sections.map((s) => {
+          const img = LUMEN_SECTION_IMAGES[s.title];
+          return (
+            <PanelShell key={s.title}>
+              <PanelHeader
+                label={s.title}
+                gradient="linear-gradient(180deg, #FBFFF6 0%, #F58ABC 50%, #F35DA3 100%)"
+              />
+              {img ? (
+                <div className="px-4 pt-4">
+                  <img src={img} alt={`Lumen — ${s.title}`} className="w-full h-auto block rounded-lg" />
+                </div>
+              ) : (
+                <div className="px-4 pt-4 grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-6 items-center">
+                  <div className="flex flex-col gap-2">
+                    <p style={{ ...pixelHeading, color: "#320032", fontSize: 14, margin: 0, letterSpacing: "-0.02em", lineHeight: 1.3 }}>
+                      {s.lead}
+                    </p>
+                    <p style={{ ...pixelBody, color: "#320032", fontSize: 15, lineHeight: 1.5, margin: 0, letterSpacing: "-0.01em" }}>
+                      {s.body}
+                    </p>
+                  </div>
+                  <LumenImagePlaceholder label={`[ ${s.title} — phone mockups ]`} aspect="16/10" />
+                </div>
+              )}
+            </PanelShell>
+          );
+        })}
 
         {/* Future Scope */}
         <PanelShell>
