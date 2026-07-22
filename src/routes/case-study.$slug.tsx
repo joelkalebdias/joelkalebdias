@@ -2671,7 +2671,7 @@ function LumenCaseStudy() {
 
         {/* Hero */}
         <RevealPanel effect="crt-boot" className="w-full">
-          <LumenImagePlaceholder label="[ Hero — Billboard mockup: Ready to ditch hidden Algorithms? ]" aspect="16/7" />
+          <img src={lumenHeroAsset.url} alt="Lumen billboard — Ready to ditch hidden Algorithms?" className="w-full h-auto block rounded-lg" />
         </RevealPanel>
 
         {/* Challenge */}
