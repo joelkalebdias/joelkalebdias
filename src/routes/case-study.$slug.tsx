@@ -26,7 +26,7 @@ import lumenOnboardingAsset from "@/assets/lumen/onboarding.png.asset.json";
 import lumenCommonsAsset from "@/assets/lumen/commons.png.asset.json";
 import lumenCirclesAsset from "@/assets/lumen/circles.png.asset.json";
 import lumenFlowAsset from "@/assets/lumen/flow.png.asset.json";
-import lumenAlterEgoAsset from "@/assets/lumen/alter-ego.png.asset.json";
+import lumenAlterEgoAsset from "@/assets/lumen-alter-ego.png.asset.json";
 import lumenReportsAsset from "@/assets/lumen/reports.png.asset.json";
 
 const LUMEN_SECTION_IMAGES: Record<string, string> = {
