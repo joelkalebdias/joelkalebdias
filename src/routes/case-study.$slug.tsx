@@ -2809,7 +2809,7 @@ function LumenCaseStudy() {
 
         {/* Systems image */}
         <RevealPanel effect="pixel-fade">
-          <LumenImagePlaceholder label="[ Systems where the problem lies — organisational, digital, physical, human ]" aspect="16/8" />
+          <img src={lumenSystemsAsset.url} alt="Systems where the problem lies — organisational, digital, physical, human" className="w-full h-auto block rounded-lg" />
         </RevealPanel>
 
         {/* Design Question */}
