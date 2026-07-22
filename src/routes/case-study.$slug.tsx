@@ -18,6 +18,10 @@ import { LowFiWireframes } from "@/components/genelink/LowFiWireframes";
 import { GeneLinkLogoStrip } from "@/components/genelink/GeneLinkLogoStrip";
 import sneakPeekAsset from "@/assets/genelink-sneak-peek.png.asset.json";
 import myDnaAsset from "@/assets/genelink-my-dna.png.asset.json";
+import lumenHeroAsset from "@/assets/lumen/hero.png.asset.json";
+import lumenSystemsAsset from "@/assets/lumen/systems.png.asset.json";
+import lumenSolutionAsset from "@/assets/lumen/solution.png.asset.json";
+import lumenIaAsset from "@/assets/lumen/ia.png.asset.json";
 
 const pixelHeading = {
   fontFamily: "'Ac437 IBM CGA', 'Press Start 2P', monospace",
