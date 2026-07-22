@@ -22,6 +22,17 @@ import lumenHeroAsset from "@/assets/lumen/hero.png.asset.json";
 import lumenSystemsAsset from "@/assets/lumen/systems.png.asset.json";
 import lumenSolutionAsset from "@/assets/lumen/solution.png.asset.json";
 import lumenIaAsset from "@/assets/lumen/ia.png.asset.json";
+import lumenOnboardingAsset from "@/assets/lumen/onboarding.png.asset.json";
+import lumenCommonsAsset from "@/assets/lumen/commons.png.asset.json";
+import lumenCirclesAsset from "@/assets/lumen/circles.png.asset.json";
+import lumenFlowAsset from "@/assets/lumen/flow.png.asset.json";
+
+const LUMEN_SECTION_IMAGES: Record<string, string> = {
+  Onboarding: lumenOnboardingAsset.url,
+  Commons: lumenCommonsAsset.url,
+  Circles: lumenCirclesAsset.url,
+  Flow: lumenFlowAsset.url,
+};
 
 const pixelHeading = {
   fontFamily: "'Ac437 IBM CGA', 'Press Start 2P', monospace",
