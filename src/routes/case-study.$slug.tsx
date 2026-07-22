@@ -18,6 +18,10 @@ import { LowFiWireframes } from "@/components/genelink/LowFiWireframes";
 import { GeneLinkLogoStrip } from "@/components/genelink/GeneLinkLogoStrip";
 import sneakPeekAsset from "@/assets/genelink-sneak-peek.png.asset.json";
 import myDnaAsset from "@/assets/genelink-my-dna.png.asset.json";
+import lumenHeroAsset from "@/assets/lumen/hero.png.asset.json";
+import lumenSystemsAsset from "@/assets/lumen/systems.png.asset.json";
+import lumenSolutionAsset from "@/assets/lumen/solution.png.asset.json";
+import lumenIaAsset from "@/assets/lumen/ia.png.asset.json";
 
 const pixelHeading = {
   fontFamily: "'Ac437 IBM CGA', 'Press Start 2P', monospace",
@@ -2667,7 +2671,7 @@ function LumenCaseStudy() {
 
         {/* Hero */}
         <RevealPanel effect="crt-boot" className="w-full">
-          <LumenImagePlaceholder label="[ Hero — Billboard mockup: Ready to ditch hidden Algorithms? ]" aspect="16/7" />
+          <img src={lumenHeroAsset.url} alt="Lumen billboard — Ready to ditch hidden Algorithms?" className="w-full h-auto block rounded-lg" />
         </RevealPanel>
 
         {/* Challenge */}
@@ -2805,8 +2809,15 @@ function LumenCaseStudy() {
 
         {/* Systems image */}
         <RevealPanel effect="pixel-fade">
-          <LumenImagePlaceholder label="[ Systems where the problem lies — organisational, digital, physical, human ]" aspect="16/8" />
+          <img src={lumenSystemsAsset.url} alt="Systems where the problem lies — organisational, digital, physical, human" className="w-full h-auto block rounded-lg" />
         </RevealPanel>
+
+        {/* Information Architecture */}
+        <RevealPanel effect="pixel-fade">
+          <img src={lumenIaAsset.url} alt="Lumen information architecture" className="w-full h-auto block rounded-lg" />
+        </RevealPanel>
+
+
 
         {/* Design Question */}
         <PanelShell>
@@ -2836,7 +2847,7 @@ function LumenCaseStudy() {
 
         {/* Solution hero */}
         <RevealPanel effect="crt-boot">
-          <LumenImagePlaceholder label="[ Solution overview — Lumen app on phone ]" aspect="16/7" />
+          <img src={lumenSolutionAsset.url} alt="Lumen solution — Commons feed on phone" className="w-full h-auto block rounded-lg" />
         </RevealPanel>
 
         {/* 3 commitments */}
