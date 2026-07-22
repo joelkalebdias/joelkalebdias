@@ -2508,6 +2508,11 @@ const LUMEN = {
       body: "Every permission, explicit. Opted-out by default.",
     },
     {
+      title: "Commons",
+      lead: "Discovery, without distraction.",
+      body: "A mindful explore page with verification and photo-manipulation status visible for transparency.",
+    },
+    {
       title: "Circles",
       lead: "Connection, without noise.",
       body: "Friends and mutuals, undiluted.",
