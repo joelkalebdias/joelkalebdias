@@ -44,14 +44,14 @@ const scanlines =
 
 // Clean pixel-art retro arrow (↗ replacement)
 function RetroArrow({ color = "#320032" }: { color?: string }) {
-  // 9x9 pixel arrow pointing up-right; rendered as crisp SVG rects
+  // 9x9 pixel grid rendered at 18x18 (integer 2x scale) for crisp edges
   return (
     <svg
-      width="14"
-      height="14"
+      width="18"
+      height="18"
       viewBox="0 0 9 9"
       shapeRendering="crispEdges"
-      style={{ imageRendering: "pixelated", flexShrink: 0 }}
+      style={{ flexShrink: 0, display: "block" }}
       aria-hidden
     >
       {/* arrow head */}
@@ -67,6 +67,7 @@ function RetroArrow({ color = "#320032" }: { color?: string }) {
     </svg>
   );
 }
+
 
 type Linkout = { label: string; href: string };
 
