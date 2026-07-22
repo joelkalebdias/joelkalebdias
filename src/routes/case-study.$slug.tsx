@@ -2840,7 +2840,7 @@ function LumenCaseStudy() {
 
         {/* Solution hero */}
         <RevealPanel effect="crt-boot">
-          <LumenImagePlaceholder label="[ Solution overview — Lumen app on phone ]" aspect="16/7" />
+          <img src={lumenSolutionAsset.url} alt="Lumen solution — Commons feed on phone" className="w-full h-auto block rounded-lg" />
         </RevealPanel>
 
         {/* 3 commitments */}
