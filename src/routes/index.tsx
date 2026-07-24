@@ -150,74 +150,66 @@ const PROJECTS: Project[] = [
 ];
 
 function PixelChestIcon() {
-  const px = (
-    left: number,
-    top: number,
-    w: number,
-    h: number,
-    bg: string,
-    extra: React.CSSProperties = {},
-  ): React.CSSProperties => ({
-    position: "absolute",
-    left,
-    top,
-    width: w,
-    height: h,
-    background: bg,
-    ...extra,
-  });
   return (
-    <div style={{ width: 38.5, height: 32, position: "relative", flexShrink: 0 }} aria-hidden>
-      {/* bottom body */}
-      <div
-        style={{
-          position: "absolute",
-          left: 6,
-          top: 13,
-          width: 24,
-          height: 14,
-          border: "2.5px solid #FDF93B",
-          background: "#AB2E00",
-          boxShadow: "5px 5px 0 0 #800102 inset",
-        }}
-      />
-      {/* lock */}
-      <div
-        style={{
-          position: "absolute",
-          left: 16,
-          top: 13,
-          width: 3,
-          height: 3,
-          border: "2.5px solid #FDF93B",
-          background: "#AB2E00",
-          boxShadow: "0 2px 0 0 #820503",
-        }}
-      />
-      {/* lid group */}
-      <div style={{ position: "absolute", left: 3, top: 0, width: 36, height: 29 }}>
-        <div style={px(3, 6, 27, 5, "#A92D07")} />
-        <div style={px(0, 8, 3, 3, "#FDF93B")} />
-        <div style={px(3, 8, 3, 3, "#7F0001")} />
-        <div style={px(3, 6, 3, 3, "#FDF93B")} />
-        <div style={px(5, 6, 3, 3, "#7F0001")} />
-        <div style={px(28, 6, 3, 3, "#FDF93B")} />
-        <div style={px(28, 23, 3, 3, "#FDF93B")} />
-        <div style={px(28, 26, 3, 4, "#3D2F1E")} />
-        <div style={px(31, 23, 3, 3, "#3D2F1E")} />
-        <div style={px(31, 3, 3, 3, "#3D2F1E")} />
-        <div style={px(3, 3, 3, 3, "#3D2F1E")} />
-        <div style={px(0, 5, 3, 3, "#3D2F1E")} />
-        <div style={px(5, 0, 26, 3, "#3D2F1E")} />
-        <div style={px(33, 6, 3, 18, "#3D2F1E")} />
-        <div style={px(28, 8, 3, 15, "#7F0001")} />
-        <div style={px(31, 6, 3, 18, "#FDF93B")} />
-        <div style={px(26, 8, 3, 3, "#FDF93B")} />
-        <div style={px(5, 3, 26, 3, "#FDF93B")} />
-      </div>
-      <div style={px(0, 8, 3, 21, "#3D2F1E")} />
-      <div style={{ ...px(0, 29, 3, 32, "#3D2F1E"), transform: "rotate(90deg)" }} />
-    </div>
+    <svg
+      width="39"
+      height="32"
+      viewBox="0 0 39 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ flexShrink: 0, imageRendering: "pixelated" }}
+      shapeRendering="crispEdges"
+      aria-hidden
+    >
+      <g filter="url(#chest_filter0_i)">
+        <rect x="5.5" y="13" width="23.5" height="13.5" fill="#AB2E00" />
+      </g>
+      <rect x="4.25" y="11.75" width="26" height="16" stroke="#FDF93B" strokeWidth="2.5" />
+      <g filter="url(#chest_filter1_d)">
+        <rect x="16" y="13" width="2.5" height="2.5" fill="#AB2E00" />
+        <rect x="14.75" y="11.75" width="5" height="5" stroke="#FDF93B" strokeWidth="2.5" />
+      </g>
+      <rect x="5.5" y="5.5" width="26.5" height="5" fill="#A92D07" />
+      <rect x="3" y="8" width="2.5" height="2.5" fill="#FDF93B" />
+      <rect x="5.5" y="8" width="2.5" height="2.5" fill="#7F0001" />
+      <rect x="5.5" y="5.5" width="2.5" height="2.5" fill="#FDF93B" />
+      <rect x="8" y="5.5" width="2.5" height="2.5" fill="#7F0001" />
+      <rect x="31" y="5.5" width="2.5" height="2.5" fill="#FDF93B" />
+      <rect x="31" y="23" width="2.5" height="2.5" fill="#FDF93B" />
+      <rect x="31" y="25.5" width="2.5" height="3.5" fill="#3D2F1E" />
+      <rect x="33.5" y="23" width="2.5" height="2.5" fill="#3D2F1E" />
+      <rect x="33.5" y="2.5" width="2.5" height="3" fill="#3D2F1E" />
+      <rect x="5.5" y="2.5" width="2.5" height="3" fill="#3D2F1E" />
+      <rect x="3" y="5" width="2.5" height="3" fill="#3D2F1E" />
+      <rect x="8" width="25.5" height="2.5" fill="#3D2F1E" />
+      <rect x="36" y="5.5" width="2.5" height="17.5" fill="#3D2F1E" />
+      <rect x="31" y="8" width="2.5" height="15" fill="#7F0001" />
+      <rect x="33.5" y="5.5" width="2.5" height="17.5" fill="#FDF93B" />
+      <rect x="28.5" y="8" width="2.5" height="2.5" fill="#FDF93B" />
+      <rect x="8" y="2.5" width="25.5" height="3" fill="#FDF93B" />
+      <rect y="8" width="3" height="21" fill="#3D2F1E" />
+      <rect x="31.5" y="29" width="3" height="31.5" transform="rotate(90 31.5 29)" fill="#3D2F1E" />
+      <defs>
+        <filter id="chest_filter0_i" x="3" y="10.5" width="28.5" height="18.5" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+          <feOffset dx="5" dy="5" />
+          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+          <feColorMatrix type="matrix" values="0 0 0 0 0.501961 0 0 0 0 0.00392157 0 0 0 0 0.00784314 0 0 0 1 0" />
+          <feBlend mode="normal" in2="shape" result="effect1_innerShadow" />
+        </filter>
+        <filter id="chest_filter1_d" x="13.5" y="10.5" width="7.5" height="9.5" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+          <feOffset dy="2" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix type="matrix" values="0 0 0 0 0.509804 0 0 0 0 0.0196078 0 0 0 0 0.0117647 0 0 0 1 0" />
+          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
+          <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
+        </filter>
+      </defs>
+    </svg>
   );
 }
 
