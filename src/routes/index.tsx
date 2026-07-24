@@ -901,6 +901,52 @@ function Index() {
                   );
                 })}
               </div>
+              <div
+                className="retro-card rounded-xl mt-6"
+                style={{
+                  display: "flex",
+                  minWidth: 220,
+                  padding: "24px 16px",
+                  alignItems: "center",
+                  gap: 16,
+                  background:
+                    "linear-gradient(180deg, #F0D642 0%, #F0D642 80%, #F08A42 100%)",
+                  boxShadow:
+                    "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
+                }}
+              >
+                <PixelChestIcon />
+                <div className="flex flex-col gap-2 flex-1">
+                  <div
+                    style={{
+                      ...pixelHeading,
+                      color: "#320032",
+                      textShadow: "1px 1px 0 #D1747D",
+                      fontSize: 13,
+                      lineHeight: 1.3,
+                      letterSpacing: "-0.005em",
+                    }}
+                  >
+                    More works
+                  </div>
+                  <div
+                    style={{
+                      ...pixelBody,
+                      color: "#320032",
+                      fontSize: 16,
+                      lineHeight: 1.4,
+                      letterSpacing: "-0.01em",
+                    }}
+                  >
+                    From UX/UI design, Graphic design and Art explore more of my projects, experiments, and side quests.
+                  </div>
+                </div>
+                <span className="pix tl" aria-hidden />
+                <span className="pix tr" aria-hidden />
+                <span className="pix bl" aria-hidden />
+                <span className="pix br" aria-hidden />
+              </div>
+              </>
             ) : (
               <div className="flex flex-col gap-6">
                 {EXPERIENCES.filter((e) => e.bullets.length > 0).map((e) => (
