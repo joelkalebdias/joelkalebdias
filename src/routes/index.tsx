@@ -721,51 +721,53 @@ function Index() {
                 {PROJECTS.map((p) => {
                   const inner = (
                     <>
-                      <div className="relative">
-                        <img
-                          src={p.img}
-                          alt=""
-                          className="w-full rounded-lg object-cover block"
-                          style={{ aspectRatio: "308/173" }}
-                          loading="lazy"
-                        />
-                        {p.externalSite && (
-                          <span
-                            className="absolute inline-flex items-center gap-1.5"
-                            style={{
-                              top: 8,
-                              right: 8,
-                              padding: "5px 10px 5px 8px",
-                              borderRadius: 9999,
-                              background:
-                                "linear-gradient(180deg, #FFE324 0%, #FF06B3 100%)",
-                              color: "#320032",
-                              border: "1px solid #4C042C",
-                              boxShadow:
-                                "2px 2px 0 0 #4C042C, inset -1px -1px 0 0 rgba(76,4,44,0.35), inset 1px 1px 0 0 #FFFEF6",
-                              ...pixelHeading,
-                              fontSize: 9,
-                              lineHeight: 1,
-                              letterSpacing: "0.02em",
-                              textShadow: "1px 1px 0 #FFFEF6",
-                              textTransform: "uppercase",
-                            }}
-                          >
+                      {p.img && (
+                        <div className="relative">
+                          <img
+                            src={p.img}
+                            alt=""
+                            className="w-full rounded-lg object-cover block"
+                            style={{ aspectRatio: "308/173" }}
+                            loading="lazy"
+                          />
+                          {p.externalSite && (
                             <span
-                              aria-hidden
+                              className="absolute inline-flex items-center gap-1.5"
                               style={{
-                                width: 6,
-                                height: 6,
-                                background: "#3BFD00",
-                                boxShadow: "0 0 4px #3BFD00",
-                                display: "inline-block",
+                                top: 8,
+                                right: 8,
+                                padding: "5px 10px 5px 8px",
+                                borderRadius: 9999,
+                                background:
+                                  "linear-gradient(180deg, #FFE324 0%, #FF06B3 100%)",
+                                color: "#320032",
+                                border: "1px solid #4C042C",
+                                boxShadow:
+                                  "2px 2px 0 0 #4C042C, inset -1px -1px 0 0 rgba(76,4,44,0.35), inset 1px 1px 0 0 #FFFEF6",
+                                ...pixelHeading,
+                                fontSize: 9,
+                                lineHeight: 1,
+                                letterSpacing: "0.02em",
+                                textShadow: "1px 1px 0 #FFFEF6",
+                                textTransform: "uppercase",
                               }}
-                            />
-                            External site
-                            <RetroArrow color="#320032" />
-                          </span>
-                        )}
-                      </div>
+                            >
+                              <span
+                                aria-hidden
+                                style={{
+                                  width: 6,
+                                  height: 6,
+                                  background: "#3BFD00",
+                                  boxShadow: "0 0 4px #3BFD00",
+                                  display: "inline-block",
+                                }}
+                              />
+                              External site
+                              <RetroArrow color="#320032" />
+                            </span>
+                          )}
+                        </div>
+                      )}
                       <p
                         style={{
                           ...pixelBody,
@@ -777,13 +779,17 @@ function Index() {
                         {p.title}
                       </p>
 
-                      <div
-                        style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4 }}
-                      >
-                        <div>{p.company}</div>
-                        <div>{p.location}</div>
-                        <div>{p.role}</div>
-                      </div>
+                      {[p.company, p.location, p.role].filter(Boolean).length > 0 && (
+                        <div
+                          style={{ ...pixelBody, color: "#320032", fontSize: 16, lineHeight: 1.4 }}
+                        >
+                          {[p.company, p.location, p.role]
+                            .filter(Boolean)
+                            .map((line, i) => (
+                              <div key={i}>{line}</div>
+                            ))}
+                        </div>
+                      )}
                       {/* pixel sparks */}
                       <span className="pix tl" aria-hidden />
                       <span className="pix tr" aria-hidden />
