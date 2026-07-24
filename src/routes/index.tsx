@@ -148,22 +148,12 @@ const PROJECTS: Project[] = [
     slug: "lol-ai",
   },
   {
-    title:
-      "Electra - A digital ecosystem for booking ships and for captains to effectively view ship status",
-    company: "Pyxis",
-    location: "Singapore - 2023 - 2025",
-    role: "Role: Design Team Lead",
+    title: "My works",
+    company: "",
+    location: "",
+    role: "Explore more projects, experiments, and side quests.",
     gradient: "linear-gradient(180deg, #F0D642 0%, #F0D642 80%, #F08A42 100%)",
-    img: "https://api.builder.io/api/v1/image/assets/TEMP/77f2c90dac4d95f68256e2b5f2aa4400bb85dd67?width=718",
-  },
-  {
-    title:
-      "UTI Mutual Fund - A mutual fund solution for India's oldest AMC, reimaging legacy solutions",
-    company: "UTI Mutual Fund",
-    location: "India - 2021-2023",
-    role: "Role: UX/UI Designer",
-    gradient: "linear-gradient(180deg, #69DAEE 0%, #69DAEE 80%, #8A69EE 100%)",
-    img: "https://api.builder.io/api/v1/image/assets/TEMP/507f3b9934b6e8a32adc0c0b3941cc887b0f6305?width=718",
+    img: "",
   },
 ];
 
