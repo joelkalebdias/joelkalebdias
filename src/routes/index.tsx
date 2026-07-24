@@ -147,15 +147,79 @@ const PROJECTS: Project[] = [
     img: "https://api.builder.io/api/v1/image/assets/TEMP/d17070ff09152bc08826d04dfc8215337fa84651?width=718",
     slug: "lol-ai",
   },
-  {
-    title: "My works",
-    company: "",
-    location: "",
-    role: "Explore more projects, experiments, and side quests.",
-    gradient: "linear-gradient(180deg, #F0D642 0%, #F0D642 80%, #F08A42 100%)",
-    img: "",
-  },
 ];
+
+function PixelChestIcon() {
+  const px = (
+    left: number,
+    top: number,
+    w: number,
+    h: number,
+    bg: string,
+    extra: React.CSSProperties = {},
+  ): React.CSSProperties => ({
+    position: "absolute",
+    left,
+    top,
+    width: w,
+    height: h,
+    background: bg,
+    ...extra,
+  });
+  return (
+    <div style={{ width: 38.5, height: 32, position: "relative", flexShrink: 0 }} aria-hidden>
+      {/* bottom body */}
+      <div
+        style={{
+          position: "absolute",
+          left: 6,
+          top: 13,
+          width: 24,
+          height: 14,
+          border: "2.5px solid #FDF93B",
+          background: "#AB2E00",
+          boxShadow: "5px 5px 0 0 #800102 inset",
+        }}
+      />
+      {/* lock */}
+      <div
+        style={{
+          position: "absolute",
+          left: 16,
+          top: 13,
+          width: 3,
+          height: 3,
+          border: "2.5px solid #FDF93B",
+          background: "#AB2E00",
+          boxShadow: "0 2px 0 0 #820503",
+        }}
+      />
+      {/* lid group */}
+      <div style={{ position: "absolute", left: 3, top: 0, width: 36, height: 29 }}>
+        <div style={px(3, 6, 27, 5, "#A92D07")} />
+        <div style={px(0, 8, 3, 3, "#FDF93B")} />
+        <div style={px(3, 8, 3, 3, "#7F0001")} />
+        <div style={px(3, 6, 3, 3, "#FDF93B")} />
+        <div style={px(5, 6, 3, 3, "#7F0001")} />
+        <div style={px(28, 6, 3, 3, "#FDF93B")} />
+        <div style={px(28, 23, 3, 3, "#FDF93B")} />
+        <div style={px(28, 26, 3, 4, "#3D2F1E")} />
+        <div style={px(31, 23, 3, 3, "#3D2F1E")} />
+        <div style={px(31, 3, 3, 3, "#3D2F1E")} />
+        <div style={px(3, 3, 3, 3, "#3D2F1E")} />
+        <div style={px(0, 5, 3, 3, "#3D2F1E")} />
+        <div style={px(5, 0, 26, 3, "#3D2F1E")} />
+        <div style={px(33, 6, 3, 18, "#3D2F1E")} />
+        <div style={px(28, 8, 3, 15, "#7F0001")} />
+        <div style={px(31, 6, 3, 18, "#FDF93B")} />
+        <div style={px(26, 8, 3, 3, "#FDF93B")} />
+        <div style={px(5, 3, 26, 3, "#FDF93B")} />
+      </div>
+      <div style={px(0, 8, 3, 21, "#3D2F1E")} />
+      <div style={{ ...px(0, 29, 3, 32, "#3D2F1E"), transform: "rotate(90deg)" }} />
+    </div>
+  );
+}
 
 
 const RECOMMENDATIONS = [
