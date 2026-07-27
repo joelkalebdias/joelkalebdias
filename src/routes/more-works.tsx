@@ -12,6 +12,8 @@ import subcn from "@/assets/more-works/subc-n-work.png.asset.json";
 import ig1 from "@/assets/more-works/ig-post-1.png.asset.json";
 import ig2 from "@/assets/more-works/ig-post-2.png.asset.json";
 import universal from "@/assets/more-works/universal-studios.png.asset.json";
+import universalDetail from "@/assets/more-works/universal-studios-detail.png.asset.json";
+import deliveryDetail from "@/assets/more-works/delivery-detail.png.asset.json";
 import astro from "@/assets/more-works/astro-11.png.asset.json";
 import threeR from "@/assets/more-works/3r.png.asset.json";
 import departure from "@/assets/more-works/the-departure-gate.png.asset.json";
