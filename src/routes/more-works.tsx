@@ -672,9 +672,11 @@ function MoreWorksPage() {
               style={{
                 display: "grid",
                 gridTemplateColumns:
-                  row.cols === 2
-                    ? "repeat(auto-fit, minmax(320px, 1fr))"
-                    : "repeat(auto-fit, minmax(280px, 1fr))",
+                  active !== "All"
+                    ? "repeat(2, minmax(0, 1fr))"
+                    : row.cols === 2
+                      ? "repeat(auto-fit, minmax(320px, 1fr))"
+                      : "repeat(auto-fit, minmax(280px, 1fr))",
                 gap: 24,
               }}
             >
