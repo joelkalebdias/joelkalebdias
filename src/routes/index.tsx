@@ -557,7 +557,8 @@ function Index() {
                 ...pixelBody,
                 color: "#fff",
                 fontSize: 24,
-                lineHeight: 1.3,
+                lineHeight: "130%",
+                letterSpacing: "-0.48px",
                 marginTop: 4,
               }}
             >
@@ -565,17 +566,18 @@ function Index() {
             </p>
           </div>
           <nav className="flex items-center gap-4">
-            <a
-              href="#work"
+            <Link
+              to="/more-works"
               className="retro-lightning"
               style={{
                 ...pixelBody,
                 color: "#fff",
                 fontSize: 24,
+                textDecoration: "none",
               }}
             >
               Work
-            </a>
+            </Link>
             <Link
               to="/about"
               className="retro-lightning"
