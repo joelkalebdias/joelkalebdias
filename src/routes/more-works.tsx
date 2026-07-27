@@ -574,9 +574,14 @@ function MoreWorksPage() {
 
   const filteredRows = useMemo(() => {
     if (active === "All") return ROWS;
-    return ROWS.map((r) => ({ ...r, items: r.items.filter((i) => i.filter === active) })).filter(
-      (r) => r.items.length > 0,
-    );
+    // When a filter is active, flatten and re-chunk into rows of 2 so a row
+    // never ends up with a single card (which would stretch and pixelate).
+    const items = ROWS.flatMap((r) => r.items).filter((i) => i.filter === active);
+    const chunks: Row[] = [];
+    for (let k = 0; k < items.length; k += 2) {
+      chunks.push({ cols: 2, items: items.slice(k, k + 2) });
+    }
+    return chunks;
   }, [active]);
 
   return (
