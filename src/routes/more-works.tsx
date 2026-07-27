@@ -12,6 +12,8 @@ import subcn from "@/assets/more-works/subc-n-work.png.asset.json";
 import ig1 from "@/assets/more-works/ig-post-1.png.asset.json";
 import ig2 from "@/assets/more-works/ig-post-2.png.asset.json";
 import universal from "@/assets/more-works/universal-studios.png.asset.json";
+import universalDetail from "@/assets/more-works/universal-studios-detail.png.asset.json";
+import deliveryDetail from "@/assets/more-works/delivery-detail.png.asset.json";
 import astro from "@/assets/more-works/astro-11.png.asset.json";
 import threeR from "@/assets/more-works/3r.png.asset.json";
 import departure from "@/assets/more-works/the-departure-gate.png.asset.json";
@@ -61,6 +63,7 @@ type Work = {
   aspect: string; // css aspect-ratio
   tint: string; // fallback gradient
   img?: string; // optional image url (upload later)
+  modalImg?: string; // optional larger/clearer image for modal
   liveUrl?: string;
   figmaUrl?: string;
   slideUrl?: string;
@@ -103,7 +106,7 @@ const ROWS: Row[] = [
   {
     cols: 3,
     items: [
-      { title: "Universal studios singapore", category: "UX/UI", filter: "UX/UI", aspect: "400 / 264", tint: "linear-gradient(135deg,#1B1145,#5E3AE0)", img: universal.url },
+      { title: "Universal studios singapore", category: "UX/UI", filter: "UX/UI", aspect: "400 / 264", tint: "linear-gradient(135deg,#1B1145,#5E3AE0)", img: universal.url, modalImg: universalDetail.url },
       { title: "Astro 11", category: "Logo", filter: "Logo", aspect: "400 / 264", tint: "linear-gradient(135deg,#0E0E20,#4C4C90)", img: astro.url },
       { title: "3R", category: "Logo", filter: "Logo", aspect: "400 / 264", tint: "linear-gradient(135deg,#111,#333)", img: threeR.url },
     ],
@@ -120,7 +123,7 @@ const ROWS: Row[] = [
     items: [
       { title: "Poster", category: "Graphic", filter: "Graphic Design", aspect: "400 / 364", tint: "linear-gradient(135deg,#F58ABC,#8A1E5A)", img: poster.url },
       { title: "Vinh", category: "Logo", filter: "Logo", aspect: "400 / 364", tint: "linear-gradient(135deg,#F5ED94,#E0A020)", img: vinh.url },
-      { title: "Delivery for franchisees", category: "UX/UI", filter: "UX/UI", aspect: "400 / 364", tint: "linear-gradient(135deg,#3B82F6,#1E3A8A)", img: delivery.url },
+      { title: "Delivery for franchisees", category: "UX/UI", filter: "UX/UI", aspect: "400 / 364", tint: "linear-gradient(135deg,#3B82F6,#1E3A8A)", img: delivery.url, modalImg: deliveryDetail.url },
     ],
   },
   {
@@ -416,7 +419,7 @@ function WorkModal({ work, onClose }: { work: Work; onClose: () => void }) {
           >
             {work.img ? (
               <img
-                src={work.img}
+                src={work.modalImg ?? work.img}
                 alt={work.title}
                 style={{
                   width: "100%",
