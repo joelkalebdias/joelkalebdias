@@ -16,6 +16,7 @@ import michaelAvatar from "@/assets/genelink/michael.png.asset.json";
 import { IADiagram } from "@/components/genelink/IADiagram";
 import { LowFiWireframes } from "@/components/genelink/LowFiWireframes";
 import { GeneLinkLogoStrip } from "@/components/genelink/GeneLinkLogoStrip";
+import PyxisCaseStudy from "@/components/pyxis/PyxisCaseStudy";
 import sneakPeekAsset from "@/assets/genelink-sneak-peek.png.asset.json";
 import myDnaAsset from "@/assets/genelink-my-dna.png.asset.json";
 import lumenHeroAsset from "@/assets/lumen/hero.png.asset.json";
