@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as MoreWorksRouteImport } from './routes/more-works'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CaseStudySlugRouteImport } from './routes/case-study.$slug'
 
+const MoreWorksRoute = MoreWorksRouteImport.update({
+  id: '/more-works',
+  path: '/more-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -32,35 +38,46 @@ const CaseStudySlugRoute = CaseStudySlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/more-works': typeof MoreWorksRoute
   '/case-study/$slug': typeof CaseStudySlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/more-works': typeof MoreWorksRoute
   '/case-study/$slug': typeof CaseStudySlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/more-works': typeof MoreWorksRoute
   '/case-study/$slug': typeof CaseStudySlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/case-study/$slug'
+  fullPaths: '/' | '/about' | '/more-works' | '/case-study/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/case-study/$slug'
-  id: '__root__' | '/' | '/about' | '/case-study/$slug'
+  to: '/' | '/about' | '/more-works' | '/case-study/$slug'
+  id: '__root__' | '/' | '/about' | '/more-works' | '/case-study/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  MoreWorksRoute: typeof MoreWorksRoute
   CaseStudySlugRoute: typeof CaseStudySlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/more-works': {
+      id: '/more-works'
+      path: '/more-works'
+      fullPath: '/more-works'
+      preLoaderRoute: typeof MoreWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  MoreWorksRoute: MoreWorksRoute,
   CaseStudySlugRoute: CaseStudySlugRoute,
 }
 export const routeTree = rootRouteImport
