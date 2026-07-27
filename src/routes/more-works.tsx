@@ -474,30 +474,33 @@ function WorkModal({ work, onClose }: { work: Work; onClose: () => void }) {
             )}
           </div>
 
-          {linkUrl && linkLabel && (
-            <div>
-              <a
-                href={linkUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  ...pixelHeading,
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  padding: "10px 14px",
-                  background: "linear-gradient(180deg, #FFE324 0%, #FF06B3 100%)",
-                  color: "#000",
-                  border: "1px solid #4F1D5E",
-                  boxShadow: "0 4px 0 0 #4F1D5E",
-                  fontSize: 12,
-                  letterSpacing: "0.02em",
-                  textDecoration: "none",
-                  textShadow: "1px 1px 0 #BC007E",
-                }}
-              >
-                {linkLabel} →
-              </a>
+          {links.length > 0 && (
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+              {links.map((l) => (
+                <a
+                  key={l.url}
+                  href={l.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    ...pixelHeading,
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 8,
+                    padding: "10px 14px",
+                    background: "linear-gradient(180deg, #FFE324 0%, #FF06B3 100%)",
+                    color: "#000",
+                    border: "1px solid #4F1D5E",
+                    boxShadow: "0 4px 0 0 #4F1D5E",
+                    fontSize: 12,
+                    letterSpacing: "0.02em",
+                    textDecoration: "none",
+                    textShadow: "1px 1px 0 #BC007E",
+                  }}
+                >
+                  {l.label} →
+                </a>
+              ))}
             </div>
           )}
         </div>
