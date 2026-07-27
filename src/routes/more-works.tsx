@@ -82,7 +82,7 @@ const ROWS: Row[] = [
     cols: 3,
     items: [
       { title: "Mahindra Finance", category: "UI Design", filter: "UI Design", aspect: "400 / 260", tint: "linear-gradient(135deg,#EE3A43,#8A0F14)", img: mahindra.url },
-      { title: "HSBC", category: "UI Design", filter: "UI Design", aspect: "400 / 260", tint: "linear-gradient(135deg,#111,#DB0011)", img: hsbc.url },
+      { title: "HSBC", category: "UI Design", filter: "UI Design", aspect: "400 / 260", tint: "linear-gradient(135deg,#111,#DB0011)", img: hsbc.url, figmaUrl: "https://www.figma.com/proto/ZL373HHy2QsmPkevnjeZyI/My-works?node-id=1049-30467&t=8cuEaztAx0wKIoy5-9&scaling=min-zoom&content-scaling=fixed&page-id=1049%3A30246&starting-point-node-id=1049%3A30467&show-proto-sidebar=1" },
       { title: "Laundry app", category: "UI Design", filter: "UI Design", aspect: "400 / 260", tint: "linear-gradient(135deg,#3CC1B0,#0E766A)", img: laundry.url },
     ],
   },
