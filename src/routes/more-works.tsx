@@ -67,6 +67,7 @@ type Work = {
   liveUrl?: string;
   figmaUrl?: string;
   slideUrl?: string;
+  videoUrl?: string;
   description?: string;
 };
 
