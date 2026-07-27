@@ -690,6 +690,7 @@ function MoreWorksPage() {
           </p>
         </footer>
       </div>
+      {openWork && <WorkModal work={openWork} onClose={() => setOpenWork(null)} />}
     </main>
   );
 }
