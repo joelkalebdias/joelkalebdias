@@ -67,6 +67,7 @@ type Work = {
   liveUrl?: string;
   figmaUrl?: string;
   slideUrl?: string;
+  videoUrl?: string;
   description?: string;
 };
 
@@ -114,7 +115,7 @@ const ROWS: Row[] = [
   {
     cols: 2,
     items: [
-      { title: "The departure gate", category: "Installation, Art", filter: "Art", aspect: "608 / 420", tint: "linear-gradient(135deg,#0B0B0B,#3A3A3A)", img: departure.url, slideUrl: "https://www.figma.com/deck/s78yTxfBDb12mjGq45L5ha/Total-Loss-Presentaion-II?node-id=1-348&viewport=-16709%2C-138%2C0.7&t=ErUlHP5hOJwSovFd-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1" },
+      { title: "The departure gate", category: "Installation, Art", filter: "Art", aspect: "608 / 420", tint: "linear-gradient(135deg,#0B0B0B,#3A3A3A)", img: departure.url, slideUrl: "https://www.figma.com/deck/s78yTxfBDb12mjGq45L5ha/Total-Loss-Presentaion-II?node-id=1-348&viewport=-16709%2C-138%2C0.7&t=ErUlHP5hOJwSovFd-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1", videoUrl: "https://www.youtube.com/watch?v=xXKWKfY613k" },
       { title: "Dead inside", category: "Art", filter: "Art", aspect: "608 / 420", tint: "linear-gradient(135deg,#7A0E1A,#1A0206)", img: deadInside.url },
     ],
   },
@@ -174,7 +175,9 @@ function ItemCaption({ title, category }: { title: string; category: string }) {
 function badgeLabel(work: Work): string | null {
   if (work.liveUrl) return "Live site";
   if (work.figmaUrl) return "Prototype";
+  if (work.slideUrl && work.videoUrl) return "Presentation + Video";
   if (work.slideUrl) return "Presentation";
+  if (work.videoUrl) return "Video";
   return null;
 }
 
@@ -294,14 +297,11 @@ function WorkModal({ work, onClose }: { work: Work; onClose: () => void }) {
     };
   }, [onClose]);
 
-  const linkUrl = work.liveUrl ?? work.figmaUrl ?? work.slideUrl ?? null;
-  const linkLabel = work.liveUrl
-    ? "View live site"
-    : work.figmaUrl
-    ? "View Figma prototype"
-    : work.slideUrl
-    ? "View presentation"
-    : null;
+  const links: { url: string; label: string }[] = [];
+  if (work.liveUrl) links.push({ url: work.liveUrl, label: "View live site" });
+  if (work.figmaUrl) links.push({ url: work.figmaUrl, label: "View Figma prototype" });
+  if (work.slideUrl) links.push({ url: work.slideUrl, label: "View presentation" });
+  if (work.videoUrl) links.push({ url: work.videoUrl, label: "View video" });
 
   return (
     <div
@@ -474,30 +474,33 @@ function WorkModal({ work, onClose }: { work: Work; onClose: () => void }) {
             )}
           </div>
 
-          {linkUrl && linkLabel && (
-            <div>
-              <a
-                href={linkUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  ...pixelHeading,
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  padding: "10px 14px",
-                  background: "linear-gradient(180deg, #FFE324 0%, #FF06B3 100%)",
-                  color: "#000",
-                  border: "1px solid #4F1D5E",
-                  boxShadow: "0 4px 0 0 #4F1D5E",
-                  fontSize: 12,
-                  letterSpacing: "0.02em",
-                  textDecoration: "none",
-                  textShadow: "1px 1px 0 #BC007E",
-                }}
-              >
-                {linkLabel} →
-              </a>
+          {links.length > 0 && (
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
+              {links.map((l) => (
+                <a
+                  key={l.url}
+                  href={l.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    ...pixelHeading,
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 8,
+                    padding: "10px 14px",
+                    background: "linear-gradient(180deg, #FFE324 0%, #FF06B3 100%)",
+                    color: "#000",
+                    border: "1px solid #4F1D5E",
+                    boxShadow: "0 4px 0 0 #4F1D5E",
+                    fontSize: 12,
+                    letterSpacing: "0.02em",
+                    textDecoration: "none",
+                    textShadow: "1px 1px 0 #BC007E",
+                  }}
+                >
+                  {l.label} →
+                </a>
+              ))}
             </div>
           )}
         </div>
