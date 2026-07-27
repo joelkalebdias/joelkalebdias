@@ -686,23 +686,59 @@ button[aria-label*="ismiss" i]::before, button[aria-label*="ismiss" i]::after { 
   100% { opacity: 1; background-position: 0% 0; }
 }
 
-/* Ship — flies left → right across the viewport */
+/* Ship progress track — a thin dashed line the ship rides for exactly 5s */
+.intro-ship-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 18%;
+  height: 60px;
+  z-index: 3;
+  pointer-events: none;
+}
+.intro-progress-line {
+  position: absolute;
+  left: 4vw;
+  right: 4vw;
+  top: 50%;
+  height: 2px;
+  transform: translateY(-50%);
+  background: repeating-linear-gradient(90deg,
+    rgba(255,239,51,0.35) 0 6px,
+    transparent 6px 12px);
+}
+.intro-ship-track::before {
+  /* Filled progress bar that grows in sync with the ship */
+  content: "";
+  position: absolute;
+  left: 4vw;
+  top: 50%;
+  height: 2px;
+  width: calc(92vw);
+  transform: translateY(-50%) scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(90deg, #FFEF33, #ff8a3d, #ff5ea8);
+  box-shadow: 0 0 8px rgba(255,138,61,0.7);
+  animation: intro-progress 5000ms linear forwards;
+}
+@keyframes intro-progress {
+  from { transform: translateY(-50%) scaleX(0); }
+  to   { transform: translateY(-50%) scaleX(1); }
+}
+
+/* Ship — travels the track over 5 seconds at a steady pace */
 .intro-ship {
   position: absolute;
   top: 50%;
   left: 0;
-  transform: translate(-20vw, -50%);
-  z-index: 3;
+  transform: translate(-6vw, -50%);
   filter: drop-shadow(0 0 8px rgba(255,138,61,0.6));
-  animation: intro-ship-fly 2600ms cubic-bezier(0.45, 0.05, 0.55, 0.95) forwards;
+  animation: intro-ship-fly 5000ms linear forwards;
   will-change: transform;
 }
 @keyframes intro-ship-fly {
-  0%   { transform: translate(-20vw, -50%); }
-  15%  { transform: translate(-20vw, -50%); } /* brief pause */
-  45%  { transform: translate(30vw, -54%); }
-  60%  { transform: translate(55vw, -46%); }
-  100% { transform: translate(115vw, -50%); }
+  0%   { transform: translate(-6vw, -50%); }
+  100% { transform: translate(102vw, -50%); }
 }
 
 /* Flame trail streaming behind the ship */
@@ -710,7 +746,7 @@ button[aria-label*="ismiss" i]::before, button[aria-label*="ismiss" i]::after { 
   position: absolute;
   top: 50%;
   right: 100%;
-  width: 160px;
+  width: 180px;
   height: 14px;
   transform: translateY(-50%);
   background:
@@ -718,7 +754,6 @@ button[aria-label*="ismiss" i]::before, button[aria-label*="ismiss" i]::after { 
       #ff5ea8 0 6px, transparent 6px 12px),
     linear-gradient(90deg,
       transparent 0%,
-      rgba(255,94,168,0.0) 5%,
       rgba(255,138,61,0.9) 40%,
       rgba(255,239,51,1) 85%,
       #ffffff 100%);
@@ -733,11 +768,81 @@ button[aria-label*="ismiss" i]::before, button[aria-label*="ismiss" i]::after { 
   100% { opacity: 1;    transform: translateY(-50%) scaleY(1.15); }
 }
 
-/* Enter button */
+/* Shooting star — streaks across "Joel Kaleb Dias" and reveals it */
+.intro-line-1 {
+  position: relative;
+  display: inline-block;
+  overflow: visible;
+}
+.intro-name-reveal {
+  color: transparent;
+  background-image: linear-gradient(
+    90deg,
+    #FFEF33 0%,
+    #ffffff 45%,
+    #ff5ea8 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  clip-path: inset(0 100% 0 0);
+  text-shadow: 0 0 24px rgba(255,239,51,0.35);
+  animation: intro-name-wipe 1400ms cubic-bezier(0.22, 0.61, 0.36, 1) 300ms forwards;
+}
+@keyframes intro-name-wipe {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
+}
+
+.intro-shooting-star {
+  position: absolute;
+  top: 50%;
+  left: -10%;
+  width: 12px;
+  height: 12px;
+  transform: translate(0, -50%);
+  animation: intro-star-fly 1600ms cubic-bezier(0.22, 0.61, 0.36, 1) 150ms forwards;
+  pointer-events: none;
+}
+.intro-shooting-star-head {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, #ffffff 0%, #FFEF33 40%, rgba(255,138,61,0) 70%);
+  border-radius: 50%;
+  box-shadow:
+    0 0 12px #FFEF33,
+    0 0 24px #ff8a3d,
+    0 0 40px rgba(255,94,168,0.6);
+}
+.intro-shooting-star-tail {
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  width: 140px;
+  height: 3px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255,138,61,0.2) 20%,
+    rgba(255,239,51,0.9) 70%,
+    #ffffff 100%);
+  filter: blur(0.5px);
+  border-radius: 2px;
+}
+@keyframes intro-star-fly {
+  0%   { left: -12%; opacity: 0; }
+  10%  { opacity: 1; }
+  85%  { opacity: 1; }
+  100% { left: 112%; opacity: 0; }
+}
+
+/* Second line burn-in (kept from earlier) */
+.intro-text-burn--delay { animation-delay: 1400ms; opacity: 0; }
+
+/* Enter button — available immediately so users can skip */
 .intro-enter {
   opacity: 0;
   transform: translateY(6px);
-  transition: opacity 400ms ease-out, transform 400ms ease-out;
+  animation: intro-enter-in 500ms ease-out 400ms forwards;
   font-family: "Ac437 IBM CGA", monospace;
   font-size: 18px;
   color: #FFEF33;
@@ -750,11 +855,11 @@ button[aria-label*="ismiss" i]::before, button[aria-label*="ismiss" i]::after { 
     0 0 16px rgba(255,239,51,0.35);
   position: relative;
 }
-.intro-enter.is-ready {
-  opacity: 1;
-  transform: translateY(0);
-  animation: intro-enter-pulse 1.4s ease-in-out infinite;
+@keyframes intro-enter-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
+.intro-enter.is-ready { animation: intro-enter-in 500ms ease-out 400ms forwards, intro-enter-pulse 1.4s ease-in-out 900ms infinite; }
 .intro-enter:hover {
   color: #05060f;
   background: linear-gradient(90deg, #FFEF33, #ff5ea8);
@@ -766,7 +871,9 @@ button[aria-label*="ismiss" i]::before, button[aria-label*="ismiss" i]::after { 
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .intro-ship, .intro-ship-flames { display: none; }
+  .intro-ship, .intro-ship-flames, .intro-shooting-star, .intro-progress-line { display: none; }
+  .intro-ship-track::before { animation: none; transform: translateY(-50%) scaleX(1); }
+  .intro-name-reveal { animation: none; clip-path: none; color: #FFEF33; -webkit-text-fill-color: #FFEF33; }
   .intro-text-burn, .intro-text-burn--delay {
     animation: none;
     color: #FFEF33;
@@ -776,3 +883,4 @@ button[aria-label*="ismiss" i]::before, button[aria-label*="ismiss" i]::after { 
   }
   .intro-enter { opacity: 1; transform: none; animation: none; }
 }
+
