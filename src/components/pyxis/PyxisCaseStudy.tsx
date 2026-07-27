@@ -292,7 +292,7 @@ export default function PyxisCaseStudy() {
       </header>
 
       {/* Hero + info rows */}
-      <div className="w-full max-w-[1280px] flex flex-col gap-6 px-6 pb-6">
+      <div className="w-full max-w-[1440px] flex flex-col gap-6 px-6 pb-6">
         <CaseImage src={heroAsset.url} alt="Pyxis Electra hero" />
         <InfoRow
           label="Overview"
