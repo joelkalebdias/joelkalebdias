@@ -395,15 +395,23 @@ export const Route = createFileRoute("/case-study/$slug")({
     const cs = CASE_STUDIES[params.slug];
     const lumenTitle = "Lumen — Case Study";
     const lumenDesc = "A social platform redesigned around transparency and positive friction.";
-    const title = params.slug === "lumen" ? lumenTitle : cs ? `${cs.title} — Case Study` : "Case Study";
-    const desc = params.slug === "lumen" ? lumenDesc : cs?.tagline ?? "Case study";
+    const electraTitle = "Pyxis - Electra — Case Study";
+    const electraDesc = "A full scale Maritime solution for fleet booking, vessel chartering, tracking and weather updates.";
+    const title =
+      params.slug === "lumen" ? lumenTitle
+      : params.slug === "electra" ? electraTitle
+      : cs ? `${cs.title} — Case Study` : "Case Study";
+    const desc =
+      params.slug === "lumen" ? lumenDesc
+      : params.slug === "electra" ? electraDesc
+      : cs?.tagline ?? "Case study";
     return {
       meta: [
         { title },
         { name: "description", content: desc },
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
-        ...(cs?.hero && params.slug !== "lumen" ? [{ property: "og:image", content: cs.hero }] : []),
+        ...(cs?.hero && params.slug !== "lumen" && params.slug !== "electra" ? [{ property: "og:image", content: cs.hero }] : []),
       ],
     };
   },
