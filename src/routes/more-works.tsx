@@ -2,6 +2,28 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import RetroStarfield from "@/components/retro/RetroStarfield";
 import { RetroScrollProgress } from "@/components/retro/RetroScrollProgress";
+import doctoranywhere from "@/assets/more-works/doctoranywhere.png.asset.json";
+import apex from "@/assets/more-works/apex-airlines.png.asset.json";
+import mahindra from "@/assets/more-works/mahindra-finance.png.asset.json";
+import hsbc from "@/assets/more-works/hsbc.png.asset.json";
+import laundry from "@/assets/more-works/laundry-app.png.asset.json";
+import godrej from "@/assets/more-works/godrej-properties-limited.png.asset.json";
+import subcn from "@/assets/more-works/subc-n-work.png.asset.json";
+import ig1 from "@/assets/more-works/ig-post-1.png.asset.json";
+import ig2 from "@/assets/more-works/ig-post-2.png.asset.json";
+import universal from "@/assets/more-works/universal-studios.png.asset.json";
+import astro from "@/assets/more-works/astro-11.png.asset.json";
+import threeR from "@/assets/more-works/3r.png.asset.json";
+import departure from "@/assets/more-works/the-departure-gate.png.asset.json";
+import deadInside from "@/assets/more-works/dead-inside.png.asset.json";
+import poster from "@/assets/more-works/poster-we-are-insnae.png.asset.json";
+import vinh from "@/assets/more-works/vinh-logo.png.asset.json";
+import delivery from "@/assets/more-works/delivery-for-franchisees.png.asset.json";
+import cardGame from "@/assets/more-works/card-game.png.asset.json";
+import pattern from "@/assets/more-works/pattern.png.asset.json";
+import karunada from "@/assets/more-works/karunada-market.png.asset.json";
+import visiting from "@/assets/more-works/visiting-card.png.asset.json";
+import darisa from "@/assets/more-works/darisa.png.asset.json";
 
 export const Route = createFileRoute("/more-works")({
   head: () => ({
