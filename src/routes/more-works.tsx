@@ -233,43 +233,34 @@ function FilterChip({
     <button
       type="button"
       onClick={onClick}
-      className="retro-card"
+      className="px-4 py-2 rounded-lg cursor-pointer"
       style={{
-        ...pixelBody,
+        ...pixelHeading,
         display: "inline-flex",
         alignItems: "center",
         gap: 8,
-        padding: "10px 16px",
-        borderRadius: 8,
-        border: "none",
-        cursor: "pointer",
+        border: "1px solid #4F1D5E",
         background: active
-          ? "linear-gradient(180deg, #FFEC7F 0%, #F0D642 100%)"
-          : "linear-gradient(180deg, #260A20 0%, #3A0F30 100%)",
-        color: active ? "#320032" : "#FFEC7F",
-        boxShadow: active
-          ? "-2px -2px 0 0 #A70 inset, 2px 2px 0 0 #FFFEF6 inset"
-          : "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #F58ABC inset",
-        fontSize: 17,
+          ? "linear-gradient(180deg, #FFE324 0%, #FF06B3 100%)"
+          : "#000",
+        boxShadow: "0 4px 0 0 #4F1D5E",
+        color: active ? "#000" : "#fff",
+        textShadow: active ? "1px 1px 0 #BC007E" : "none",
+        fontSize: 12,
         lineHeight: 1,
-        letterSpacing: "-0.34px",
       }}
     >
       <span>{label}</span>
       <span
         style={{
-          ...pixelHeading,
-          fontSize: 11,
-          color: active ? "#8A00B1" : "#F58ABC",
-          textShadow: active ? "1px 1px 0 #FF94C2" : "1px 1px 0 #4C042C",
+          fontSize: 10,
+          opacity: 0.85,
+          color: active ? "#4F1D5E" : "#FFEC7F",
+          textShadow: "none",
         }}
       >
         [{count}]
       </span>
-      <span className="pix tl" aria-hidden />
-      <span className="pix tr" aria-hidden />
-      <span className="pix bl" aria-hidden />
-      <span className="pix br" aria-hidden />
     </button>
   );
 }
