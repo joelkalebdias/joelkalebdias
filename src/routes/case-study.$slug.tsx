@@ -16,6 +16,7 @@ import michaelAvatar from "@/assets/genelink/michael.png.asset.json";
 import { IADiagram } from "@/components/genelink/IADiagram";
 import { LowFiWireframes } from "@/components/genelink/LowFiWireframes";
 import { GeneLinkLogoStrip } from "@/components/genelink/GeneLinkLogoStrip";
+import PyxisCaseStudy from "@/components/pyxis/PyxisCaseStudy";
 import sneakPeekAsset from "@/assets/genelink-sneak-peek.png.asset.json";
 import myDnaAsset from "@/assets/genelink-my-dna.png.asset.json";
 import lumenHeroAsset from "@/assets/lumen/hero.png.asset.json";
@@ -394,20 +395,29 @@ export const Route = createFileRoute("/case-study/$slug")({
     const cs = CASE_STUDIES[params.slug];
     const lumenTitle = "Lumen — Case Study";
     const lumenDesc = "A social platform redesigned around transparency and positive friction.";
-    const title = params.slug === "lumen" ? lumenTitle : cs ? `${cs.title} — Case Study` : "Case Study";
-    const desc = params.slug === "lumen" ? lumenDesc : cs?.tagline ?? "Case study";
+    const electraTitle = "Pyxis - Electra — Case Study";
+    const electraDesc = "A full scale Maritime solution for fleet booking, vessel chartering, tracking and weather updates.";
+    const title =
+      params.slug === "lumen" ? lumenTitle
+      : params.slug === "electra" ? electraTitle
+      : cs ? `${cs.title} — Case Study` : "Case Study";
+    const desc =
+      params.slug === "lumen" ? lumenDesc
+      : params.slug === "electra" ? electraDesc
+      : cs?.tagline ?? "Case study";
     return {
       meta: [
         { title },
         { name: "description", content: desc },
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
-        ...(cs?.hero && params.slug !== "lumen" ? [{ property: "og:image", content: cs.hero }] : []),
+        ...(cs?.hero && params.slug !== "lumen" && params.slug !== "electra" ? [{ property: "og:image", content: cs.hero }] : []),
       ],
     };
   },
   loader: ({ params }) => {
     if (params.slug === "lumen") return null;
+    if (params.slug === "electra") return null;
     if (!CASE_STUDIES[params.slug]) throw notFound();
     return null;
   },
@@ -568,6 +578,7 @@ function SolidHeader({
 function CaseStudyPage() {
   const { slug } = Route.useParams();
   if (slug === "lumen") return <LumenCaseStudy />;
+  if (slug === "electra") return <PyxisCaseStudy />;
   const cs = CASE_STUDIES[slug];
   if (!cs) return null;
   if (slug === "genelink") return <GenelinkCaseStudy cs={cs} />;

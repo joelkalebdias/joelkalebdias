@@ -155,6 +155,7 @@ const PROJECTS: Project[] = [
     role: "Role: Design Team Lead",
     gradient: "linear-gradient(180deg, #FF8FAE 0%, #FF6B9D 80%, #E8458A 100%)",
     img: "https://api.builder.io/api/v1/image/assets/TEMP/77f2c90dac4d95f68256e2b5f2aa4400bb85dd67?width=718",
+    slug: "electra",
   },
   {
     title:
