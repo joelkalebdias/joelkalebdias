@@ -89,7 +89,7 @@ const ROWS: Row[] = [
   {
     cols: 2,
     items: [
-      { title: "Godrej properties limited", category: "UX/UI Design", filter: "UX/UI", aspect: "612 / 423", tint: "linear-gradient(135deg,#123,#2A2A5E)", img: godrej.url },
+      { title: "Godrej properties limited", category: "UX/UI Design", filter: "UX/UI", aspect: "612 / 423", tint: "linear-gradient(135deg,#123,#2A2A5E)", img: godrej.url, liveUrl: "https://www.godrejproperties.com/" },
       { title: "Subc()n.work", category: "UX/UI Design", filter: "UX/UI", aspect: "612 / 423", tint: "linear-gradient(135deg,#F79646,#BE3A0E)", img: subcn.url },
     ],
   },
