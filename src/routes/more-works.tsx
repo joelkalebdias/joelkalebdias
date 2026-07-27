@@ -74,7 +74,7 @@ const ROWS: Row[] = [
   {
     cols: 2,
     items: [
-      { title: "Doctor anywhere", category: "UX/UI Design", filter: "UX/UI", aspect: "612 / 423", tint: "linear-gradient(135deg,#5B7CFA,#8B5CF6)", img: doctoranywhere.url },
+      { title: "Doctor anywhere", category: "UX/UI Design", filter: "UX/UI", aspect: "612 / 423", tint: "linear-gradient(135deg,#5B7CFA,#8B5CF6)", img: doctoranywhere.url, figmaUrl: "https://www.figma.com/proto/ZL373HHy2QsmPkevnjeZyI/My-works?node-id=1049-16161&p=f&t=Sm3Fa8chnXsIdzB1-9&scaling=min-zoom&content-scaling=fixed&page-id=1049%3A13272&starting-point-node-id=1049%3A16161&show-proto-sidebar=1" },
       { title: "Apex Airplane", category: "UI Design", filter: "UI Design", aspect: "612 / 423", tint: "linear-gradient(135deg,#0E1A3A,#26468C)", img: apex.url },
     ],
   },
