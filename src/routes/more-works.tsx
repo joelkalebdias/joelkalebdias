@@ -671,7 +671,7 @@ function MoreWorksPage() {
               }}
             >
               {row.items.map((w, j) => (
-                <WorkTile key={`${w.title}-${j}`} work={w} />
+                <WorkTile key={`${w.title}-${j}`} work={w} onOpen={() => setOpenWork(w)} />
               ))}
             </div>
           ))}
