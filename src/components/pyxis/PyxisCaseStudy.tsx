@@ -121,13 +121,17 @@ function GoalCard({ text }: { text: string }) {
   );
 }
 
-function CaseImage({ src, alt }: { src: string; alt: string }) {
+function CaseImage({ src, alt, bg = "#FFFEF6" }: { src: string; alt: string; bg?: string }) {
   return (
     <img
       src={src}
       alt={alt}
       className="w-full h-auto rounded-xl"
-      style={{ imageRendering: "pixelated" as const, display: "block" }}
+      style={{
+        imageRendering: "pixelated" as const,
+        display: "block",
+        background: bg,
+      }}
     />
   );
 }
