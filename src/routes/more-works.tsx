@@ -61,6 +61,7 @@ type Work = {
   aspect: string; // css aspect-ratio
   tint: string; // fallback gradient
   img?: string; // optional image url (upload later)
+  modalImg?: string; // optional larger/clearer image for modal
   liveUrl?: string;
   figmaUrl?: string;
   slideUrl?: string;
