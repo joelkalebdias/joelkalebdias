@@ -61,6 +61,10 @@ type Work = {
   aspect: string; // css aspect-ratio
   tint: string; // fallback gradient
   img?: string; // optional image url (upload later)
+  liveUrl?: string;
+  figmaUrl?: string;
+  slideUrl?: string;
+  description?: string;
 };
 
 // Row-grouped layout to mirror the Figma composition.
