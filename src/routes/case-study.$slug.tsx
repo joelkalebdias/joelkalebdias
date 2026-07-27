@@ -409,6 +409,7 @@ export const Route = createFileRoute("/case-study/$slug")({
   },
   loader: ({ params }) => {
     if (params.slug === "lumen") return null;
+    if (params.slug === "electra") return null;
     if (!CASE_STUDIES[params.slug]) throw notFound();
     return null;
   },
