@@ -2,6 +2,28 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import RetroStarfield from "@/components/retro/RetroStarfield";
 import { RetroScrollProgress } from "@/components/retro/RetroScrollProgress";
+import doctoranywhere from "@/assets/more-works/doctoranywhere.png.asset.json";
+import apex from "@/assets/more-works/apex-airlines.png.asset.json";
+import mahindra from "@/assets/more-works/mahindra-finance.png.asset.json";
+import hsbc from "@/assets/more-works/hsbc.png.asset.json";
+import laundry from "@/assets/more-works/laundry-app.png.asset.json";
+import godrej from "@/assets/more-works/godrej-properties-limited.png.asset.json";
+import subcn from "@/assets/more-works/subc-n-work.png.asset.json";
+import ig1 from "@/assets/more-works/ig-post-1.png.asset.json";
+import ig2 from "@/assets/more-works/ig-post-2.png.asset.json";
+import universal from "@/assets/more-works/universal-studios.png.asset.json";
+import astro from "@/assets/more-works/astro-11.png.asset.json";
+import threeR from "@/assets/more-works/3r.png.asset.json";
+import departure from "@/assets/more-works/the-departure-gate.png.asset.json";
+import deadInside from "@/assets/more-works/dead-inside.png.asset.json";
+import poster from "@/assets/more-works/poster-we-are-insnae.png.asset.json";
+import vinh from "@/assets/more-works/vinh-logo.png.asset.json";
+import delivery from "@/assets/more-works/delivery-for-franchisees.png.asset.json";
+import cardGame from "@/assets/more-works/card-game.png.asset.json";
+import pattern from "@/assets/more-works/pattern.png.asset.json";
+import karunada from "@/assets/more-works/karunada-market.png.asset.json";
+import visiting from "@/assets/more-works/visiting-card.png.asset.json";
+import darisa from "@/assets/more-works/darisa.png.asset.json";
 
 export const Route = createFileRoute("/more-works")({
   head: () => ({
@@ -48,68 +70,68 @@ const ROWS: Row[] = [
   {
     cols: 2,
     items: [
-      { title: "Doctor anywhere", category: "UX/UI Design", filter: "UX/UI", aspect: "612 / 423", tint: "linear-gradient(135deg,#5B7CFA,#8B5CF6)" },
-      { title: "Apex Airplane", category: "UI Design", filter: "UI Design", aspect: "612 / 423", tint: "linear-gradient(135deg,#0E1A3A,#26468C)" },
+      { title: "Doctor anywhere", category: "UX/UI Design", filter: "UX/UI", aspect: "612 / 423", tint: "linear-gradient(135deg,#5B7CFA,#8B5CF6)", img: doctoranywhere.url },
+      { title: "Apex Airplane", category: "UI Design", filter: "UI Design", aspect: "612 / 423", tint: "linear-gradient(135deg,#0E1A3A,#26468C)", img: apex.url },
     ],
   },
   {
     cols: 3,
     items: [
-      { title: "Mahindra Finance", category: "UI Design", filter: "UI Design", aspect: "400 / 260", tint: "linear-gradient(135deg,#EE3A43,#8A0F14)" },
-      { title: "HSBC", category: "UI Design", filter: "UI Design", aspect: "400 / 260", tint: "linear-gradient(135deg,#111,#DB0011)" },
-      { title: "Laundry app", category: "UI Design", filter: "UI Design", aspect: "400 / 260", tint: "linear-gradient(135deg,#3CC1B0,#0E766A)" },
+      { title: "Mahindra Finance", category: "UI Design", filter: "UI Design", aspect: "400 / 260", tint: "linear-gradient(135deg,#EE3A43,#8A0F14)", img: mahindra.url },
+      { title: "HSBC", category: "UI Design", filter: "UI Design", aspect: "400 / 260", tint: "linear-gradient(135deg,#111,#DB0011)", img: hsbc.url },
+      { title: "Laundry app", category: "UI Design", filter: "UI Design", aspect: "400 / 260", tint: "linear-gradient(135deg,#3CC1B0,#0E766A)", img: laundry.url },
     ],
   },
   {
     cols: 2,
     items: [
-      { title: "Godrej properties limited", category: "UX/UI Design", filter: "UX/UI", aspect: "612 / 423", tint: "linear-gradient(135deg,#123,#2A2A5E)" },
-      { title: "Subc()n.work", category: "UX/UI Design", filter: "UX/UI", aspect: "612 / 423", tint: "linear-gradient(135deg,#F79646,#BE3A0E)" },
+      { title: "Godrej properties limited", category: "UX/UI Design", filter: "UX/UI", aspect: "612 / 423", tint: "linear-gradient(135deg,#123,#2A2A5E)", img: godrej.url },
+      { title: "Subc()n.work", category: "UX/UI Design", filter: "UX/UI", aspect: "612 / 423", tint: "linear-gradient(135deg,#F79646,#BE3A0E)", img: subcn.url },
     ],
   },
   {
     cols: 2,
     items: [
-      { title: "IG Post", category: "Art", filter: "Art", aspect: "608 / 585", tint: "linear-gradient(135deg,#E091D0,#7A2C7A)" },
-      { title: "IG Post", category: "Art", filter: "Art", aspect: "608 / 585", tint: "linear-gradient(135deg,#F5C542,#E15A2B)" },
+      { title: "IG Post", category: "Art", filter: "Art", aspect: "608 / 585", tint: "linear-gradient(135deg,#E091D0,#7A2C7A)", img: ig1.url },
+      { title: "IG Post", category: "Art", filter: "Art", aspect: "608 / 585", tint: "linear-gradient(135deg,#F5C542,#E15A2B)", img: ig2.url },
     ],
   },
   {
     cols: 3,
     items: [
-      { title: "Universal studios singapore", category: "UX/UI", filter: "UX/UI", aspect: "400 / 264", tint: "linear-gradient(135deg,#1B1145,#5E3AE0)" },
-      { title: "Astro 11", category: "Logo", filter: "Logo", aspect: "400 / 264", tint: "linear-gradient(135deg,#0E0E20,#4C4C90)" },
-      { title: "3R", category: "Logo", filter: "Logo", aspect: "400 / 264", tint: "linear-gradient(135deg,#111,#333)" },
+      { title: "Universal studios singapore", category: "UX/UI", filter: "UX/UI", aspect: "400 / 264", tint: "linear-gradient(135deg,#1B1145,#5E3AE0)", img: universal.url },
+      { title: "Astro 11", category: "Logo", filter: "Logo", aspect: "400 / 264", tint: "linear-gradient(135deg,#0E0E20,#4C4C90)", img: astro.url },
+      { title: "3R", category: "Logo", filter: "Logo", aspect: "400 / 264", tint: "linear-gradient(135deg,#111,#333)", img: threeR.url },
     ],
   },
   {
     cols: 2,
     items: [
-      { title: "The departure gate", category: "Installation, Art", filter: "Art", aspect: "608 / 420", tint: "linear-gradient(135deg,#0B0B0B,#3A3A3A)" },
-      { title: "Dead inside", category: "Art", filter: "Art", aspect: "608 / 420", tint: "linear-gradient(135deg,#7A0E1A,#1A0206)" },
+      { title: "The departure gate", category: "Installation, Art", filter: "Art", aspect: "608 / 420", tint: "linear-gradient(135deg,#0B0B0B,#3A3A3A)", img: departure.url },
+      { title: "Dead inside", category: "Art", filter: "Art", aspect: "608 / 420", tint: "linear-gradient(135deg,#7A0E1A,#1A0206)", img: deadInside.url },
     ],
   },
   {
     cols: 3,
     items: [
-      { title: "Poster", category: "Graphic", filter: "Graphic Design", aspect: "400 / 364", tint: "linear-gradient(135deg,#F58ABC,#8A1E5A)" },
-      { title: "Vinh", category: "Logo", filter: "Logo", aspect: "400 / 364", tint: "linear-gradient(135deg,#F5ED94,#E0A020)" },
-      { title: "Delivery for franchisees", category: "UX/UI", filter: "UX/UI", aspect: "400 / 364", tint: "linear-gradient(135deg,#3B82F6,#1E3A8A)" },
+      { title: "Poster", category: "Graphic", filter: "Graphic Design", aspect: "400 / 364", tint: "linear-gradient(135deg,#F58ABC,#8A1E5A)", img: poster.url },
+      { title: "Vinh", category: "Logo", filter: "Logo", aspect: "400 / 364", tint: "linear-gradient(135deg,#F5ED94,#E0A020)", img: vinh.url },
+      { title: "Delivery for franchisees", category: "UX/UI", filter: "UX/UI", aspect: "400 / 364", tint: "linear-gradient(135deg,#3B82F6,#1E3A8A)", img: delivery.url },
     ],
   },
   {
     cols: 2,
     items: [
-      { title: "Card game - Data security", category: "Graphic design", filter: "Graphic Design", aspect: "608 / 420", tint: "linear-gradient(135deg,#0F172A,#334155)" },
-      { title: "Pattern design", category: "Graphic", filter: "Graphic Design", aspect: "608 / 420", tint: "linear-gradient(135deg,#FDE68A,#F97316)" },
+      { title: "Card game - Data security", category: "Graphic design", filter: "Graphic Design", aspect: "608 / 420", tint: "linear-gradient(135deg,#0F172A,#334155)", img: cardGame.url },
+      { title: "Pattern design", category: "Graphic", filter: "Graphic Design", aspect: "608 / 420", tint: "linear-gradient(135deg,#FDE68A,#F97316)", img: pattern.url },
     ],
   },
   {
     cols: 3,
     items: [
-      { title: "Karnuada Market", category: "Logo", filter: "Logo", aspect: "400 / 264", tint: "linear-gradient(135deg,#7B3F00,#2A1400)" },
-      { title: "Visiting card design", category: "Graphic", filter: "Graphic Design", aspect: "400 / 264", tint: "linear-gradient(135deg,#F4F4F4,#B8B8B8)" },
-      { title: "Darisa", category: "Logo", filter: "Logo", aspect: "400 / 264", tint: "linear-gradient(135deg,#DA3A3A,#4C0000)" },
+      { title: "Karnuada Market", category: "Logo", filter: "Logo", aspect: "400 / 264", tint: "linear-gradient(135deg,#7B3F00,#2A1400)", img: karunada.url },
+      { title: "Visiting card design", category: "Graphic", filter: "Graphic Design", aspect: "400 / 264", tint: "linear-gradient(135deg,#F4F4F4,#B8B8B8)", img: visiting.url },
+      { title: "Darisa", category: "Logo", filter: "Logo", aspect: "400 / 264", tint: "linear-gradient(135deg,#DA3A3A,#4C0000)", img: darisa.url },
     ],
   },
 ];
