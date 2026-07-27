@@ -17,6 +17,7 @@ import { IADiagram } from "@/components/genelink/IADiagram";
 import { LowFiWireframes } from "@/components/genelink/LowFiWireframes";
 import { GeneLinkLogoStrip } from "@/components/genelink/GeneLinkLogoStrip";
 import PyxisCaseStudy from "@/components/pyxis/PyxisCaseStudy";
+import UtiCaseStudy from "@/components/uti/UtiCaseStudy";
 import sneakPeekAsset from "@/assets/genelink-sneak-peek.png.asset.json";
 import myDnaAsset from "@/assets/genelink-my-dna.png.asset.json";
 import lumenHeroAsset from "@/assets/lumen/hero.png.asset.json";
@@ -418,6 +419,7 @@ export const Route = createFileRoute("/case-study/$slug")({
   loader: ({ params }) => {
     if (params.slug === "lumen") return null;
     if (params.slug === "electra") return null;
+    if (params.slug === "uti") return null;
     if (!CASE_STUDIES[params.slug]) throw notFound();
     return null;
   },
@@ -579,6 +581,7 @@ function CaseStudyPage() {
   const { slug } = Route.useParams();
   if (slug === "lumen") return <LumenCaseStudy />;
   if (slug === "electra") return <PyxisCaseStudy />;
+  if (slug === "uti") return <UtiCaseStudy />;
   const cs = CASE_STUDIES[slug];
   if (!cs) return null;
   if (slug === "genelink") return <GenelinkCaseStudy cs={cs} />;
