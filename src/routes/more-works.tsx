@@ -297,14 +297,11 @@ function WorkModal({ work, onClose }: { work: Work; onClose: () => void }) {
     };
   }, [onClose]);
 
-  const linkUrl = work.liveUrl ?? work.figmaUrl ?? work.slideUrl ?? null;
-  const linkLabel = work.liveUrl
-    ? "View live site"
-    : work.figmaUrl
-    ? "View Figma prototype"
-    : work.slideUrl
-    ? "View presentation"
-    : null;
+  const links: { url: string; label: string }[] = [];
+  if (work.liveUrl) links.push({ url: work.liveUrl, label: "View live site" });
+  if (work.figmaUrl) links.push({ url: work.figmaUrl, label: "View Figma prototype" });
+  if (work.slideUrl) links.push({ url: work.slideUrl, label: "View presentation" });
+  if (work.videoUrl) links.push({ url: work.videoUrl, label: "View video" });
 
   return (
     <div
