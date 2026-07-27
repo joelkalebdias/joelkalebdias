@@ -153,7 +153,7 @@ const PROJECTS: Project[] = [
     company: "Pyxis",
     location: "Singapore - 2023 - 2025",
     role: "Role: Design Team Lead",
-    gradient: "linear-gradient(180deg, #F0D642 0%, #F0D642 80%, #F08A42 100%)",
+    gradient: "linear-gradient(180deg, #FF8FAE 0%, #FF6B9D 80%, #E8458A 100%)",
     img: "https://api.builder.io/api/v1/image/assets/TEMP/77f2c90dac4d95f68256e2b5f2aa4400bb85dd67?width=718",
   },
   {
