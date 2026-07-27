@@ -17,6 +17,7 @@ import { IADiagram } from "@/components/genelink/IADiagram";
 import { LowFiWireframes } from "@/components/genelink/LowFiWireframes";
 import { GeneLinkLogoStrip } from "@/components/genelink/GeneLinkLogoStrip";
 import PyxisCaseStudy from "@/components/pyxis/PyxisCaseStudy";
+import UtiCaseStudy from "@/components/uti/UtiCaseStudy";
 import sneakPeekAsset from "@/assets/genelink-sneak-peek.png.asset.json";
 import myDnaAsset from "@/assets/genelink-my-dna.png.asset.json";
 import lumenHeroAsset from "@/assets/lumen/hero.png.asset.json";
@@ -397,13 +398,17 @@ export const Route = createFileRoute("/case-study/$slug")({
     const lumenDesc = "A social platform redesigned around transparency and positive friction.";
     const electraTitle = "Pyxis - Electra — Case Study";
     const electraDesc = "A full scale Maritime solution for fleet booking, vessel chartering, tracking and weather updates.";
+    const utiTitle = "UTI Mutual Fund — Case Study";
+    const utiDesc = "Modernizing India's oldest asset management company for the digital era.";
     const title =
       params.slug === "lumen" ? lumenTitle
       : params.slug === "electra" ? electraTitle
+      : params.slug === "uti" ? utiTitle
       : cs ? `${cs.title} — Case Study` : "Case Study";
     const desc =
       params.slug === "lumen" ? lumenDesc
       : params.slug === "electra" ? electraDesc
+      : params.slug === "uti" ? utiDesc
       : cs?.tagline ?? "Case study";
     return {
       meta: [
@@ -411,13 +416,14 @@ export const Route = createFileRoute("/case-study/$slug")({
         { name: "description", content: desc },
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
-        ...(cs?.hero && params.slug !== "lumen" && params.slug !== "electra" ? [{ property: "og:image", content: cs.hero }] : []),
+        ...(cs?.hero && params.slug !== "lumen" && params.slug !== "electra" && params.slug !== "uti" ? [{ property: "og:image", content: cs.hero }] : []),
       ],
     };
   },
   loader: ({ params }) => {
     if (params.slug === "lumen") return null;
     if (params.slug === "electra") return null;
+    if (params.slug === "uti") return null;
     if (!CASE_STUDIES[params.slug]) throw notFound();
     return null;
   },
@@ -579,6 +585,7 @@ function CaseStudyPage() {
   const { slug } = Route.useParams();
   if (slug === "lumen") return <LumenCaseStudy />;
   if (slug === "electra") return <PyxisCaseStudy />;
+  if (slug === "uti") return <UtiCaseStudy />;
   const cs = CASE_STUDIES[slug];
   if (!cs) return null;
   if (slug === "genelink") return <GenelinkCaseStudy cs={cs} />;
