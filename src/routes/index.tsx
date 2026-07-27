@@ -893,8 +893,9 @@ function Index() {
                   );
                 })}
               </div>
-              <div
-                className="retro-card rounded-xl mt-6"
+              <Link
+                to="/more-works"
+                className="retro-card rounded-xl mt-6 no-underline"
                 style={{
                   display: "flex",
                   minWidth: 220,
@@ -905,6 +906,8 @@ function Index() {
                     "linear-gradient(180deg, #F0D642 0%, #F0D642 80%, #F08A42 100%)",
                   boxShadow:
                     "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
+                  color: "inherit",
+                  textDecoration: "none",
                 }}
               >
                 <PixelChestIcon />
@@ -937,7 +940,7 @@ function Index() {
                 <span className="pix tr" aria-hidden />
                 <span className="pix bl" aria-hidden />
                 <span className="pix br" aria-hidden />
-              </div>
+              </Link>
               </>
             ) : (
               <div className="flex flex-col gap-6">
