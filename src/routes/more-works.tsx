@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import RetroStarfield from "@/components/retro/RetroStarfield";
 import { RetroScrollProgress } from "@/components/retro/RetroScrollProgress";
 import doctoranywhere from "@/assets/more-works/doctoranywhere.png.asset.json";
