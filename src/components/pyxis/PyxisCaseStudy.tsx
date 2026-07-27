@@ -22,12 +22,21 @@ const pixelTerminal = {
 const OTHER_PROJECTS = [
   {
     title:
+      "Lumen - Social media app to rethink social platforms around transparency and connection",
+    company: "Master Thesis",
+    location: "Germany - 2026",
+    role: "Role: Research, UX/UI Designer",
+    gradient: "linear-gradient(180deg, #FF6B5C 0%, #FD7466 80%, #BC2729 100%)",
+    img: "https://api.builder.io/api/v1/image/assets/TEMP/a8321c5713c1220171c431e099eb48ae8a68b4dc?width=718",
+    slug: "lumen",
+  },
+  {
+    title:
       "GeneLink - An app to connect people with their long lost relatives using state of the art DNA mapping",
     company: "Confidential",
     location: "India - 2024",
     role: "Role: UX/UI Designer (Personal Project)",
-    gradient:
-      "linear-gradient(180deg, #F35DA3 0%, #F35DA3 80%, #9804AF 100%)",
+    gradient: "linear-gradient(180deg, #8B72E8 0%, #8B72E8 80%, #6B50C8 100%)",
     img: "https://api.builder.io/api/v1/image/assets/TEMP/b982a6847c860f50d4ba512ddbc3c64beca4590a?width=718",
     slug: "genelink",
   },
