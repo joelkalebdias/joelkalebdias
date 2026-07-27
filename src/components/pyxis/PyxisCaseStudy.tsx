@@ -2,6 +2,12 @@ import React from "react";
 import { Link } from "@tanstack/react-router";
 import { RetroScrollProgress } from "@/components/retro/RetroScrollProgress";
 import RetroStarfield from "@/components/retro/RetroStarfield";
+import heroAsset from "@/assets/pyxis-hero.png.asset.json";
+import designSystemAsset from "@/assets/pyxis-building-the-design-system.png.asset.json";
+import colorTypeAsset from "@/assets/pyxis-color-typography-iconography.png.asset.json";
+import userAppAsset from "@/assets/pyxis-user-app.png.asset.json";
+import bookingJourneyAsset from "@/assets/pyxis-booking-journey.png.asset.json";
+import captainDashboardAsset from "@/assets/pyxis-captain-dashboard.png.asset.json";
 
 const pixelHeading = {
   fontFamily: "'Ac437 IBM CGA', 'Press Start 2P', monospace",
@@ -24,16 +30,6 @@ const OTHER_PROJECTS = [
       "linear-gradient(180deg, #F35DA3 0%, #F35DA3 80%, #9804AF 100%)",
     img: "https://api.builder.io/api/v1/image/assets/TEMP/b982a6847c860f50d4ba512ddbc3c64beca4590a?width=718",
     slug: "genelink",
-  },
-  {
-    title:
-      "Electra - A digital ecosystem for booking ships and for captains to effectively view ship status",
-    company: "Pyxis",
-    location: "Singapore - 2023 - 2025",
-    role: "Role: Design Team Lead",
-    gradient: "linear-gradient(180deg, #F0D642 0%, #F0D642 80%, #F08A42 100%)",
-    img: "https://api.builder.io/api/v1/image/assets/TEMP/77f2c90dac4d95f68256e2b5f2aa4400bb85dd67?width=718",
-    slug: "electra",
   },
   {
     title:
@@ -68,13 +64,8 @@ function SectionTitle({ text }: { text: string }) {
 
 function InfoRow({ label, body }: { label: string; body: string }) {
   return (
-    <section
-      className="w-full flex flex-col md:flex-row gap-4 items-start justify-center pb-4 rounded-lg py-4"
-      style={{
-        boxShadow: "2px 2px 0 0 #D33869, -2px -2px 0 0 #FF94C2",
-      }}
-    >
-      <div className="w-full md:w-[200px] flex items-center justify-center px-4">
+    <section className="w-full flex flex-col md:flex-row gap-4 items-start py-4 pl-6">
+      <div className="w-full md:w-[200px] flex items-center md:justify-start">
         <h2
           style={{
             ...pixelHeading,
@@ -88,7 +79,7 @@ function InfoRow({ label, body }: { label: string; body: string }) {
           {label}
         </h2>
       </div>
-      <div className="flex-1 flex items-center min-w-0 px-4">
+      <div className="flex-1 flex items-center min-w-0">
         <p
           style={{
             fontFamily: "'JetBrains Mono', ui-monospace, monospace",
@@ -130,41 +121,14 @@ function GoalCard({ text }: { text: string }) {
   );
 }
 
-function ImagePlaceholder({
-  label,
-  height,
-  bg = "#181818",
-  shadow,
-}: {
-  label: string;
-  height: number;
-  bg?: string;
-  shadow?: string;
-}) {
+function CaseImage({ src, alt }: { src: string; alt: string }) {
   return (
-    <div
-      className="w-full rounded-xl overflow-hidden relative flex items-center justify-center"
-      style={{
-        height,
-        background: bg,
-        boxShadow:
-          shadow ??
-          "-4px -4px 0 0 #084170 inset, 4px 4px 0 0 #0E1B37 inset",
-      }}
-    >
-      <span
-        style={{
-          ...pixelBody,
-          color: "rgba(255,255,255,0.35)",
-          fontSize: 14,
-          letterSpacing: "-0.02em",
-          textAlign: "center",
-          padding: "0 16px",
-        }}
-      >
-        {label}
-      </span>
-    </div>
+    <img
+      src={src}
+      alt={alt}
+      className="w-full h-auto rounded-xl"
+      style={{ imageRendering: "pixelated" as const, display: "block" }}
+    />
   );
 }
 
@@ -324,10 +288,7 @@ export default function PyxisCaseStudy() {
 
       {/* Hero + info rows */}
       <div className="w-full max-w-[1280px] flex flex-col gap-6 px-6 pb-6">
-        <ImagePlaceholder
-          label="[ Figma export needed — Pyxis Electra hero mockup ]"
-          height={659}
-        />
+        <CaseImage src={heroAsset.url} alt="Pyxis Electra hero" />
         <InfoRow
           label="Overview"
           body="Pyxis - Electra was a maritime solution designed for Pyxis for a new fleet of electric vessels to be chartered, haul cargo and glide on the waters of Singapore."
@@ -350,113 +311,31 @@ export default function PyxisCaseStudy() {
         <GoalCard text="Support trust through clarity, status visibility, and timely alerts." />
       </div>
 
-      {/* Banner image 914 */}
+      {/* Building the design system */}
       <div className="w-full max-w-[1440px] px-6 pt-6">
-        <ImagePlaceholder
-          label="[ Figma export needed — banner / section image ]"
-          height={191}
-          bg="#0F1B37"
-          shadow="-2px -2px 0 0 #084170 inset, 2px 2px 0 0 #0E1B37 inset"
-        />
+        <CaseImage src={designSystemAsset.url} alt="Building the design system" />
       </div>
 
-      {/* Large image 913 */}
+      {/* Color, typography, iconography */}
       <div className="w-full max-w-[1440px] px-6 pt-6">
-        <ImagePlaceholder
-          label="[ Figma export needed — process / research long image ]"
-          height={1514}
-          bg="#0F1B37"
-          shadow="-2px -2px 0 0 #084170 inset, 2px 2px 0 0 #0E1B37 inset"
-        />
+        <CaseImage src={colorTypeAsset.url} alt="Color, typography, iconography" />
       </div>
 
       {/* User app */}
       <div className="w-full max-w-[1440px] flex flex-col gap-6 items-center">
         <SectionTitle text="User app" />
         <div className="w-full px-6">
-          <ImagePlaceholder
-            label="[ Figma export needed — User app screens ]"
-            height={749}
-            bg="#1E1E1E"
-            shadow="-2px -2px 0 0 #084170 inset, 2px 2px 0 0 #0E1B37 inset"
-          />
+          <CaseImage src={userAppAsset.url} alt="User app screens" />
         </div>
 
         <SectionTitle text="Booking journey" />
         <div className="w-full px-6">
-          <ImagePlaceholder
-            label="[ Figma export needed — Booking journey flow ]"
-            height={1350}
-            bg="#0F1B37"
-            shadow="-2px -2px 0 0 #084170 inset, 2px 2px 0 0 #0E1B37 inset"
-          />
+          <CaseImage src={bookingJourneyAsset.url} alt="Booking journey" />
         </div>
 
         <SectionTitle text="Captain dashboard" />
         <div className="w-full px-6">
-          <div
-            className="w-full rounded-xl p-10 flex flex-col gap-6"
-            style={{ background: "#060606" }}
-          >
-            <div
-              className="w-full rounded-lg overflow-hidden"
-              style={{
-                height: 649,
-                background: "#0F1B37",
-                border: "1px solid #6C6C6C",
-              }}
-            >
-              <div className="w-full h-full flex items-center justify-center">
-                <span
-                  style={{
-                    ...pixelBody,
-                    color: "rgba(255,255,255,0.35)",
-                    fontSize: 14,
-                  }}
-                >
-                  [ Figma export needed — Captain dashboard main ]
-                </span>
-              </div>
-            </div>
-            <div className="w-full flex flex-col md:flex-row gap-6">
-              <div
-                className="flex-1 rounded-lg overflow-hidden flex items-center justify-center"
-                style={{
-                  aspectRatio: "3840 / 2716",
-                  background: "#0F1B37",
-                  border: "1px solid #6C6C6C",
-                }}
-              >
-                <span
-                  style={{
-                    ...pixelBody,
-                    color: "rgba(255,255,255,0.35)",
-                    fontSize: 14,
-                  }}
-                >
-                  [ Figma export — Dashboard detail 1 ]
-                </span>
-              </div>
-              <div
-                className="flex-1 rounded-lg overflow-hidden flex items-center justify-center"
-                style={{
-                  aspectRatio: "4096 / 2897",
-                  background: "#0F1B37",
-                  border: "1px solid #6C6C6C",
-                }}
-              >
-                <span
-                  style={{
-                    ...pixelBody,
-                    color: "rgba(255,255,255,0.35)",
-                    fontSize: 14,
-                  }}
-                >
-                  [ Figma export — Dashboard detail 2 ]
-                </span>
-              </div>
-            </div>
-          </div>
+          <CaseImage src={captainDashboardAsset.url} alt="Captain dashboard" />
         </div>
       </div>
 
