@@ -115,7 +115,7 @@ const ROWS: Row[] = [
   {
     cols: 2,
     items: [
-      { title: "The departure gate", category: "Installation, Art", filter: "Art", aspect: "608 / 420", tint: "linear-gradient(135deg,#0B0B0B,#3A3A3A)", img: departure.url, slideUrl: "https://www.figma.com/deck/s78yTxfBDb12mjGq45L5ha/Total-Loss-Presentaion-II?node-id=1-348&viewport=-16709%2C-138%2C0.7&t=ErUlHP5hOJwSovFd-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1" },
+      { title: "The departure gate", category: "Installation, Art", filter: "Art", aspect: "608 / 420", tint: "linear-gradient(135deg,#0B0B0B,#3A3A3A)", img: departure.url, slideUrl: "https://www.figma.com/deck/s78yTxfBDb12mjGq45L5ha/Total-Loss-Presentaion-II?node-id=1-348&viewport=-16709%2C-138%2C0.7&t=ErUlHP5hOJwSovFd-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1", videoUrl: "https://www.youtube.com/watch?v=xXKWKfY613k" },
       { title: "Dead inside", category: "Art", filter: "Art", aspect: "608 / 420", tint: "linear-gradient(135deg,#7A0E1A,#1A0206)", img: deadInside.url },
     ],
   },
