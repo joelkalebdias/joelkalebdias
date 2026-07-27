@@ -2,6 +2,12 @@ import React from "react";
 import { Link } from "@tanstack/react-router";
 import { RetroScrollProgress } from "@/components/retro/RetroScrollProgress";
 import RetroStarfield from "@/components/retro/RetroStarfield";
+import heroAsset from "@/assets/uti/hero.png.asset.json";
+import researchAsset from "@/assets/uti/research-setup.png.asset.json";
+import insightsAsset from "@/assets/uti/user-insights.png.asset.json";
+import journeysAsset from "@/assets/uti/building-journeys.png.asset.json";
+import visualAsset from "@/assets/uti/visual-designs.png.asset.json";
+import lastAsset from "@/assets/uti/last-image.png.asset.json";
 
 const pixelHeading = {
   fontFamily: "'Ac437 IBM CGA', 'Press Start 2P', monospace",
