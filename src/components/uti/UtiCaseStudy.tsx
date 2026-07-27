@@ -2,6 +2,12 @@ import React from "react";
 import { Link } from "@tanstack/react-router";
 import { RetroScrollProgress } from "@/components/retro/RetroScrollProgress";
 import RetroStarfield from "@/components/retro/RetroStarfield";
+import heroAsset from "@/assets/uti/hero.png.asset.json";
+import researchAsset from "@/assets/uti/research-setup.png.asset.json";
+import insightsAsset from "@/assets/uti/user-insights.png.asset.json";
+import journeysAsset from "@/assets/uti/building-journeys.png.asset.json";
+import visualAsset from "@/assets/uti/visual-designs.png.asset.json";
+import lastAsset from "@/assets/uti/last-image.png.asset.json";
 
 const pixelHeading = {
   fontFamily: "'Ac437 IBM CGA', 'Press Start 2P', monospace",
@@ -375,7 +381,7 @@ export default function UtiCaseStudy() {
 
       {/* Hero + info rows */}
       <div className="w-full max-w-[1440px] flex flex-col gap-6 px-6 pb-6">
-        <ImagePlaceholder label="Hero image — upload UTI hero" aspect="1232 / 659" />
+        <CaseImage src={heroAsset.url} alt="UTI Mutual Fund hero" />
         <InfoRow
           label="Key metrics:"
           body="Ticket size, New registrations, SIP creations, Positive feedback from users and testing"
@@ -407,26 +413,26 @@ export default function UtiCaseStudy() {
       {/* Research setup */}
       <SectionTitle text="Research setup" />
       <div className="w-full max-w-[1440px] px-6">
-        <ImagePlaceholder label="Research setup — upload image" aspect="1240 / 1081" />
+        <CaseImage src={researchAsset.url} alt="UTI research setup" />
       </div>
 
       {/* User research insights */}
       <SectionTitle text="User research insights" />
       <div className="w-full max-w-[1440px] px-6">
-        <ImagePlaceholder label="User research insights — upload image" />
+        <CaseImage src={insightsAsset.url} alt="UTI user research insights" />
       </div>
 
       {/* Building Journeys */}
       <SectionTitle text="Building Journeys" />
       <div className="w-full max-w-[1440px] px-6">
-        <ImagePlaceholder label="Building Journeys — upload image" />
+        <CaseImage src={journeysAsset.url} alt="UTI building journeys" />
       </div>
 
       {/* Visual Designs */}
       <SectionTitle text="Visual Designs" />
       <div className="w-full max-w-[1440px] px-6 flex flex-col gap-6">
-        <ImagePlaceholder label="Visual Designs 1 — upload image" />
-        <ImagePlaceholder label="Visual Designs 2 — upload image" />
+        <CaseImage src={visualAsset.url} alt="UTI visual designs" />
+        <CaseImage src={lastAsset.url} alt="UTI visual designs continued" />
       </div>
 
       {/* More case studies */}
