@@ -175,7 +175,9 @@ function ItemCaption({ title, category }: { title: string; category: string }) {
 function badgeLabel(work: Work): string | null {
   if (work.liveUrl) return "Live site";
   if (work.figmaUrl) return "Prototype";
+  if (work.slideUrl && work.videoUrl) return "Presentation + Video";
   if (work.slideUrl) return "Presentation";
+  if (work.videoUrl) return "Video";
   return null;
 }
 
