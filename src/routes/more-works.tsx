@@ -553,6 +553,7 @@ function FilterChip({
 
 function MoreWorksPage() {
   const [active, setActive] = useState<FilterKey>("All");
+  const [openWork, setOpenWork] = useState<Work | null>(null);
 
   const allWorks = useMemo(() => ROWS.flatMap((r) => r.items), []);
   const counts = useMemo(() => {
