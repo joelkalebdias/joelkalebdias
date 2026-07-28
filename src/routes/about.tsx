@@ -304,7 +304,7 @@ function AboutPage() {
                   key={i}
                   style={{
                     ...pixelTerminal,
-                    color: "#3200320",
+                    color: "#320032",
                     fontSize: 16,
                     lineHeight: "140%",
                     letterSpacing: "-0.16px",
