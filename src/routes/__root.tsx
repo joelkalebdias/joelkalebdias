@@ -129,6 +129,8 @@ function RootComponent() {
       <Outlet />
       <IntroSplash />
       <CRTFrame />
+    </QueryClientProvider>
+
 
   );
 }
