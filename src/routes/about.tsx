@@ -264,7 +264,7 @@ function AboutPage() {
                 textDecoration: "none",
               }}
             >
-              Back
+              ← Back
             </Link>
         </header>
 
