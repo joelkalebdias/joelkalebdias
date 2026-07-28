@@ -623,7 +623,8 @@ function MoreWorksPage() {
               display: "flex",
               flexWrap: "wrap",
               gap: 12,
-              padding: "14px 16px 12px",
+              padding:
+                "14px calc(16px + var(--crt-inset, 22px)) 12px calc(16px + var(--crt-inset, 22px))",
             }}
           >
             {FILTERS.map((f) => (
