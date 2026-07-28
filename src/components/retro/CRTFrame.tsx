@@ -51,9 +51,23 @@ export default function CRTFrame() {
           aria-hidden="true"
           className="crt-frame pointer-events-none fixed inset-0 z-[60]"
         >
-          {/* Inner screen area — holds all glassy overlays. Rendered first so
-              the curved bezel SVG on top can clip them at the barrel edges. */}
-          <div className="crt-frame__screen absolute overflow-hidden">
+          {/* Hidden clip-path definition for the inner screen area. Using
+              objectBoundingBox so the curved cutout scales with the frame. */}
+          <svg width="0" height="0" className="absolute">
+            <defs>
+              <clipPath
+                id="crt-inner-clip"
+                clipPathUnits="objectBoundingBox"
+              >
+                <path d="M 0.03 0.012 Q 0.5 -0.006 0.97 0.012 L 0.97 0.96 Q 0.5 0.988 0.03 0.96 Z" />
+              </clipPath>
+            </defs>
+          </svg>
+
+          {/* Inner screen area — holds all glassy overlays. It fills the full
+              viewport and is clipped to the same inner barrel curve as the
+              bezel so scanlines/noise/bloom reach the very edge of the tube. */}
+          <div className="crt-frame__screen absolute inset-0 overflow-hidden">
             {bloom && <div className="crt-frame__bloom absolute inset-0" />}
             <div className="crt-frame__vignette absolute inset-0" />
             <div className="crt-frame__reflection-primary absolute" />
