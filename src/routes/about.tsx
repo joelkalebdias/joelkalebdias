@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import RetroStarfield from "@/components/retro/RetroStarfield";
+import portraitAsset from "@/assets/joel-portrait-blue.png.asset.json";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
