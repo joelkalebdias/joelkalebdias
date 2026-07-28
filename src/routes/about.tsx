@@ -35,8 +35,7 @@ const pixelTerminal = {
 const scanlines =
   "repeating-linear-gradient(0deg, rgba(0,0,0,0.25) 0px, rgba(0,0,0,0.25) 1px, transparent 1px, transparent 3px)";
 
-const PORTRAIT =
-  "https://api.builder.io/api/v1/image/assets/TEMP/47d806ada3fd4776216138c38e5bfc596d6d8c91?width=510";
+const PORTRAIT = portraitAsset.url;
 
 const STATS = [
   { value: "5+", label: "Years in design" },
