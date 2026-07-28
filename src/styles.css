@@ -1092,6 +1092,8 @@ button[aria-label*="ismiss" i]::before, button[aria-label*="ismiss" i]::after { 
 
 @media (prefers-reduced-motion: reduce) {
   .crt-frame__sheen { animation: none; opacity: 0; }
+  .crt-frame__noise { animation: none; }
 }
+
 
 
