@@ -12,19 +12,24 @@ function prefersReducedMotion() {
 }
 
 export default function IntroSplash() {
-  const [mounted, setMounted] = useState(false);
+  // Start mounted so the splash paints on the very first frame (no flash of
+  // the underlying page). On the client, if we've already shown it this
+  // session, we immediately unmount.
+  const [mounted, setMounted] = useState(true);
   const [exiting, setExiting] = useState(false);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     try {
       if (typeof window === "undefined") return;
-      if (sessionStorage.getItem(SESSION_KEY) === "1") return;
+      if (sessionStorage.getItem(SESSION_KEY) === "1") {
+        setMounted(false);
+        return;
+      }
       sessionStorage.setItem(SESSION_KEY, "1");
     } catch {
       /* ignore */
     }
-    setMounted(true);
   }, []);
 
   useEffect(() => {
