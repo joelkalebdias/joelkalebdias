@@ -643,7 +643,7 @@ function MoreWorksPage() {
               textDecoration: "none",
             }}
           >
-            Back
+            ← Back
           </Link>
         </header>
 
