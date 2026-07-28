@@ -647,6 +647,26 @@ function MoreWorksPage() {
           </Link>
         </header>
 
+        {/* Filter bar */}
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: 12,
+            padding: "8px 0",
+          }}
+        >
+          {FILTERS.map((f) => (
+            <FilterChip
+              key={f}
+              label={f}
+              count={counts[f]}
+              active={active === f}
+              onClick={() => setActive(f)}
+            />
+          ))}
+        </div>
+
         {/* Gallery */}
         <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
           {filteredRows.map((row, i) => (
