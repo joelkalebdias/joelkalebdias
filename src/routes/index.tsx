@@ -69,26 +69,37 @@ function RetroArrow({ color = "#320032" }: { color?: string }) {
 }
 
 
-type Linkout = { label: string; href: string };
+type Linkout = { label: string; href?: string; to?: string };
 
 function LinkoutRow({
   label,
   href,
+  to,
   bg,
   arrowColor = "#320032",
 }: Linkout & { bg: string; arrowColor?: string }) {
-  return (
-    <a
-      href={href}
-      className="flex items-center justify-between px-4 py-3 rounded-lg transition-transform hover:-translate-y-0.5"
-      style={{ background: bg }}
-    >
+  const content = (
+    <>
       <span
         style={{ ...pixelHeading, color: "#320032", textShadow: "1px 1px 0 #D1747D", fontSize: 13 }}
       >
         {label}
       </span>
       <RetroArrow color={arrowColor} />
+    </>
+  );
+  const className =
+    "flex items-center justify-between px-4 py-3 rounded-lg transition-transform hover:-translate-y-0.5 no-underline";
+  if (to) {
+    return (
+      <Link to={to} className={className} style={{ background: bg }}>
+        {content}
+      </Link>
+    );
+  }
+  return (
+    <a href={href} className={className} style={{ background: bg }}>
+      {content}
     </a>
   );
 }
@@ -727,7 +738,7 @@ function Index() {
                   Hey those are just my case studies, There are lots of more works that I
                   have not built comprehensive studies for, You can find them here!
                 </p>
-                <LinkoutRow label="All my other works" href="#" bg="#9FF2C1" />
+                <LinkoutRow label="All my other works" to="/more-works" bg="#9FF2C1" />
               </div>
             ) : (
               <div
