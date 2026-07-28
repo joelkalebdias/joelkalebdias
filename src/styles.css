@@ -964,14 +964,12 @@ button[aria-label*="ismiss" i]::before, button[aria-label*="ismiss" i]::after { 
   filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.9));
 }
 
-/* Screen area — inset roughly matches the SVG cutout so overlays sit on the
-   glass; slight over-inset avoids clipping seams with the curved bezel. */
+/* Screen area — fills the full viewport and is clipped to the same inner
+    barrel curve as the bezel so scanlines/noise/bloom reach the tube edge
+    without leaving a gap under the top bezel. */
 .crt-frame__screen {
-  top: calc(var(--crt-inset) + 2px);
-  right: calc(var(--crt-inset) + 2px);
-  bottom: calc(var(--crt-inset) + 2px);
-  left: calc(var(--crt-inset) + 2px);
-  border-radius: var(--crt-inner-radius);
+  inset: 0;
+  clip-path: url(#crt-inner-clip);
 }
 
 /* Phosphor bloom — soft green/pink inner glow across the tube, mimicking the
