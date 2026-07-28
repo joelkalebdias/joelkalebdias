@@ -589,12 +589,55 @@ function MoreWorksPage() {
 
   return (
     <main
-      className="min-h-screen w-full px-4 sm:px-6 lg:px-8 py-8 flex justify-center relative isolate"
+      className="min-h-screen w-full px-4 sm:px-6 lg:px-8 pt-0 pb-8 flex justify-center relative isolate"
       style={{ background: "linear-gradient(180deg, #0A0224 0%, #260A20 100%)" }}
     >
       <RetroStarfield />
       <RetroScrollProgress />
       <div className="w-full max-w-[1280px] flex flex-col gap-6 relative z-10">
+        {/* Filter bar — sticky under the CRT bezel to close the visible gap */}
+        <div
+          className="sticky z-20 -mx-4 sm:-mx-6 lg:-mx-8"
+          style={{
+            top: "var(--crt-inset, 22px)",
+            background:
+              "linear-gradient(180deg, #151518 0%, #08080a 100%)",
+            borderBottom: "1px solid rgba(255,255,255,0.08)",
+            boxShadow: "0 4px 20px rgba(0,0,0,0.6)",
+          }}
+        >
+          {/* Curved top edge that mirrors the CRT bezel cutout */}
+          <svg
+            className="absolute top-0 left-0 w-full h-3 pointer-events-none"
+            preserveAspectRatio="none"
+            viewBox="0 0 100 12"
+            aria-hidden="true"
+          >
+            <path
+              d="M 0 12 L 0 4 Q 50 10 100 4 L 100 12 Z"
+              fill="#151518"
+            />
+          </svg>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 12,
+              padding: "14px 16px 12px",
+            }}
+          >
+            {FILTERS.map((f) => (
+              <FilterChip
+                key={f}
+                label={f}
+                count={counts[f]}
+                active={active === f}
+                onClick={() => setActive(f)}
+              />
+            ))}
+          </div>
+        </div>
+
         {/* Header */}
         <header
           className="rounded-xl p-6 flex flex-col sm:flex-row gap-6 sm:items-start sm:justify-between"
@@ -646,26 +689,6 @@ function MoreWorksPage() {
             ← Back
           </Link>
         </header>
-
-        {/* Filter bar */}
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: 12,
-            padding: "12px 4px",
-          }}
-        >
-          {FILTERS.map((f) => (
-            <FilterChip
-              key={f}
-              label={f}
-              count={counts[f]}
-              active={active === f}
-              onClick={() => setActive(f)}
-            />
-          ))}
-        </div>
 
         {/* Gallery */}
         <div style={{ display: "flex", flexDirection: "column", gap: 32 }}>
