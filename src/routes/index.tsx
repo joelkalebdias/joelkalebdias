@@ -98,7 +98,13 @@ function LinkoutRow({
     );
   }
   return (
-    <a href={href} className={className} style={{ background: bg }}>
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={className}
+      style={{ background: bg }}
+    >
       {content}
     </a>
   );
