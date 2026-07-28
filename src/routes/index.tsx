@@ -69,26 +69,37 @@ function RetroArrow({ color = "#320032" }: { color?: string }) {
 }
 
 
-type Linkout = { label: string; href: string };
+type Linkout = { label: string; href?: string; to?: string };
 
 function LinkoutRow({
   label,
   href,
+  to,
   bg,
   arrowColor = "#320032",
 }: Linkout & { bg: string; arrowColor?: string }) {
-  return (
-    <a
-      href={href}
-      className="flex items-center justify-between px-4 py-3 rounded-lg transition-transform hover:-translate-y-0.5"
-      style={{ background: bg }}
-    >
+  const content = (
+    <>
       <span
         style={{ ...pixelHeading, color: "#320032", textShadow: "1px 1px 0 #D1747D", fontSize: 13 }}
       >
         {label}
       </span>
       <RetroArrow color={arrowColor} />
+    </>
+  );
+  const className =
+    "flex items-center justify-between px-4 py-3 rounded-lg transition-transform hover:-translate-y-0.5 no-underline";
+  if (to) {
+    return (
+      <Link to={to} className={className} style={{ background: bg }}>
+        {content}
+      </Link>
+    );
+  }
+  return (
+    <a href={href} className={className} style={{ background: bg }}>
+      {content}
     </a>
   );
 }
