@@ -940,3 +940,130 @@ button[aria-label*="ismiss" i]::before, button[aria-label*="ismiss" i]::after { 
   .intro-enter { opacity: 1; transform: none; animation: none; }
 }
 
+/* ============================================================
+   CRT Monitor Frame — site-wide decorative wrapper
+   ============================================================ */
+:root {
+  --crt-inset: 22px;
+  --crt-radius: 26px;
+  --crt-inner-radius: 10px;
+  --crt-bezel: #0b0b0d;
+  --crt-bezel-lo: #000;
+}
+
+@media (max-width: 900px) {
+  :root { --crt-inset: 14px; --crt-radius: 20px; --crt-inner-radius: 8px; }
+}
+@media (max-width: 560px) {
+  :root { --crt-inset: 8px; --crt-radius: 14px; --crt-inner-radius: 6px; }
+}
+
+.crt-frame__bezel {
+  border-radius: var(--crt-radius);
+  box-shadow:
+    inset 0 0 0 var(--crt-inset) var(--crt-bezel),
+    inset 0 0 0 calc(var(--crt-inset) + 1px) var(--crt-bezel-lo),
+    inset 0 0 0 calc(var(--crt-inset) + 2px) rgba(255, 255, 255, 0.06),
+    inset 0 0 60px calc(var(--crt-inset) + 2px) rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(0, 0, 0, 0.9);
+  background: transparent;
+}
+
+.crt-frame__screen {
+  top: var(--crt-inset);
+  right: var(--crt-inset);
+  bottom: var(--crt-inset);
+  left: var(--crt-inset);
+  border-radius: var(--crt-inner-radius);
+}
+
+.crt-frame__vignette {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    rgba(0, 0, 0, 0.32) 92%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  mix-blend-mode: multiply;
+}
+
+.crt-frame__reflection-primary {
+  top: -10%;
+  left: -8%;
+  width: 65%;
+  height: 55%;
+  background: linear-gradient(
+    128deg,
+    rgba(255, 255, 255, 0.11) 0%,
+    rgba(255, 255, 255, 0.05) 28%,
+    rgba(255, 255, 255, 0) 55%
+  );
+  filter: blur(6px);
+  transform: rotate(-4deg);
+  mix-blend-mode: screen;
+  opacity: 0.9;
+}
+
+.crt-frame__reflection-secondary {
+  top: 6%;
+  right: 4%;
+  width: 22%;
+  height: 14%;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0.08) 55%,
+    rgba(255, 255, 255, 0) 78%
+  );
+  filter: blur(3px);
+  mix-blend-mode: screen;
+  opacity: 0.8;
+}
+
+.crt-frame__sheen {
+  top: 0;
+  left: -30%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.03) 45%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.03) 55%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  filter: blur(2px);
+  mix-blend-mode: screen;
+  animation: crt-sheen-drift 18s linear infinite;
+}
+
+@keyframes crt-sheen-drift {
+  0%   { transform: translateX(0); opacity: 0; }
+  20%  { opacity: 0.9; }
+  80%  { opacity: 0.9; }
+  100% { transform: translateX(360%); opacity: 0; }
+}
+
+.crt-frame__scanlines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.025) 0 1px,
+    transparent 1px 3px
+  );
+  mix-blend-mode: overlay;
+  opacity: 0.6;
+}
+
+.crt-frame__chroma {
+  box-shadow:
+    inset 8px 0 24px -8px rgba(255, 60, 120, 0.10),
+    inset -8px 0 24px -8px rgba(80, 160, 255, 0.10);
+  mix-blend-mode: screen;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crt-frame__sheen { animation: none; opacity: 0; }
+}
+
+
