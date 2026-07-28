@@ -4,7 +4,7 @@ import PixelShip from "./PixelShip";
 
 const SESSION_KEY = "jkd_intro_seen";
 const FLY_DURATION = 5000; // ms — ship acts as a 5s progress bar
-const EXIT_DURATION = 500;
+const EXIT_DURATION = 600;
 
 function prefersReducedMotion() {
   if (typeof window === "undefined") return false;
