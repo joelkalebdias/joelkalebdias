@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import RetroStarfield from "@/components/retro/RetroStarfield";
+import portraitAsset from "@/assets/joel-portrait-blue.png.asset.json";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -34,8 +35,7 @@ const pixelTerminal = {
 const scanlines =
   "repeating-linear-gradient(0deg, rgba(0,0,0,0.25) 0px, rgba(0,0,0,0.25) 1px, transparent 1px, transparent 3px)";
 
-const PORTRAIT =
-  "https://api.builder.io/api/v1/image/assets/TEMP/47d806ada3fd4776216138c38e5bfc596d6d8c91?width=510";
+const PORTRAIT = portraitAsset.url;
 
 const STATS = [
   { value: "5+", label: "Years in design" },
@@ -269,13 +269,27 @@ function AboutPage() {
         </header>
 
         {/* About + Portrait */}
-        <div style={{ display: "flex", gap: 24, alignItems: "stretch", flexWrap: "wrap", justifyContent: "center" }}>
+        <div style={{ display: "flex", gap: 24, alignItems: "stretch", flexWrap: "wrap" }}>
+          <img
+            src={PORTRAIT}
+            alt="Joel Kaleb Dias"
+            style={{
+              width: 255,
+              height: 360,
+              objectFit: "cover",
+              borderRadius: 12,
+              flexShrink: 0,
+              alignSelf: "center",
+            }}
+          />
           <div
             style={{
               display: "flex",
               flexDirection: "column",
               gap: 12,
-              flex: "1 1 600px",
+              flex: "1 0 0",
+              minWidth: 280,
+              height: 360,
               paddingBottom: 16,
               borderRadius: 8,
               background: "#FDEBE2",
@@ -284,7 +298,7 @@ function AboutPage() {
             }}
           >
             <PanelHeader>About Me</PanelHeader>
-            <div style={{ padding: "0 16px", display: "flex", flexDirection: "column", gap: "1em" }}>
+            <div style={{ padding: "0 16px", display: "flex", flexDirection: "column", gap: "1em", overflowY: "auto" }}>
               {aboutParagraphs.map((p, i) => (
                 <p
                   key={i}
@@ -302,17 +316,6 @@ function AboutPage() {
               ))}
             </div>
           </div>
-          <img
-            src={PORTRAIT}
-            alt="Joel Kaleb Dias"
-            style={{
-              width: 255,
-              height: 360,
-              objectFit: "contain",
-              flexShrink: 0,
-              alignSelf: "center",
-            }}
-          />
         </div>
 
         {/* Stats */}
