@@ -269,32 +269,17 @@ function AboutPage() {
         </header>
 
         {/* About + Portrait */}
-        <div style={{ display: "flex", gap: 24, alignItems: "stretch", flexWrap: "wrap" }}>
+        <div className="flex flex-col md:flex-row gap-6 items-stretch">
           <img
             src={PORTRAIT}
             alt="Joel Kaleb Dias"
-            style={{
-              width: 255,
-              height: 360,
-              objectFit: "cover",
-              borderRadius: 12,
-              flexShrink: 0,
-              alignSelf: "center",
-            }}
+            className="w-full md:w-[255px] h-auto md:h-[360px] object-cover rounded-xl shrink-0 self-center md:self-auto"
           />
           <div
+            className="flex flex-col gap-3 flex-1 min-w-[280px] md:h-[360px] pb-4 rounded-lg overflow-hidden"
             style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 12,
-              flex: "1 0 0",
-              minWidth: 280,
-              height: 360,
-              paddingBottom: 16,
-              borderRadius: 8,
               background: "#FDEBE2",
               boxShadow: "2px 2px 0 0 #D33869, -2px -2px 0 0 #FF94C2",
-              overflow: "hidden",
             }}
           >
             <PanelHeader>About Me</PanelHeader>
