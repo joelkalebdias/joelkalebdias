@@ -82,8 +82,8 @@ export default function CRTFrame() {
             <path
               fillRule="evenodd"
               d="M 0 0 H 100 V 100 H 0 Z
-                 M 3 1.6
-                 Q 50 0.2 97 1.6
+                 M 3 1.2
+                 Q 50 -0.6 97 1.2
                  L 97 96
                  Q 50 98.8 3 96
                  Z"
@@ -91,7 +91,7 @@ export default function CRTFrame() {
             />
             {/* Inner highlight lip along the curved cutout */}
             <path
-              d="M 3 1.6 Q 50 0.2 97 1.6 L 97 96 Q 50 98.8 3 96 Z"
+              d="M 3 1.2 Q 50 -0.6 97 1.2 L 97 96 Q 50 98.8 3 96 Z"
               fill="none"
               stroke="rgba(255,255,255,0.08)"
               strokeWidth="0.15"
@@ -99,7 +99,7 @@ export default function CRTFrame() {
             />
             {/* Soft shadow along inside of cutout */}
             <path
-              d="M 3 1.6 Q 50 0.2 97 1.6 L 97 96 Q 50 98.8 3 96 Z"
+              d="M 3 1.2 Q 50 -0.6 97 1.2 L 97 96 Q 50 98.8 3 96 Z"
               fill="none"
               stroke="rgba(0,0,0,0.9)"
               strokeWidth="0.4"
