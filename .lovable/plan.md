@@ -1,37 +1,59 @@
-## Intro splash: spaceship writes your name in pixel flames
+# Site-wide CRT Monitor Frame
 
-A one-time-per-session welcome screen renders before the home page. A pixel-art spaceship flies left→right across a starfield, leaving a chunky orange/yellow/pink flame trail that reveals "Joel Kaleb Dias" and "Product (UX/UI) Designer". An "Enter" button appears, and after ~1s it auto-advances to the home page.
+Yes — we can wrap the whole app in a persistent CRT "cabinet" so every page looks like it's playing inside an old tube monitor, matching the retro aesthetic already established (scanlines, pixel cursors, glitch intro).
 
-### Behavior
-- Shows on first load of the site within a session; skipped on subsequent navigations using `sessionStorage` key (e.g. `jkd_intro_seen`).
-- Ship flies across (~2.2s), trail fades in the two lines of text as the ship passes over their bounding boxes.
-- Enter button fades in when the animation finishes; auto-advances to home ~1s later. Clicking Enter dismisses immediately.
-- Respects `prefers-reduced-motion`: ship + trail are skipped, text and button appear instantly.
-- Reuses existing `RetroStarfield` for the background so it feels part of the site.
+## What it looks like
 
-### Visual direction
-- Fullscreen black overlay with starfield; same pixel/retro aesthetic used elsewhere (pink/yellow gradients, pixel font, crisp edges, retro caret vibe).
-- Spaceship: small pixel-art SVG (chunky, `shape-rendering: crispEdges`) sized ~48–56px.
-- Flame trail: repeating pixel puff SVG sprites in orange → yellow → pink, masked by the two text strings so the letters "burn in" as the ship passes. Implemented with an SVG `<mask>` (or `background-clip: text`) over a horizontally sweeping gradient of pixel flame tiles, so the letters fill left-to-right in sync with the ship.
-- Enter button matches the existing tab/CTA style (black bg, yellow→pink gradient border, purple shadow, pixel font).
+- A fixed, full-viewport frame that sits above the page content, with the actual site rendered inside a slightly inset "screen" area.
+- Bezel: thick, subtly curved dark plastic frame (rounded corners, ~24–40px) with a soft outer shadow and a faint inner shadow to give depth.
+- Screen curvature: gentle barrel feel using an inset radial gradient + vignette at the corners (no heavy `filter` warp — keeps text crisp and perf smooth).
+- Reflections:
+  - One large diagonal specular highlight in the top-left of the glass (soft white gradient, very low opacity).
+  - A smaller secondary glint near the top-right.
+  - A faint horizontal "glass sheen" band that drifts extremely slowly (optional, respects `prefers-reduced-motion`).
+- Ambient details: subtle scanline overlay tuned lighter than the current page-level one, tiny vignette darkening at the four corners, faint chromatic edge tint.
+- Everything is `pointer-events: none` so it never blocks clicks/scroll.
 
-### Files
-- New: `src/components/retro/IntroSplash.tsx` — the overlay component (state: `phase = "flying" | "settling" | "done"`, session-storage gate, auto-advance timer, reduced-motion branch, keyboard Enter/Escape to dismiss).
-- New: `src/components/retro/PixelShip.tsx` — inline SVG spaceship sprite.
-- Edit: `src/routes/__root.tsx` — mount `<IntroSplash />` inside `RootComponent` above `<Outlet />` so it overlays whichever route is first loaded (home page in this case; component internally no-ops on subsequent routes/sessions).
-- Edit: `src/styles.css` — add keyframes: `ship-fly` (translateX -10vw → 110vw), `flame-burn` (mask-position sweep revealing text), `intro-fade-out` for the whole overlay when Enter fires; plus utility classes for the flame gradient tiles.
+## Structure
 
-### Technical notes
-- Session gate runs in `useEffect` so SSR/prerender never blocks the home page; overlay starts hidden and shows only if `sessionStorage.getItem('jkd_intro_seen') !== '1'`, then sets it.
-- Overlay uses `position: fixed; inset: 0; z-index: 9999` and traps focus on the Enter button.
-- Animation timing (approximate):
-  - 0.0s ship enters from left
-  - 0.4s ship passes over "Joel Kaleb Dias" — line 1 burns in
-  - 1.2s ship passes over "Product (UX/UI) Designer" — line 2 burns in
-  - 2.2s ship exits right, Enter button fades in
-  - 3.2s auto-advance (fade overlay out, unmount)
-- No route changes needed — overlay just unmounts to reveal the already-rendered home page underneath.
+```text
+<CRTFrame>                     ← fixed, inset 16–32px from viewport edges
+  ├─ bezel (rounded, shadowed)
+  ├─ screen inset (children render here — the whole router)
+  └─ overlays (pointer-events-none)
+       ├─ corner vignette
+       ├─ diagonal reflection (top-left)
+       ├─ secondary glint (top-right)
+       ├─ soft scanlines
+       └─ optional slow sheen
+```
 
-### Out of scope
-- No changes to home page content, other routes, or global layout.
-- No audio.
+## Where it goes
+
+- New component: `src/components/retro/CRTFrame.tsx`.
+- Mounted once in `src/routes/__root.tsx` wrapping `<Outlet />` so it persists across route changes (no re-mount flicker).
+- The intro splash (`IntroSplash`) renders **inside** the CRT frame too, so the glitch exit happens on the tube.
+- Body background stays dark so the space around the bezel reads as "the room behind the monitor."
+
+## Responsiveness & options
+
+- Desktop: full bezel with generous padding (~24–32px inset, ~28px radius).
+- Tablet: reduced padding (~12–16px inset, ~20px radius).
+- Mobile (<640px): frame collapses to a thin rounded border + scanlines only — a full bezel eats too much screen. This can be tuned once you see it.
+- Toggle: I'll expose a small `useCRTFrame` flag so we can disable it on specific routes if needed (e.g. printable pages) — off by default means always on.
+
+## Technical notes
+
+- Pure CSS + SVG overlays, no runtime JS animation loops. Reflections are `linear-gradient` / `radial-gradient` layers.
+- Uses existing design tokens in `src/styles.css`; adds a few CRT-specific tokens (`--crt-bezel`, `--crt-screen-radius`, `--crt-reflection`) alongside existing retro variables.
+- Content inside remains fully scrollable — the frame is `position: fixed`, the screen area uses `overflow: hidden` on the bezel visual but the inner content wrapper stays `overflow: visible` so page scroll behaves normally.
+- Respects `prefers-reduced-motion` (disables the drifting sheen).
+- No changes to routing, data, or existing components' logic.
+
+## One quick decision
+
+Do you want the bezel to be:
+- **A. Classic black plastic** (matte dark grey, subtle highlights) — cleaner, matches current dark theme.
+- **B. Beige/cream retro PC** (like an old CRT from the 90s) — more overtly nostalgic, contrasts with the dark page bg.
+
+If you don't specify I'll go with **A (black plastic)** since it complements the existing palette and the pink/green accents already in the site.
