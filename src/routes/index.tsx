@@ -738,7 +738,7 @@ function Index() {
                   Hey those are just my case studies, There are lots of more works that I
                   have not built comprehensive studies for, You can find them here!
                 </p>
-                <LinkoutRow label="All my other works" href="#" bg="#9FF2C1" />
+                <LinkoutRow label="All my other works" to="/more-works" bg="#9FF2C1" />
               </div>
             ) : (
               <div
