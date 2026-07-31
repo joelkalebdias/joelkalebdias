@@ -48,6 +48,7 @@ const OTHER_PROJECTS = [
     role: "Role: UX/UI Designer",
     gradient: "linear-gradient(180deg, #69DAEE 0%, #69DAEE 80%, #8A69EE 100%)",
     img: "https://api.builder.io/api/v1/image/assets/TEMP/507f3b9934b6e8a32adc0c0b3941cc887b0f6305?width=718",
+    slug: "uti",
   },
 ];
 
