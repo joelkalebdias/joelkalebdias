@@ -1069,8 +1069,8 @@ function CaseStudyPage() {
         {/* Solution hero */}
         <RevealPanel
           effect="crt-boot"
-          className="rounded-xl overflow-hidden w-full"
-          style={{ aspectRatio: "308/123" }}
+          className="overflow-hidden w-full"
+          style={{ aspectRatio: "1920 / 978" }}
         >
           <img src={cs.solutionHero} alt="Solution preview" className="w-full h-full object-cover" />
         </RevealPanel>
