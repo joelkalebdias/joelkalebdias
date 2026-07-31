@@ -96,6 +96,7 @@ const OTHER_PROJECTS = [
     role: "Role: UX/UI Designer (Personal Project)",
     gradient: "linear-gradient(180deg, #D8B4FE 0%, #D8B4FE 80%, #7E22CE 100%)",
     img: "https://api.builder.io/api/v1/image/assets/TEMP/b982a6847c860f50d4ba512ddbc3c64beca4590a?width=718",
+    slug: "genelink",
   },
   {
     title: "Electra - A digital ecosystem for booking ships and for captains to effectively view ship status",
@@ -104,6 +105,7 @@ const OTHER_PROJECTS = [
     role: "Role: Design Team Lead",
     gradient: "linear-gradient(180deg, #F0D642 0%, #F0D642 80%, #F08A42 100%)",
     img: "https://api.builder.io/api/v1/image/assets/TEMP/77f2c90dac4d95f68256e2b5f2aa4400bb85dd67?width=718",
+    slug: "electra",
   },
   {
     title: "UTI Mutual Fund - A mutual fund solution for India's oldest AMC, reimaging legacy solutions",
@@ -112,6 +114,7 @@ const OTHER_PROJECTS = [
     role: "Role: UX/UI Designer",
     gradient: "linear-gradient(180deg, #69DAEE 0%, #69DAEE 80%, #8A69EE 100%)",
     img: "https://api.builder.io/api/v1/image/assets/TEMP/507f3b9934b6e8a32adc0c0b3941cc887b0f6305?width=718",
+    slug: "uti",
   },
 ];
 
@@ -1368,9 +1371,11 @@ function CaseStudyPage() {
           />
           <div className="px-4 pt-4 pb-2 grid grid-cols-1 md:grid-cols-3 gap-4">
             {OTHER_PROJECTS.map((p) => (
-              <article
+              <Link
                 key={p.title}
-                className="retro-card rounded-xl p-4 flex flex-col gap-4"
+                to="/case-study/$slug"
+                params={{ slug: p.slug }}
+                className="retro-card rounded-xl p-4 flex flex-col gap-4 no-underline"
                 style={{
                   background: p.gradient,
                   boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset",
@@ -1399,7 +1404,7 @@ function CaseStudyPage() {
                 <span className="pix tr2" aria-hidden />
                 <span className="pix bl2" aria-hidden />
                 <span className="pix br2" aria-hidden />
-              </article>
+              </Link>
             ))}
           </div>
         </section>
@@ -2406,9 +2411,11 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
           />
           <div className="px-4 pt-4 pb-2 grid grid-cols-1 md:grid-cols-3 gap-4">
             {OTHER_PROJECTS.map((p) => (
-              <article
+              <Link
                 key={p.title}
-                className="retro-card rounded-xl p-4 flex flex-col gap-4"
+                to="/case-study/$slug"
+                params={{ slug: p.slug }}
+                className="retro-card rounded-xl p-4 flex flex-col gap-4 no-underline"
                 style={{ background: p.gradient, boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset" }}
               >
                 <img src={p.img} alt="" className="w-full rounded-lg object-cover" style={{ aspectRatio: "308/173" }} loading="lazy" />
@@ -2426,7 +2433,7 @@ function GenelinkCaseStudy({ cs }: { cs: CaseStudy }) {
                 <span className="pix tr2" aria-hidden />
                 <span className="pix bl2" aria-hidden />
                 <span className="pix br2" aria-hidden />
-              </article>
+              </Link>
             ))}
           </div>
         </section>
@@ -2979,9 +2986,11 @@ function LumenCaseStudy() {
           />
           <div className="px-4 pt-4 pb-2 grid grid-cols-1 md:grid-cols-3 gap-4">
             {OTHER_PROJECTS.map((p) => (
-              <article
+              <Link
                 key={p.title}
-                className="retro-card rounded-xl p-4 flex flex-col gap-4"
+                to="/case-study/$slug"
+                params={{ slug: p.slug }}
+                className="retro-card rounded-xl p-4 flex flex-col gap-4 no-underline"
                 style={{ background: p.gradient, boxShadow: "-2px -2px 0 0 #4C042C inset, 2px 2px 0 0 #FFFEF6 inset" }}
               >
                 <img src={p.img} alt="" className="w-full rounded-lg object-cover" style={{ aspectRatio: "308/173" }} loading="lazy" />
@@ -2991,7 +3000,7 @@ function LumenCaseStudy() {
                   <div>{p.location}</div>
                   <div>{p.role}</div>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         </section>
