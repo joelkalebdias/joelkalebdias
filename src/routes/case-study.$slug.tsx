@@ -31,6 +31,7 @@ import lumenFlowAsset from "@/assets/lumen/flow.png.asset.json";
 import lumenAlterEgoAsset from "@/assets/lumen-alter-ego.png.asset.json";
 import lumenReportsAsset from "@/assets/lumen/reports.png.asset.json";
 import lolAiSolutionHeroAsset from "@/assets/lol-ai-solution-hero.png.asset.json";
+import lolAiHeroAsset from "@/assets/lol-ai-hero.png.asset.json";
 
 const LUMEN_SECTION_IMAGES: Record<string, string> = {
   Onboarding: lumenOnboardingAsset.url,
@@ -127,7 +128,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
     tagline:
       "An AI-assisted replay analysis experience for League of Legends players that helps them identify key moments, understand recurring mistakes, and improve faster.",
     meta: "Role: UX/UI Designer - Research, Prototyping · Duration: 2 weeks · Tools: Figma, Figma make, Perplexity AI",
-    hero: "https://api.builder.io/api/v1/image/assets/TEMP/3c898625b1d03a15aa466d686110fb08247e9c71?width=2588",
+    hero: lolAiHeroAsset.url,
     overview:
       "Playing League of Legends should feel rewarding, not frustrating.\nWith over 131 million monthly active players and 67% stuck in the bottom two ranks, most League players never reach the level they aspire to. The game has a built-in replay system, yet fewer than 2% of players actually analyze their own replays. The problem isn't tools — it's that parsing through 30+ minutes of dense gameplay to find what went wrong is exhausting, unclear, and ultimately discouraging.\nI set out to design a product that removes the friction from post-match review and turns every game into a learning opportunity.",
     process: [
@@ -684,8 +685,8 @@ function CaseStudyPage() {
         {/* Hero image */}
         <RevealPanel
           effect="crt-boot"
-          className="rounded-xl overflow-hidden w-full"
-          style={{ aspectRatio: "16/7", background: "#000" }}
+          className="overflow-hidden w-full"
+          style={{ aspectRatio: "1920/1081", background: "#000" }}
         >
           <img
             src={cs.hero}
