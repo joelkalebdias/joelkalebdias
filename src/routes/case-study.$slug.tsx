@@ -30,6 +30,7 @@ import lumenCirclesAsset from "@/assets/lumen/circles.png.asset.json";
 import lumenFlowAsset from "@/assets/lumen/flow.png.asset.json";
 import lumenAlterEgoAsset from "@/assets/lumen-alter-ego.png.asset.json";
 import lumenReportsAsset from "@/assets/lumen/reports.png.asset.json";
+import lolAiSolutionHeroAsset from "@/assets/lol-ai-solution-hero.png.asset.json";
 
 const LUMEN_SECTION_IMAGES: Record<string, string> = {
   Onboarding: lumenOnboardingAsset.url,
@@ -204,7 +205,7 @@ const CASE_STUDIES: Record<string, CaseStudy> = {
       "Each insight includes a \"why\" explanation — addressing the data overload problem coaches report with AI systems.",
       "Progress is tracked across sessions — because research shows players want validation of growth, not just raw feedback.",
     ],
-    solutionHero: "https://api.builder.io/api/v1/image/assets/TEMP/e4ec64d0082416f7e15e5a791dfba30dc1df3fd8?width=2464",
+    solutionHero: lolAiSolutionHeroAsset.url,
     ia: {
       navItems: ["Dashboard", "Match History", "Replay Analyser", "Personal Progress", "Settings"],
       intro: "The navigation wasn't guessed — it follows how League players already think about improvement. Players don't think in abstract categories. They think in a temporal sequence: What just happened? What's in my history? Let me look at one game. Am I getting better?\nThis informed the five-item sidebar: Dashboard, Match History, Replay Analyser, Progress, Settings — which follows the natural post-game workflow from summary to deep-dive to long-term tracking. Three principles guided the structure:",
