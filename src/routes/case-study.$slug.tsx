@@ -685,8 +685,8 @@ function CaseStudyPage() {
         {/* Hero image */}
         <RevealPanel
           effect="crt-boot"
-          className="rounded-xl overflow-hidden w-full"
-          style={{ aspectRatio: "16/7", background: "#000" }}
+          className="overflow-hidden w-full"
+          style={{ aspectRatio: "1920/1081", background: "#000" }}
         >
           <img
             src={cs.hero}
