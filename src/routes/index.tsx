@@ -724,7 +724,7 @@ function Index() {
                 <LinkoutRow label="+49 15510916795" href="tel:+4915510916795" bg="#FFD581" />
                 <LinkoutRow label="Linkedin" href="https://www.linkedin.com/in/joel-kaleb-dias-21b895187/" bg="#FFD581" />
                 <LinkoutRow label="Behance" href="https://www.behance.net/joeldias" bg="#FFD581" />
-                <LinkoutRow label="CV / Resume" href="https://drive.google.com/file/d/1TugpXDmQaX-_ImzBirdIVkl64GSgqF5o/view?usp=sharing" bg="#FFD581" />
+                <LinkoutRow label="CV / Resume" href="https://drive.google.com/file/d/1aSUR13ljcvGTxBAEgZkuDONMzcSznrdK/view?usp=sharing" bg="#FFD581" />
               </div>
             </div>
 
