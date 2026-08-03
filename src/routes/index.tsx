@@ -670,7 +670,9 @@ function Index() {
               marginTop: 14,
             }}
           >
-            Product (UX/UI) Designer ·&nbsp;Currently: Werkstudent (Product Design) @ Publicis Media · Master&apos;s thesis on algorithmic transparency &gt; Open to full-time roles from July 2026
+            Product (UX/UI) Designer ·&nbsp;Currently: Werkstudent (Product Design) @ Publicis Media · Master&apos;s thesis on algorithmic transparency&nbsp;
+            <br />
+            &gt; Open to full-time roles from July 2026
           </p>
 
           <p
